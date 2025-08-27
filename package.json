@@ -1,0 +1,8 @@
+{
+  "name": "syris-site",
+  "version": "1.0.0",
+  "description": "Systematic solutions for modern chaos",
+  "scripts": {
+    "dev": "echo 'Open index.html in browser'"
+  }
+}

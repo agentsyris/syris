@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>syris. — systematic solutions for modern chaos</title>
+    <meta name="description" content="from chaos to calm, systematically.">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00C9A7;
+            --charcoal: #0A0A0A;
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-400: #9CA3AF;
+            --gray-600: #4B5563;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--charcoal);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Terminal cursor animation */
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes type {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background: var(--primary);
+            animation: blink 1s infinite;
+            vertical-align: text-bottom;
+            margin-left: 2px;
+        }
+
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: type 2s steps(40, end);
+        }
+
+        /* Dot motif */
+        .dot {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .dot-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, var(--primary) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 32px 40px;
+            background: linear-gradient(to bottom, var(--white) 0%, rgba(255,255,255,0.9) 70%, transparent 100%);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--mono);
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-link {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--gray-600);
+            text-decoration: none;
+            padding: 8px 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--charcoal);
+            border-color: var(--gray-400);
+            background: var(--gray-50);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 120px 40px 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--primary);
+            margin-bottom: 32px;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 600;
+            line-height: 1;
+            margin-bottom: 32px;
+            letter-spacing: -2px;
+        }
+
+        .hero-sub {
+            font-size: 20px;
+            color: var(--gray-600);
+            margin-bottom: 48px;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-family: var(--mono);
+            padding: 14px 32px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+        }
+
+        .btn-primary {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--charcoal);
+            border: 1px solid var(--gray-400);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--charcoal);
+            background: var(--gray-50);
+        }
+
+        /* Trust proof */
+        .proof {
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .proof-item {
+            text-align: center;
+        }
+
+        .proof-metric {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .proof-label {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 120px 40px;
+            background: var(--gray-50);
+            position: relative;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            text-align: center;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+
+        .section-sub {
+            font-size: 18px;
+            color: var(--gray-600);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: var(--gray-400);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 32px;
+            background: var(--white);
+            border-radius: 4px;
+            border: 1px solid var(--gray-100);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 40px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 40px;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 4px solid var(--gray-50);
+            z-index: 1;
+        }
+
+        .timeline-label {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .timeline-desc {
+            color: var(--gray-600);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Calculator Widget */
+        .calculator {
+            padding: 120px 40px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .calc-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 48px;
+            background: var(--gray-50);
+            border-radius: 4px;
+            border: 1px solid var(--gray-100);
+        }
+
+        .calc-inputs {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .calc-input-group {
+            text-align: left;
+        }
+
+        .calc-label {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .calc-input {
+            padding: 12px 16px;
+            border: 1px solid var(--gray-400);
+            border-radius: 4px;
+            font-family: var(--mono);
+            font-size: 18px;
+            width: 150px;
+            background: var(--white);
+            transition: all 0.2s ease;
+        }
+
+        .calc-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,201,167,0.1);
+        }
+
+        .calc-result {
+            margin-bottom: 32px;
+        }
+
+        .calc-amount {
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-family: var(--mono);
+        }
+
+        .calc-desc {
+            font-size: 14px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Case study */
+        .case {
+            padding: 120px 40px;
+            background: var(--charcoal);
+            color: var(--white);
+            position: relative;
+        }
+
+        .case-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .case-company {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--primary);
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .case-quote {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            line-height: 1.4;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .case-metrics {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .case-metric {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .case-metric-value {
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 4px;
+            font-family: var(--mono);
+        }
+
+        .case-metric-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        /* Services */
+        .services {
+            padding: 120px 40px;
+            background: var(--gray-50);
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            padding: 48px;
+            border: 1px solid var(--gray-100);
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            background: var(--white);
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,201,167,0.1);
+        }
+
+        .service-name {
+            font-family: var(--mono);
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .service-desc {
+            color: var(--gray-600);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            text-align: left;
+            margin-bottom: 32px;
+        }
+
+        .service-feature {
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+        }
+
+        .service-feature:before {
+            content: "→";
+            color: var(--primary);
+            margin-right: 12px;
+            font-weight: 600;
+        }
+
+        .service-status {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Email capture */
+        .capture {
+            padding: 80px 40px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .capture-form {
+            max-width: 400px;
+            margin: 32px auto 0;
+            display: flex;
+            gap: 12px;
+        }
+
+        .capture-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-400);
+            border-radius: 4px;
+            font-family: var(--sans);
+            font-size: 14px;
+        }
+
+        .capture-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .capture-btn {
+            padding: 12px 24px;
+            background: var(--charcoal);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--mono);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .capture-btn:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 120px 40px;
+            background: linear-gradient(135deg, var(--charcoal) 0%, #1a1a1a 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+        }
+
+        .cta h2 {
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+
+        .cta-sub {
+            font-size: 20px;
+            opacity: 0.8;
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta .btn-primary {
+            background: var(--primary);
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .cta .btn-primary:hover {
+            background: var(--white);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 480px;
+            width: 90%;
+            border-radius: 4px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 32px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 32px;
+            right: 32px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--gray-400);
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--gray-50);
+            color: var(--charcoal);
+        }
+
+        .modal-body {
+            padding: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            font-family: var(--mono);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-100);
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: var(--sans);
+            transition: all 0.2s ease;
+            background: var(--white);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0,201,167,0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: var(--sans);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--charcoal);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--mono);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 24px;
+            }
+
+            .hero {
+                padding: 120px 24px 80px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .proof {
+                gap: 32px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin: 0 0 0 40px;
+                text-align: left;
+            }
+
+            .calc-inputs {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .calc-input {
+                width: 100%;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capture-form {
+                flex-direction: column;
+            }
+
+            .case-metrics {
+                gap: 32px;
+            }
+
+            .process,
+            .calculator,
+            .case,
+            .services,
+            .cta {
+                padding: 80px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">syris<span class="dot">.</span></div>
+            <a href="#contact" class="nav-link">start<span class="dot">.</span></a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="dot-grid"></div>
+        <div class="hero-content">
+            <div class="hero-label">systematic solutions for modern chaos</div>
+            <h1>from chaos to calm<span class="dot">.</span></h1>
+            <p class="hero-sub">
+                we transform creative operations through systematic design<span class="dot">.</span> 
+                less meetings<span class="dot">.</span> more creating<span class="dot">.</span>
+            </p>
+            
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="openModal()">begin assessment<span class="dot">.</span></button>
+                <a href="#process" class="btn btn-secondary">see how<span class="dot">.</span></a>
+            </div>
+
+            <div class="proof">
+                <div class="proof-item">
+                    <div class="proof-metric">45%</div>
+                    <div class="proof-label">less coordination</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-metric">20hrs</div>
+                    <div class="proof-label">saved weekly</div>
+                </div>
+                <div class="proof-item">
+                    <div class="proof-metric">2.5×</div>
+                    <div class="proof-label">faster delivery</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process" id="process">
+        <div class="section-header">
+            <div class="section-label">how we work</div>
+            <h2>systematic transformation in 14 days<span class="dot">.</span></h2>
+            <p class="section-sub">from analysis to actionable roadmap<span class="dot">.</span></p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-label">day 1-3</div>
+                    <div class="timeline-title">discovery<span class="dot">.</span></div>
+                    <div class="timeline-desc">stakeholder interviews, tool audit, workflow observation<span class="dot">.</span></div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-label">day 4-7</div>
+                    <div class="timeline-title">analysis<span class="dot">.</span></div>
+                    <div class="timeline-desc">bottleneck identification, time tracking, inefficiency mapping<span class="dot">.</span></div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-label">day 8-11</div>
+                    <div class="timeline-title">design<span class="dot">.</span></div>
+                    <div class="timeline-desc">custom workflows, automation architecture, process optimization<span class="dot">.</span></div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-label">day 12-14</div>
+                    <div class="timeline-title">delivery<span class="dot">.</span></div>
+                    <div class="timeline-desc">implementation templates, 90-day roadmap, success metrics<span class="dot">.</span></div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calculator">
+        <div class="section-header">
+            <div class="section-label">calculate</div>
+            <h2>your monthly waste<span class="dot">.</span></h2>
+        </div>
+
+        <div class="calc-container">
+            <div class="calc-inputs">
+                <div class="calc-input-group">
+                    <div class="calc-label">team size</div>
+                    <input type="number" class="calc-input" id="team-size" value="15" min="1" max="500">
+                </div>
+                <div class="calc-input-group">
+                    <div class="calc-label">hourly rate</div>
+                    <input type="number" class="calc-input" id="hourly-rate" value="75" min="20" max="500">
+                </div>
+            </div>
+            <div class="calc-result">
+                <div class="calc-amount" id="waste-amount">$28,800</div>
+                <div class="calc-desc">lost to coordination overhead monthly</div>
+            </div>
+            <button class="btn btn-primary" onclick="openModal()">fix this<span class="dot">.</span></button>
+        </div>
+    </section>
+
+    <!-- Case Study -->
+    <section class="case">
+        <div class="case-content">
+            <div class="case-company">frvr × syris</div>
+            <div class="case-quote">
+                "manual workflows couldn't scale with our ai-first approach<span class="dot">.</span> 
+                syris designed custom architecture that transformed everything<span class="dot">.</span> 
+                we got our time back<span class="dot">.</span>"
+            </div>
+            <div class="case-metrics">
+                <div class="case-metric">
+                    <div class="case-metric-value">45%</div>
+                    <div class="case-metric-label">coordination reduction</div>
+                </div>
+                <div class="case-metric">
+                    <div class="case-metric-value">2×</div>
+                    <div class="case-metric-label">delivery speed</div>
+                </div>
+                <div class="case-metric">
+                    <div class="case-metric-value">300%</div>
+                    <div class="case-metric-label">roi in 6 months</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <div class="section-label">solutions</div>
+            <h2>systematic transformation<span class="dot">.</span></h2>
+            <p class="section-sub">choose your path from chaos to calm<span class="dot">.</span></p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-name">calm<span class="dot">.</span>ops</div>
+                <p class="service-desc">comprehensive workflow assessment and optimization for creative teams<span class="dot">.</span></p>
+                <div class="service-features">
+                    <div class="service-feature">2-week deep analysis</div>
+                    <div class="service-feature">custom workflow architecture</div>
+                    <div class="service-feature">implementation templates</div>
+                    <div class="service-feature">90-day transformation roadmap</div>
+                </div>
+                <button class="btn btn-primary" onclick="openModal()">start assessment<span class="dot">.</span></button>
+            </div>
+
+            <div class="service-card">
+                <div class="service-name">calm<span class="dot">.</span>life</div>
+                <p class="service-desc">personal productivity systems for creative professionals<span class="dot">.</span></p>
+                <div class="service-features">
+                    <div class="service-feature">systematic habit design</div>
+                    <div class="service-feature">AI-augmented workflows</div>
+                    <div class="service-feature">focus optimization</div>
+                    <div class="service-feature">sustainable productivity</div>
+                </div>
+                <div class="service-status">launching Q2 2025</div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-name">custom<span class="dot">.</span></div>
+                <p class="service-desc">bespoke solutions for unique operational challenges<span class="dot">.</span></p>
+                <div class="service-features">
+                    <div class="service-feature">enterprise transformation</div>
+                    <div class="service-feature">AI workflow integration</div>
+                    <div class="service-feature">change management</div>
+                    <div class="service-feature">ongoing optimization</div>
+                </div>
+                <button class="btn btn-secondary" onclick="openModal()">inquire<span class="dot">.</span></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Capture -->
+    <section class="capture">
+        <div class="section-header">
+            <h3 style="font-size: 1.5rem; margin-bottom: 8px;">get the assessment framework<span class="dot">.</span></h3>
+            <p style="color: var(--gray-600);">see exactly how we identify workflow inefficiencies<span class="dot">.</span></p>
+        </div>
+        <form class="capture-form" id="capture-form">
+            <input type="email" class="capture-input" placeholder="your@email.com" required>
+            <button type="submit" class="capture-btn">send<span class="dot">.</span></button>
+        </form>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>ready to reclaim your time<span class="dot">?</span></h2>
+        <p class="cta-sub">
+            join frvr, quince, veed, and others who've transformed their operations<span class="dot">.</span>
+        </p>
+        <button class="btn btn-primary" onclick="openModal()">
+            begin your assessment<span class="dot">.</span>
+        </button>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">let's begin<span class="dot">.</span></div>
+                <div class="modal-subtitle">tell us about your chaos</div>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="assessment-form">
+                    <div class="form-group">
+                        <label class="form-label">company</label>
+                        <input type="text" class="form-input" name="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">name</label>
+                        <input type="text" class="form-input" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">email</label>
+                        <input type="email" class="form-input" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">team size</label>
+                        <select class="form-select" name="teamSize" required>
+                            <option value="">select<span class="dot">.</span></option>
+                            <option value="5-15">5-15</option>
+                            <option value="15-30">15-30</option>
+                            <option value="30-50">30-50</option>
+                            <option value="50+">50+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">your biggest workflow pain</label>
+                        <textarea class="form-textarea" name="challenge" placeholder="what's slowing your team down?" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">submit<span class="dot">.</span></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Calculator
+        function updateWaste() {
+            const teamSize = parseInt(document.getElementById('team-size').value) || 0;
+            const hourlyRate = parseInt(document.getElementById('hourly-rate').value) || 0;
+            const hoursPerMonth = 160;
+            const wastePercentage = 0.3;
+            const monthlyWaste = teamSize * hoursPerMonth * wastePercentage * hourlyRate;
+            
+            document.getElementById('waste-amount').textContent = 
+                '$' + monthlyWaste.toLocaleString();
+        }
+
+        document.getElementById('team-size').addEventListener('input', updateWaste);
+        document.getElementById('hourly-rate').addEventListener('input', updateWaste);
+        updateWaste();
+
+        // Modal
+        function openModal() {
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Forms
+        document.getElementById('assessment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            console.log('Assessment:', data);
+            alert('thank you. we\'ll be in touch within 24 hours.');
+            closeModal();
+            e.target.reset();
+        });
+
+        document.getElementById('capture-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            console.log('Email captured:', email);
+            e.target.querySelector('input').value = '';
+            alert('check your inbox for the framework.');
+        });
+
+        // Close modal on backdrop click
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
