@@ -4,5 +4,8 @@
   "description": "Systematic solutions for modern chaos",
   "scripts": {
     "dev": "echo 'Open index.html in browser'"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.2.0"
   }
 }

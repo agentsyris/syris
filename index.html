@@ -4,7 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>syris. — systematic solutions for modern chaos</title>
-    <meta name="description" content="from chaos to calm, systematically.">
+    <meta name="description" content="Transform creative operations through systematic design. 45% less coordination overhead in 14 days.">
+    
+    <!-- SEO and Social Meta Tags -->
+    <meta name="author" content="Andrew Syris">
+    <meta name="keywords" content="creative operations, workflow optimization, systematic solutions, operational consulting, creative team efficiency, coordination overhead">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="syris. — systematic solutions for modern chaos">
+    <meta property="og:description" content="Transform creative operations through systematic design. 45% less coordination overhead.">
+    <meta property="og:url" content="https://syris.solutions">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://syris.solutions/syris.logo.primary.svg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="syris. — systematic solutions for modern chaos">
+    <meta name="twitter:description" content="Transform creative operations through systematic design.">
+    <meta name="twitter:image" content="https://syris.solutions/syris.logo.primary.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L55FL9F71T');
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -36,33 +66,6 @@
             line-height: 1.6;
             background: var(--white);
             overflow-x: hidden;
-        }
-
-        /* Terminal cursor animation */
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        @keyframes type {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1.2em;
-            background: var(--primary);
-            animation: blink 1s infinite;
-            vertical-align: text-bottom;
-            margin-left: 2px;
-        }
-
-        .typing {
-            overflow: hidden;
-            white-space: nowrap;
-            animation: type 2s steps(40, end);
         }
 
         /* Dot motif */
@@ -269,85 +272,6 @@
         .section-sub {
             font-size: 18px;
             color: var(--gray-600);
-        }
-
-        .timeline {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 100%;
-            background: var(--gray-400);
-            opacity: 0.3;
-        }
-
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 80px;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            flex: 1;
-            padding: 32px;
-            background: var(--white);
-            border-radius: 4px;
-            border: 1px solid var(--gray-100);
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 40px;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 40px;
-        }
-
-        .timeline-dot {
-            width: 16px;
-            height: 16px;
-            background: var(--primary);
-            border-radius: 50%;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 4px solid var(--gray-50);
-            z-index: 1;
-        }
-
-        .timeline-label {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-
-        .timeline-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .timeline-desc {
-            color: var(--gray-600);
-            font-size: 14px;
-            line-height: 1.6;
         }
 
         /* Calculator Widget */
@@ -714,7 +638,6 @@
         }
 
         .form-input,
-        .form-select,
         .form-textarea {
             width: 100%;
             padding: 12px 16px;
@@ -727,17 +650,10 @@
         }
 
         .form-input:focus,
-        .form-select:focus,
         .form-textarea:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(0,201,167,0.1);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 100px;
-            font-family: var(--sans);
         }
 
         .form-submit {
@@ -759,21 +675,20 @@
             color: var(--charcoal);
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Success message */
+        .success-message {
+            display: none;
+            padding: 16px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 4px;
+            margin-top: 16px;
+            font-family: var(--mono);
+            font-size: 14px;
         }
 
-        .fade-in {
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
+        .success-message.active {
+            display: block;
         }
 
         /* Responsive */
@@ -802,25 +717,6 @@
 
             .proof {
                 gap: 32px;
-            }
-
-            .timeline-item,
-            .timeline-item:nth-child(even) {
-                flex-direction: column;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-dot {
-                left: 20px;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
-                margin: 0 0 0 40px;
-                text-align: left;
             }
 
             .calc-inputs {
@@ -859,7 +755,7 @@
     <nav>
         <div class="nav-container">
             <div class="logo">syris<span class="dot">.</span></div>
-            <a href="#contact" class="nav-link">start<span class="dot">.</span></a>
+            <a href="https://calendly.com/andrew-syris/30min" target="_blank" class="nav-link">start<span class="dot">.</span></a>
         </div>
     </nav>
 
@@ -875,7 +771,11 @@
             </p>
             
             <div class="btn-group">
-                <button class="btn btn-primary" onclick="openModal()">begin assessment<span class="dot">.</span></button>
+                <a href="https://calendly.com/andrew-syris/30min" 
+                   class="btn btn-primary" 
+                   target="_blank">
+                   book assessment<span class="dot">.</span>
+                </a>
                 <a href="#process" class="btn btn-secondary">see how<span class="dot">.</span></a>
             </div>
 
@@ -900,45 +800,49 @@
     <section class="process" id="process">
         <div class="section-header">
             <div class="section-label">how we work</div>
-            <h2>systematic transformation in 14 days<span class="dot">.</span></h2>
-            <p class="section-sub">from analysis to actionable roadmap<span class="dot">.</span></p>
+            <h2>14-day systematic transformation<span class="dot">.</span></h2>
+            <p class="section-sub">from chaos audit to calm operations<span class="dot">.</span></p>
         </div>
 
-        <div class="timeline">
-            <div class="timeline-item fade-in">
-                <div class="timeline-content">
-                    <div class="timeline-label">day 1-3</div>
-                    <div class="timeline-title">discovery<span class="dot">.</span></div>
-                    <div class="timeline-desc">stakeholder interviews, tool audit, workflow observation<span class="dot">.</span></div>
+        <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+            <div style="text-align: center; padding: 40px 24px; background: var(--white); border: 1px solid var(--gray-100); border-radius: 4px; transition: all 0.3s ease;">
+                <div style="font-family: var(--mono); font-size: 12px; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">day 1-3</div>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">audit<span class="dot">.</span></div>
+                <div style="font-size: 14px; color: var(--gray-600); line-height: 1.8;">
+                    time tracking analysis<br>
+                    tool inventory<br>
+                    workflow mapping
                 </div>
-                <div class="timeline-dot"></div>
             </div>
-
-            <div class="timeline-item fade-in">
-                <div class="timeline-content">
-                    <div class="timeline-label">day 4-7</div>
-                    <div class="timeline-title">analysis<span class="dot">.</span></div>
-                    <div class="timeline-desc">bottleneck identification, time tracking, inefficiency mapping<span class="dot">.</span></div>
+            
+            <div style="text-align: center; padding: 40px 24px; background: var(--white); border: 1px solid var(--gray-100); border-radius: 4px; transition: all 0.3s ease;">
+                <div style="font-family: var(--mono); font-size: 12px; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">day 4-7</div>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">analyze<span class="dot">.</span></div>
+                <div style="font-size: 14px; color: var(--gray-600); line-height: 1.8;">
+                    bottleneck identification<br>
+                    overhead calculation<br>
+                    opportunity mapping
                 </div>
-                <div class="timeline-dot"></div>
             </div>
-
-            <div class="timeline-item fade-in">
-                <div class="timeline-content">
-                    <div class="timeline-label">day 8-11</div>
-                    <div class="timeline-title">design<span class="dot">.</span></div>
-                    <div class="timeline-desc">custom workflows, automation architecture, process optimization<span class="dot">.</span></div>
+            
+            <div style="text-align: center; padding: 40px 24px; background: var(--white); border: 1px solid var(--gray-100); border-radius: 4px; transition: all 0.3s ease;">
+                <div style="font-family: var(--mono); font-size: 12px; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">day 8-11</div>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">design<span class="dot">.</span></div>
+                <div style="font-size: 14px; color: var(--gray-600); line-height: 1.8;">
+                    systematic workflows<br>
+                    automation architecture<br>
+                    documentation templates
                 </div>
-                <div class="timeline-dot"></div>
             </div>
-
-            <div class="timeline-item fade-in">
-                <div class="timeline-content">
-                    <div class="timeline-label">day 12-14</div>
-                    <div class="timeline-title">delivery<span class="dot">.</span></div>
-                    <div class="timeline-desc">implementation templates, 90-day roadmap, success metrics<span class="dot">.</span></div>
+            
+            <div style="text-align: center; padding: 40px 24px; background: var(--white); border: 1px solid var(--gray-100); border-radius: 4px; transition: all 0.3s ease;">
+                <div style="font-family: var(--mono); font-size: 12px; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">day 12-14</div>
+                <div style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">deliver<span class="dot">.</span></div>
+                <div style="font-size: 14px; color: var(--gray-600); line-height: 1.8;">
+                    implementation playbook<br>
+                    quick wins roadmap<br>
+                    success metrics
                 </div>
-                <div class="timeline-dot"></div>
             </div>
         </div>
     </section>
@@ -962,20 +866,24 @@
                 </div>
             </div>
             <div class="calc-result">
-                <div class="calc-amount" id="waste-amount">$28,800</div>
+                <div class="calc-amount" id="waste-amount">$24,300</div>
                 <div class="calc-desc">lost to coordination overhead monthly</div>
             </div>
-            <button class="btn btn-primary" onclick="openModal()">fix this<span class="dot">.</span></button>
+            <a href="https://calendly.com/andrew-syris/30min" 
+               class="btn btn-primary" 
+               target="_blank">
+               fix this<span class="dot">.</span>
+            </a>
         </div>
     </section>
 
     <!-- Case Study -->
     <section class="case">
         <div class="case-content">
-            <div class="case-company">frvr × syris</div>
+            <div class="case-company">chris benjaminsen, founder @ frvr</div>
             <div class="case-quote">
                 "manual workflows couldn't scale with our ai-first approach<span class="dot">.</span> 
-                syris designed custom architecture that transformed everything<span class="dot">.</span> 
+                syris<span class="dot">.</span> designed custom architecture that transformed everything<span class="dot">.</span> 
                 we got our time back<span class="dot">.</span>"
             </div>
             <div class="case-metrics">
@@ -1006,30 +914,34 @@
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-name">calm<span class="dot">.</span>ops</div>
-                <p class="service-desc">comprehensive workflow assessment and optimization for creative teams<span class="dot">.</span></p>
+                <p class="service-desc">systematic business operations for creative teams. designed for how creative minds actually work, not how manuals say they should<span class="dot">.</span></p>
                 <div class="service-features">
                     <div class="service-feature">2-week deep analysis</div>
                     <div class="service-feature">custom workflow architecture</div>
                     <div class="service-feature">implementation templates</div>
                     <div class="service-feature">90-day transformation roadmap</div>
                 </div>
-                <button class="btn btn-primary" onclick="openModal()">start assessment<span class="dot">.</span></button>
+                <a href="https://calendly.com/andrew-syris/30min" 
+                   class="btn btn-primary" 
+                   target="_blank">
+                   start assessment<span class="dot">.</span>
+                </a>
             </div>
 
             <div class="service-card">
                 <div class="service-name">calm<span class="dot">.</span>life</div>
-                <p class="service-desc">personal productivity systems for creative professionals<span class="dot">.</span></p>
+                <p class="service-desc">personal productivity systems that actually stick. built around your workflow, not against it<span class="dot">.</span></p>
                 <div class="service-features">
                     <div class="service-feature">systematic habit design</div>
                     <div class="service-feature">AI-augmented workflows</div>
                     <div class="service-feature">focus optimization</div>
                     <div class="service-feature">sustainable productivity</div>
                 </div>
-                <div class="service-status">launching Q2 2025</div>
+                <div class="service-status">launching Q1 2026</div>
             </div>
 
             <div class="service-card">
-                <div class="service-name">custom<span class="dot">.</span></div>
+                <div class="service-name">custom<span class="dot">.</span>sys</div>
                 <p class="service-desc">bespoke solutions for unique operational challenges<span class="dot">.</span></p>
                 <div class="service-features">
                     <div class="service-feature">enterprise transformation</div>
@@ -1048,21 +960,26 @@
             <h3 style="font-size: 1.5rem; margin-bottom: 8px;">get the assessment framework<span class="dot">.</span></h3>
             <p style="color: var(--gray-600);">see exactly how we identify workflow inefficiencies<span class="dot">.</span></p>
         </div>
-        <form class="capture-form" id="capture-form">
-            <input type="email" class="capture-input" placeholder="your@email.com" required>
+        <form class="capture-form" id="capture-form" action="https://formspree.io/f/mkgvovee" method="POST">
+            <input type="hidden" name="_next" value="https://syris.solutions/#thanks">
+            <input type="text" name="_gotcha" style="display:none">
+            <input type="email" name="email" class="capture-input" placeholder="your@email.com" required>
             <button type="submit" class="capture-btn">send<span class="dot">.</span></button>
         </form>
+        <div id="capture-success" class="success-message">check your inbox for the framework<span class="dot">.</span></div>
     </section>
 
     <!-- CTA -->
     <section class="cta">
-        <h2>ready to reclaim your time<span class="dot">?</span></h2>
+        <h2>ready to reclaim 20 hours weekly<span class="dot">?</span></h2>
         <p class="cta-sub">
-            join frvr, quince, veed, and others who've transformed their operations<span class="dot">.</span>
+            join creative teams who've reduced coordination overhead by 45%<span class="dot">.</span>
         </p>
-        <button class="btn btn-primary" onclick="openModal()">
-            begin your assessment<span class="dot">.</span>
-        </button>
+        <a href="https://calendly.com/andrew-syris/30min" 
+           class="btn btn-primary" 
+           target="_blank">
+           book your assessment<span class="dot">.</span>
+        </a>
     </section>
 
     <!-- Modal -->
@@ -1074,11 +991,9 @@
                 <button class="modal-close" onclick="closeModal()">×</button>
             </div>
             <div class="modal-body">
-                <form id="assessment-form">
-                    <div class="form-group">
-                        <label class="form-label">company</label>
-                        <input type="text" class="form-input" name="company" required>
-                    </div>
+                <form id="assessment-form" action="https://formspree.io/f/mkgvovee" method="POST">
+                    <input type="hidden" name="_next" value="https://syris.solutions/#thanks">
+                    <input type="text" name="_gotcha" style="display:none">
                     <div class="form-group">
                         <label class="form-label">name</label>
                         <input type="text" class="form-input" name="name" required>
@@ -1088,36 +1003,46 @@
                         <input type="email" class="form-input" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">team size</label>
-                        <select class="form-select" name="teamSize" required>
-                            <option value="">select<span class="dot">.</span></option>
-                            <option value="5-15">5-15</option>
-                            <option value="15-30">15-30</option>
-                            <option value="30-50">30-50</option>
-                            <option value="50+">50+</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">your biggest workflow pain</label>
-                        <textarea class="form-textarea" name="challenge" placeholder="what's slowing your team down?" required></textarea>
+                        <label class="form-label">company</label>
+                        <input type="text" class="form-input" name="company" required>
                     </div>
                     <button type="submit" class="form-submit">submit<span class="dot">.</span></button>
                 </form>
+                <div id="assessment-success" class="success-message">thank you. we'll be in touch within 24 hours<span class="dot">.</span></div>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer style="padding: 48px 40px; text-align: center; border-top: 1px solid var(--gray-100); background: var(--gray-50); margin-top: 80px;">
+        <div style="font-family: var(--mono); font-size: 14px; color: var(--gray-600);">
+            syris<span class="dot">.</span> © 2024 | 
+            <a href="mailto:andrew@syris.studio" style="color: var(--primary); text-decoration: none;">andrew@syris.studio</a> | 
+            <a href="https://calendly.com/andrew-syris/30min" style="color: var(--primary); text-decoration: none;">book time</a> | 
+            <a href="https://linkedin.com/company/syrisdot" style="color: var(--primary); text-decoration: none;">linkedin</a>
+        </div>
+    </footer>
+
     <script>
-        // Calculator
+        // Calculator with aligned messaging
         function updateWaste() {
             const teamSize = parseInt(document.getElementById('team-size').value) || 0;
             const hourlyRate = parseInt(document.getElementById('hourly-rate').value) || 0;
             const hoursPerMonth = 160;
-            const wastePercentage = 0.3;
+            const wastePercentage = 0.27; // 27% waste (conservative and realistic)
             const monthlyWaste = teamSize * hoursPerMonth * wastePercentage * hourlyRate;
+            const monthlySavings = monthlyWaste * 0.45; // 45% reduction we deliver
             
             document.getElementById('waste-amount').textContent = 
                 '$' + monthlyWaste.toLocaleString();
+            
+            // Update the description to show potential savings
+            const descElement = document.querySelector('.calc-desc');
+            if (descElement) {
+                descElement.innerHTML = 'lost to coordination overhead monthly<br>' +
+                    '<span style="color: #00C9A7; font-weight: 600;">$' + 
+                    monthlySavings.toLocaleString() + ' recoverable</span>';
+            }
         }
 
         document.getElementById('team-size').addEventListener('input', updateWaste);
@@ -1135,25 +1060,6 @@
             document.body.style.overflow = '';
         }
 
-        // Forms
-        document.getElementById('assessment-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
-            console.log('Assessment:', data);
-            alert('thank you. we\'ll be in touch within 24 hours.');
-            closeModal();
-            e.target.reset();
-        });
-
-        document.getElementById('capture-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = e.target.querySelector('input').value;
-            console.log('Email captured:', email);
-            e.target.querySelector('input').value = '';
-            alert('check your inbox for the framework.');
-        });
-
         // Close modal on backdrop click
         document.getElementById('modal').addEventListener('click', function(e) {
             if (e.target === this) {
@@ -1161,22 +1067,26 @@
             }
         });
 
-        // Intersection observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Form submissions - handle Formspree response
+        document.getElementById('assessment-form').addEventListener('submit', function(e) {
+            setTimeout(() => {
+                document.getElementById('assessment-success').classList.add('active');
+                e.target.reset();
+                setTimeout(() => {
+                    closeModal();
+                    document.getElementById('assessment-success').classList.remove('active');
+                }, 3000);
+            }, 500);
+        });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.timeline-item').forEach(el => {
-            observer.observe(el);
+        document.getElementById('capture-form').addEventListener('submit', function(e) {
+            setTimeout(() => {
+                document.getElementById('capture-success').classList.add('active');
+                e.target.querySelector('input[type="email"]').value = '';
+                setTimeout(() => {
+                    document.getElementById('capture-success').classList.remove('active');
+                }, 3000);
+            }, 500);
         });
     </script>
 </body>
