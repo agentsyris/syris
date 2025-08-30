@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>calm.profile Assessment - syris.</title>
+    <title>calm.profile assessment – syrıs.</title>
     <meta name="description" content="Discover your personalized productivity profile. Take the calm.profile assessment to get customized workflow recommendations for creative professionals.">
     
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -363,7 +363,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="/" class="logo">syris</a>
+            <a href="/" class="logo">syrıs</a>
             <div class="nav-links">
                 <a href="/" class="nav-link">home</a>
                 <!-- Fixed stray quotation marks on navigation links -->
@@ -486,6 +486,380 @@
             <div class="nav-buttons">
                 <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
                 <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn3" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+        
+        <!-- dynamically extended questions (4–15) -->
+
+        <!-- question 4: time management style -->
+        <section class="question-section" id="question4">
+            <div class="question-header">
+                <div class="question-category">time management</div>
+                <h2 class="question-title">your planning style looks like<span class="dot">.</span></h2>
+                <p class="question-description">how do you prefer to schedule and prioritize your day?</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="structured" onclick="selectAnswer(this, 4)">
+                    <div class="answer-label">strict agendas</div>
+                    <div class="answer-description">pre‑planned calendars with clear slots for each task and milestone</div>
+                </div>
+                <div class="answer-option" data-value="adaptive" onclick="selectAnswer(this, 4)">
+                    <div class="answer-label">dynamic priorities</div>
+                    <div class="answer-description">flexible schedules that adapt to changing project needs and inspiration</div>
+                </div>
+                <div class="answer-option" data-value="focused" onclick="selectAnswer(this, 4)">
+                    <div class="answer-label">one thing at a time</div>
+                    <div class="answer-description">deep work blocks dedicated to a single high‑impact task</div>
+                </div>
+                <div class="answer-option" data-value="exploratory" onclick="selectAnswer(this, 4)">
+                    <div class="answer-label">open windows</div>
+                    <div class="answer-description">loose structure leaving room for serendipitous creative exploration</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn4" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 5: communication preference -->
+        <section class="question-section" id="question5">
+            <div class="question-header">
+                <div class="question-category">communication</div>
+                <h2 class="question-title">how do you like to communicate with your team<span class="dot">?</span></h2>
+                <p class="question-description">choose the mode that keeps you most aligned and productive.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="asynchronous" onclick="selectAnswer(this, 5)">
+                    <div class="answer-label">async updates</div>
+                    <div class="answer-description">written summaries, recorded videos and shared dashboards to stay informed</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 5)">
+                    <div class="answer-label">real‑time chat</div>
+                    <div class="answer-description">instant messaging and live conversations to keep the energy flowing</div>
+                </div>
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 5)">
+                    <div class="answer-label">minimal communication</div>
+                    <div class="answer-description">only essential check‑ins, leaving maximum space for uninterrupted work</div>
+                </div>
+                <div class="answer-option" data-value="collaborative" onclick="selectAnswer(this, 5)">
+                    <div class="answer-label">structured meetings</div>
+                    <div class="answer-description">regular agendas with clear objectives and action items</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn5" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 6: collaboration style -->
+        <section class="question-section" id="question6">
+            <div class="question-header">
+                <div class="question-category">collaboration</div>
+                <h2 class="question-title">your ideal meeting structure<span class="dot">.</span></h2>
+                <p class="question-description">what type of session helps you contribute effectively?</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 6)">
+                    <div class="answer-label">open brainstorms</div>
+                    <div class="answer-description">free‑flowing discussions with the whole team sharing ideas in real time</div>
+                </div>
+                <div class="answer-option" data-value="asynchronous" onclick="selectAnswer(this, 6)">
+                    <div class="answer-label">async reviews</div>
+                    <div class="answer-description">written feedback cycles that don’t require everyone at the same time</div>
+                </div>
+                <div class="answer-option" data-value="structured" onclick="selectAnswer(this, 6)">
+                    <div class="answer-label">agenda‑driven</div>
+                    <div class="answer-description">short, purpose‑driven meetings with clear roles and outcomes</div>
+                </div>
+                <div class="answer-option" data-value="exploratory" onclick="selectAnswer(this, 6)">
+                    <div class="answer-label">workshops</div>
+                    <div class="answer-description">hands‑on sessions to co‑create, sketch and prototype together</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn6" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 7: focus environment -->
+        <section class="question-section" id="question7">
+            <div class="question-header">
+                <div class="question-category">focus environment</div>
+                <h2 class="question-title">where do you do your best work<span class="dot">?</span></h2>
+                <p class="question-description">choose the setting that helps you produce your best creative output.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="protected" onclick="selectAnswer(this, 7)">
+                    <div class="answer-label">quiet corners</div>
+                    <div class="answer-description">a calm, distraction‑free space with no interruptions</div>
+                </div>
+                <div class="answer-option" data-value="intensive" onclick="selectAnswer(this, 7)">
+                    <div class="answer-label">busy studios</div>
+                    <div class="answer-description">high‑energy environments with constant stimulus and momentum</div>
+                </div>
+                <div class="answer-option" data-value="exploratory" onclick="selectAnswer(this, 7)">
+                    <div class="answer-label">varied spaces</div>
+                    <div class="answer-description">moving between cafés, parks and co‑working spaces to stay inspired</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 7)">
+                    <div class="answer-label">team pods</div>
+                    <div class="answer-description">working shoulder‑to‑shoulder with teammates for instant feedback</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn7" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 8: energy rhythm -->
+        <section class="question-section" id="question8">
+            <div class="question-header">
+                <div class="question-category">energy rhythm</div>
+                <h2 class="question-title">when are you most productive<span class="dot">?</span></h2>
+                <p class="question-description">identify the time of day that unlocks your creative flow.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="focused" onclick="selectAnswer(this, 8)">
+                    <div class="answer-label">early mornings</div>
+                    <div class="answer-description">you thrive before the rest of the world wakes up</div>
+                </div>
+                <div class="answer-option" data-value="adaptive" onclick="selectAnswer(this, 8)">
+                    <div class="answer-label">it depends</div>
+                    <div class="answer-description">your energy cycles shift based on deadlines and inspiration</div>
+                </div>
+                <div class="answer-option" data-value="intensive" onclick="selectAnswer(this, 8)">
+                    <div class="answer-label">late nights</div>
+                    <div class="answer-description">you hit your stride once the day quiets down</div>
+                </div>
+                <div class="answer-option" data-value="protected" onclick="selectAnswer(this, 8)">
+                    <div class="answer-label">steady pace</div>
+                    <div class="answer-description">consistent energy throughout the day with scheduled breaks</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn8" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 9: creative process -->
+        <section class="question-section" id="question9">
+            <div class="question-header">
+                <div class="question-category">creative process</div>
+                <h2 class="question-title">how do you like to brainstorm<span class="dot">?</span></h2>
+                <p class="question-description">select the method that sparks your best ideas.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="exploratory" onclick="selectAnswer(this, 9)">
+                    <div class="answer-label">open exploration</div>
+                    <div class="answer-description">unstructured ideation with sketches, mind maps and mood boards</div>
+                </div>
+                <div class="answer-option" data-value="structured" onclick="selectAnswer(this, 9)">
+                    <div class="answer-label">frameworks and prompts</div>
+                    <div class="answer-description">guided exercises and templates to channel creativity</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 9)">
+                    <div class="answer-label">group sessions</div>
+                    <div class="answer-description">collaborative brainstorming with diverse perspectives</div>
+                </div>
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 9)">
+                    <div class="answer-label">solo reflection</div>
+                    <div class="answer-description">quiet thinking time to connect the dots on your own</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn9" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 10: feedback style -->
+        <section class="question-section" id="question10">
+            <div class="question-header">
+                <div class="question-category">feedback</div>
+                <h2 class="question-title">how do you prefer to receive feedback<span class="dot">?</span></h2>
+                <p class="question-description">feedback helps improve creative work — pick the style that resonates.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="supported" onclick="selectAnswer(this, 10)">
+                    <div class="answer-label">step‑by‑step guidance</div>
+                    <div class="answer-description">detailed notes explaining what’s working and what to adjust</div>
+                </div>
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 10)">
+                    <div class="answer-label">high‑level direction</div>
+                    <div class="answer-description">general pointers so you can iterate on your own</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 10)">
+                    <div class="answer-label">group critique</div>
+                    <div class="answer-description">collaborative reviews with peers offering diverse perspectives</div>
+                </div>
+                <div class="answer-option" data-value="asynchronous" onclick="selectAnswer(this, 10)">
+                    <div class="answer-label">written comments</div>
+                    <div class="answer-description">annotated documents or messages you can digest in your own time</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn10" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 11: learning style -->
+        <section class="question-section" id="question11">
+            <div class="question-header">
+                <div class="question-category">learning</div>
+                <h2 class="question-title">how do you learn new tools<span class="dot">?</span></h2>
+                <p class="question-description">select the approach that makes new technology click for you.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="analytical" onclick="selectAnswer(this, 11)">
+                    <div class="answer-label">reading the docs</div>
+                    <div class="answer-description">detailed documentation and step‑by‑step tutorials</div>
+                </div>
+                <div class="answer-option" data-value="kinesthetic" onclick="selectAnswer(this, 11)">
+                    <div class="answer-label">hands‑on practice</div>
+                    <div class="answer-description">learning by doing through experimentation and tinkering</div>
+                </div>
+                <div class="answer-option" data-value="visual" onclick="selectAnswer(this, 11)">
+                    <div class="answer-label">videos & demos</div>
+                    <div class="answer-description">watching others use the tool before trying it yourself</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 11)">
+                    <div class="answer-label">pair learning</div>
+                    <div class="answer-description">collaborating with someone experienced to learn together</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn11" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 12: work style -->
+        <section class="question-section" id="question12">
+            <div class="question-header">
+                <div class="question-category">work style</div>
+                <h2 class="question-title">how do you handle multiple tasks<span class="dot">?</span></h2>
+                <p class="question-description">pick the statement that reflects how you approach workload.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="intensive" onclick="selectAnswer(this, 12)">
+                    <div class="answer-label">juggling many projects</div>
+                    <div class="answer-description">you thrive when bouncing between different tasks and deadlines</div>
+                </div>
+                <div class="answer-option" data-value="focused" onclick="selectAnswer(this, 12)">
+                    <div class="answer-label">single‑task focus</div>
+                    <div class="answer-description">you deliver best when concentrating on one thing at a time</div>
+                </div>
+                <div class="answer-option" data-value="adaptive" onclick="selectAnswer(this, 12)">
+                    <div class="answer-label">switch as needed</div>
+                    <div class="answer-description">you’re comfortable shifting gears based on priorities</div>
+                </div>
+                <div class="answer-option" data-value="protected" onclick="selectAnswer(this, 12)">
+                    <div class="answer-label">time‑blocked flow</div>
+                    <div class="answer-description">you batch similar tasks into dedicated blocks to maintain momentum</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn12" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 13: autonomy -->
+        <section class="question-section" id="question13">
+            <div class="question-header">
+                <div class="question-category">autonomy</div>
+                <h2 class="question-title">what level of guidance helps you excel<span class="dot">?</span></h2>
+                <p class="question-description">consider how much direction you need to stay motivated.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 13)">
+                    <div class="answer-label">complete autonomy</div>
+                    <div class="answer-description">you prefer full control with minimal external input</div>
+                </div>
+                <div class="answer-option" data-value="supported" onclick="selectAnswer(this, 13)">
+                    <div class="answer-label">regular check‑ins</div>
+                    <div class="answer-description">you value ongoing guidance and feedback from a mentor or manager</div>
+                </div>
+                <div class="answer-option" data-value="collaborative" onclick="selectAnswer(this, 13)">
+                    <div class="answer-label">shared ownership</div>
+                    <div class="answer-description">you do best when decisions are made together with the team</div>
+                </div>
+                <div class="answer-option" data-value="structured" onclick="selectAnswer(this, 13)">
+                    <div class="answer-label">clear frameworks</div>
+                    <div class="answer-description">you like having detailed guidelines but freedom within them</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn13" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 14: work environment -->
+        <section class="question-section" id="question14">
+            <div class="question-header">
+                <div class="question-category">environment</div>
+                <h2 class="question-title">your preferred work arrangement<span class="dot">.</span></h2>
+                <p class="question-description">choose the option that reflects your ideal working setup.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 14)">
+                    <div class="answer-label">remote</div>
+                    <div class="answer-description">working from anywhere with full flexibility</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 14)">
+                    <div class="answer-label">in‑studio</div>
+                    <div class="answer-description">together in a shared space to collaborate face‑to‑face</div>
+                </div>
+                <div class="answer-option" data-value="adaptive" onclick="selectAnswer(this, 14)">
+                    <div class="answer-label">hybrid</div>
+                    <div class="answer-description">a blend of remote and in‑person depending on project needs</div>
+                </div>
+                <div class="answer-option" data-value="structured" onclick="selectAnswer(this, 14)">
+                    <div class="answer-label">fixed location</div>
+                    <div class="answer-description">consistent workspace with set hours and routine</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn14" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- question 15: support needs -->
+        <section class="question-section" id="question15">
+            <div class="question-header">
+                <div class="question-category">support</div>
+                <h2 class="question-title">what kind of support empowers you<span class="dot">?</span></h2>
+                <p class="question-description">select the type of assistance that keeps you performing at your best.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="supported" onclick="selectAnswer(this, 15)">
+                    <div class="answer-label">expert coaching</div>
+                    <div class="answer-description">regular access to specialists who guide your growth</div>
+                </div>
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 15)">
+                    <div class="answer-label">self‑serve resources</div>
+                    <div class="answer-description">templates and documentation you can refer to on your own</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 15)">
+                    <div class="answer-label">peer network</div>
+                    <div class="answer-description">community of colleagues to share challenges and solutions</div>
+                </div>
+                <div class="answer-option" data-value="protected" onclick="selectAnswer(this, 15)">
+                    <div class="answer-label">administrative help</div>
+                    <div class="answer-description">support handling scheduling, emails and other logistics</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn15" disabled>next<span class="dot">.</span></button>
             </div>
         </section>
 
