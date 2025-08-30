@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - syris. | Systematic Solutions for Creative Teams</title>
+    <meta name="description" content="Choose your systematic transformation path. From personal productivity assessment to full team operations redesign and enterprise solutions.">
+    
+    <!-- SEO and Social Meta Tags -->
+    <meta name="author" content="Andrew Syris">
+    <meta name="keywords" content="creative operations, workflow optimization, systematic solutions, operational consulting, creative team efficiency">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Services - syris. | Systematic Solutions for Creative Teams">
+    <meta property="og:description" content="Choose your systematic transformation path. From assessment to implementation to enterprise solutions.">
+    <meta property="og:url" content="https://syris.systems/services">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://syris.systems/syris.logo.primary.svg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Services - syris. | Systematic Solutions for Creative Teams">
+    <meta name="twitter:description" content="Choose your systematic transformation path.">
+    <meta name="twitter:image" content="https://syris.systems/syris.logo.primary.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L55FL9F71T');
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00C9A7;
+            --charcoal: #0A0A0A;
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-400: #9CA3AF;
+            --gray-600: #4B5563;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--charcoal);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        .dot {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 32px 40px;
+            background: linear-gradient(to bottom, var(--white) 0%, rgba(255,255,255,0.9) 70%, transparent 100%);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--gray-600);
+            text-decoration: none;
+            padding: 8px 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--charcoal);
+            border-color: var(--gray-400);
+            background: var(--gray-50);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 40px 80px;
+            text-align: center;
+            background: var(--white);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 600;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 80px 40px;
+            background: var(--gray-50);
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            padding: 48px;
+            border: 1px solid var(--gray-100);
+            border-radius: 8px;
+            background: var(--white);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-number {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--primary);
+            background: rgba(0,201,167,0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .service-name {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .service-desc {
+            font-size: 16px;
+            color: var(--gray-600);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            margin-bottom: 32px;
+        }
+
+        .service-feature {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .service-feature:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .service-status {
+            font-family: var(--mono);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        .status-available {
+            background: rgba(0,201,167,0.1);
+            color: var(--primary);
+        }
+
+        .status-coming-soon {
+            background: rgba(75,85,99,0.1);
+            color: var(--gray-600);
+        }
+
+        .status-enterprise {
+            background: rgba(10,10,10,0.1);
+            color: var(--charcoal);
+        }
+
+        /* Buttons */
+        .btn {
+            font-family: var(--mono);
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+            border: 1px solid;
+        }
+
+        .btn-primary {
+            background: var(--charcoal);
+            color: var(--white);
+            border-color: var(--charcoal);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-disabled {
+            background: var(--gray-100);
+            color: var(--gray-400);
+            border-color: var(--gray-100);
+            cursor: not-allowed;
+        }
+
+        /* Journey Flow */
+        .journey-section {
+            padding: 80px 40px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .journey-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .journey-subtitle {
+            font-size: 18px;
+            color: var(--gray-600);
+            margin-bottom: 48px;
+        }
+
+        .journey-flow {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .journey-step {
+            padding: 16px 24px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-100);
+            border-radius: 4px;
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .journey-arrow {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 40px;
+            background: var(--charcoal);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .cta-subtitle {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 32px;
+        }
+
+        .btn-cta {
+            background: var(--primary);
+            color: var(--charcoal);
+            border-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .btn-cta:hover {
+            background: var(--white);
+            color: var(--charcoal);
+            border-color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 24px 60px;
+            }
+            
+            .services-section,
+            .journey-section,
+            .cta-section {
+                padding: 60px 24px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .journey-flow {
+                flex-direction: column;
+            }
+            
+            .journey-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+    <link rel="canonical" href="https://syris.systems/services">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="/syris.logo.primary.svg" alt="syrıs." style="height: 24px; width: auto;">
+            </a>
+            <div>
+                <a href="/about.html" class="nav-link">about</a>
+                <a href="/blog.html" class="nav-link">insights</a>
+                <a href="/calm-profile.html" class="nav-link">calm<span class="dot">.</span>profile</a>
+                <a href="/services.html" class="nav-link">services</a>
+                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>systematic transformation<span class="dot">.</span></h1>
+        <p class="hero-subtitle">choose your path from chaos to calm. start with assessment, scale to full transformation.</p>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="services-grid">
+            <!-- calm.profile -->
+            <div class="service-card">
+                <div class="service-number">01</div>
+                <div class="service-name">calm<span class="dot">.</span>profile</div>
+                <div class="service-status status-available">available now</div>
+                <p class="service-desc">discover your unique workstyle through a personalized assessment. get tailored workflow recommendations designed specifically for creative minds.</p>
+                <div class="service-features">
+                    <div class="service-feature">15-question assessment</div>
+                    <div class="service-feature">personalized 12-page report</div>
+                    <div class="service-feature">workflow templates</div>
+                    <div class="service-feature">tool recommendations</div>
+                </div>
+                <a href="/calm-profile.html" class="btn btn-primary">start assessment</a>
+            </div>
+
+            <!-- calm.ops -->
+            <div class="service-card">
+                <div class="service-number">02</div>
+                <div class="service-name">calm<span class="dot">.</span>ops</div>
+                <div class="service-status status-available">available now</div>
+                <p class="service-desc">systematic business operations for creative teams. we redesign your workflows, implement in your tools, and train your team — in 14 days.</p>
+                <div class="service-features">
+                    <div class="service-feature">2-week deep analysis</div>
+                    <div class="service-feature">custom workflow architecture</div>
+                    <div class="service-feature">implementation templates</div>
+                    <div class="service-feature">90-day transformation roadmap</div>
+                </div>
+                <a href="/calm-ops.html" class="btn btn-primary">learn more</a>
+            </div>
+
+            <!-- custom.sys -->
+            <div class="service-card">
+                <div class="service-number">03</div>
+                <div class="service-name">custom<span class="dot">.</span>sys</div>
+                <div class="service-status status-enterprise">enterprise</div>
+                <p class="service-desc">bespoke solutions for unique operational challenges. enterprise transformation with AI workflow integration and ongoing optimization.</p>
+                <div class="service-features">
+                    <div class="service-feature">enterprise transformation</div>
+                    <div class="service-feature">AI workflow integration</div>
+                    <div class="service-feature">change management</div>
+                    <div class="service-feature">ongoing optimization</div>
+                </div>
+                <a href="https://calendly.com/syris/30min" target="_blank" class="btn btn-secondary">inquire</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Flow -->
+    <section class="journey-section">
+        <h2 class="journey-title">your transformation journey<span class="dot">.</span></h2>
+        <p class="journey-subtitle">most teams start with assessment, then move to implementation</p>
+        <div class="journey-flow">
+            <div class="journey-step">calm.profile</div>
+            <div class="journey-arrow">→</div>
+            <div class="journey-step">calm.ops</div>
+            <div class="journey-arrow">→</div>
+            <div class="journey-step">custom.sys</div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title">ready to start your transformation<span class="dot">?</span></h2>
+        <p class="cta-subtitle">book a free 30-minute call to discuss your team's needs and find the right path forward.</p>
+        <a href="https://calendly.com/syris/30min" target="_blank" class="btn btn-cta">book your free call</a>
+    </section>
+</body>
+</html>
+
