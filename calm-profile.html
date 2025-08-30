@@ -360,16 +360,17 @@
 </head>
 <body>
 <section id="profile-cta" style="padding:12px 20px;text-align:center;border-bottom:1px solid #F0F0F0;background:#FAFAFA"><div style="max-width:900px;margin:0 auto;color:#4B5563;font-family:'JetBrains Mono',monospace;font-size:13px">ready to implement your recommendations? <a href="https://calendly.com/syris/30min" target="_blank" style="color:#00C9A7;text-decoration:none">book a free 30‑min call</a> to get your personalized 14‑day plan.</div></section>
-    <!-- Navigation -->
+    <!-- unified navigation bar -->
     <nav>
         <div class="nav-container">
-            <a href="/" class="logo">syrıs</a>
-            <div class="nav-links">
-                <a href="/" class="nav-link">home</a>
-                <!-- Fixed stray quotation marks on navigation links -->
+            <div class="logo">
+                <img src="/syris.logo.primary.svg" alt="syrıs." style="height: 24px; width: auto;">
+            </div>
+            <div>
                 <a href="/about.html" class="nav-link">about</a>
                 <a href="/blog.html" class="nav-link">insights</a>
                 <a href="/calm-profile.html" class="nav-link">calm.profile</a>
+                <a href="/calm-ops.html" class="nav-link">services</a>
                 <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
             </div>
         </div>
@@ -1088,14 +1089,15 @@
         }
 
         function nextQuestion() {
+            // advance to the next question until reaching the total
             if (currentQuestion < totalQuestions) {
                 currentQuestion++;
-                if (currentQuestion <= 3) { // Only show first 3 questions in this demo
-                    showQuestion(currentQuestion);
-                } else {
-                    showResults();
-                }
+                // display the next question
+                showQuestion(currentQuestion);
                 updateProgress();
+            } else {
+                // if at the end, show results
+                showResults();
             }
         }
 

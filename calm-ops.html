@@ -8,7 +8,13 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>:root{--primary:#00C9A7;--charcoal:#0A0A0A;--white:#fff;--gray50:#FAFAFA;--gray100:#F5F5F5;--gray400:#9CA3AF;--gray600:#4B5563;--mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif}
     *{margin:0;padding:0;box-sizing:border-box} body{font-family:var(--sans);color:var(--charcoal);background:var(--white);line-height:1.6}.dot{color:var(--primary);font-weight:600}
-    nav{position:sticky;top:0;z-index:10;background:linear-gradient(to bottom,var(--white),rgba(255,255,255,.9));padding:24px 40px}.navc{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}.nav-link{font-family:var(--mono);font-size:14px;color:var(--gray600);text-decoration:none;padding:8px 16px;border:1px solid transparent;border-radius:4px}.nav-link:hover{color:var(--charcoal);border-color:var(--gray400);background:var(--gray50)}.hero{padding:120px 40px 48px;text-align:center}
+    /* Navigation styling aligned with the rest of the site */
+    nav{position:fixed;top:0;width:100%;padding:32px 40px;background:linear-gradient(to bottom,var(--white) 0%,rgba(255,255,255,.9) 70%,transparent 100%);z-index:1000}
+    .navc{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+    .nav-link{font-family:var(--mono);font-size:14px;color:var(--gray600);text-decoration:none;padding:8px 20px;border:1px solid transparent;border-radius:4px;transition:all .2s ease}
+    .nav-link:hover{color:var(--charcoal);border-color:var(--gray400);background:var(--gray50)}
+    .hero{padding:120px 40px 48px;text-align:center}
+.logo{font-family:var(--mono);font-size:20px;font-weight:600;letter-spacing:-0.5px}
     h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:600;letter-spacing:-1px;margin-bottom:12px}.sub{max-width:760px;margin:0 auto;color:var(--gray600);font-size:18px}.btn{font-family:var(--mono);padding:12px 24px;border-radius:4px;font-size:14px;text-decoration:none;display:inline-block;transition:all.2s}.btnp{background:#0A0A0A;color:#fff}.btnp:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.08)}.sec{padding:96px 40px}.dark{background:#0A0A0A;color:#fff}.sh{max-width:900px;margin:0 auto 24px;text-align:center}
     h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:600;letter-spacing:-1px;margin-bottom:12px}.ss{color:var(--gray600);max-width:760px;margin:0 auto}.grid{max-width:1100px;margin:32px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}.card{border:1px solid var(--gray100);border-radius:4px;background:#fff;padding:32px}.card h3{font-size:20px;font-weight:600;margin-bottom:8px}.card p{color:var(--gray600)}
     ul{margin:10px 0 0 18px} li{margin:6px 0}.proof{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:24px}.metric{text-align:center}.metric.v{font-size:32px;font-weight:600;color:var(--primary);font-family:var(--mono)}.metric.l{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#b0b0b0}
@@ -43,11 +49,18 @@
     
 </head>
 <body>
+  <!-- Consistent navigation bar matching the rest of the site -->
   <nav>
     <div class="navc">
-      <a href="/" class="nav-link">syrıs</a>
+      <!-- Use the primary logo mark for brand consistency -->
+      <div class="logo">
+        <img src="/syris.logo.primary.svg" alt="syrıs." style="height: 24px; width: auto;">
+      </div>
       <div>
-        <a href="/#services" class="nav-link">services</a>
+        <a href="/about.html" class="nav-link">about</a>
+        <a href="/blog.html" class="nav-link">insights</a>
+        <a href="/calm-profile.html" class="nav-link">calm.profile</a>
+        <a href="/calm-ops.html" class="nav-link">services</a>
         <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
       </div>
     </div>
