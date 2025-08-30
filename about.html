@@ -78,6 +78,11 @@
             background: var(--gray-50);
         }
 
+        /* ensure the dot within navigation links stays teal */
+        .nav-link .dot {
+            color: var(--primary);
+        }
+
         /* Hero */.hero {
             padding: 160px 40px 80px;
             text-align: center;
@@ -273,7 +278,7 @@
             <div>
                 <a href="/about.html" class="nav-link">about</a>
                 <a href="/blog.html" class="nav-link">insights</a>
-                <a href="/calm-profile.html" class="nav-link">calm.profile</a>
+                <a href="/calm-profile.html" class="nav-link">calm<span class="dot" style="color: var(--primary);">.</span>profile</a>
                 <a href="/calm-ops.html" class="nav-link">services</a>
                 <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
             </div>

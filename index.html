@@ -112,6 +112,11 @@
             background: var(--gray-50);
         }
 
+        /* ensure the dot within navigation links stays teal */
+        .nav-link .dot {
+            color: var(--primary);
+        }
+
         /* Hero */.hero {
             min-height: 100vh;
             display: flex;
@@ -585,7 +590,7 @@
                 <!-- Fixed stray quotation marks on navigation links -->
                 <a href="/about.html" class="nav-link">about</a>
                 <a href="/blog.html" class="nav-link">insights</a>
-                <a href="/calm-profile.html" class="nav-link">calm.profile</a>
+                <a href="/calm-profile.html" class="nav-link">calm<span class="dot" style="color: var(--primary);">.</span>profile</a>
                 <a href="/calm-ops.html" class="nav-link">services</a>
                 <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
             </div>
@@ -609,6 +614,11 @@
                    onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Hero Book Call' });">
                    book your free 30‑min call
                 </a>
+            </div>
+
+            <!-- Secondary call‑to‑action for visitors who aren't ready to book a call -->
+            <div class="alt-cta" style="margin-top: 16px; font-family: var(--mono); font-size: 14px; color: var(--gray-600);">
+                not ready to chat? <a href="/calm-profile.html" style="color: var(--primary); text-decoration: underline;">start your calm<span class="dot">.</span>profile</a>
             </div>
 
             <!-- Social proof emphasising credibility -->

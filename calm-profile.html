@@ -75,6 +75,11 @@
             background: var(--gray-50);
         }
 
+        /* ensure the dot within navigation links stays teal */
+        .nav-link .dot {
+            color: var(--primary);
+        }
+
         /* Assessment Container */.assessment-container {
             max-width: 800px;
             margin: 0 auto;
@@ -369,7 +374,7 @@
             <div>
                 <a href="/about.html" class="nav-link">about</a>
                 <a href="/blog.html" class="nav-link">insights</a>
-                <a href="/calm-profile.html" class="nav-link">calm.profile</a>
+                <a href="/calm-profile.html" class="nav-link">calm<span class="dot" style="color: var(--primary);">.</span>profile</a>
                 <a href="/calm-ops.html" class="nav-link">services</a>
                 <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
             </div>
@@ -866,7 +871,8 @@
 
         <!-- Results Section -->
         <section class="results-section" id="resultsSection">
-            <div class="results-header">
+            <!-- results header and details are hidden until the user submits their email -->
+            <div class="results-header" style="display:none;">
                 <h1 class="results-title">your calm.profile<span class="dot">.</span></h1>
                 <div class="profile-type" id="profileType">the architect</div>
                 <p class="profile-description" id="profileDescription">
@@ -874,7 +880,7 @@
                 </p>
             </div>
 
-            <div class="profile-details" id="profileDetails">
+            <div class="profile-details" id="profileDetails" style="display:none;">
                 <div class="detail-section">
                     <h3 class="detail-title">your strengths<span class="dot">.</span></h3>
                     <ul class="detail-list" id="strengthsList">
@@ -1218,10 +1224,20 @@
             document.getElementById('progressText').textContent = 'question 0 of 15';
         }
 
-        // Form submission handling
+        // Form submission handling: reveal results after email capture
         document.querySelector('.capture-form').addEventListener('submit', function(e) {
+            // allow the form submission to proceed to Formspree while also revealing the results
             setTimeout(() => {
-                alert('Thanks! Your complete calm.profile report will be sent to your email within 5 minutes.');
+                // hide the email capture section
+                const captureSection = document.querySelector('.email-capture');
+                if (captureSection) captureSection.style.display = 'none';
+                // reveal the results header and details
+                const header = document.querySelector('.results-header');
+                const details = document.getElementById('profileDetails');
+                if (header) header.style.display = 'block';
+                if (details) details.style.display = 'block';
+                // show a thank you message
+                alert('thanks! your complete calm.profile report will be sent to your email within 5 minutes.');
             }, 500);
         });
     </script>

@@ -13,6 +13,9 @@
     .navc{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
     .nav-link{font-family:var(--mono);font-size:14px;color:var(--gray600);text-decoration:none;padding:8px 20px;border:1px solid transparent;border-radius:4px;transition:all .2s ease}
     .nav-link:hover{color:var(--charcoal);border-color:var(--gray400);background:var(--gray50)}
+
+    /* ensure the dot within navigation links stays teal */
+    .nav-link .dot{color:var(--primary)}
     .hero{padding:120px 40px 48px;text-align:center}
 .logo{font-family:var(--mono);font-size:20px;font-weight:600;letter-spacing:-0.5px}
     h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:600;letter-spacing:-1px;margin-bottom:12px}.sub{max-width:760px;margin:0 auto;color:var(--gray600);font-size:18px}.btn{font-family:var(--mono);padding:12px 24px;border-radius:4px;font-size:14px;text-decoration:none;display:inline-block;transition:all.2s}.btnp{background:#0A0A0A;color:#fff}.btnp:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.08)}.sec{padding:96px 40px}.dark{background:#0A0A0A;color:#fff}.sh{max-width:900px;margin:0 auto 24px;text-align:center}
@@ -59,7 +62,7 @@
       <div>
         <a href="/about.html" class="nav-link">about</a>
         <a href="/blog.html" class="nav-link">insights</a>
-        <a href="/calm-profile.html" class="nav-link">calm.profile</a>
+        <a href="/calm-profile.html" class="nav-link">calm<span class="dot" style="color: var(--primary);">.</span>profile</a>
         <a href="/calm-ops.html" class="nav-link">services</a>
         <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
       </div>
