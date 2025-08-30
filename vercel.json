@@ -1,27 +1,10 @@
 {
-  "version": 2,
-  "routes": [
-    {
-      "src": "/services/calm-ops",
-      "dest": "/services/calm-ops.html"
-    }
-  ],
   "rewrites": [
     {
-      "source": "/calm-ops",
-      "destination": "/calm-ops.html"
-    },
-    {
-      "source": "/services/calm-ops",
-      "destination": "/calm-ops.html"
-    },
-    {
-      "source": "/calm-sys",
-      "destination": "/calm-ops.html#sys"
-    },
-    {
-      "source": "/calm-connect",
-      "destination": "https://calendly.com/syris/30min"
+      "source": "/(.*)",
+      "destination": "/$1"
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
