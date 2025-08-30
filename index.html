@@ -583,9 +583,9 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">
+            <a href="/" class="logo">
                 <img src="/syris.logo.primary.svg" alt="syrıs." style="height: 24px; width: auto;">
-            </div>
+            </a>
             <div>
                 <!-- Fixed stray quotation marks on navigation links -->
                 <a href="/about.html" class="nav-link">about</a>
@@ -822,9 +822,8 @@
                     <div class="service-feature">implementation templates</div>
                     <div class="service-feature">90-day transformation roadmap</div>
                 </div>
-                <a href="https://calendly.com/syris/30min" 
-                   class="btn btn-primary" 
-                   target="_blank">
+                <a href="/calm-ops.html" 
+                   class="btn btn-primary">
                    start assessment
                 </a>
             </div>
@@ -947,12 +946,10 @@
             document.getElementById('waste-amount').textContent = 
                 '$' + monthlyWaste.toLocaleString();
             
-            // Update the description to show potential savings
+            // Update the description: keep it simple and avoid duplicating recoverable text
             const descElement = document.querySelector('.calc-desc');
             if (descElement) {
-                descElement.innerHTML = 'lost to coordination overhead monthly<br>' +
-                    '<span style="color: #00C9A7; font-weight: 600;">$' + 
-                    monthlySavings.toLocaleString() + ' recoverable</span>';
+                descElement.textContent = 'lost to coordination overhead monthly';
             }
         }
 
