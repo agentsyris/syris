@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>syris. — systematic solutions for modern chaos</title>
-    <meta name="description" content="Transform creative operations through systematic design. 45% less coordination overhead in 14 days.">
+    <title>syris. - Systematic Solutions for Creative Chaos | 45% Less Coordination Overhead</title>
+    <meta name="description" content="Help creative agencies eliminate coordination chaos. Reduce overhead by 45%, save 20+ hours weekly, deliver projects 2.5× faster. 14-day systematic transformation.">
     
     <!-- SEO and Social Meta Tags -->
     <meta name="author" content="Andrew Syris">
@@ -600,12 +600,17 @@
             <p class="hero-sub">we help creative agencies cut meeting time in half and ship projects 2.5× faster — all within a 14‑day launch.</p>
             
             <div class="btn-group">
-                <a href="https://calendly.com/syris/30min" 
+                <a href="/calm-profile.html" 
                    class="btn btn-primary" 
-                   target="_blank">
-                   book assessment
+                   onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Hero Assessment'});">
+                   take free assessment (2 min)
                 </a>
-                <a href="#process" class="btn btn-secondary">see how it works</a>
+                <a href="#calculator" class="btn btn-secondary">calculate your waste</a>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="social-proof" style="margin-top: 32px; font-family: var(--mono); font-size: 12px; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px;">
+                joined by 150+ creative teams
             </div>
 
             <div class="proof">
@@ -694,15 +699,83 @@
                     <input type="number" class="calc-input" id="hourly-rate" value="75" min="20" max="500">
                 </div>
             </div>
+            
             <div class="calc-result">
                 <div class="calc-amount" id="waste-amount">$24,300</div>
                 <div class="calc-desc">lost to coordination overhead monthly</div>
+                <div class="calc-recoverable" id="recoverable-amount" style="font-family: var(--mono); font-size: 14px; color: var(--primary); margin-top: 8px;">
+                    $10,935 recoverable
+                </div>
             </div>
-            <a href="https://calendly.com/syris/30min" 
-               class="btn btn-primary" 
-               target="_blank">
-               fix this
-            </a>
+
+            <!-- Email Capture for Detailed Analysis -->
+            <div id="email-capture" style="display: none; margin-top: 32px; padding: 24px; background: var(--white); border: 1px solid var(--gray-100); border-radius: 4px;">
+                <div style="font-size: 18px; font-weight: 600; margin-bottom: 16px; text-align: center;">
+                    get detailed breakdown + optimization recommendations
+                </div>
+                <div style="display: flex; gap: 12px; justify-content: center; align-items: center;">
+                    <input type="email" 
+                           id="calc-email" 
+                           placeholder="your@email.com" 
+                           style="padding: 12px 16px; border: 1px solid var(--gray-400); border-radius: 4px; font-size: 14px; width: 250px;">
+                    <button onclick="showDetailedAnalysis()" 
+                            class="btn btn-primary" 
+                            style="padding: 12px 24px;">
+                        analyze
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detailed Analysis Results -->
+            <div id="detailed-analysis" style="display: none; margin-top: 32px; padding: 24px; background: var(--gray-50); border-radius: 4px; text-align: left;">
+                <div style="font-size: 16px; font-weight: 600; margin-bottom: 16px; text-align: center;">
+                    your coordination overhead breakdown
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                    <div>
+                        <div style="font-family: var(--mono); font-size: 12px; color: var(--gray-600); margin-bottom: 4px;">STATUS MEETINGS</div>
+                        <div style="font-size: 18px; font-weight: 600;" id="meetings-cost">$8,505</div>
+                        <div style="font-size: 12px; color: var(--gray-600);">35% of waste</div>
+                    </div>
+                    <div>
+                        <div style="font-family: var(--mono); font-size: 12px; color: var(--gray-600); margin-bottom: 4px;">HANDOFF DELAYS</div>
+                        <div style="font-size: 18px; font-weight: 600;" id="handoffs-cost">$6,804</div>
+                        <div style="font-size: 12px; color: var(--gray-600);">28% of waste</div>
+                    </div>
+                    <div>
+                        <div style="font-family: var(--mono); font-size: 12px; color: var(--gray-600); margin-bottom: 4px;">TOOL SWITCHING</div>
+                        <div style="font-size: 18px; font-weight: 600;" id="tools-cost">$4,374</div>
+                        <div style="font-size: 12px; color: var(--gray-600);">18% of waste</div>
+                    </div>
+                    <div>
+                        <div style="font-family: var(--mono); font-size: 12px; color: var(--gray-600); margin-bottom: 4px;">MISCOMMUNICATION</div>
+                        <div style="font-size: 18px; font-weight: 600;" id="misc-cost">$2,187</div>
+                        <div style="font-size: 12px; color: var(--gray-600);">9% of waste</div>
+                    </div>
+                </div>
+                <div style="text-align: center; padding: 16px; background: var(--white); border-radius: 4px; margin-bottom: 24px;">
+                    <div style="font-family: var(--mono); font-size: 12px; color: var(--gray-600); margin-bottom: 8px;">ANNUAL IMPACT</div>
+                    <div style="font-size: 24px; font-weight: 600; color: var(--primary);" id="annual-waste">$291,600</div>
+                    <div style="font-size: 14px; color: var(--gray-600);">lost to coordination overhead</div>
+                </div>
+                <div style="text-align: center;">
+                    <a href="https://calendly.com/syris/30min" 
+                       class="btn btn-primary" 
+                       target="_blank"
+                       onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Calculator Book Assessment'});">
+                       book assessment
+                    </a>
+                </div>
+            </div>
+
+            <!-- Initial CTA -->
+            <div id="initial-cta">
+                <button onclick="showEmailCapture()" 
+                        class="btn btn-primary" 
+                        style="margin-top: 16px;">
+                    get detailed analysis
+                </button>
+            </div>
         </div>
     </section>
 
@@ -874,6 +947,87 @@
             document.getElementById('modal').classList.remove('active');
             document.body.style.overflow = '';
         }
+
+        // Enhanced Calculator functionality
+        function updateCalculation() {
+            const teamSize = parseInt(document.getElementById('team-size').value) || 15;
+            const hourlyRate = parseInt(document.getElementById('hourly-rate').value) || 75;
+            
+            // Base calculation: 18% of team capacity lost to coordination overhead
+            const monthlyHours = teamSize * 160; // 40 hours/week * 4 weeks
+            const coordinationWaste = monthlyHours * 0.18;
+            const monthlyWaste = coordinationWaste * hourlyRate;
+            const recoverable = monthlyWaste * 0.45; // 45% recoverable
+            
+            // Update display
+            document.getElementById('waste-amount').textContent = '$' + monthlyWaste.toLocaleString();
+            document.getElementById('recoverable-amount').textContent = '$' + recoverable.toLocaleString() + ' recoverable';
+            
+            // Update detailed breakdown
+            const meetingsCost = monthlyWaste * 0.35;
+            const handoffsCost = monthlyWaste * 0.28;
+            const toolsCost = monthlyWaste * 0.18;
+            const miscCost = monthlyWaste * 0.09;
+            const annualWaste = monthlyWaste * 12;
+            
+            document.getElementById('meetings-cost').textContent = '$' + meetingsCost.toLocaleString();
+            document.getElementById('handoffs-cost').textContent = '$' + handoffsCost.toLocaleString();
+            document.getElementById('tools-cost').textContent = '$' + toolsCost.toLocaleString();
+            document.getElementById('misc-cost').textContent = '$' + miscCost.toLocaleString();
+            document.getElementById('annual-waste').textContent = '$' + annualWaste.toLocaleString();
+        }
+
+        function showEmailCapture() {
+            document.getElementById('initial-cta').style.display = 'none';
+            document.getElementById('email-capture').style.display = 'block';
+            
+            // Track event
+            gtag('event', 'click', {
+                'event_category': 'Calculator',
+                'event_label': 'Email Capture Shown'
+            });
+        }
+
+        function showDetailedAnalysis() {
+            const email = document.getElementById('calc-email').value;
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Send email to Formspree
+            fetch('https://formspree.io/f/mkgvovee', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    source: 'Calculator Analysis',
+                    team_size: document.getElementById('team-size').value,
+                    hourly_rate: document.getElementById('hourly-rate').value,
+                    monthly_waste: document.getElementById('waste-amount').textContent,
+                    recoverable: document.getElementById('recoverable-amount').textContent
+                })
+            });
+            
+            // Show detailed analysis
+            document.getElementById('email-capture').style.display = 'none';
+            document.getElementById('detailed-analysis').style.display = 'block';
+            
+            // Track conversion
+            gtag('event', 'conversion', {
+                'event_category': 'Calculator',
+                'event_label': 'Email Captured'
+            });
+        }
+
+        // Update calculation on input change
+        document.getElementById('team-size').addEventListener('input', updateCalculation);
+        document.getElementById('hourly-rate').addEventListener('input', updateCalculation);
+        
+        // Initialize calculation
+        updateCalculation();
 
         // Close modal on backdrop click
         document.getElementById('modal').addEventListener('click', function(e) {

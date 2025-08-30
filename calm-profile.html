@@ -539,9 +539,18 @@
                     <input type="hidden" name="_subject" value="calm.profile Assessment Results">
                     <input type="hidden" name="profile_type" id="profileTypeInput" value="">
                     <input type="hidden" name="assessment_data" id="assessmentDataInput" value="">
+                    <input type="hidden" name="source" value="calm.profile Assessment">
                     <input type="email" name="email" class="capture-input" placeholder="your@email.com" required>
-                    <button type="submit" class="capture-btn">get report<span class="dot">.</span></button>
+                    <button type="submit" class="capture-btn" onclick="gtag('event', 'conversion', {'event_category': 'Assessment', 'event_label': 'Email Captured'});">get report<span class="dot">.</span></button>
                 </form>
+                <div style="margin-top: 16px; text-align: center;">
+                    <a href="https://calendly.com/syris/30min" 
+                       target="_blank" 
+                       class="btn btn-primary"
+                       onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Assessment Book Consultation'});">
+                       book consultation
+                    </a>
+                </div>
             </div>
 
             <div class="nav-buttons">
