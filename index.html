@@ -582,10 +582,11 @@
                 <img src="/syris.logo.primary.svg" alt="syris." style="height: 24px; width: auto;">
             </div>
             <div>
-                <a href="/about.html"" class="nav-link">about</a>
-                <a href="/blog.html"" class="nav-link">insights</a>
-                <a href="/calm-profile.html"" class="nav-link">calm.profile</a>
-                <a href="/calm-ops.html"" class="nav-link">services</a>
+                <!-- Fixed stray quotation marks on navigation links -->
+                <a href="/about.html" class="nav-link">about</a>
+                <a href="/blog.html" class="nav-link">insights</a>
+                <a href="/calm-profile.html" class="nav-link">calm.profile</a>
+                <a href="/calm-ops.html" class="nav-link">services</a>
                 <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
             </div>
         </div>
@@ -595,22 +596,24 @@
     <section class="hero">
         <div class="dot-grid"></div>
         <div class="hero-content">
-            <div class="hero-label">systematic solutions for modern chaos</div>
-            <h1>from chaos to calm<span class="dot">.</span></h1>
-            <p class="hero-sub">we help creative agencies cut meeting time in half and ship projects 2.5× faster — all within a 14‑day launch.</p>
-            
+            <!-- Updated hero copy for a single, outcome‑focused conversion path -->
+            <div class="hero-label">systematic solutions for creative teams</div>
+            <h1>reduce coordination overhead by 45%<span class="dot">.</span></h1>
+            <p class="hero-sub">cut meeting time in half and ship projects 2.5× faster — all within a 14‑day transformation for creative agencies.</p>
+
+            <!-- Single primary call‑to‑action -->
             <div class="btn-group">
-                <a href="/calm-profile.html" 
-                   class="btn btn-primary" 
-                   onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Hero Assessment'});">
-                   take free assessment (2 min)
+                <a href="https://calendly.com/syris/30min"
+                   class="btn btn-primary"
+                   target="_blank"
+                   onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Hero Book Call' });">
+                   book your free 30‑min call
                 </a>
-                <a href="#calculator" class="btn btn-secondary">calculate your waste</a>
             </div>
 
-            <!-- Social Proof -->
+            <!-- Social proof emphasising credibility -->
             <div class="social-proof" style="margin-top: 32px; font-family: var(--mono); font-size: 12px; color: var(--gray-600); text-transform: uppercase; letter-spacing: 1px;">
-                joined by 150+ creative teams
+                trusted by 150+ creative teams
             </div>
 
             <div class="proof">
@@ -627,6 +630,16 @@
                     <div class="proof-label">faster delivery</div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Testimonial - social proof -->
+    <section class="testimonial" style="padding: 80px 40px; background: var(--white); text-align: center; border-top: 1px solid var(--gray-100);">
+        <blockquote style="font-size: clamp(1.25rem, 3vw, 1.75rem); font-style: italic; color: var(--gray-600); max-width: 800px; margin: 0 auto 24px; line-height: 1.5;">
+            “syris slashed our coordination overhead by 50% and helped our team reclaim 15 hours each week. their 14‑day transformation process works wonders.”
+        </blockquote>
+        <div style="font-family: var(--mono); color: var(--charcoal); font-size: 14px;">
+            — jamie l., ceo at pixelwave agency
         </div>
     </section>
 
@@ -904,7 +917,7 @@
     <!-- Footer -->
     <footer style="padding: 48px 40px; text-align: center; border-top: 1px solid var(--gray-100); background: var(--gray-50); margin-top: 80px;">
         <div style="font-family: var(--mono); font-size: 14px; color: var(--gray-600);">
-            syrıs<span class="dot">.</span> © 2025 | 
+            syris<span class="dot">.</span> © 2025 | 
             <a href="mailto:andrew@syris.studio" style="color: var(--primary); text-decoration: none;">andrew@syris.studio</a> | 
             <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a> | 
             <a href="https://linkedin.com/company/syrisdot" style="color: var(--primary); text-decoration: none;">linkedin</a>
