@@ -250,7 +250,9 @@
             justify-content: center;
             margin-bottom: 40px;
         }.calc-input-group {
-            text-align: left;
+        /* hide verbose feature lists on the homepage to reduce visual noise */
+        display: none;
+        text-align: left;
         }.calc-label {
             font-family: var(--mono);
             font-size: 12px;
@@ -657,7 +659,7 @@
     </section>
 
     <!-- Process -->
-    <section class="process" id="process">
+<section class="process" id="process" style="display:none;">
         <div class="section-header">
             <div class="section-label">how we work</div>
             <h2>14-day systematic transformation<span class="dot">.</span></h2>
@@ -708,7 +710,7 @@
     </section>
 
     <!-- Calculator -->
-    <section class="calculator">
+<section class="calculator" style="display:none;">
         <div class="section-header">
             <div class="section-label">calculate</div>
             <h2>your monthly waste<span class="dot">.</span></h2>
@@ -883,13 +885,13 @@
                     <div class="service-feature">change management</div>
                     <div class="service-feature">ongoing optimization</div>
                 </div>
-                <button class="btn btn-secondary" onclick="openModal()">inquire<span class="dot">.</span></button>
+                <a href="mailto:andrew@syris.studio" class="btn btn-secondary">inquire<span class="dot">.</span></a>
             </div>
         </div>
     </section>
 
     <!-- Email Capture -->
-    <section class="capture">
+    <section class="capture" style="display:none;">
         <div class="section-header">
             <h3 style="font-size: 1.5rem; margin-bottom: 8px;">get the assessment framework<span class="dot">.</span></h3>
             <p style="color: var(--gray-600);">see exactly how we identify workflow inefficiencies<span class="dot">.</span></p>
@@ -904,7 +906,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="cta">
+    <section class="cta" style="display:none;">
         <h2>ready to reclaim 20 hours weekly<span class="dot">?</span></h2>
         <p class="cta-sub">
             join creative teams who've reduced coordination overhead by 45%<span class="dot">.</span>
@@ -917,7 +919,7 @@
     </section>
 
     <!-- Modal -->
-    <div class="modal" id="modal">
+    <div class="modal" id="modal" style="display:none;">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title">let's begin<span class="dot">.</span></div>
