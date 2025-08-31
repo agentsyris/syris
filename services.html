@@ -3,28 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - syris. | Systematic Solutions for Creative Teams</title>
-    <meta name="description" content="Choose your systematic transformation path. From personal productivity assessment to full team operations redesign and enterprise solutions.">
-    
-    <!-- SEO and Social Meta Tags -->
-    <meta name="author" content="Andrew Syris">
-    <meta name="keywords" content="creative operations, workflow optimization, systematic solutions, operational consulting, creative team efficiency">
-    
-    <!-- Open Graph for social sharing -->
-    <meta property="og:title" content="Services - syris. | Systematic Solutions for Creative Teams">
-    <meta property="og:description" content="Choose your systematic transformation path. From assessment to implementation to enterprise solutions.">
-    <meta property="og:url" content="https://syris.systems/services">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://syris.systems/syris.logo.primary.svg">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Services - syris. | Systematic Solutions for Creative Teams">
-    <meta name="twitter:description" content="Choose your systematic transformation path.">
-    <meta name="twitter:image" content="https://syris.systems/syris.logo.primary.svg">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>services - syris. | systematic transformation pathways</title>
+    <meta name="description" content="from assessment to implementation to optimization. proven methodology for creative teams. 45% reduction in coordination overhead.">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
@@ -66,190 +46,228 @@
             color: var(--primary);
             font-weight: 600;
         }
+        
+        .dot-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, var(--primary) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.02;
+            pointer-events: none;
+        }
 
         /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 32px 40px;
-            background: linear-gradient(to bottom, var(--white) 0%, rgba(255,255,255,0.9) 70%, transparent 100%);
+            padding: 24px 40px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
+            border-bottom: 1px solid var(--gray-100);
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .logo {
+            font-family: var(--mono);
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--charcoal);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
         .nav-link {
             font-family: var(--mono);
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gray-600);
             text-decoration: none;
-            padding: 8px 20px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            transition: all 0.2s ease;
+            transition: color 0.2s ease;
         }
 
         .nav-link:hover {
             color: var(--charcoal);
-            border-color: var(--gray-400);
-            background: var(--gray-50);
         }
 
-        /* Hero Section */
+        .nav-cta {
+            font-family: var(--mono);
+            font-size: 13px;
+            padding: 10px 20px;
+            background: var(--charcoal);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
         .hero {
-            padding: 120px 40px 80px;
+            padding: 140px 40px 60px;
             text-align: center;
-            background: var(--white);
+            position: relative;
         }
 
         h1 {
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 600;
             letter-spacing: -1px;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
-        .hero-subtitle {
-            font-size: 20px;
+        .hero-sub {
+            font-family: var(--mono);
+            font-size: 14px;
             color: var(--gray-600);
             max-width: 600px;
-            margin: 0 auto 40px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
-        /* Services Grid */
-        .services-section {
+        /* Service comparison */
+        .comparison-section {
             padding: 80px 40px;
             background: var(--gray-50);
         }
 
-        .services-grid {
+        .comparison-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 32px;
         }
 
-        .service-card {
-            padding: 48px;
-            border: 1px solid var(--gray-100);
-            border-radius: 8px;
+        .service-column {
             background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .service-column:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,201,167,0.15);
+        }
+
+        .service-header {
+            padding: 40px 32px;
             text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .service-number {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            font-family: var(--mono);
-            font-size: 14px;
-            color: var(--primary);
-            background: rgba(0,201,167,0.1);
-            padding: 4px 8px;
-            border-radius: 4px;
+            border-bottom: 1px solid var(--gray-100);
         }
 
         .service-name {
-            font-size: 32px;
+            font-family: var(--mono);
+            font-size: 28px;
             font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
+            margin-bottom: 8px;
         }
 
-        .service-desc {
-            font-size: 16px;
+        .service-timeline {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .service-price {
+            font-family: var(--mono);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .service-tagline {
+            font-size: 14px;
             color: var(--gray-600);
-            margin-bottom: 32px;
-            line-height: 1.6;
         }
 
         .service-features {
-            margin-bottom: 32px;
+            padding: 32px;
         }
 
-        .service-feature {
+        .feature-category {
             font-family: var(--mono);
-            font-size: 14px;
-            color: var(--gray-600);
-            margin-bottom: 8px;
-            padding-left: 16px;
-            position: relative;
-        }
-
-        .service-feature:before {
-            content: "→";
-            position: absolute;
-            left: 0;
+            font-size: 11px;
             color: var(--primary);
-        }
-
-        .service-status {
-            font-family: var(--mono);
-            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 24px;
-            padding: 8px 16px;
-            border-radius: 4px;
+            margin-top: 24px;
+            margin-bottom: 12px;
         }
 
-        .status-available {
-            background: rgba(0,201,167,0.1);
-            color: var(--primary);
+        .feature-category:first-child {
+            margin-top: 0;
         }
 
-        .status-coming-soon {
-            background: rgba(75,85,99,0.1);
-            color: var(--gray-600);
-        }
-
-        .status-enterprise {
-            background: rgba(10,10,10,0.1);
-            color: var(--charcoal);
-        }
-
-        /* Buttons */
-        .btn {
-            font-family: var(--mono);
-            padding: 12px 24px;
-            border-radius: 4px;
+        .feature-item {
+            padding: 8px 0;
             font-size: 14px;
+            color: var(--gray-600);
+            border-bottom: 1px solid var(--gray-50);
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-item:before {
+            content: "→";
+            color: var(--primary);
+            margin-right: 12px;
+            font-weight: 600;
+        }
+
+        .service-cta {
+            padding: 32px;
+            background: var(--gray-50);
+            text-align: center;
+        }
+
+        .btn-service {
+            font-family: var(--mono);
+            padding: 14px 32px;
+            background: var(--charcoal);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-size: 13px;
             text-decoration: none;
             display: inline-block;
             transition: all 0.2s ease;
-            border: 1px solid;
+            width: 100%;
         }
 
-        .btn-primary {
-            background: var(--charcoal);
-            color: var(--white);
-            border-color: var(--charcoal);
-        }
-
-        .btn-primary:hover {
+        .btn-service:hover {
+            background: var(--primary);
+            color: var(--charcoal);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--primary);
-            border-color: var(--primary);
+            border: 1px solid var(--primary);
         }
 
         .btn-secondary:hover {
@@ -257,211 +275,378 @@
             color: var(--white);
         }
 
-        .btn-disabled {
-            background: var(--gray-100);
-            color: var(--gray-400);
-            border-color: var(--gray-100);
-            cursor: not-allowed;
-        }
-
-        /* Journey Flow */
+        /* Journey flow */
         .journey-section {
-            padding: 80px 40px;
-            background: var(--white);
+            padding: 100px 40px;
             text-align: center;
         }
 
-        .journey-title {
-            font-size: 32px;
-            font-weight: 600;
+        .section-label {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--primary);
             margin-bottom: 16px;
-            letter-spacing: -1px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .journey-subtitle {
-            font-size: 18px;
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            font-family: var(--mono);
+            font-size: 14px;
             color: var(--gray-600);
             margin-bottom: 48px;
         }
 
-        .journey-flow {
+        .journey-visual {
             max-width: 800px;
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 24px;
-            flex-wrap: wrap;
         }
 
         .journey-step {
-            padding: 16px 24px;
+            flex: 1;
+            padding: 24px;
             background: var(--gray-50);
-            border: 1px solid var(--gray-100);
             border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .journey-step:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-4px);
+        }
+
+        .journey-step:hover .step-label {
+            color: var(--white);
+        }
+
+        .step-number {
             font-family: var(--mono);
-            font-size: 14px;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .step-label {
+            font-family: var(--mono);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             color: var(--gray-600);
         }
 
         .journey-arrow {
             color: var(--primary);
-            font-size: 20px;
+            font-size: 24px;
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 80px 40px;
+        /* Results section */
+        .results-section {
+            padding: 100px 40px;
             background: var(--charcoal);
             color: var(--white);
+        }
+
+        .results-grid {
+            max-width: 1000px;
+            margin: 48px auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .result-item {
+            padding: 32px 24px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .result-metric {
+            font-family: var(--mono);
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .result-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, #00a88a 100%);
             text-align: center;
         }
 
         .cta-title {
-            font-size: 32px;
-            font-weight: 600;
+            font-size: 36px;
+            color: var(--white);
             margin-bottom: 16px;
-            letter-spacing: -1px;
         }
 
-        .cta-subtitle {
-            font-size: 18px;
-            color: rgba(255,255,255,0.8);
+        .cta-sub {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--white);
+            opacity: 0.9;
             margin-bottom: 32px;
         }
 
-        .btn-cta {
-            background: var(--primary);
-            color: var(--charcoal);
-            border-color: var(--primary);
-            font-weight: 600;
-        }
-
-        .btn-cta:hover {
+        .btn-final {
+            padding: 16px 40px;
             background: var(--white);
             color: var(--charcoal);
-            border-color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--mono);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
         }
 
-        /* Responsive */
+        .btn-final:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 40px;
+            text-align: center;
+            background: var(--gray-50);
+        }
+
         @media (max-width: 768px) {
-            .hero {
-                padding: 100px 24px 60px;
+            .nav-links {
+                display: none;
             }
-            
-            .services-section,
-            .journey-section,
-            .cta-section {
-                padding: 60px 24px;
-            }
-            
-            .services-grid {
+            .comparison-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .journey-flow {
+            .journey-visual {
                 flex-direction: column;
             }
-            
             .journey-arrow {
                 transform: rotate(90deg);
             }
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
-    <link rel="canonical" href="https://syris.systems/services">
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="/syris.logo.primary.svg" alt="syrıs." style="height: 24px; width: auto;">
-            </a>
-            <div>
+            <a href="/" class="logo">syris<span class="dot">.</span></a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">home</a>
                 <a href="/about.html" class="nav-link">about</a>
-                <a href="/blog.html" class="nav-link">insights</a>
                 <a href="/calm-profile.html" class="nav-link">calm<span class="dot">.</span>profile</a>
-                <a href="/services.html" class="nav-link">services</a>
-                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
+                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-cta">book discovery call</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
-        <h1>systematic transformation<span class="dot">.</span></h1>
-        <p class="hero-subtitle">choose your path from chaos to calm. start with assessment, scale to full transformation.</p>
+        <div class="dot-grid"></div>
+        <h1>systematic transformation pathways<span class="dot">.</span></h1>
+        <p class="hero-sub">
+            from assessment to implementation to optimization.<br>
+            proven methodology. quantified results. creative-first approach.
+        </p>
     </section>
 
-    <!-- Services Grid -->
-    <section class="services-section">
-        <div class="services-grid">
+    <!-- Service Comparison -->
+    <section class="comparison-section">
+        <div class="comparison-grid">
             <!-- calm.profile -->
-            <div class="service-card">
-                <div class="service-number">01</div>
-                <div class="service-name">calm<span class="dot">.</span>profile</div>
-                <div class="service-status status-available">available now</div>
-                <p class="service-desc">discover your unique workstyle through a personalized assessment. get tailored workflow recommendations designed specifically for creative minds.</p>
-                <div class="service-features">
-                    <div class="service-feature">15-question assessment</div>
-                    <div class="service-feature">personalized 12-page report</div>
-                    <div class="service-feature">workflow templates</div>
-                    <div class="service-feature">tool recommendations</div>
+            <div class="service-column">
+                <div class="service-header">
+                    <div class="service-name">calm<span class="dot">.</span>profile</div>
+                    <div class="service-timeline">5-minute assessment</div>
+                    <div class="service-price">free</div>
+                    <div class="service-tagline">discover your workstyle</div>
                 </div>
-                <a href="/calm-profile.html" class="btn btn-primary">start assessment</a>
+                <div class="service-features">
+                    <div class="feature-category">assessment</div>
+                    <div class="feature-item">15-question workstyle analysis</div>
+                    <div class="feature-item">archetype identification</div>
+                    <div class="feature-item">personalized recommendations</div>
+                    
+                    <div class="feature-category">deliverables</div>
+                    <div class="feature-item">12-page profile report</div>
+                    <div class="feature-item">workflow templates</div>
+                    <div class="feature-item">tool recommendations</div>
+                    
+                    <div class="feature-category">ideal for</div>
+                    <div class="feature-item">individual contributors</div>
+                    <div class="feature-item">team leaders exploring options</div>
+                    <div class="feature-item">pre-transformation assessment</div>
+                </div>
+                <div class="service-cta">
+                    <a href="/calm-profile.html" class="btn-service">
+                        start free assessment
+                    </a>
+                </div>
             </div>
 
             <!-- calm.ops -->
-            <div class="service-card">
-                <div class="service-number">02</div>
-                <div class="service-name">calm<span class="dot">.</span>ops</div>
-                <div class="service-status status-available">available now</div>
-                <p class="service-desc">systematic business operations for creative teams. we redesign your workflows, implement in your tools, and train your team — in 14 days.</p>
-                <div class="service-features">
-                    <div class="service-feature">2-week deep analysis</div>
-                    <div class="service-feature">custom workflow architecture</div>
-                    <div class="service-feature">implementation templates</div>
-                    <div class="service-feature">90-day transformation roadmap</div>
+            <div class="service-column">
+                <div class="service-header">
+                    <div class="service-name">calm<span class="dot">.</span>ops</div>
+                    <div class="service-timeline">14-day transformation</div>
+                    <div class="service-price">custom</div>
+                    <div class="service-tagline">systematic redesign</div>
                 </div>
-                <a href="/calm-ops.html" class="btn btn-primary">learn more</a>
+                <div class="service-features">
+                    <div class="feature-category">analysis</div>
+                    <div class="feature-item">comprehensive time audit</div>
+                    <div class="feature-item">tool inventory assessment</div>
+                    <div class="feature-item">bottleneck identification</div>
+                    
+                    <div class="feature-category">implementation</div>
+                    <div class="feature-item">workflow redesign</div>
+                    <div class="feature-item">automation architecture</div>
+                    <div class="feature-item">team training & adoption</div>
+                    
+                    <div class="feature-category">results</div>
+                    <div class="feature-item">45% overhead reduction</div>
+                    <div class="feature-item">20+ hours saved weekly</div>
+                    <div class="feature-item">90-day optimization roadmap</div>
+                </div>
+                <div class="service-cta">
+                    <a href="/calm-ops.html" class="btn-service">
+                        explore methodology
+                    </a>
+                </div>
             </div>
 
             <!-- custom.sys -->
-            <div class="service-card">
-                <div class="service-number">03</div>
-                <div class="service-name">custom<span class="dot">.</span>sys</div>
-                <div class="service-status status-enterprise">enterprise</div>
-                <p class="service-desc">bespoke solutions for unique operational challenges. enterprise transformation with AI workflow integration and ongoing optimization.</p>
-                <div class="service-features">
-                    <div class="service-feature">enterprise transformation</div>
-                    <div class="service-feature">AI workflow integration</div>
-                    <div class="service-feature">change management</div>
-                    <div class="service-feature">ongoing optimization</div>
+            <div class="service-column">
+                <div class="service-header">
+                    <div class="service-name">custom<span class="dot">.</span>sys</div>
+                    <div class="service-timeline">ongoing partnership</div>
+                    <div class="service-price">enterprise</div>
+                    <div class="service-tagline">bespoke solutions</div>
                 </div>
-                <a href="https://calendly.com/syris/30min" target="_blank" class="btn btn-secondary">inquire</a>
+                <div class="service-features">
+                    <div class="feature-category">discovery</div>
+                    <div class="feature-item">enterprise-wide assessment</div>
+                    <div class="feature-item">multi-team analysis</div>
+                    <div class="feature-item">change readiness evaluation</div>
+                    
+                    <div class="feature-category">transformation</div>
+                    <div class="feature-item">phased implementation</div>
+                    <div class="feature-item">custom tool development</div>
+                    <div class="feature-item">change management support</div>
+                    
+                    <div class="feature-category">optimization</div>
+                    <div class="feature-item">quarterly reviews</div>
+                    <div class="feature-item">continuous improvement</div>
+                    <div class="feature-item">scaling best practices</div>
+                </div>
+                <div class="service-cta">
+                    <a href="https://calendly.com/syris/30min" class="btn-service btn-secondary" target="_blank">
+                        schedule consultation
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Journey Flow -->
+    <!-- Journey -->
     <section class="journey-section">
-        <h2 class="journey-title">your transformation journey<span class="dot">.</span></h2>
-        <p class="journey-subtitle">most teams start with assessment, then move to implementation</p>
-        <div class="journey-flow">
-            <div class="journey-step">calm.profile</div>
+        <div class="section-label">transformation journey</div>
+        <h2>your path from chaos to calm<span class="dot">.</span></h2>
+        <p class="section-sub">most teams start with assessment, implement systematically, then optimize continuously.</p>
+        
+        <div class="journey-visual">
+            <div class="journey-step">
+                <div class="step-number">01</div>
+                <div class="step-label">assess</div>
+            </div>
             <div class="journey-arrow">→</div>
-            <div class="journey-step">calm.ops</div>
+            <div class="journey-step">
+                <div class="step-number">02</div>
+                <div class="step-label">implement</div>
+            </div>
             <div class="journey-arrow">→</div>
-            <div class="journey-step">custom.sys</div>
+            <div class="journey-step">
+                <div class="step-number">03</div>
+                <div class="step-label">optimize</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results-section">
+        <div style="text-align: center;">
+            <div class="section-label" style="color: var(--primary);">proven results</div>
+            <h2 style="color: var(--white);">quantified transformation outcomes<span class="dot">.</span></h2>
+        </div>
+        
+        <div class="results-grid">
+            <div class="result-item">
+                <div class="result-metric">27%</div>
+                <div class="result-label">time recovered</div>
+            </div>
+            <div class="result-item">
+                <div class="result-metric">$291k</div>
+                <div class="result-label">annual savings</div>
+            </div>
+            <div class="result-item">
+                <div class="result-metric">150+</div>
+                <div class="result-label">teams transformed</div>
+            </div>
+            <div class="result-item">
+                <div class="result-metric">92%</div>
+                <div class="result-label">adoption rate</div>
+            </div>
         </div>
     </section>
 
     <!-- CTA -->
     <section class="cta-section">
-        <h2 class="cta-title">ready to start your transformation<span class="dot">?</span></h2>
-        <p class="cta-subtitle">book a free 30-minute call to discuss your team's needs and find the right path forward.</p>
-        <a href="https://calendly.com/syris/30min" target="_blank" class="btn btn-cta">book your free call</a>
+        <h2 class="cta-title">ready to eliminate coordination chaos<span class="dot">?</span></h2>
+        <p class="cta-sub">start with our free assessment or schedule a discovery consultation.</p>
+        <a href="https://calendly.com/syris/30min" target="_blank" class="btn-final">
+            book discovery call
+        </a>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="font-family: var(--mono); font-size: 12px; color: var(--gray-600);">
+            syris<span class="dot">.</span> © 2025 | systematic solutions for modern chaos<br>
+            <a href="/" style="color: var(--primary); text-decoration: none;">home</a> | 
+            <a href="/about.html" style="color: var(--primary); text-decoration: none;">about</a> | 
+            <a href="/calm-profile.html" style="color: var(--primary); text-decoration: none;">assessment</a>
+        </div>
+    </footer>
 </body>
 </html>
-

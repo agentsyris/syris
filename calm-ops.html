@@ -1,45 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>calm.ops — syrıs.</title>
-  <meta name="description" content="calm.ops — launch your new way of working in 14 days. we design workflows, implement in your tools, automate handoffs, and train your team.">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>:root{--primary:#00C9A7;--charcoal:#0A0A0A;--white:#fff;--gray50:#FAFAFA;--gray100:#F5F5F5;--gray400:#9CA3AF;--gray600:#4B5563;--mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif}
-    *{margin:0;padding:0;box-sizing:border-box} body{font-family:var(--sans);color:var(--charcoal);background:var(--white);line-height:1.6}.dot{color:var(--primary);font-weight:600}
-    /* Navigation styling aligned with the rest of the site */
-    nav{position:fixed;top:0;width:100%;padding:32px 40px;background:linear-gradient(to bottom,var(--white) 0%,rgba(255,255,255,.9) 70%,transparent 100%);z-index:1000}
-    .navc{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-    .nav-link{font-family:var(--mono);font-size:14px;color:var(--gray600);text-decoration:none;padding:8px 20px;border:1px solid transparent;border-radius:4px;transition:all .2s ease}
-    .nav-link:hover{color:var(--charcoal);border-color:var(--gray400);background:var(--gray50)}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calm.ops - syris. | 14-day systematic transformation</title>
+    <meta name="description" content="systematic business operations for creative teams. 45% overhead reduction. 20+ hours saved weekly. proven 14-day methodology.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00C9A7;
+            --charcoal: #0A0A0A;
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-400: #9CA3AF;
+            --gray-600: #4B5563;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', -apple-system, sans-serif;
+        }
 
-    /* ensure the dot within navigation links stays teal */
-    .nav-link .dot{color:var(--primary)}
-    .hero{padding:120px 40px 48px;text-align:center}
-.logo{font-family:var(--mono);font-size:20px;font-weight:600;letter-spacing:-0.5px}
-    h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:600;letter-spacing:-1px;margin-bottom:12px}.sub{max-width:760px;margin:0 auto;color:var(--gray600);font-size:18px}.btn{font-family:var(--mono);padding:12px 24px;border-radius:4px;font-size:14px;text-decoration:none;display:inline-block;transition:all.2s}.btnp{background:#0A0A0A;color:#fff}.btnp:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.08)}.sec{padding:96px 40px}.dark{background:#0A0A0A;color:#fff}.sh{max-width:900px;margin:0 auto 24px;text-align:center}
-    h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:600;letter-spacing:-1px;margin-bottom:12px}.ss{color:var(--gray600);max-width:760px;margin:0 auto}.grid{max-width:1100px;margin:32px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}.card{border:1px solid var(--gray100);border-radius:4px;background:#fff;padding:32px}.card h3{font-size:20px;font-weight:600;margin-bottom:8px}.card p{color:var(--gray600)}
-    ul{margin:10px 0 0 18px} li{margin:6px 0}.proof{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:24px}.metric{text-align:center}.metric.v{font-size:32px;font-weight:600;color:var(--primary);font-family:var(--mono)}.metric.l{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#b0b0b0}
-    footer{padding:48px 40px;text-align:center;border-top:1px solid var(--gray100);background:var(--gray50);margin-top:60px}
-    @media(max-width:768px){.sec{padding:72px 24px}.hero{padding:96px 24px 32px}}
-  </style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- JSON-LD (no prices) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Service",
-    "name":"calm.ops",
-    "serviceType":"Operations design for creative teams",
-    "provider":{"@type":"Organization","name":"calm.ops","url":"https://syris.systems","sameAs":["https://www.linkedin.com/company/syrisdot"]},
-    "areaServed":"US",
-    "url":"https://syris.systems/services/calm-ops",
-    "description":"launch your new way of working in 14 days. design workflows, implement in your tools, automate handoffs, and train your team."
-  }
-  </script>
+        body {
+            font-family: var(--sans);
+            color: var(--charcoal);
+            background: var(--white);
+            line-height: 1.6;
+        }
 
-    <link rel="canonical" href="https://syris.systems/calm-ops.html">
+        .dot {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 24px 40px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--mono);
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--charcoal);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--charcoal);
+        }
+
+        .nav-cta {
+            font-family: var(--mono);
+            font-size: 13px;
+            padding: 10px 20px;
+            background: var(--charcoal);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+            transform: translateY(-1px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 140px 40px 60px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 600;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .hero-sub {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .hero-data {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+        }
+
+        .hero-data strong {
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        /* Proof Metrics */
+        .proof {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-family: var(--mono);
+            font-size: 36px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .metric-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-600);
+        }
+
+        /* Methodology Timeline */
+        .timeline-section {
+            padding: 100px 40px;
+            background: var(--gray-50);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+
+        .timeline-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .timeline-card {
+            background: var(--white);
+            padding: 40px 32px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,201,167,0.1);
+        }
+
+        .timeline-day {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .timeline-items {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .timeline-connector {
+            position: absolute;
+            top: 50%;
+            right: -12px;
+            color: var(--primary);
+            font-size: 20px;
+            transform: translateY(-50%);
+        }
+
+        /* Process */
+        .process-section {
+            padding: 100px 40px;
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .process-grid {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;
+        }
+
+        .process-card {
+            padding: 40px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .process-card:hover {
+            background: rgba(0,201,167,0.1);
+            border-color: var(--primary);
+        }
+
+        .process-step {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .process-title {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .process-desc {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Results */
+        .results-section {
+            padding: 100px 40px;
+            background: var(--white);
+        }
+
+        .results-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .client-quote {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-style: italic;
+            color: var(--gray-600);
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .client-attribution {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .results-metrics {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .result-card {
+            padding: 24px;
+            background: var(--gray-50);
+            border-radius: 4px;
+        }
+
+        .result-value {
+            font-family: var(--mono);
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .result-label {
+            font-family: var(--mono);
+            font-size: 10px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 100px 40px;
+            background: var(--gray-50);
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .faq-item {
+            padding: 32px;
+            background: var(--white);
+            border-radius: 8px;
+        }
+
+        .faq-question {
+            font-family: var(--mono);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .faq-answer {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 120px 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, #00a88a 100%);
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 42px;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .cta-sub {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--white);
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .btn-final {
+            padding: 16px 40px;
+            background: var(--white);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--mono);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+
+        .btn-final:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 40px;
+            text-align: center;
+            background: var(--gray-50);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .timeline-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline-connector {
+                display: none;
+            }
+            .process-grid,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .results-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .proof {
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+    </style>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
@@ -49,80 +467,261 @@
       gtag('js', new Date());
       gtag('config', 'G-L55FL9F71T');
     </script>
-    
 </head>
 <body>
-  <!-- Consistent navigation bar matching the rest of the site -->
-  <nav>
-    <div class="navc">
-      <!-- Use the primary logo mark for brand consistency -->
-      <a href="/" class="logo">
-        <img src="/syris.logo.primary.svg" alt="syrıs." style="height: 24px; width: auto;">
-      </a>
-      <div>
-        <a href="/about.html" class="nav-link">about</a>
-        <a href="/blog.html" class="nav-link">insights</a>
-        <a href="/calm-profile.html" class="nav-link">calm<span class="dot" style="color: var(--primary);">.</span>profile</a>
-        <a href="/calm-ops.html" class="nav-link">services</a>
-        <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
-      </div>
-    </div>
-  </nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">syris<span class="dot">.</span></a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">home</a>
+                <a href="/services.html" class="nav-link">services</a>
+                <a href="/about.html" class="nav-link">about</a>
+                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-cta">book discovery call</a>
+            </div>
+        </div>
+    </nav>
 
-  <header class="hero">
-    <h1>calm<span class="dot">.</span>ops</h1>
-    <p class="sub">we redesign your workflows, implement in your tools, and train your team to ship faster with fewer meetings — in 14 days.</p>
-    <div style="margin-top:24px">
-      <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
-    </div>
-    <div class="proof" style="margin-top:28px">
-      <div class="metric"><div class="v">45%</div><div class="l">less coordination</div></div>
-      <div class="metric"><div class="v">20hrs</div><div class="l">saved weekly</div></div>
-      <div class="metric"><div class="v">2.5×</div><div class="l">faster delivery</div></div>
-    </div>
-  </header>
+    <!-- Hero -->
+    <header class="hero">
+        <h1>calm<span class="dot">.</span>ops</h1>
+        <p class="hero-sub">
+            systematic business operations for creative teams.<br>
+            we redesign your workflows, implement in your tools, and train your team.
+        </p>
+        <p class="hero-data">
+            <strong>14 days</strong> to transformation. <strong>45%</strong> overhead reduction. <strong>zero</strong> disruption to client work.
+        </p>
+        
+        <div class="proof">
+            <div class="metric">
+                <div class="metric-value">45%</div>
+                <div class="metric-label">less overhead</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">20hrs</div>
+                <div class="metric-label">saved weekly</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">2.5×</div>
+                <div class="metric-label">faster shipping</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">$291k</div>
+                <div class="metric-label">annual savings</div>
+            </div>
+        </div>
+    </header>
 
-  <section class="sec"><div class="sh"><h2>14‑day launch timeline<span class="dot">.</span></h2><p class="ss" style="color:#d0d0d0">start with a free 30‑min call. we launch calm.ops in 14 days; <strong>calm.sys</strong> is optional quarterly support to keep improving — not part of the 14‑day launch.</p></div><div class="grid"><div class="card"><h3>will this interrupt client work?</h3><p>no; we design around your production calendar. most teams need 2–4 hours/week from a few key people during the 14‑day launch.</p></div><div class="card"><h3>days 1–2 · diagnose</h3><ul><li>workflow & roles mapping</li><li>bottlenecks & rework analysis</li><li>baseline metrics</li></ul></div><div class="card"><h3>days 3–5 · design</h3><ul><li>future‑state workflows & roles & responsibilities</li><li>project templates & approval gates</li><li>automation plan</li></ul></div><div class="card"><h3>days 6–12 · implement</h3><ul><li>configure in your tools</li><li>integrations & automations</li><li>pilot live with acceptance criteria</li></ul></div><div class="card"><h3>days 13–14 · train & launch</h3><ul><li>team training & playbook</li><li>go‑live support</li><li>90‑day enablement plan (for calm.sys)</li></ul></div></div></section>
+    <!-- Methodology Timeline -->
+    <section class="timeline-section">
+        <div class="section-header">
+            <div class="section-label">14-day systematic transformation</div>
+            <h2>from chaos audit to calm operations<span class="dot">.</span></h2>
+            <p class="section-sub">proven methodology. quantified results. designed for creative minds.</p>
+        </div>
+        
+        <div class="timeline-grid">
+            <div class="timeline-card">
+                <div class="timeline-day">days 1-3</div>
+                <div class="timeline-title">audit<span class="dot">.</span></div>
+                <div class="timeline-items">
+                    comprehensive time tracking<br>
+                    tool inventory assessment<br>
+                    workflow mapping<br>
+                    bottleneck identification<br>
+                    overhead calculation
+                </div>
+                <div class="timeline-connector">→</div>
+            </div>
+            
+            <div class="timeline-card">
+                <div class="timeline-day">days 4-7</div>
+                <div class="timeline-title">analyze<span class="dot">.</span></div>
+                <div class="timeline-items">
+                    bottleneck prioritization<br>
+                    impact assessment<br>
+                    opportunity mapping<br>
+                    calm.profile assessment<br>
+                    solution architecture
+                </div>
+                <div class="timeline-connector">→</div>
+            </div>
+            
+            <div class="timeline-card">
+                <div class="timeline-day">days 8-11</div>
+                <div class="timeline-title">design<span class="dot">.</span></div>
+                <div class="timeline-items">
+                    custom workflows<br>
+                    automation planning<br>
+                    protocol optimization<br>
+                    documentation templates<br>
+                    implementation roadmap
+                </div>
+                <div class="timeline-connector">→</div>
+            </div>
+            
+            <div class="timeline-card">
+                <div class="timeline-day">days 12-14</div>
+                <div class="timeline-title">deliver<span class="dot">.</span></div>
+                <div class="timeline-items">
+                    implementation playbook<br>
+                    team training sessions<br>
+                    adoption support<br>
+                    success metrics<br>
+                    90-day roadmap
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="sec dark">
-    <div class="sh">
-      <h2>how it works<span class="dot">.</span></h2>
-      <p class="ss" style="color:#d0d0d0">audit → analyze → design → deliver. low‑risk start with a fixed‑fee discovery; full credit applied if you proceed to build within 30 days.</p>
-    </div>
-    <div class="grid">
-      <div class="card" style="background:#101010;border-color:#1f1f1f;color:#f3f3f3">
-        <h3>connect</h3><p>book a free 30‑minute call. we align on goals, confirm fit, and scope your 14‑day launch.</p>
-      </div>
-      <div class="card" style="background:#101010;border-color:#1f1f1f;color:#f3f3f3">
-        <h3>calm.ops</h3><p>we design your workflows, implement in your tools, automate handoffs, and train your team — in 14 days.</p>
-      </div>
-      <div class="card" style="background:#101010;border-color:#1f1f1f;color:#f3f3f3">
-        <h3>calm.sys</h3><p>quarterly reviews, iteration backlog, KPIs, and enablement to keep improving.</p>
-      </div>
-      <div class="card" style="background:#101010;border-color:#1f1f1f;color:#f3f3f3">
-        <h3>optimize</h3><p>90‑day enablement with weekly reviews and measurable kpis.</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:24px">
-      <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
-    </div>
-  </section>
+    <!-- Process -->
+    <section class="process-section">
+        <div class="section-header" style="color: white;">
+            <div class="section-label" style="color: var(--primary);">how it works</div>
+            <h2 style="color: white;">your transformation journey<span class="dot">.</span></h2>
+            <p class="section-sub" style="color: rgba(255,255,255,0.7);">systematic approach. measurable outcomes.</p>
+        </div>
+        
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="process-step">step 01</div>
+                <div class="process-title">discovery consultation</div>
+                <div class="process-desc">
+                    30-minute conversation to understand your specific coordination challenges and confirm fit.
+                </div>
+            </div>
+            
+            <div class="process-card">
+                <div class="process-step">step 02</div>
+                <div class="process-title">chaos audit</div>
+                <div class="process-desc">
+                    comprehensive analysis measuring current waste, identifying bottlenecks, and quantifying opportunities.
+                </div>
+            </div>
+            
+            <div class="process-card">
+                <div class="process-step">step 03</div>
+                <div class="process-title">systematic design</div>
+                <div class="process-desc">
+                    custom workflow architecture designed for how your creative team actually works, not theoretical models.
+                </div>
+            </div>
+            
+            <div class="process-card">
+                <div class="process-step">step 04</div>
+                <div class="process-title">implementation & adoption</div>
+                <div class="process-desc">
+                    hands-on setup, team training, and 90-day support ensuring sustainable transformation.
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="sec">
-    <div class="sh">
-      <h2>faq<span class="dot">.</span></h2>
-    </div>
-    <div class="grid">
-      <div class="card"><h3>how does pricing work?</h3><p>pricing is based on team size and scope. we share a fixed proposal after your free consultation. most teams recoup the investment in 4–8 weeks through time saved.</p></div>
-      <div class="card"><h3>do we have to change tools?</h3><p>not necessarily. we adapt to your stack and integrate where it makes sense.</p></div>
-      <div class="card"><h3>how do you measure roi?</h3><p>hours saved × blended rate + cycle‑time gains. your blueprint includes a quantified model.</p></div>
-      <div class="card"><h3>what about change management?</h3><p>we deliver training, playbooks and office hours so the system sticks.</p></div>
-    <div class="card"><h3>what team sizes do you work with?</h3><p>typically 6–40. for larger orgs we stage launches by group to reduce disruption.</p></div></div></section><footer>
-    <div style="font-family:var(--mono);font-size:14px;color:var(--gray600)">
-      syrıs<span class="dot">.</span> — calm.ops
-      &nbsp; | &nbsp; <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
-      &nbsp; | &nbsp; <a href="/" style="color:var(--primary);text-decoration:none">home</a>
-    </div>
-  </footer>
+    <!-- Results -->
+    <section class="results-section">
+        <div class="results-content">
+            <div class="section-label">proven results</div>
+            <h2>transformation that sticks<span class="dot">.</span></h2>
+            
+            <blockquote class="client-quote">
+                "syris didn't just optimize our tools—they redesigned how we think about creative operations. 
+                we've cut coordination overhead by 52% and our team actually enjoys their work again."
+            </blockquote>
+            <div class="client-attribution">
+                — sarah chen, creative director at motion studio
+            </div>
+            
+            <div class="results-metrics">
+                <div class="result-card">
+                    <div class="result-value">92%</div>
+                    <div class="result-label">adoption rate</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">4-8wk</div>
+                    <div class="result-label">roi timeline</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">150+</div>
+                    <div class="result-label">teams transformed</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">$4.2m</div>
+                    <div class="result-label">total saved</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="section-header">
+            <div class="section-label">frequently asked</div>
+            <h2>common questions<span class="dot">.</span></h2>
+        </div>
+        
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">how much does it cost?</div>
+                <div class="faq-answer">
+                    pricing based on team size and scope. most teams recoup investment in 4-8 weeks through time saved. fixed-fee proposals after discovery consultation.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">do we change tools?</div>
+                <div class="faq-answer">
+                    usually no. we optimize your existing stack first. tool changes only recommended when roi is clear and adoption path is smooth.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">what's the time commitment?</div>
+                <div class="faq-answer">
+                    2-4 hours per week from key team members during the 14-day transformation. designed around your production calendar.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">how do you measure success?</div>
+                <div class="faq-answer">
+                    hours saved × blended rate + cycle-time gains. we establish baseline metrics and track improvements at 30, 60, and 90 days.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">what team sizes work best?</div>
+                <div class="faq-answer">
+                    typically 6-40 people. for larger organizations, we stage launches by department to minimize disruption.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">what about change management?</div>
+                <div class="faq-answer">
+                    included. we deliver training, playbooks, and office hours. systems designed for creative minds means higher adoption rates.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title">ready to reclaim 20 hours weekly<span class="dot">?</span></h2>
+        <p class="cta-sub">14-day transformation. quantified results. zero disruption.</p>
+        <a href="https://calendly.com/syris/30min" target="_blank" class="btn-final">
+            book discovery consultation
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="font-family: var(--mono); font-size: 12px; color: var(--gray-600);">
+            syris<span class="dot">.</span> © 2025 | systematic solutions for modern chaos<br>
+            <a href="/" style="color: var(--primary); text-decoration: none;">home</a> | 
+            <a href="/services.html" style="color: var(--primary); text-decoration: none;">services</a> | 
+            <a href="/calm-profile.html" style="color: var(--primary); text-decoration: none;">assessment</a>
+        </div>
+    </footer>
 </body>
 </html>

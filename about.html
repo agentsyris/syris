@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - syris.</title>
-    <meta name="description" content="The story behind syris. and why creative operations matter. From 80-hour weeks to systematic calm.">
+    <title>about - syris. | from chaos to systematic calm</title>
+    <meta name="description" content="the story behind syris. why creative operations matter. how systematic design eliminates coordination chaos.">
     
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>:root {
+    <style>
+        :root {
             --primary: #00C9A7;
             --charcoal: #0A0A0A;
             --white: #FFFFFF;
@@ -30,7 +31,9 @@
             color: var(--charcoal);
             line-height: 1.6;
             background: var(--white);
-        }.dot {
+        }
+
+        .dot {
             color: var(--primary);
             font-weight: 600;
         }
@@ -40,223 +43,329 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 32px 40px;
-            background: linear-gradient(to bottom, var(--white) 0%, rgba(255,255,255,0.9) 70%, transparent 100%);
+            padding: 24px 40px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-        }.nav-container {
-            max-width: 1400px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .nav-container {
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }.logo {
+        }
+
+        .logo {
             font-family: var(--mono);
             font-size: 20px;
             font-weight: 600;
-            letter-spacing: -0.5px;
             text-decoration: none;
             color: var(--charcoal);
-        }.nav-links {
+        }
+
+        .nav-links {
             display: flex;
-            gap: 8px;
-        }.nav-link {
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
             font-family: var(--mono);
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gray-600);
             text-decoration: none;
-            padding: 8px 20px;
-            border: 1px solid transparent;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--charcoal);
+        }
+
+        .nav-cta {
+            font-family: var(--mono);
+            font-size: 13px;
+            padding: 10px 20px;
+            background: var(--charcoal);
+            color: var(--white);
+            text-decoration: none;
             border-radius: 4px;
             transition: all 0.2s ease;
-        }.nav-link:hover {
-            color: var(--charcoal);
-            border-color: var(--gray-400);
-            background: var(--gray-50);
-        }.nav-link.active {
-            color: var(--charcoal);
-            border-color: var(--primary);
-            background: var(--gray-50);
         }
 
-        /* ensure the dot within navigation links stays teal */
-        .nav-link .dot {
-            color: var(--primary);
+        .nav-cta:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+            transform: translateY(-1px);
         }
 
-        /* Hero */.hero {
-            padding: 160px 40px 80px;
+        /* Hero */
+        .hero {
+            padding: 140px 40px 60px;
             text-align: center;
-            background: var(--white);
-        }.hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }.hero-label {
+        }
+
+        .hero-label {
             font-family: var(--mono);
-            font-size: 14px;
+            font-size: 13px;
             color: var(--primary);
-            margin-bottom: 32px;
-            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
         }
 
         h1 {
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 600;
             line-height: 1.1;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             letter-spacing: -2px;
-        }.hero-sub {
-            font-size: 20px;
-            color: var(--gray-600);
-            margin-bottom: 48px;
-            font-weight: 400;
         }
 
-        /* Story sections */.story-section {
-            padding: 80px 40px;
-            max-width: 800px;
-            margin: 0 auto;
-        }.story-section:nth-child(even) {
-            background: var(--gray-50);
-            margin: 0;
-            max-width: none;
-            padding: 80px 40px;
-        }.story-section:nth-child(even).story-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }.section-number {
+        .hero-sub {
             font-family: var(--mono);
             font-size: 14px;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Story sections */
+        .story-section {
+            padding: 80px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-section:nth-child(even) {
+            background: var(--gray-50);
+        }
+
+        .section-number {
+            font-family: var(--mono);
+            font-size: 11px;
             color: var(--primary);
-            margin-bottom: 24px;
-            letter-spacing: 1px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         h2 {
             font-size: clamp(1.8rem, 3vw, 2.5rem);
             font-weight: 600;
             letter-spacing: -1px;
-            margin-bottom: 32px;
-            line-height: 1.2;
-        }.story-text {
-            font-size: 18px;
-            line-height: 1.7;
             margin-bottom: 24px;
-        }.story-text:last-child {
-            margin-bottom: 0;
-        }.highlight {
-            background: linear-gradient(120deg, rgba(0,201,167,0.1) 0%, rgba(0,201,167,0.1) 100%);
-            padding: 2px 4px;
+            line-height: 1.2;
+        }
+
+        .story-text {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            color: var(--gray-600);
+        }
+
+        .data-point {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--charcoal);
+            background: rgba(0,201,167,0.1);
+            padding: 2px 6px;
             border-radius: 2px;
         }
 
-        /* Metrics */.metrics {
+        /* Metrics showcase */
+        .metrics-showcase {
+            padding: 60px 40px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .metrics-grid {
+            max-width: 900px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 32px;
-            margin: 48px 0;
-            padding: 48px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .metric-card {
+            padding: 32px;
             background: var(--gray-50);
             border-radius: 8px;
-            border: 1px solid var(--gray-100);
-        }.metric {
-            text-align: center;
-        }.metric-value {
-            font-size: 36px;
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,201,167,0.1);
+        }
+
+        .metric-value {
+            font-family: var(--mono);
+            font-size: 48px;
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 8px;
+        }
+
+        .metric-label {
             font-family: var(--mono);
-        }.metric-label {
-            font-family: var(--mono);
-            font-size: 12px;
+            font-size: 11px;
             color: var(--gray-600);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Mission */.mission {
-            padding: 120px 40px;
+        /* Founder section */
+        .founder-section {
+            padding: 100px 40px;
             background: var(--charcoal);
             color: var(--white);
-            text-align: center;
-        }.mission-content {
+        }
+
+        .founder-content {
             max-width: 800px;
             margin: 0 auto;
-        }.mission h2 {
-            color: var(--white);
-            margin-bottom: 32px;
-        }.mission-text {
-            font-size: 20px;
-            line-height: 1.6;
-            margin-bottom: 48px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .founder-bio {
+            font-size: 16px;
+            line-height: 1.7;
             opacity: 0.9;
         }
 
-        /* CTA */.btn {
+        .founder-name {
             font-family: var(--mono);
-            padding: 16px 32px;
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .founder-title {
+            font-family: var(--mono);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 24px;
+        }
+
+        /* Mission */
+        .mission-section {
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto 48px;
+            letter-spacing: -1px;
+        }
+
+        .mission-principles {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            text-align: left;
+        }
+
+        .principle {
+            padding: 32px;
+            background: var(--gray-50);
+            border-radius: 4px;
+        }
+
+        .principle-title {
+            font-family: var(--mono);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .principle-desc {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, #00a88a 100%);
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+
+        .btn-final {
+            padding: 16px 40px;
+            background: var(--white);
+            color: var(--charcoal);
             border: none;
             border-radius: 4px;
+            font-family: var(--mono);
             font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            font-weight: 600;
             text-decoration: none;
             display: inline-block;
-        }.btn-primary {
-            background: var(--primary);
-            color: var(--charcoal);
-        }.btn-primary:hover {
-            background: var(--white);
+            transition: all 0.2s ease;
+        }
+
+        .btn-final:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,201,167,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         /* Footer */
         footer {
             padding: 48px 40px;
             text-align: center;
-            border-top: 1px solid var(--gray-100);
             background: var(--gray-50);
         }
 
-        footer.nav-links {
-            justify-content: center;
-            margin-bottom: 24px;
-        }.footer-text {
+        .footer-content {
             font-family: var(--mono);
-            font-size: 14px;
+            font-size: 12px;
             color: var(--gray-600);
-        }.footer-text a {
+        }
+
+        .footer-content a {
             color: var(--primary);
             text-decoration: none;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            nav {
-                padding: 24px;
-            }.nav-links {
-                flex-direction: column;
-                gap: 4px;
-            }.hero {
-                padding: 120px 24px 60px;
-            }.story-section {
-                padding: 60px 24px;
-            }.story-section:nth-child(even) {
-                padding: 60px 24px;
-            }.metrics {
+            .nav-links {
+                display: none;
+            }
+            .metrics-grid {
                 grid-template-columns: 1fr;
-                gap: 24px;
-                margin: 32px 0;
-                padding: 32px 24px;
-            }.mission {
-                padding: 80px 24px;
+            }
+            .founder-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .mission-principles {
+                grid-template-columns: 1fr;
             }
         }
     </style>
-
-    <link rel="canonical" href="https://syris.systems/about.html">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
@@ -266,135 +375,153 @@
       gtag('js', new Date());
       gtag('config', 'G-L55FL9F71T');
     </script>
-    
 </head>
 <body>
-    <!-- unified navigation bar -->
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="/syris.logo.primary.svg" alt="syrıs." style="height: 24px; width: auto;">
-            </a>
-            <div>
-                <a href="/about.html" class="nav-link">about</a>
-                <a href="/blog.html" class="nav-link">insights</a>
+            <a href="/" class="logo">syris<span class="dot">.</span></a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">home</a>
+                <a href="/services.html" class="nav-link">services</a>
                 <a href="/calm-profile.html" class="nav-link">calm<span class="dot">.</span>profile</a>
-                <a href="/calm-ops.html" class="nav-link">services</a>
-                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a>
+                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-cta">book discovery call</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-label">the story behind syris.</div>
-            <h1>from 80-hour weeks to systematic calm<span class="dot">.</span></h1>
-            <p class="hero-sub">why creative operations matter and how systematic design can eliminate coordination chaos</p>
-        </div>
+        <div class="hero-label">the story behind syris.</div>
+        <h1>from 80-hour weeks<br>
+        to systematic calm<span class="dot">.</span></h1>
+        <p class="hero-sub">
+            why creative operations matter. how systematic design eliminates chaos.
+        </p>
     </section>
 
-    <!-- The Problem -->
+    <!-- Problem -->
     <section class="story-section">
         <div class="section-number">01. the problem</div>
-        <h2>drowning in coordination chaos<span class="dot">.</span></h2>
+        <h2>creative teams drowning in coordination chaos<span class="dot">.</span></h2>
         <p class="story-text">
-            three years ago, i was working at a creative agency experiencing the kind of coordination chaos that's become normalized in our industry. talented team, great clients, but every project felt like pushing water uphill.
+            three years ago, i was working 80-hour weeks at a creative agency. talented team, great clients, exceptional creative work. but every project felt like pushing water uphill.
         </p>
         <p class="story-text">
-            meetings about meetings. handoffs that took days instead of hours. tools that created more work than they solved. the breaking point came during a rebrand project that should have taken 6 weeks but stretched to 4 months.
+            the breaking point: a <span class="data-point">6-week rebrand stretched to 4 months</span>. not because of creative challenges—those we could handle. but because of coordination overhead. the invisible tax that was killing our potential.
         </p>
         <p class="story-text">
-            not because of creative challenges — those we could handle. but because of <span class="highlight">coordination overhead</span>. the invisible tax of keeping everyone aligned was killing our creative potential.
+            meetings about meetings. handoffs taking days instead of hours. tools creating more work than they solved. we were spending more time coordinating than creating.
         </p>
     </section>
 
-    <!-- The Discovery -->
-    <section class="story-section">
-        <div class="story-content">
+    <!-- Discovery -->
+    <section class="story-section" style="background: var(--gray-50); padding: 80px 40px;">
+        <div style="max-width: 800px; margin: 0 auto;">
             <div class="section-number">02. the discovery</div>
             <h2>measuring the invisible waste<span class="dot">.</span></h2>
             <p class="story-text">
-                that's when i realized the problem wasn't our people — it was our systems. so i started measuring everything. time spent in status meetings. delays between handoffs. productivity lost to tool switching.
-            </p>
-            <p class="story-text">
-                the numbers were shocking. our 15-person creative team was losing 27% of productive time to coordination overhead. that's over $24,000 per month in wasted potential.
+                i started measuring everything. time in status meetings. delays between handoffs. productivity lost to tool switching. the numbers were shocking.
             </p>
             
-            <div class="metrics">
-                <div class="metric">
-                    <div class="metric-value">27%</div>
-                    <div class="metric-label">time lost to coordination</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value">$291k</div>
-                    <div class="metric-label">annual waste discovered</div>
-                </div>
-                <div class="metric">
-                    <div class="metric-value">4x</div>
-                    <div class="metric-label">project timeline bloat</div>
+            <div class="metrics-showcase">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">27%</div>
+                        <div class="metric-label">time lost</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">$291k</div>
+                        <div class="metric-label">annual waste</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">4×</div>
+                        <div class="metric-label">timeline bloat</div>
+                    </div>
                 </div>
             </div>
-
+            
             <p class="story-text">
-                but here's what changed everything: <span class="highlight">systematic design principles could eliminate this waste</span>. not through more tools or processes, but through understanding how creative minds actually work.
+                our 15-person team was losing <span class="data-point">$24,300 per month</span> to coordination overhead. but the revelation: this wasn't a people problem—it was a design problem.
             </p>
         </div>
     </section>
 
-    <!-- The Solution -->
+    <!-- Solution -->
     <section class="story-section">
         <div class="section-number">03. the solution</div>
         <h2>systematic design for creative chaos<span class="dot">.</span></h2>
         <p class="story-text">
-            i developed a methodology that treats coordination overhead as a design problem. <em>systematic design</em> means creating workflows and processes based on how creative minds actually work, rather than forcing teams into rigid frameworks.
+            i developed a methodology treating coordination overhead as a design challenge. not more tools or rigid processes—but systems designed for how creative minds actually work.
         </p>
         <p class="story-text">
-            instead of adding more tools or processes, we design systems around natural creative workflows — understanding that creative work is iterative, collaborative, and often non-linear.
+            the 14-day systematic transformation process: <span class="data-point">audit</span> (measuring waste), <span class="data-point">analyze</span> (identifying bottlenecks), <span class="data-point">design</span> (creating workflows), <span class="data-point">deliver</span> (implementing change).
         </p>
         <p class="story-text">
-            the 14-day systematic transformation process focuses on four key areas: audit (measuring current waste), analyze (identifying bottlenecks), design (creating systematic workflows), and deliver (implementing sustainable change).
-        </p>
-        <p class="story-text">
-            the results speak for themselves: <span class="highlight">45% reduction in coordination overhead, 2.5× faster delivery, and teams that actually enjoy their work again</span>. no more 80-hour weeks. no more constant firefighting.
+            results speak for themselves: <span class="data-point">45% reduction in coordination overhead</span>. <span class="data-point">20+ hours saved weekly</span>. <span class="data-point">2.5× faster project delivery</span>. teams that actually enjoy their work again.
         </p>
     </section>
 
-    <!-- The Mission -->
-    <section class="mission">
-        <div class="mission-content">
-            <div class="section-number" style="color: var(--primary);">04. the mission</div>
-            <h2>creative teams deserve to create<span class="dot">.</span></h2>
-            <p class="mission-text">
-                every creative team deserves to spend their time creating, not coordinating. systematic design can eliminate operational chaos without killing creativity. calm operations aren't just possible — they're inevitable when you approach coordination as a design challenge.
-            </p>
-            <a href="https://calendly.com/syris/30min" class="btn btn-primary" target="_blank">
-                start your transformation
-            </a>
+    <!-- Founder -->
+    <section class="founder-section">
+        <div class="founder-content">
+            <div>
+                <div class="founder-name">andrew syris</div>
+                <div class="founder-title">founder & systematic designer</div>
+            </div>
+            <div class="founder-bio">
+                systems-focused project manager and production designer with experience spanning corporate art installations and live brand events. 
+                i believe creative teams deserve to spend their time creating, not coordinating. 
+                systematic design can eliminate operational chaos without killing creativity.
+            </div>
         </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="mission-section">
+        <div class="section-number" style="text-align: center;">04. the mission</div>
+        <h2 class="mission-statement">
+            creative teams deserve to create<span class="dot">.</span><br>
+            not coordinate<span class="dot">.</span>
+        </h2>
+        
+        <div class="mission-principles">
+            <div class="principle">
+                <div class="principle-title">systematic, not rigid</div>
+                <div class="principle-desc">
+                    methodical precision while remaining approachable and human. systems that enhance creativity, not constrain it.
+                </div>
+            </div>
+            <div class="principle">
+                <div class="principle-title">data-driven optimization</div>
+                <div class="principle-desc">
+                    every recommendation backed by measurement and analysis. quantified results, not motivational language.
+                </div>
+            </div>
+            <div class="principle">
+                <div class="principle-title">creative-first mindset</div>
+                <div class="principle-desc">
+                    understanding that creative work requires different approaches. protecting and enhancing the creative process.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title">ready to transform your operations<span class="dot">?</span></h2>
+        <a href="https://calendly.com/syris/30min" class="btn-final" target="_blank">
+            start your transformation
+        </a>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="nav-links">
-            <a href="/" class="nav-link">home</a>
-            <a href="/about.html" class="nav-link">about</a>
-            <a href="/blog.html" class="nav-link">insights</a>
-            <a href="/calm-ops.html" class="nav-link">services</a>
-        </div>
-        <div class="footer-text">
-            syrıs<span class="dot">.</span> © 2025 | 
+        <div class="footer-content">
+            syris<span class="dot">.</span> © 2025 | systematic solutions for modern chaos<br>
             <a href="mailto:andrew@syris.studio">andrew@syris.studio</a> | 
-            <a href="https://calendly.com/syris/30min" target="_blank" class="nav-link">book a free 30‑min call</a> | 
             <a href="https://linkedin.com/company/syrisdot">linkedin</a>
         </div>
     </footer>
-
-<section id="founder-one" style="padding:32px 20px;background:#FAFAFA;border-top:1px solid #F0F0F0;margin-top:24px">
-  <div style="max-width:900px;margin:0 auto;color:#4B5563">
-    founded by <strong>andrew syris</strong> — systems‑focused project manager and production designer. work spans corporate art installations and live brand events. we help teams ship faster with fewer meetings.
-  </div>
-</section>
 </body>
 </html>
-
