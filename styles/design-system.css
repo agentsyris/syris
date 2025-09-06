@@ -149,7 +149,10 @@ h6 {
 
 .glass:hover {
   background: rgba(var(--glass-bg-rgb), calc(var(--glass-1-bg-alpha) + 0.02));
-  border-color: rgba(var(--glass-border-rgb), calc(var(--glass-1-border-alpha) + 0.05));
+  border-color: rgba(
+    var(--glass-border-rgb),
+    calc(var(--glass-1-border-alpha) + 0.05)
+  );
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
 }
@@ -166,7 +169,10 @@ h6 {
 
 .glass.level-2:hover {
   background: rgba(var(--glass-bg-rgb), calc(var(--glass-2-bg-alpha) + 0.03));
-  border-color: rgba(var(--glass-border-rgb), calc(var(--glass-2-border-alpha) + 0.08));
+  border-color: rgba(
+    var(--glass-border-rgb),
+    calc(var(--glass-2-border-alpha) + 0.08)
+  );
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
 }
@@ -183,9 +189,13 @@ h6 {
 
 .glass.level-3:hover {
   background: rgba(var(--glass-bg-rgb), calc(var(--glass-3-bg-alpha) + 0.04));
-  border-color: rgba(var(--glass-border-rgb), calc(var(--glass-3-border-alpha) + 0.1));
+  border-color: rgba(
+    var(--glass-border-rgb),
+    calc(var(--glass-3-border-alpha) + 0.1)
+  );
   transform: translateY(-8px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Fallback for browsers without backdrop-filter support */
@@ -400,7 +410,12 @@ h6 {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
   transition: left var(--transition-slow);
 }
 

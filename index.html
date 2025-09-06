@@ -62,12 +62,14 @@
         margin: 0 var(--space-2);
       }
 
-      .hero-meta {
+      .hero-tagline {
         font-family: var(--font-mono);
-        font-size: var(--fs-xs);
-        color: var(--color-gray-500);
+        font-size: var(--fs-sm);
+        color: var(--color-teal);
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
+        margin-bottom: var(--space-8);
+        font-weight: 500;
       }
 
       .hero-meta a {
@@ -117,9 +119,31 @@
         font-size: var(--fs-4xl);
         font-weight: 200;
         color: var(--color-ink);
-        margin-bottom: var(--space-16);
+        margin-bottom: var(--space-8);
         letter-spacing: -0.03em;
         text-rendering: optimizeLegibility;
+      }
+
+      .proof-subtitle {
+        font-size: var(--fs-xl);
+        color: var(--color-gray-600);
+        margin-bottom: var(--space-4);
+        font-weight: 400;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+      }
+
+      .proof-description {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-500);
+        margin-bottom: var(--space-16);
+        font-weight: 300;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.5;
       }
 
       .proof-grid {
@@ -192,9 +216,20 @@
         font-size: var(--fs-4xl);
         font-weight: 200;
         color: var(--color-ink);
-        margin-bottom: var(--space-16);
+        margin-bottom: var(--space-8);
         letter-spacing: -0.03em;
         text-rendering: optimizeLegibility;
+      }
+
+      .services-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        margin-bottom: var(--space-16);
+        font-weight: 400;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
       }
 
       .services-grid {
@@ -304,8 +339,15 @@
       .cta-subtitle {
         font-size: var(--fs-lg);
         opacity: 0.9;
-        margin-bottom: var(--space-8);
+        margin-bottom: var(--space-4);
         font-weight: 400;
+      }
+
+      .cta-description {
+        font-size: var(--fs-base);
+        opacity: 0.8;
+        margin-bottom: var(--space-8);
+        font-weight: 300;
       }
 
       .cta-button {
@@ -371,6 +413,14 @@
         }
 
         .hero-subtitle {
+          font-size: var(--fs-base);
+        }
+
+        .proof-subtitle {
+          font-size: var(--fs-lg);
+        }
+
+        .services-subtitle {
           font-size: var(--fs-base);
         }
 
@@ -443,14 +493,12 @@
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-content">
-        <h1 class="hero-title">
-          calm<span class="text-teal">.</span>sys
-        </h1>
+        <div class="hero-tagline">systematic solutions for modern chaos</div>
+        <h1 class="hero-title">calm<span class="text-teal">.</span>sys</h1>
 
         <p class="hero-subtitle">
-          from coordination chaos → calm, visible, predictable ops.<br />
-          more creative time, less admin. projects 40% faster, revisions −60%,
-          margins +12–15pts.
+          transform creative team chaos into systematic efficiency.<br />
+          <span class="text-teal">more creative time, less admin.</span> projects 40% faster, revisions −60%, margins +12–15pts.
         </p>
 
         <div class="hero-cta">
@@ -477,19 +525,11 @@
         <h2 class="proof-title">
           quantified transformation outcomes<span class="text-teal">.</span>
         </h2>
-        <p
-          style="
-            font-size: var(--fs-lg);
-            color: var(--color-gray-600);
-            margin-bottom: var(--space-16);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-          "
-        >
-          diagnose before you prescribe. fast, low-risk x-ray that pays for
-          itself by exposing concrete leaks. measured outcomes: hours back,
-          cycles reduced, margin lift.
+        <p class="proof-subtitle">
+          diagnose before you prescribe. fast, low-risk x-ray that pays for itself by exposing concrete leaks.
+        </p>
+        <p class="proof-description">
+          measured outcomes: hours back, cycles reduced, margin lift.
         </p>
 
         <div class="proof-grid">
@@ -532,21 +572,24 @@
             >.</span
           >
         </h2>
+        <p class="services-subtitle">
+          systematic transformation through three integrated offerings.
+        </p>
 
         <div class="services-grid">
           <div class="service-card glass">
             <div class="service-name">
               calm<span class="text-teal">.</span>profile
             </div>
-            <div class="service-timeline">diagnostic snapshot</div>
+            <div class="service-timeline">$495 diagnostic</div>
             <div class="service-description">
-              Discover your unique workstyle through our scientific assessment.
+              fast, low-risk x-ray that pays for itself by exposing concrete leaks.
             </div>
             <ul class="service-features">
-              <li>15-question workstyle analysis</li>
-              <li>Archetype identification</li>
-              <li>12-page profile report</li>
-              <li>Workflow templates</li>
+              <li>12-page diagnostic report</li>
+              <li>workstyle archetype analysis</li>
+              <li>roi & cost of inaction</li>
+              <li>30-minute debrief call</li>
             </ul>
             <a
               href="https://calmprofile.vercel.app"
@@ -562,14 +605,13 @@
             </div>
             <div class="service-timeline">implementation sprint</div>
             <div class="service-description">
-              Systematic redesign of your team's operations for maximum
-              efficiency.
+              systematic redesign of your team's operations for maximum efficiency.
             </div>
             <ul class="service-features">
-              <li>Comprehensive time audit</li>
-              <li>Workflow redesign</li>
-              <li>Automation architecture</li>
-              <li>Team training & adoption</li>
+              <li>comprehensive time audit</li>
+              <li>workflow redesign</li>
+              <li>automation architecture</li>
+              <li>team training & adoption</li>
             </ul>
             <a href="/calm-stack.html" class="btn btn-glass"
               >explore methodology</a
@@ -582,14 +624,13 @@
             </div>
             <div class="service-timeline">transformation layer</div>
             <div class="service-description">
-              Ongoing partnership for enterprise teams with continuous
-              optimization.
+              ongoing partnership for enterprise teams with continuous optimization.
             </div>
             <ul class="service-features">
-              <li>Enterprise-wide assessment</li>
-              <li>Phased implementation</li>
-              <li>Custom tool development</li>
-              <li>Quarterly optimization</li>
+              <li>enterprise-wide assessment</li>
+              <li>phased implementation</li>
+              <li>custom tool development</li>
+              <li>quarterly optimization</li>
             </ul>
             <a
               href="https://calendly.com/syris/30min"
@@ -609,8 +650,10 @@
           ready to reclaim creative time<span class="text-teal">?</span>
         </h2>
         <p class="cta-subtitle">
-          $495 diagnostic pays for itself by exposing concrete leaks. fee-credit
-          toward calm.stack sprint.
+          $495 diagnostic pays for itself by exposing concrete leaks.
+        </p>
+        <p class="cta-description">
+          fee-credit toward calm.stack sprint.
         </p>
         <a
           href="https://calendly.com/syris/30min"
