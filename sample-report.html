@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Report | syris. - calm.sys</title>
+    <meta
+      name="description"
+      content="Preview the calm.profile assessment report and see exactly what you'll receive from our systematic transformation process."
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/design-system.css" />
+    <style>
+      /* Sample Report Page Styles */
+      .sample-hero {
+        padding: var(--space-24) var(--space-6) var(--space-16);
+        text-align: center;
+        background: var(--color-gray-50);
+      }
+
+      .sample-hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .sample-hero h1 {
+        font-size: var(--fs-5xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-6);
+        letter-spacing: -0.02em;
+      }
+
+      .sample-hero p {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        margin-bottom: var(--space-8);
+        line-height: 1.6;
+      }
+
+      .sample-preview {
+        padding: var(--space-24) var(--space-6);
+      }
+
+      .sample-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .sample-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+        margin-bottom: var(--space-16);
+      }
+
+      .sample-card {
+        background: var(--color-white);
+        border-radius: var(--radius-xl);
+        padding: var(--space-6);
+        box-shadow: var(--shadow-lg);
+        transition: all var(--transition-base);
+      }
+
+      .sample-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .sample-image {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(
+          135deg,
+          var(--color-gray-100) 0%,
+          var(--color-gray-200) 100%
+        );
+        border-radius: var(--radius-lg);
+        margin-bottom: var(--space-4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-mono);
+        font-size: var(--fs-sm);
+        color: var(--color-gray-500);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .sample-image::before {
+        content: "sample report page";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .sample-title {
+        font-family: var(--font-mono);
+        font-size: var(--fs-lg);
+        font-weight: 500;
+        color: var(--color-ink);
+        margin-bottom: var(--space-2);
+      }
+
+      .sample-description {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        line-height: 1.5;
+      }
+
+      .sample-cta {
+        text-align: center;
+        padding: var(--space-16) var(--space-6);
+        background: var(--color-teal);
+        color: var(--color-white);
+      }
+
+      .sample-cta h2 {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .sample-cta p {
+        font-size: var(--fs-lg);
+        opacity: 0.9;
+        margin-bottom: var(--space-8);
+        font-weight: 400;
+      }
+
+      .sample-cta-button {
+        background: var(--color-white);
+        color: var(--color-ink);
+        padding: var(--space-4) var(--space-8);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        transition: all var(--transition-base);
+        display: inline-block;
+        margin-right: var(--space-4);
+      }
+
+      .sample-cta-button:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .sample-cta-button.secondary {
+        background: transparent;
+        color: var(--color-white);
+        border: 1px solid var(--color-white);
+      }
+
+      .sample-cta-button.secondary:hover {
+        background: var(--color-white);
+        color: var(--color-ink);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .sample-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sample-hero,
+        .sample-preview,
+        .sample-cta {
+          padding: var(--space-16) var(--space-4);
+        }
+
+        .sample-hero h1 {
+          font-size: var(--fs-4xl);
+        }
+
+        .sample-cta-button {
+          display: block;
+          margin: var(--space-2) 0;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Minimal Background -->
+    <div class="bg-pattern bg-gradient bg-accent-lines"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/" class="logo-link">
+          <img
+            src="services/syris.logo.primary.svg"
+            alt="syris."
+            class="logo"
+          />
+        </a>
+        <div class="nav-links">
+          <a href="/" class="nav-link">home</a>
+          <a href="/sample-report.html" class="nav-link">sample report</a>
+          <a href="/method.html" class="nav-link">method</a>
+          <a href="/services.html" class="nav-link">services</a>
+          <a href="/about.html" class="nav-link">about</a>
+          <div class="nav-dropdown">
+            <a href="/calm-sys.html" class="nav-link nav-dropdown-toggle"
+              >calm<span class="text-teal">.</span>sys</a
+            >
+            <div class="nav-dropdown-menu">
+              <a
+                href="https://calmprofile.vercel.app"
+                target="_blank"
+                class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>profile</a
+              >
+              <a href="/calm-stack.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>stack</a
+              >
+              <a href="/calm-os.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>os</a
+              >
+            </div>
+          </div>
+          <a
+            href="https://calendly.com/syris/30min"
+            target="_blank"
+            class="btn btn-primary"
+            >book call</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sample Report Hero -->
+    <section class="sample-hero">
+      <div class="sample-hero-content">
+        <h1>sample report<span class="text-teal">.</span></h1>
+        <p>
+          Preview the calm.profile assessment report and see exactly what you'll
+          receive from our systematic transformation process. This is your
+          personalized roadmap to 27% time recovery.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sample Preview -->
+    <section class="sample-preview">
+      <div class="sample-container">
+        <div class="sample-grid">
+          <div class="sample-card">
+            <div class="sample-image"></div>
+            <div class="sample-title">workstyle analysis</div>
+            <div class="sample-description">
+              Your unique workstyle archetype identified through our 15-question
+              assessment, revealing your natural productivity patterns and
+              collaboration preferences.
+            </div>
+          </div>
+
+          <div class="sample-card">
+            <div class="sample-image"></div>
+            <div class="sample-title">efficiency roadmap</div>
+            <div class="sample-description">
+              Personalized recommendations for workflow optimization, including
+              specific tools, processes, and automation opportunities tailored
+              to your workstyle.
+            </div>
+          </div>
+
+          <div class="sample-card">
+            <div class="sample-image"></div>
+            <div class="sample-title">implementation guide</div>
+            <div class="sample-description">
+              Step-by-step implementation plan with timelines, milestones, and
+              success metrics to ensure sustainable adoption and measurable
+              results.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sample CTA -->
+    <section class="sample-cta">
+      <h2>
+        ready to get your personalized report<span class="text-teal">?</span>
+      </h2>
+      <p>
+        Start with our free assessment or schedule a discovery consultation to
+        discuss your specific transformation goals.
+      </p>
+      <a
+        href="https://calmprofile.vercel.app"
+        target="_blank"
+        class="sample-cta-button"
+        >start assessment</a
+      >
+      <a
+        href="https://calendly.com/syris/30min"
+        target="_blank"
+        class="sample-cta-button secondary"
+        >schedule consultation</a
+      >
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        syris<span class="text-teal">.</span> © 2025 | calm<span
+          class="text-teal"
+          >.</span
+        >sys - systematic solutions for modern chaos<br />
+        <a href="/">home</a> | <a href="/sample-report.html">sample report</a> |
+        <a href="/method.html">method</a> | <a href="/about.html">about</a> |
+        <a href="/services.html">services</a> |
+        <a href="https://calmprofile.vercel.app" target="_blank">assessment</a>
+      </div>
+    </footer>
+  </body>
+</html>

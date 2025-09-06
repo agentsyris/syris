@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Method | syris. - calm.sys</title>
+    <meta
+      name="description"
+      content="Our systematic approach to transforming creative team operations through diagnostic assessment, implementation sprint, and transformation layer."
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/design-system.css" />
+    <style>
+      /* Method Page Styles */
+      .method-hero {
+        padding: var(--space-24) var(--space-6) var(--space-16);
+        text-align: center;
+        background: var(--color-gray-50);
+      }
+
+      .method-hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .method-hero h1 {
+        font-size: var(--fs-5xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-6);
+        letter-spacing: -0.02em;
+      }
+
+      .method-hero p {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        margin-bottom: var(--space-8);
+        line-height: 1.6;
+      }
+
+      .method-process {
+        padding: var(--space-24) var(--space-6);
+      }
+
+      .method-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .method-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+        margin-bottom: var(--space-16);
+      }
+
+      .method-card {
+        background: var(--color-white);
+        border-radius: var(--radius-xl);
+        padding: var(--space-8);
+        box-shadow: var(--shadow-lg);
+        transition: all var(--transition-base);
+        position: relative;
+      }
+
+      .method-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .method-number {
+        position: absolute;
+        top: -20px;
+        left: var(--space-6);
+        background: var(--color-teal);
+        color: var(--color-white);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        font-size: var(--fs-lg);
+      }
+
+      .method-title {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xl);
+        font-weight: 500;
+        color: var(--color-ink);
+        margin-bottom: var(--space-4);
+        margin-top: var(--space-4);
+      }
+
+      .method-timeline {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-teal);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: var(--space-4);
+      }
+
+      .method-description {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        line-height: 1.5;
+        margin-bottom: var(--space-6);
+      }
+
+      .method-features {
+        list-style: none;
+        margin-bottom: var(--space-6);
+      }
+
+      .method-features li {
+        font-size: var(--fs-xs);
+        color: var(--color-gray-500);
+        margin-bottom: var(--space-2);
+        display: flex;
+        align-items: center;
+      }
+
+      .method-features li::before {
+        content: "→";
+        color: var(--color-teal);
+        margin-right: var(--space-2);
+        font-weight: 500;
+      }
+
+      .method-data {
+        padding: var(--space-24) var(--space-6);
+        background: var(--color-gray-50);
+      }
+
+      .method-data-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .method-data h2 {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-12);
+        letter-spacing: -0.02em;
+      }
+
+      .method-data-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+        margin-bottom: var(--space-16);
+      }
+
+      .method-data-card {
+        padding: var(--space-8);
+        border-radius: var(--radius-xl);
+        transition: all var(--transition-base);
+      }
+
+      .method-data-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .method-data-metric {
+        font-family: var(--font-mono);
+        font-size: var(--fs-4xl);
+        font-weight: 500;
+        color: var(--color-teal);
+        margin-bottom: var(--space-2);
+      }
+
+      .method-data-label {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: var(--space-3);
+      }
+
+      .method-data-description {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-500);
+        line-height: 1.5;
+      }
+
+      .method-cta {
+        text-align: center;
+        padding: var(--space-16) var(--space-6);
+        background: var(--color-teal);
+        color: var(--color-white);
+      }
+
+      .method-cta h2 {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .method-cta p {
+        font-size: var(--fs-lg);
+        opacity: 0.9;
+        margin-bottom: var(--space-8);
+        font-weight: 400;
+      }
+
+      .method-cta-button {
+        background: var(--color-white);
+        color: var(--color-ink);
+        padding: var(--space-4) var(--space-8);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        transition: all var(--transition-base);
+        display: inline-block;
+        margin-right: var(--space-4);
+      }
+
+      .method-cta-button:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .method-cta-button.secondary {
+        background: transparent;
+        color: var(--color-white);
+        border: 1px solid var(--color-white);
+      }
+
+      .method-cta-button.secondary:hover {
+        background: var(--color-white);
+        color: var(--color-ink);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .method-grid,
+        .method-data-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .method-hero,
+        .method-process,
+        .method-data,
+        .method-cta {
+          padding: var(--space-16) var(--space-4);
+        }
+
+        .method-hero h1 {
+          font-size: var(--fs-4xl);
+        }
+
+        .method-cta-button {
+          display: block;
+          margin: var(--space-2) 0;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Minimal Background -->
+    <div class="bg-pattern bg-gradient bg-accent-lines"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/" class="logo-link">
+          <img
+            src="services/syris.logo.primary.svg"
+            alt="syris."
+            class="logo"
+          />
+        </a>
+        <div class="nav-links">
+          <a href="/" class="nav-link">home</a>
+          <a href="/sample-report.html" class="nav-link">sample report</a>
+          <a href="/method.html" class="nav-link">method</a>
+          <a href="/services.html" class="nav-link">services</a>
+          <a href="/about.html" class="nav-link">about</a>
+          <div class="nav-dropdown">
+            <a href="/calm-sys.html" class="nav-link nav-dropdown-toggle"
+              >calm<span class="text-teal">.</span>sys</a
+            >
+            <div class="nav-dropdown-menu">
+              <a
+                href="https://calmprofile.vercel.app"
+                target="_blank"
+                class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>profile</a
+              >
+              <a href="/calm-stack.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>stack</a
+              >
+              <a href="/calm-os.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>os</a
+              >
+            </div>
+          </div>
+          <a
+            href="https://calendly.com/syris/30min"
+            target="_blank"
+            class="btn btn-primary"
+            >book call</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Method Hero -->
+    <section class="method-hero">
+      <div class="method-hero-content">
+        <h1>method<span class="text-teal">.</span></h1>
+        <p>
+          Our systematic approach to transforming creative team operations
+          through diagnostic assessment, implementation sprint, and
+          transformation layer.
+        </p>
+      </div>
+    </section>
+
+    <!-- Method Process -->
+    <section class="method-process">
+      <div class="method-container">
+        <div class="method-grid">
+          <div class="method-card glass">
+            <div class="method-number">1</div>
+            <div class="method-title">
+              calm<span class="text-teal">.</span>profile
+            </div>
+            <div class="method-timeline">diagnostic assessment</div>
+            <div class="method-description">
+              Comprehensive analysis of your team's current workstyle patterns,
+              collaboration dynamics, and efficiency bottlenecks through our
+              scientific assessment framework.
+            </div>
+            <ul class="method-features">
+              <li>15-question workstyle analysis</li>
+              <li>Team collaboration mapping</li>
+              <li>Efficiency bottleneck identification</li>
+              <li>Personalized archetype classification</li>
+            </ul>
+          </div>
+
+          <div class="method-card glass level-2">
+            <div class="method-number">2</div>
+            <div class="method-title">
+              calm<span class="text-teal">.</span>stack
+            </div>
+            <div class="method-timeline">implementation sprint</div>
+            <div class="method-description">
+              Systematic redesign of your team's operations for maximum
+              efficiency, including workflow optimization, automation
+              architecture, and adoption training.
+            </div>
+            <ul class="method-features">
+              <li>Comprehensive time audit</li>
+              <li>Workflow redesign & optimization</li>
+              <li>Automation architecture design</li>
+              <li>Team training & adoption support</li>
+            </ul>
+          </div>
+
+          <div class="method-card glass">
+            <div class="method-number">3</div>
+            <div class="method-title">
+              calm<span class="text-teal">.</span>os
+            </div>
+            <div class="method-timeline">transformation layer</div>
+            <div class="method-description">
+              Ongoing partnership for enterprise teams with continuous
+              optimization, custom tool development, and quarterly performance
+              reviews.
+            </div>
+            <ul class="method-features">
+              <li>Enterprise-wide assessment</li>
+              <li>Phased implementation strategy</li>
+              <li>Custom tool development</li>
+              <li>Quarterly optimization reviews</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Method Data -->
+    <section class="method-data">
+      <div class="method-data-container">
+        <h2>data-driven transformation<span class="text-teal">.</span></h2>
+
+        <div class="method-data-grid">
+          <div class="method-data-card glass">
+            <div class="method-data-metric">27%</div>
+            <div class="method-data-label">time recovered</div>
+            <div class="method-data-description">
+              Average reduction in coordination overhead across transformed
+              teams, measured through time-tracking analysis and workflow
+              optimization.
+            </div>
+          </div>
+
+          <div class="method-data-card glass">
+            <div class="method-data-metric">$291k</div>
+            <div class="method-data-label">annual savings</div>
+            <div class="method-data-description">
+              Median annual cost savings per team through systematic
+              optimization, calculated from reduced coordination time and
+              improved efficiency.
+            </div>
+          </div>
+
+          <div class="method-data-card glass">
+            <div class="method-data-metric">92%</div>
+            <div class="method-data-label">adoption rate</div>
+            <div class="method-data-description">
+              Sustained adoption rate of implemented systems after 90 days,
+              tracked through usage analytics and team feedback surveys.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Method CTA -->
+    <section class="method-cta">
+      <h2>
+        ready to transform your team's operations<span class="text-teal"
+          >?</span
+        >
+      </h2>
+      <p>
+        Start with our free assessment or schedule a discovery consultation to
+        discuss your specific transformation goals.
+      </p>
+      <a
+        href="https://calmprofile.vercel.app"
+        target="_blank"
+        class="method-cta-button"
+        >start assessment</a
+      >
+      <a
+        href="https://calendly.com/syris/30min"
+        target="_blank"
+        class="method-cta-button secondary"
+        >schedule consultation</a
+      >
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        syris<span class="text-teal">.</span> © 2025 | calm<span
+          class="text-teal"
+          >.</span
+        >sys - systematic solutions for modern chaos<br />
+        <a href="/">home</a> | <a href="/sample-report.html">sample report</a> |
+        <a href="/method.html">method</a> | <a href="/about.html">about</a> |
+        <a href="/services.html">services</a> |
+        <a href="https://calmprofile.vercel.app" target="_blank">assessment</a>
+      </div>
+    </footer>
+  </body>
+</html>
