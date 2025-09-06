@@ -269,195 +269,180 @@
     </style>
   </head>
   <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">skip to main content</a>
+
     <!-- Minimal Background -->
     <div class="bg-pattern bg-gradient bg-accent-lines"></div>
 
     <!-- Navigation -->
-    <nav class="nav">
+    <nav class="nav" role="navigation">
       <div class="nav-container">
         <a href="/" class="logo-link">
           <img
             src="assets/images/syris.logo.primary.svg"
-            alt="syris."
+            alt="syrıs."
             class="logo"
           />
         </a>
         <div class="nav-links">
           <a href="/" class="nav-link">home</a>
-          <a href="/sample-report.html" class="nav-link">sample report</a>
-          <a href="/method.html" class="nav-link">method</a>
-          <a href="/services.html" class="nav-link">services</a>
+          <a href="/sample-report.html" class="nav-link">view sample report</a>
+          <a href="/method.html" class="nav-link">our method</a>
           <a href="/about.html" class="nav-link">about</a>
-          <div class="nav-dropdown">
-            <a href="/" class="nav-link nav-dropdown-toggle"
-              >calm<span class="text-teal">.</span>sys</a
-            >
-            <div class="nav-dropdown-menu">
-              <a
-                href="https://calmprofile.vercel.app"
-                target="_blank"
-                class="nav-dropdown-item"
-                >calm<span class="text-teal">.</span>profile</a
-              >
-              <a href="/calm-stack.html" class="nav-dropdown-item"
-                >calm<span class="text-teal">.</span>stack</a
-              >
-              <a href="/calm-os.html" class="nav-dropdown-item"
-                >calm<span class="text-teal">.</span>os</a
-              >
-            </div>
-          </div>
           <a
             href="https://calendly.com/syris/30min"
             target="_blank"
             class="btn btn-primary"
-            >book call</a
+            >schedule consultation</a
           >
         </div>
       </div>
     </nav>
 
     <!-- Method Hero -->
-    <section class="method-hero">
-      <div class="method-hero-content">
-        <h1>method<span class="text-teal">.</span></h1>
+    <main id="main-content" role="main">
+      <section class="method-hero">
+        <div class="method-hero-content">
+          <h1>method<span class="text-teal">.</span></h1>
+          <p>
+            Our systematic approach to transforming creative team operations
+            through diagnostic assessment, implementation sprint, and
+            transformation layer.
+          </p>
+        </div>
+      </section>
+
+      <!-- Method Process -->
+      <section class="method-process">
+        <div class="method-container">
+          <div class="method-grid">
+            <div class="method-card glass">
+              <div class="method-number">1</div>
+              <div class="method-title">
+                calm<span class="text-teal">.</span>profile
+              </div>
+              <div class="method-timeline">diagnostic assessment</div>
+              <div class="method-description">
+                Comprehensive analysis of your team's current workstyle
+                patterns, collaboration dynamics, and efficiency bottlenecks
+                through our scientific assessment framework.
+              </div>
+              <ul class="method-features">
+                <li>15-question workstyle analysis</li>
+                <li>Team collaboration mapping</li>
+                <li>Efficiency bottleneck identification</li>
+                <li>Personalized archetype classification</li>
+              </ul>
+            </div>
+
+            <div class="method-card glass level-2">
+              <div class="method-number">2</div>
+              <div class="method-title">
+                calm<span class="text-teal">.</span>stack
+              </div>
+              <div class="method-timeline">implementation sprint</div>
+              <div class="method-description">
+                Systematic redesign of your team's operations for maximum
+                efficiency, including workflow optimization, automation
+                architecture, and adoption training.
+              </div>
+              <ul class="method-features">
+                <li>Comprehensive time audit</li>
+                <li>Workflow redesign & optimization</li>
+                <li>Automation architecture design</li>
+                <li>Team training & adoption support</li>
+              </ul>
+            </div>
+
+            <div class="method-card glass">
+              <div class="method-number">3</div>
+              <div class="method-title">
+                calm<span class="text-teal">.</span>os
+              </div>
+              <div class="method-timeline">transformation layer</div>
+              <div class="method-description">
+                Ongoing partnership for enterprise teams with continuous
+                optimization, custom tool development, and quarterly performance
+                reviews.
+              </div>
+              <ul class="method-features">
+                <li>Enterprise-wide assessment</li>
+                <li>Phased implementation strategy</li>
+                <li>Custom tool development</li>
+                <li>Quarterly optimization reviews</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Method Data -->
+      <section class="method-data">
+        <div class="method-data-container">
+          <h2>data-driven transformation<span class="text-teal">.</span></h2>
+
+          <div class="method-data-grid">
+            <div class="method-data-card glass">
+              <div class="method-data-metric">27%</div>
+              <div class="method-data-label">time recovered</div>
+              <div class="method-data-description">
+                Average reduction in coordination overhead across transformed
+                teams, measured through time-tracking analysis and workflow
+                optimization.
+              </div>
+            </div>
+
+            <div class="method-data-card glass">
+              <div class="method-data-metric">$291k</div>
+              <div class="method-data-label">annual savings</div>
+              <div class="method-data-description">
+                Median annual cost savings per team through systematic
+                optimization, calculated from reduced coordination time and
+                improved efficiency.
+              </div>
+            </div>
+
+            <div class="method-data-card glass">
+              <div class="method-data-metric">92%</div>
+              <div class="method-data-label">adoption rate</div>
+              <div class="method-data-description">
+                Sustained adoption rate of implemented systems after 90 days,
+                tracked through usage analytics and team feedback surveys.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Method CTA -->
+      <section class="method-cta">
+        <h2>
+          ready to transform your team's operations<span class="text-teal"
+            >?</span
+          >
+        </h2>
         <p>
-          Our systematic approach to transforming creative team operations
-          through diagnostic assessment, implementation sprint, and
-          transformation layer.
+          Start with our free assessment or schedule a discovery consultation to
+          discuss your specific transformation goals.
         </p>
-      </div>
-    </section>
-
-    <!-- Method Process -->
-    <section class="method-process">
-      <div class="method-container">
-        <div class="method-grid">
-          <div class="method-card glass">
-            <div class="method-number">1</div>
-            <div class="method-title">
-              calm<span class="text-teal">.</span>profile
-            </div>
-            <div class="method-timeline">diagnostic assessment</div>
-            <div class="method-description">
-              Comprehensive analysis of your team's current workstyle patterns,
-              collaboration dynamics, and efficiency bottlenecks through our
-              scientific assessment framework.
-            </div>
-            <ul class="method-features">
-              <li>15-question workstyle analysis</li>
-              <li>Team collaboration mapping</li>
-              <li>Efficiency bottleneck identification</li>
-              <li>Personalized archetype classification</li>
-            </ul>
-          </div>
-
-          <div class="method-card glass level-2">
-            <div class="method-number">2</div>
-            <div class="method-title">
-              calm<span class="text-teal">.</span>stack
-            </div>
-            <div class="method-timeline">implementation sprint</div>
-            <div class="method-description">
-              Systematic redesign of your team's operations for maximum
-              efficiency, including workflow optimization, automation
-              architecture, and adoption training.
-            </div>
-            <ul class="method-features">
-              <li>Comprehensive time audit</li>
-              <li>Workflow redesign & optimization</li>
-              <li>Automation architecture design</li>
-              <li>Team training & adoption support</li>
-            </ul>
-          </div>
-
-          <div class="method-card glass">
-            <div class="method-number">3</div>
-            <div class="method-title">
-              calm<span class="text-teal">.</span>os
-            </div>
-            <div class="method-timeline">transformation layer</div>
-            <div class="method-description">
-              Ongoing partnership for enterprise teams with continuous
-              optimization, custom tool development, and quarterly performance
-              reviews.
-            </div>
-            <ul class="method-features">
-              <li>Enterprise-wide assessment</li>
-              <li>Phased implementation strategy</li>
-              <li>Custom tool development</li>
-              <li>Quarterly optimization reviews</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Method Data -->
-    <section class="method-data">
-      <div class="method-data-container">
-        <h2>data-driven transformation<span class="text-teal">.</span></h2>
-
-        <div class="method-data-grid">
-          <div class="method-data-card glass">
-            <div class="method-data-metric">27%</div>
-            <div class="method-data-label">time recovered</div>
-            <div class="method-data-description">
-              Average reduction in coordination overhead across transformed
-              teams, measured through time-tracking analysis and workflow
-              optimization.
-            </div>
-          </div>
-
-          <div class="method-data-card glass">
-            <div class="method-data-metric">$291k</div>
-            <div class="method-data-label">annual savings</div>
-            <div class="method-data-description">
-              Median annual cost savings per team through systematic
-              optimization, calculated from reduced coordination time and
-              improved efficiency.
-            </div>
-          </div>
-
-          <div class="method-data-card glass">
-            <div class="method-data-metric">92%</div>
-            <div class="method-data-label">adoption rate</div>
-            <div class="method-data-description">
-              Sustained adoption rate of implemented systems after 90 days,
-              tracked through usage analytics and team feedback surveys.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Method CTA -->
-    <section class="method-cta">
-      <h2>
-        ready to transform your team's operations<span class="text-teal"
-          >?</span
+        <a
+          href="https://calmprofile.vercel.app"
+          target="_blank"
+          class="method-cta-button"
+          >start assessment</a
         >
-      </h2>
-      <p>
-        Start with our free assessment or schedule a discovery consultation to
-        discuss your specific transformation goals.
-      </p>
-      <a
-        href="https://calmprofile.vercel.app"
-        target="_blank"
-        class="method-cta-button"
-        >start assessment</a
-      >
-      <a
-        href="https://calendly.com/syris/30min"
-        target="_blank"
-        class="method-cta-button secondary"
-        >schedule consultation</a
-      >
-    </section>
+        <a
+          href="https://calendly.com/syris/30min"
+          target="_blank"
+          class="method-cta-button secondary"
+          >schedule consultation</a
+        >
+      </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
       <div class="footer-content">
         syris<span class="text-teal">.</span> © 2025 | calm<span
           class="text-teal"

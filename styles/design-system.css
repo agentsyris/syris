@@ -18,6 +18,7 @@
   --color-teal: #00c9a7;
   --color-teal-light: #e6f7f3;
   --color-teal-dark: #00a085;
+  --color-teal-text: #006b5a; /* better contrast for text */
   --color-teal-50: #f0fdfa;
   --color-teal-100: #ccfbf1;
   --color-teal-200: #99f6e4;
@@ -34,19 +35,24 @@
     sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", Monaco, "Cascadia Code", monospace;
 
-  /* Font Sizes - Refined Premium Scale */
-  --fs-xs: 0.75rem; /* 12px */
-  --fs-sm: 0.875rem; /* 14px */
-  --fs-base: 1rem; /* 16px */
-  --fs-lg: 1.125rem; /* 18px */
-  --fs-xl: 1.25rem; /* 20px */
-  --fs-2xl: 1.5rem; /* 24px */
-  --fs-3xl: 1.875rem; /* 30px */
-  --fs-4xl: 2.25rem; /* 36px */
-  --fs-5xl: 3rem; /* 48px */
-  --fs-6xl: 3.75rem; /* 60px */
-  --fs-7xl: 4.5rem; /* 72px */
-  --fs-8xl: 5.25rem; /* 84px */
+  /* Font Sizes - Improved Scale with clamp() */
+  --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --fs-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --fs-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --fs-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --fs-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --fs-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --fs-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 2.5rem);
+  --fs-4xl: clamp(2.25rem, 1.8rem + 2.25vw, 3rem);
+  --fs-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+  --fs-6xl: clamp(3.75rem, 3rem + 3.75vw, 5rem);
+  --fs-7xl: clamp(4.5rem, 3.5rem + 5vw, 6rem);
+  --fs-8xl: clamp(5.25rem, 4rem + 6.25vw, 7rem);
+
+  /* Systematic line heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
 
   /* Spacing - Luxurious Scale */
   --space-1: 0.25rem; /* 4px */
@@ -98,10 +104,10 @@
   --glass-2-blur: 20px;
   --glass-2-saturate: 140%;
   --glass-3-bg-alpha: 0.08;
-  --glass-3-border-alpha: 0.10;
+  --glass-3-border-alpha: 0.1;
   --glass-3-blur: 24px;
   --glass-3-saturate: 160%;
-  --glass-4-bg-alpha: 0.10;
+  --glass-4-bg-alpha: 0.1;
   --glass-4-border-alpha: 0.12;
   --glass-4-blur: 28px;
   --glass-4-saturate: 180%;
@@ -116,7 +122,7 @@
 
 html {
   font-size: 16px;
-  line-height: 1.6;
+  line-height: var(--line-height-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -136,12 +142,25 @@ h4,
 h5,
 h6 {
   font-weight: 300;
-  line-height: 1.2;
+  line-height: var(--line-height-tight);
   letter-spacing: -0.02em;
 }
 
+h1 {
+  font-size: var(--fs-5xl);
+}
+
+h2 {
+  font-size: var(--fs-3xl);
+}
+
+h3 {
+  font-size: var(--fs-xl);
+  line-height: var(--line-height-normal);
+}
+
 .text-teal {
-  color: var(--color-teal);
+  color: var(--color-teal-text); /* better contrast */
 }
 
 /* iOS 26 Liquid Glass Effects */
@@ -413,7 +432,6 @@ h6 {
   background: var(--color-white);
 }
 
-
 /* Navigation - iOS 26 Liquid Glass */
 .nav {
   position: fixed;
@@ -469,11 +487,16 @@ h6 {
   text-decoration: none;
   transition: color var(--transition-fast);
   font-weight: 400;
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   text-transform: lowercase;
   letter-spacing: 0.05em;
+  min-height: 44px; /* minimum tap target */
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-link:hover {
@@ -528,7 +551,46 @@ h6 {
   color: var(--color-ink);
 }
 
-/* Buttons - Minimal */
+/* Accessibility - Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-ink);
+  color: var(--color-white);
+  padding: var(--space-2) var(--space-4);
+  text-decoration: none;
+  z-index: 1000;
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus Indicators - Critical Accessibility Fix */
+a:focus,
+button:focus,
+.btn:focus,
+.nav-link:focus {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+/* Reduce Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Buttons - Minimal with Accessibility */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -542,6 +604,8 @@ h6 {
   border: none;
   cursor: pointer;
   font-family: var(--font-sans);
+  min-height: 44px; /* minimum tap target */
+  min-width: 44px;
 }
 
 .btn-primary {
