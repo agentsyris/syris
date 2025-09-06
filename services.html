@@ -1,652 +1,755 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>services - syris. | systematic transformation pathways</title>
-    <meta name="description" content="from assessment to implementation to optimization. proven methodology for creative teams. 45% reduction in coordination overhead.">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-L55FL9F71T');
-    </script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>services - syris. | calm.sys product suite</title>
+    <meta
+      name="description"
+      content="calm.sys transforms creative teams through diagnostic assessment, implementation sprint, and transformation layer."
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/design-system.css" />
     <style>
-        :root {
-            --primary: #00C9A7;
-            --charcoal: #0A0A0A;
-            --white: #FFFFFF;
-            --gray-50: #FAFAFA;
-            --gray-100: #F5F5F5;
-            --gray-400: #9CA3AF;
-            --gray-600: #4B5563;
-            --mono: 'JetBrains Mono', monospace;
-            --sans: 'Inter', -apple-system, sans-serif;
-        }
+      /* Minimal Services Page Styles */
+      .hero-section {
+        padding: var(--space-32) var(--space-6) var(--space-24);
+        text-align: center;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      .hero-title {
+        font-size: var(--fs-5xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-6);
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+      }
 
-        body {
-            font-family: var(--sans);
-            color: var(--charcoal);
-            background: var(--white);
-            line-height: 1.6;
-        }
+      .hero-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        max-width: 600px;
+        margin: 0 auto var(--space-8);
+        line-height: 1.6;
+        font-weight: 400;
+      }
 
-        .dot {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .dot-grid {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(circle, var(--primary) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.02;
-            pointer-events: none;
-        }
+      .hero-meta {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-gray-500);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 24px 40px;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--gray-100);
-        }
+      /* Minimal Service Comparison */
+      .comparison-section {
+        padding: var(--space-24) var(--space-6);
+        background: var(--color-gray-50);
+      }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      .comparison-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-        .logo {
-            font-family: var(--mono);
-            font-size: 20px;
-            font-weight: 600;
-            text-decoration: none;
-            color: var(--charcoal);
-        }
+      .comparison-header {
+        text-align: center;
+        margin-bottom: var(--space-16);
+      }
 
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
+      .comparison-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
 
-        .nav-link {
-            font-family: var(--mono);
-            font-size: 13px;
-            color: var(--gray-600);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
+      .comparison-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 400;
+      }
 
-        .nav-link:hover {
-            color: var(--charcoal);
-        }
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+        margin-bottom: var(--space-16);
+      }
 
-        .nav-cta {
-            font-family: var(--mono);
-            font-size: 13px;
-            padding: 10px 20px;
-            background: var(--charcoal);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
+      .service-column {
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        transition: all var(--transition-base);
+        position: relative;
+      }
 
-        .nav-cta:hover {
-            background: var(--primary);
-            color: var(--charcoal);
-            transform: translateY(-1px);
-        }
+      .service-column:hover {
+        transform: translateY(-4px);
+      }
 
-        /* Hero */
-        .hero {
-            padding: 140px 40px 60px;
-            text-align: center;
-            position: relative;
-        }
+      .service-column.featured {
+        transform: scale(1.02);
+        z-index: 10;
+      }
 
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 600;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
+      .service-column.featured:hover {
+        transform: scale(1.02) translateY(-4px);
+      }
 
-        .hero-sub {
-            font-family: var(--mono);
-            font-size: 14px;
-            color: var(--gray-600);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
+      .service-header {
+        padding: var(--space-8);
+        text-align: center;
+        background: var(--color-white);
+      }
 
-        /* Service comparison */
-        .comparison-section {
-            padding: 80px 40px;
-            background: var(--gray-50);
-        }
+      .service-name {
+        font-family: var(--font-mono);
+        font-size: var(--fs-2xl);
+        font-weight: 500;
+        color: var(--color-ink);
+        margin-bottom: var(--space-2);
+      }
 
+      .service-timeline {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-teal);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: var(--space-4);
+      }
+
+      .service-price {
+        font-family: var(--font-mono);
+        font-size: var(--fs-3xl);
+        font-weight: 500;
+        color: var(--color-teal);
+        margin-bottom: var(--space-2);
+      }
+
+      .service-tagline {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+      }
+
+      .service-features {
+        padding: var(--space-8);
+        background: var(--color-white);
+      }
+
+      .feature-category {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-teal);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: var(--space-6);
+        margin-bottom: var(--space-3);
+      }
+
+      .feature-category:first-child {
+        margin-top: 0;
+      }
+
+      .feature-item {
+        padding: var(--space-2) 0;
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        border-bottom: 1px solid var(--color-gray-100);
+        display: flex;
+        align-items: center;
+      }
+
+      .feature-item:last-child {
+        border-bottom: none;
+      }
+
+      .feature-item::before {
+        content: "→";
+        color: var(--color-teal);
+        margin-right: var(--space-3);
+        font-weight: 500;
+      }
+
+      .service-cta {
+        padding: var(--space-8);
+        background: var(--color-gray-50);
+        text-align: center;
+      }
+
+      .btn-service {
+        font-family: var(--font-mono);
+        padding: var(--space-3) var(--space-6);
+        background: var(--color-ink);
+        color: var(--color-white);
+        border: none;
+        border-radius: var(--radius-md);
+        font-size: var(--fs-sm);
+        font-weight: 500;
+        text-decoration: none;
+        display: inline-block;
+        transition: all var(--transition-base);
+        width: 100%;
+      }
+
+      .btn-service:hover {
+        background: var(--color-teal);
+        color: var(--color-ink);
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--color-teal);
+        border: 1px solid var(--color-teal);
+      }
+
+      .btn-secondary:hover {
+        background: var(--color-teal);
+        color: var(--color-white);
+      }
+
+      /* Minimal Journey Flow */
+      .journey-section {
+        padding: var(--space-24) var(--space-6);
+        text-align: center;
+      }
+
+      .journey-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .journey-header {
+        margin-bottom: var(--space-16);
+      }
+
+      .journey-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .journey-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        font-weight: 400;
+      }
+
+      .journey-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-6);
+        margin-bottom: var(--space-16);
+      }
+
+      .journey-step {
+        flex: 1;
+        padding: var(--space-6);
+        border-radius: var(--radius-xl);
+        transition: all var(--transition-base);
+      }
+
+      .journey-step:hover {
+        transform: translateY(-2px);
+      }
+
+      .step-number {
+        font-family: var(--font-mono);
+        font-size: var(--fs-3xl);
+        font-weight: 500;
+        color: var(--color-teal);
+        margin-bottom: var(--space-2);
+      }
+
+      .step-label {
+        font-family: var(--font-mono);
+        font-size: var(--fs-sm);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-gray-600);
+      }
+
+      .journey-arrow {
+        color: var(--color-teal);
+        font-size: var(--fs-xl);
+        font-weight: 500;
+      }
+
+      /* Minimal Results Section */
+      .results-section {
+        padding: var(--space-24) var(--space-6);
+        background: var(--color-ink);
+        color: var(--color-white);
+      }
+
+      .results-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .results-header {
+        text-align: center;
+        margin-bottom: var(--space-16);
+      }
+
+      .results-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-white);
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .results-subtitle {
+        font-family: var(--font-mono);
+        font-size: var(--fs-sm);
+        color: var(--color-teal);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-6);
+        text-align: center;
+      }
+
+      .result-item {
+        padding: var(--space-6);
+        border-radius: var(--radius-xl);
+        transition: all var(--transition-base);
+      }
+
+      .result-item:hover {
+        transform: translateY(-2px);
+      }
+
+      .result-metric {
+        font-family: var(--font-mono);
+        font-size: var(--fs-4xl);
+        font-weight: 500;
+        color: var(--color-teal);
+        margin-bottom: var(--space-2);
+      }
+
+      .result-label {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        opacity: 0.8;
+      }
+
+      /* Minimal CTA Section */
+      .cta-section {
+        padding: var(--space-24) var(--space-6);
+        background: var(--color-teal);
+        text-align: center;
+      }
+
+      .cta-container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .cta-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-white);
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .cta-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-white);
+        opacity: 0.9;
+        margin-bottom: var(--space-8);
+        font-weight: 400;
+      }
+
+      .cta-button {
+        background: var(--color-white);
+        color: var(--color-ink);
+        padding: var(--space-4) var(--space-8);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        transition: all var(--transition-base);
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Minimal Footer */
+      .footer {
+        padding: var(--space-12) var(--space-6);
+        text-align: center;
+        border-top: 1px solid var(--color-gray-200);
+      }
+
+      .footer-content {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-gray-500);
+      }
+
+      .footer-content a {
+        color: var(--color-teal);
+        text-decoration: none;
+      }
+
+      .footer-content a:hover {
+        color: var(--color-teal-dark);
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
         .comparison-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+          grid-template-columns: 1fr;
+          gap: var(--space-4);
         }
 
-        .service-column {
-            background: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+        .service-column.featured {
+          transform: none;
         }
 
-        .service-column:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,201,167,0.15);
+        .service-column.featured:hover {
+          transform: translateY(-4px);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: var(--space-24) var(--space-4) var(--space-16);
         }
 
-        .service-header {
-            padding: 40px 32px;
-            text-align: center;
-            border-bottom: 1px solid var(--gray-100);
+        .hero-title {
+          font-size: var(--fs-4xl);
         }
 
-        .service-name {
-            font-family: var(--mono);
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .service-timeline {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .service-price {
-            font-family: var(--mono);
-            font-size: 32px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .service-tagline {
-            font-size: 14px;
-            color: var(--gray-600);
-        }
-
-        .service-features {
-            padding: 32px;
-        }
-
-        .feature-category {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 24px;
-            margin-bottom: 12px;
-        }
-
-        .feature-category:first-child {
-            margin-top: 0;
-        }
-
-        .feature-item {
-            padding: 8px 0;
-            font-size: 14px;
-            color: var(--gray-600);
-            border-bottom: 1px solid var(--gray-50);
-            display: flex;
-            align-items: center;
-        }
-
-        .feature-item:before {
-            content: "→";
-            color: var(--primary);
-            margin-right: 12px;
-            font-weight: 600;
-        }
-
-        .service-cta {
-            padding: 32px;
-            background: var(--gray-50);
-            text-align: center;
-        }
-
-        .btn-service {
-            font-family: var(--mono);
-            padding: 14px 32px;
-            background: var(--charcoal);
-            color: var(--white);
-            border: none;
-            border-radius: 4px;
-            font-size: 13px;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.2s ease;
-            width: 100%;
-        }
-
-        .btn-service:hover {
-            background: var(--primary);
-            color: var(--charcoal);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        /* Journey flow */
-        .journey-section {
-            padding: 100px 40px;
-            text-align: center;
-        }
-
-        .section-label {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--primary);
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 600;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
-
-        .section-sub {
-            font-family: var(--mono);
-            font-size: 14px;
-            color: var(--gray-600);
-            margin-bottom: 48px;
+        .hero-subtitle {
+          font-size: var(--fs-base);
         }
 
         .journey-visual {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-        }
-
-        .journey-step {
-            flex: 1;
-            padding: 24px;
-            background: var(--gray-50);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .journey-step:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-4px);
-        }
-
-        .journey-step:hover .step-label {
-            color: var(--white);
-        }
-
-        .step-number {
-            font-family: var(--mono);
-            font-size: 32px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .step-label {
-            font-family: var(--mono);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--gray-600);
+          flex-direction: column;
+          gap: var(--space-4);
         }
 
         .journey-arrow {
-            color: var(--primary);
-            font-size: 24px;
-        }
-
-        /* Results section */
-        .results-section {
-            padding: 100px 40px;
-            background: var(--charcoal);
-            color: var(--white);
+          transform: rotate(90deg);
         }
 
         .results-grid {
-            max-width: 1000px;
-            margin: 48px auto 0;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-            text-align: center;
+          grid-template-columns: repeat(2, 1fr);
         }
 
-        .result-item {
-            padding: 32px 24px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 4px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .result-metric {
-            font-family: var(--mono);
-            font-size: 42px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .result-label {
-            font-family: var(--mono);
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-        }
-
-        /* CTA */
+        .comparison-section,
+        .journey-section,
+        .results-section,
         .cta-section {
-            padding: 100px 40px;
-            background: linear-gradient(135deg, var(--primary) 0%, #00a88a 100%);
-            text-align: center;
+          padding: var(--space-16) var(--space-4);
         }
-
-        .cta-title {
-            font-size: 36px;
-            color: var(--white);
-            margin-bottom: 16px;
-        }
-
-        .cta-sub {
-            font-family: var(--mono);
-            font-size: 14px;
-            color: var(--white);
-            opacity: 0.9;
-            margin-bottom: 32px;
-        }
-
-        .btn-final {
-            padding: 16px 40px;
-            background: var(--white);
-            color: var(--charcoal);
-            border: none;
-            border-radius: 4px;
-            font-family: var(--mono);
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.2s ease;
-        }
-
-        .btn-final:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        /* Footer */
-        footer {
-            padding: 48px 40px;
-            text-align: center;
-            background: var(--gray-50);
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .comparison-grid {
-                grid-template-columns: 1fr;
-            }
-            .journey-visual {
-                flex-direction: column;
-            }
-            .journey-arrow {
-                transform: rotate(90deg);
-            }
-            .results-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <!-- Minimal Background -->
+    <div class="bg-pattern bg-gradient bg-accent-lines"></div>
+
     <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="/" class="logo">syris<span class="dot">.</span></a>
-            <div class="nav-links">
-                <a href="/" class="nav-link">home</a>
-                <a href="/about.html" class="nav-link">about</a>
-                <a href="/calm-profile.html" class="nav-link">calm<span class="dot">.</span>profile</a>
-                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-cta">book discovery call</a>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/" class="logo-link">
+          <img
+            src="services/syris.logo.primary.svg"
+            alt="syris."
+            class="logo"
+          />
+        </a>
+        <div class="nav-links">
+          <a href="/" class="nav-link">home</a>
+          <a href="/about.html" class="nav-link">about</a>
+          <div class="nav-dropdown">
+            <a href="/calm-sys.html" class="nav-link nav-dropdown-toggle"
+              >calm<span class="text-teal">.</span>sys</a
+            >
+            <div class="nav-dropdown-menu">
+              <a href="/calm-profile.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>profile</a
+              >
+              <a href="/calm-stack.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>stack</a
+              >
+              <a href="/calm-os.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>os</a
+              >
             </div>
+          </div>
+          <a
+            href="https://calendly.com/syris/30min"
+            target="_blank"
+            class="btn btn-primary"
+            >book discovery call</a
+          >
         </div>
+      </div>
     </nav>
 
     <!-- Hero -->
-    <section class="hero">
-        <div class="dot-grid"></div>
-        <h1>systematic transformation pathways<span class="dot">.</span></h1>
-        <p class="hero-sub">
-            from assessment to implementation to optimization.<br>
-            proven methodology. quantified results. creative-first approach.
-        </p>
+    <section class="hero-section">
+      <h1 class="hero-title">
+        calm<span class="text-teal">.</span>sys product suite<span
+          class="text-teal"
+          >.</span
+        >
+      </h1>
+      <p class="hero-subtitle">
+        Transform creative teams through diagnostic assessment, implementation
+        sprint, and transformation layer.<br />
+        Proven methodology. Quantified results. Creative-first approach.
+      </p>
+      <div class="hero-meta">
+        45% average overhead reduction • 150+ teams transformed
+      </div>
     </section>
 
     <!-- Service Comparison -->
     <section class="comparison-section">
-        <div class="comparison-grid">
-            <!-- calm.profile -->
-            <div class="service-column">
-                <div class="service-header">
-                    <div class="service-name">calm<span class="dot">.</span>profile</div>
-                    <div class="service-timeline">5-minute assessment</div>
-                    <div class="service-price">free</div>
-                    <div class="service-tagline">discover your workstyle</div>
-                </div>
-                <div class="service-features">
-                    <div class="feature-category">assessment</div>
-                    <div class="feature-item">15-question workstyle analysis</div>
-                    <div class="feature-item">archetype identification</div>
-                    <div class="feature-item">personalized recommendations</div>
-                    
-                    <div class="feature-category">deliverables</div>
-                    <div class="feature-item">12-page profile report</div>
-                    <div class="feature-item">workflow templates</div>
-                    <div class="feature-item">tool recommendations</div>
-                    
-                    <div class="feature-category">ideal for</div>
-                    <div class="feature-item">individual contributors</div>
-                    <div class="feature-item">team leaders exploring options</div>
-                    <div class="feature-item">pre-transformation assessment</div>
-                </div>
-                <div class="service-cta">
-                    <a href="/calm-profile.html" class="btn-service">
-                        start free assessment
-                    </a>
-                </div>
-            </div>
-
-            <!-- calm.ops -->
-            <div class="service-column">
-                <div class="service-header">
-                    <div class="service-name">calm<span class="dot">.</span>ops</div>
-                    <div class="service-timeline">14-day transformation</div>
-                    <div class="service-price">custom</div>
-                    <div class="service-tagline">systematic redesign</div>
-                </div>
-                <div class="service-features">
-                    <div class="feature-category">analysis</div>
-                    <div class="feature-item">comprehensive time audit</div>
-                    <div class="feature-item">tool inventory assessment</div>
-                    <div class="feature-item">bottleneck identification</div>
-                    
-                    <div class="feature-category">implementation</div>
-                    <div class="feature-item">workflow redesign</div>
-                    <div class="feature-item">automation architecture</div>
-                    <div class="feature-item">team training & adoption</div>
-                    
-                    <div class="feature-category">results</div>
-                    <div class="feature-item">45% overhead reduction</div>
-                    <div class="feature-item">20+ hours saved weekly</div>
-                    <div class="feature-item">90-day optimization roadmap</div>
-                </div>
-                <div class="service-cta">
-                    <a href="/calm-ops.html" class="btn-service">
-                        explore methodology
-                    </a>
-                </div>
-            </div>
-
-            <!-- custom.sys -->
-            <div class="service-column">
-                <div class="service-header">
-                    <div class="service-name">custom<span class="dot">.</span>sys</div>
-                    <div class="service-timeline">ongoing partnership</div>
-                    <div class="service-price">enterprise</div>
-                    <div class="service-tagline">bespoke solutions</div>
-                </div>
-                <div class="service-features">
-                    <div class="feature-category">discovery</div>
-                    <div class="feature-item">enterprise-wide assessment</div>
-                    <div class="feature-item">multi-team analysis</div>
-                    <div class="feature-item">change readiness evaluation</div>
-                    
-                    <div class="feature-category">transformation</div>
-                    <div class="feature-item">phased implementation</div>
-                    <div class="feature-item">custom tool development</div>
-                    <div class="feature-item">change management support</div>
-                    
-                    <div class="feature-category">optimization</div>
-                    <div class="feature-item">quarterly reviews</div>
-                    <div class="feature-item">continuous improvement</div>
-                    <div class="feature-item">scaling best practices</div>
-                </div>
-                <div class="service-cta">
-                    <a href="https://calendly.com/syris/30min" class="btn-service btn-secondary" target="_blank">
-                        schedule consultation
-                    </a>
-                </div>
-            </div>
+      <div class="comparison-container">
+        <div class="comparison-header">
+          <h2 class="comparison-title">
+            choose your calm<span class="text-teal">.</span>sys path<span
+              class="text-teal"
+              >.</span
+            >
+          </h2>
+          <p class="comparison-subtitle">
+            Three systematic approaches to eliminate coordination chaos. Each
+            designed for different team sizes and transformation goals.
+          </p>
         </div>
+
+        <div class="comparison-grid">
+          <!-- calm.profile -->
+          <div class="service-column glass">
+            <div class="service-header">
+              <div class="service-name">
+                calm<span class="text-teal">.</span>profile
+              </div>
+              <div class="service-timeline">5-minute assessment</div>
+              <div class="service-price">free</div>
+              <div class="service-tagline">discover your workstyle</div>
+            </div>
+            <div class="service-features">
+              <div class="feature-category">assessment</div>
+              <div class="feature-item">15-question workstyle analysis</div>
+              <div class="feature-item">archetype identification</div>
+              <div class="feature-item">personalized recommendations</div>
+
+              <div class="feature-category">deliverables</div>
+              <div class="feature-item">12-page profile report</div>
+              <div class="feature-item">workflow templates</div>
+              <div class="feature-item">tool recommendations</div>
+
+              <div class="feature-category">ideal for</div>
+              <div class="feature-item">individual contributors</div>
+              <div class="feature-item">team leaders exploring options</div>
+              <div class="feature-item">pre-transformation assessment</div>
+            </div>
+            <div class="service-cta">
+              <a href="/calm-profile.html" class="btn-service">
+                start free assessment
+              </a>
+            </div>
+          </div>
+
+          <!-- calm.stack -->
+          <div class="service-column glass level-2 featured">
+            <div class="service-header">
+              <div class="service-name">
+                calm<span class="text-teal">.</span>stack
+              </div>
+              <div class="service-timeline">implementation sprint</div>
+              <div class="service-price">custom</div>
+              <div class="service-tagline">systematic redesign</div>
+            </div>
+            <div class="service-features">
+              <div class="feature-category">analysis</div>
+              <div class="feature-item">comprehensive time audit</div>
+              <div class="feature-item">tool inventory assessment</div>
+              <div class="feature-item">bottleneck identification</div>
+
+              <div class="feature-category">implementation</div>
+              <div class="feature-item">workflow redesign</div>
+              <div class="feature-item">automation architecture</div>
+              <div class="feature-item">team training & adoption</div>
+
+              <div class="feature-category">results</div>
+              <div class="feature-item">45% overhead reduction</div>
+              <div class="feature-item">20+ hours saved weekly</div>
+              <div class="feature-item">90-day optimization roadmap</div>
+            </div>
+            <div class="service-cta">
+              <a href="/calm-stack.html" class="btn-service">
+                explore methodology
+              </a>
+            </div>
+          </div>
+
+          <!-- calm.os -->
+          <div class="service-column glass">
+            <div class="service-header">
+              <div class="service-name">
+                calm<span class="text-teal">.</span>os
+              </div>
+              <div class="service-timeline">transformation layer</div>
+              <div class="service-price">enterprise</div>
+              <div class="service-tagline">bespoke solutions</div>
+            </div>
+            <div class="service-features">
+              <div class="feature-category">discovery</div>
+              <div class="feature-item">enterprise-wide assessment</div>
+              <div class="feature-item">multi-team analysis</div>
+              <div class="feature-item">change readiness evaluation</div>
+
+              <div class="feature-category">transformation</div>
+              <div class="feature-item">phased implementation</div>
+              <div class="feature-item">custom tool development</div>
+              <div class="feature-item">change management support</div>
+
+              <div class="feature-category">optimization</div>
+              <div class="feature-item">quarterly reviews</div>
+              <div class="feature-item">continuous improvement</div>
+              <div class="feature-item">scaling best practices</div>
+            </div>
+            <div class="service-cta">
+              <a
+                href="https://calendly.com/syris/30min"
+                class="btn-service btn-secondary"
+                target="_blank"
+              >
+                schedule consultation
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Journey -->
     <section class="journey-section">
-        <div class="section-label">transformation journey</div>
-        <h2>your path from chaos to calm<span class="dot">.</span></h2>
-        <p class="section-sub">most teams start with assessment, implement systematically, then optimize continuously.</p>
-        
-        <div class="journey-visual">
-            <div class="journey-step">
-                <div class="step-number">01</div>
-                <div class="step-label">assess</div>
-            </div>
-            <div class="journey-arrow">→</div>
-            <div class="journey-step">
-                <div class="step-number">02</div>
-                <div class="step-label">implement</div>
-            </div>
-            <div class="journey-arrow">→</div>
-            <div class="journey-step">
-                <div class="step-number">03</div>
-                <div class="step-label">optimize</div>
-            </div>
+      <div class="journey-container">
+        <div class="journey-header">
+          <h2 class="journey-title">
+            your path from chaos to calm<span class="text-teal">.</span>
+          </h2>
+          <p class="journey-subtitle">
+            Most teams start with assessment, implement systematically, then
+            optimize continuously.
+          </p>
         </div>
+
+        <div class="journey-visual">
+          <div class="journey-step glass">
+            <div class="step-number">01</div>
+            <div class="step-label">assess</div>
+          </div>
+          <div class="journey-arrow">→</div>
+          <div class="journey-step glass">
+            <div class="step-number">02</div>
+            <div class="step-label">implement</div>
+          </div>
+          <div class="journey-arrow">→</div>
+          <div class="journey-step glass">
+            <div class="step-number">03</div>
+            <div class="step-label">optimize</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Results -->
     <section class="results-section">
-        <div style="text-align: center;">
-            <div class="section-label" style="color: var(--primary);">proven results</div>
-            <h2 style="color: var(--white);">quantified transformation outcomes<span class="dot">.</span></h2>
+      <div class="results-container">
+        <div class="results-header">
+          <h2 class="results-title">
+            quantified transformation outcomes<span class="text-teal">.</span>
+          </h2>
+          <p class="results-subtitle">
+            proven results from 150+ creative teams
+          </p>
         </div>
-        
+
         <div class="results-grid">
-            <div class="result-item">
-                <div class="result-metric">27%</div>
-                <div class="result-label">time recovered</div>
-            </div>
-            <div class="result-item">
-                <div class="result-metric">$291k</div>
-                <div class="result-label">annual savings</div>
-            </div>
-            <div class="result-item">
-                <div class="result-metric">150+</div>
-                <div class="result-label">teams transformed</div>
-            </div>
-            <div class="result-item">
-                <div class="result-metric">92%</div>
-                <div class="result-label">adoption rate</div>
-            </div>
+          <div class="result-item glass">
+            <div class="result-metric">27%</div>
+            <div class="result-label">time recovered</div>
+          </div>
+          <div class="result-item glass">
+            <div class="result-metric">$291k</div>
+            <div class="result-label">annual savings</div>
+          </div>
+          <div class="result-item glass">
+            <div class="result-metric">150+</div>
+            <div class="result-label">teams transformed</div>
+          </div>
+          <div class="result-item glass">
+            <div class="result-metric">92%</div>
+            <div class="result-label">adoption rate</div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- CTA -->
     <section class="cta-section">
-        <h2 class="cta-title">ready to eliminate coordination chaos<span class="dot">?</span></h2>
-        <p class="cta-sub">start with our free assessment or schedule a discovery consultation.</p>
-        <a href="https://calendly.com/syris/30min" target="_blank" class="btn-final">
-            book discovery call
-        </a>
+      <div class="cta-container">
+        <h2 class="cta-title">
+          ready to eliminate coordination chaos<span class="text-teal">?</span>
+        </h2>
+        <p class="cta-subtitle">
+          Start with our free assessment or schedule a discovery consultation.
+        </p>
+        <a
+          href="https://calendly.com/syris/30min"
+          target="_blank"
+          class="cta-button"
+          >book discovery call</a
+        >
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div style="font-family: var(--mono); font-size: 12px; color: var(--gray-600);">
-            syris<span class="dot">.</span> © 2025 | systematic solutions for modern chaos<br>
-            <a href="/" style="color: var(--primary); text-decoration: none;">home</a> | 
-            <a href="/about.html" style="color: var(--primary); text-decoration: none;">about</a> | 
-            <a href="/calm-profile.html" style="color: var(--primary); text-decoration: none;">assessment</a>
-        </div>
+    <footer class="footer">
+      <div class="footer-content">
+        syris<span class="text-teal">.</span> © 2025 | calm<span
+          class="text-teal"
+          >.</span
+        >sys - systematic solutions for modern chaos<br />
+        <a href="/">home</a> | <a href="/about.html">about</a> |
+        <a href="/calm-profile.html">assessment</a>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

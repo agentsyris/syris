@@ -1,258 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>syris</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>syris. | calm.sys - systematic solutions for modern chaos</title>
+    <meta
+      name="description"
+      content="calm.sys transforms creative team operations through systematic design. From diagnostic assessment to implementation sprint to transformation layer."
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/design-system.css" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+      /* Minimal Homepage Styles */
+      .hero-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-24) var(--space-6);
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .hero-logo {
+        margin-bottom: var(--space-8);
+      }
+
+      .hero-title {
+        font-size: var(--fs-5xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-6);
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+      }
+
+      .hero-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        margin-bottom: var(--space-12);
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      .hero-cta {
+        margin-bottom: var(--space-16);
+      }
+
+      .hero-cta .btn {
+        margin: 0 var(--space-2);
+      }
+
+      .hero-meta {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-gray-500);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .hero-meta a {
+        color: var(--color-teal);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+      }
+
+      .hero-meta a:hover {
+        color: var(--color-teal-dark);
+      }
+
+      /* Minimal Proof Section */
+      .proof-section {
+        padding: var(--space-24) var(--space-6);
+        background: var(--color-gray-50);
+      }
+
+      .proof-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .proof-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-12);
+        letter-spacing: -0.02em;
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+        margin-bottom: var(--space-16);
+      }
+
+      .proof-card {
+        padding: var(--space-8);
+        border-radius: var(--radius-xl);
+        transition: all var(--transition-base);
+      }
+
+      .proof-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .proof-metric {
+        font-family: var(--font-mono);
+        font-size: var(--fs-4xl);
+        font-weight: 500;
+        color: var(--color-teal);
+        margin-bottom: var(--space-2);
+      }
+
+      .proof-label {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: var(--space-3);
+      }
+
+      .proof-description {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-500);
+        line-height: 1.5;
+      }
+
+      /* Minimal Services Preview */
+      .services-section {
+        padding: var(--space-24) var(--space-6);
+      }
+
+      .services-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .services-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-12);
+        letter-spacing: -0.02em;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+        margin-bottom: var(--space-16);
+      }
+
+      .service-card {
+        padding: var(--space-8);
+        border-radius: var(--radius-xl);
+        transition: all var(--transition-base);
+        text-align: left;
+      }
+
+      .service-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .service-name {
+        font-family: var(--font-mono);
+        font-size: var(--fs-lg);
+        font-weight: 500;
+        color: var(--color-ink);
+        margin-bottom: var(--space-2);
+      }
+
+      .service-timeline {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-teal);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: var(--space-4);
+      }
+
+      .service-description {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        line-height: 1.5;
+        margin-bottom: var(--space-6);
+      }
+
+      .service-features {
+        list-style: none;
+        margin-bottom: var(--space-6);
+      }
+
+      .service-features li {
+        font-size: var(--fs-xs);
+        color: var(--color-gray-500);
+        margin-bottom: var(--space-1);
+        display: flex;
+        align-items: center;
+      }
+
+      .service-features li::before {
+        content: "→";
+        color: var(--color-teal);
+        margin-right: var(--space-2);
+        font-weight: 500;
+      }
+
+      /* Minimal CTA Section */
+      .cta-section {
+        padding: var(--space-24) var(--space-6);
+        background: var(--color-teal);
+        color: var(--color-white);
+        text-align: center;
+      }
+
+      .cta-container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .cta-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .cta-subtitle {
+        font-size: var(--fs-lg);
+        opacity: 0.9;
+        margin-bottom: var(--space-8);
+        font-weight: 400;
+      }
+
+      .cta-button {
+        background: var(--color-white);
+        color: var(--color-ink);
+        padding: var(--space-4) var(--space-8);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        transition: all var(--transition-base);
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Minimal Footer */
+      .footer {
+        padding: var(--space-12) var(--space-6);
+        text-align: center;
+        border-top: 1px solid var(--color-gray-200);
+      }
+
+      .footer-content {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-gray-500);
+      }
+
+      .footer-content a {
+        color: var(--color-teal);
+        text-decoration: none;
+      }
+
+      .footer-content a:hover {
+        color: var(--color-teal-dark);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: var(--space-16) var(--space-4);
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-            background: #FFFFFF;
-            color: #0A0A0A;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+        .hero-title {
+          font-size: var(--fs-4xl);
         }
 
-        /* TANGLED LINES BECOMING PARALLEL */
-        .line-system {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+        .hero-subtitle {
+          font-size: var(--fs-base);
         }
 
-        .line {
-            position: absolute;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #00C9A7, transparent);
-            left: -100%;
-            width: 200%;
-            opacity: 0.15;
+        .hero-cta .btn {
+          display: block;
+          margin: var(--space-2) 0;
+          width: 100%;
         }
 
-        @keyframes organize {
-            0% {
-                transform: rotate(var(--chaos-angle)) translateY(var(--chaos-y));
-                opacity: 0.05;
-            }
-            50% {
-                transform: rotate(calc(var(--chaos-angle) * 0.5)) translateY(calc(var(--chaos-y) * 0.5));
-                opacity: 0.15;
-            }
-            100% {
-                transform: rotate(0deg) translateY(0);
-                opacity: 0.1;
-            }
+        .proof-grid,
+        .services-grid {
+          grid-template-columns: 1fr;
         }
 
-        .line-1 { --chaos-angle: 45deg; --chaos-y: -50px; top: 20%; animation: organize 10s ease-in-out infinite; }
-        .line-2 { --chaos-angle: -30deg; --chaos-y: 40px; top: 30%; animation: organize 10s ease-in-out infinite 0.5s; }
-        .line-3 { --chaos-angle: 60deg; --chaos-y: -30px; top: 40%; animation: organize 10s ease-in-out infinite 1s; }
-        .line-4 { --chaos-angle: -45deg; --chaos-y: 60px; top: 50%; animation: organize 10s ease-in-out infinite 1.5s; }
-        .line-5 { --chaos-angle: 35deg; --chaos-y: -40px; top: 60%; animation: organize 10s ease-in-out infinite 2s; }
-        .line-6 { --chaos-angle: -55deg; --chaos-y: 50px; top: 70%; animation: organize 10s ease-in-out infinite 2.5s; }
-        .line-7 { --chaos-angle: 40deg; --chaos-y: -60px; top: 80%; animation: organize 10s ease-in-out infinite 3s; }
-
-        /* Main content */
-        .container {
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out 0.3s forwards;
-            position: relative;
-            z-index: 10;
+        .proof-section,
+        .services-section,
+        .cta-section {
+          padding: var(--space-16) var(--space-4);
         }
-
-        .logo {
-            width: 120px;
-            height: auto;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Three square dots - chaos to order animation */
-        .square-dots {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            align-items: center;
-            height: 20px;
-            margin-bottom: 1.5rem;
-        }
-
-        .square-dot {
-            width: 5px;
-            height: 5px;
-            background: #00C9A7;
-            animation: chaosToOrder 4s ease-in-out infinite;
-        }
-
-        .square-dot:nth-child(1) { 
-            animation-delay: 0s;
-            --random-x: -20px;
-            --random-y: 15px;
-            --random-rotate: 180deg;
-        }
-        .square-dot:nth-child(2) { 
-            animation-delay: 0.2s;
-            --random-x: 25px;
-            --random-y: -10px;
-            --random-rotate: -90deg;
-        }
-        .square-dot:nth-child(3) { 
-            animation-delay: 0.4s;
-            --random-x: -15px;
-            --random-y: -20px;
-            --random-rotate: 270deg;
-        }
-
-        @keyframes chaosToOrder {
-            0%, 70%, 100% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 0.2;
-            }
-            10% {
-                transform: translate(var(--random-x), var(--random-y)) rotate(var(--random-rotate)) scale(0.8);
-                opacity: 0.4;
-            }
-            30% {
-                transform: translate(calc(var(--random-x) * 0.5), calc(var(--random-y) * 0.5)) rotate(calc(var(--random-rotate) * 0.5)) scale(1.2);
-                opacity: 1;
-            }
-            50% {
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 0.8;
-            }
-        }
-
-        .email {
-            font-size: 0.7rem;
-            font-weight: 300;
-            letter-spacing: 0.02em;
-        }
-
-        .email a {
-            color: #00C9A7;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .email a:hover {
-            opacity: 0.7;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Single organizing dot that moves across */
-        .focus-dot {
-            position: fixed;
-            top: 50%;
-            left: 10%;
-            width: 3px;
-            height: 3px;
-            background: #00C9A7;
-            border-radius: 50%;
-            opacity: 0.4;
-            animation: traverse 10s ease-in-out infinite;
-        }
-
-        @keyframes traverse {
-            0% {
-                left: 10%;
-                transform: translateY(-100px);
-            }
-            25% {
-                left: 30%;
-                transform: translateY(50px);
-            }
-            50% {
-                left: 50%;
-                transform: translateY(0) translateX(-50%);
-            }
-            75% {
-                left: 70%;
-                transform: translateY(-50px);
-            }
-            100% {
-                left: 90%;
-                transform: translateY(0);
-            }
-        }
-
-        /* Subtle grid that appears and fades */
-        .grid-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(#00C9A7 0.5px, transparent 0.5px),
-                linear-gradient(90deg, #00C9A7 0.5px, transparent 0.5px);
-            background-size: 50px 50px;
-            opacity: 0;
-            animation: gridPulse 10s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        @keyframes gridPulse {
-            0%, 100% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 0.03;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-    <!-- Grid overlay -->
-    <div class="grid-overlay"></div>
+  </head>
+  <body>
+    <!-- Minimal Background -->
+    <div class="bg-pattern bg-gradient bg-accent-lines"></div>
 
-    <!-- Lines that organize from chaos to parallel -->
-    <div class="line-system">
-        <div class="line line-1"></div>
-        <div class="line line-2"></div>
-        <div class="line line-3"></div>
-        <div class="line line-4"></div>
-        <div class="line line-5"></div>
-        <div class="line line-6"></div>
-        <div class="line line-7"></div>
-    </div>
-
-    <!-- Organizing dot -->
-    <div class="focus-dot"></div>
-
-    <!-- Main content -->
-    <div class="container">
-        <!-- Your actual logo -->
-        <svg class="logo" viewBox="0 0 1024 314" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1024 174.592H961.49V239.654H1024V174.592Z" fill="#00C9A7"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M79.2554 1.58147C33.9316 9.00743 5.88362 37.1332 6.00609 75.0349C6.13494 114.596 28.5021 132.15 95.9852 145.649C136.452 153.744 143.753 157.83 143.753 172.388C143.753 190.341 127.724 201.553 101.654 201.838C75.1692 202.126 57.4418 191.448 54.5192 173.448L53.7729 168.851L26.8871 168.508L0 168.164L1.2081 176.162C6.07498 208.383 29.6656 232.531 65.9496 242.434C80.2224 246.33 119.711 246.724 133.998 243.115C176.94 232.264 198.829 207.469 198.992 169.489C199.156 131.44 177.621 110.833 127.807 101.373C122.194 100.307 109.352 97.897 99.2701 96.0166C69.8125 90.5247 60.3403 84.1384 60.3403 69.7687C60.3403 61.1614 65.5159 54.0365 75.4614 48.9502C86.2399 43.4366 112.194 43.1533 123.342 48.4246C133.925 53.4305 139.731 60.1166 141.787 69.6641L142.68 73.8102H168.789H194.898L194.096 69.0262C191.024 50.6992 185.404 38.1666 175.306 27.1163C168.413 19.5742 158.111 12.2235 156.142 13.4418C155.426 13.8832 155.213 13.6421 155.668 12.906C156.795 11.0818 142.84 5.6357 130.278 2.99496C116.727 0.14755 92.1644 -0.532401 79.2554 1.58147ZM578.136 1.08393C564.734 3.24882 562.573 3.87521 553.729 8.15908C542.798 13.4533 531.187 25.13 525.662 36.3831L522.004 43.8308L521.651 25.0139L521.299 6.19702H493.904H466.51V122.95V239.702L494.895 239.359L523.28 239.016L523.918 166.231L524.556 93.4461L529.36 83.7276C542.384 57.384 573.325 45.5262 606.498 54.1679C610.262 55.1477 613.614 55.9501 613.944 55.9501C614.274 55.9501 614.391 44.0617 614.2 29.5299L613.856 3.11105L609.391 2.19381C601.679 0.611914 584.78 0.0110465 578.136 1.08393ZM804.807 1.90295C754.049 9.73204 723.818 48.9719 735.116 92.3591C742.492 120.684 764.675 134.315 821.201 145.258C864.328 153.608 872.248 157.908 872.161 172.934C872.048 192.526 849.307 205.07 820.163 201.616C798.125 199.003 785.327 189.313 782.366 172.997L781.497 168.213H754.766H728.033V172.176C728.033 191.972 745.1 218.973 765.139 230.877C804.525 254.276 873.608 250.129 904.945 222.484C933.763 197.06 935.501 150.242 908.561 125.042C894.236 111.642 878.782 105.721 839.658 98.6434C800.338 91.5312 791.325 87.4668 788.07 75.3742C783.636 58.911 797.572 46.1219 821.436 44.7557C846.769 43.3064 863.771 51.6701 868.289 67.8092L869.97 73.8102H895.763H921.556L920.464 66.4748C913.375 18.8611 866.072 -7.54759 804.807 1.90295ZM202.336 9.06739C207.176 21.5694 242.262 111.491 254.724 143.337C263.236 165.088 274.835 194.94 280.5 209.674C286.166 224.409 291.601 238.046 292.581 239.98C294.357 243.487 289.016 260.837 273.097 303.273C271.421 307.741 270.049 311.904 270.049 312.522C270.049 313.14 283.115 313.646 299.085 313.646H328.12L365.361 215.734C385.844 161.883 411.759 93.7114 422.951 64.2423C434.144 34.7731 443.709 9.64657 444.207 8.40657C445.062 6.28122 443.327 6.17023 414.164 6.49299L383.215 6.83488L377.11 24.695C373.753 34.518 361.248 71.2587 349.323 106.341C337.397 141.423 326.968 171.849 326.149 173.954L324.659 177.781L320.838 167.576C318.736 161.962 306.51 128.379 293.667 92.946C280.824 57.5129 268.48 23.4996 266.235 17.3596L262.154 6.19702H231.689H201.224L202.336 9.06739ZM638.733 122.925V239.702L666.812 239.359L694.894 239.016V122.925V6.83488L666.812 6.49171L638.733 6.14854V122.925Z" fill="#0A0A0A"/>
-        </svg>
-        
-        <!-- Three square dots animation -->
-        <div class="square-dots">
-            <div class="square-dot"></div>
-            <div class="square-dot"></div>
-            <div class="square-dot"></div>
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/" class="logo-link">
+          <img
+            src="services/syris.logo.primary.svg"
+            alt="syris."
+            class="logo"
+          />
+        </a>
+        <div class="nav-links">
+          <a href="/" class="nav-link">home</a>
+          <a href="/services.html" class="nav-link">services</a>
+          <a href="/about.html" class="nav-link">about</a>
+          <div class="nav-dropdown">
+            <a href="/calm-sys.html" class="nav-link nav-dropdown-toggle"
+              >calm<span class="text-teal">.</span>sys</a
+            >
+            <div class="nav-dropdown-menu">
+              <a href="/calm-profile.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>profile</a
+              >
+              <a href="/calm-stack.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>stack</a
+              >
+              <a href="/calm-os.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>os</a
+              >
+            </div>
+          </div>
+          <a
+            href="https://calendly.com/syris/30min"
+            target="_blank"
+            class="btn btn-primary"
+            >book call</a
+          >
         </div>
-        
-        <div class="email"><a href="mailto:agent@syris.studio">agent@syris.studio</a></div>
-    </div>
-</body>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <img
+            src="services/syris.logo.primary.svg"
+            alt="syris."
+            class="logo"
+            style="height: 48px"
+          />
+        </div>
+
+        <h1 class="hero-title">
+          calm<span class="text-teal">.</span>sys<span class="text-teal"
+            >.</span
+          >
+        </h1>
+
+        <p class="hero-subtitle">
+          systematic solutions for modern chaos.<br />
+          Transform creative team operations through diagnostic assessment,
+          implementation sprint, and transformation layer.
+        </p>
+
+        <div class="hero-cta">
+          <a href="/calm-profile.html" class="btn btn-primary"
+            >start assessment</a
+          >
+          <a href="/services.html" class="btn btn-secondary"
+            >explore services</a
+          >
+        </div>
+
+        <div class="hero-meta">
+          <a href="mailto:agent@syris.studio">agent@syris.studio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proof Section -->
+    <section class="proof-section">
+      <div class="proof-container">
+        <h2 class="proof-title">
+          proven transformation outcomes<span class="text-teal">.</span>
+        </h2>
+
+        <div class="proof-grid">
+          <div class="proof-card glass">
+            <div class="proof-metric">27%</div>
+            <div class="proof-label">time recovered</div>
+            <div class="proof-description">
+              Average reduction in coordination overhead across transformed
+              teams.
+            </div>
+          </div>
+
+          <div class="proof-card glass">
+            <div class="proof-metric">$291k</div>
+            <div class="proof-label">annual savings</div>
+            <div class="proof-description">
+              Median annual cost savings per team through systematic
+              optimization.
+            </div>
+          </div>
+
+          <div class="proof-card glass">
+            <div class="proof-metric">92%</div>
+            <div class="proof-label">adoption rate</div>
+            <div class="proof-description">
+              Sustained adoption rate of implemented systems after 90 days.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="services-section">
+      <div class="services-container">
+        <h2 class="services-title">
+          calm<span class="text-teal">.</span>sys product suite<span
+            class="text-teal"
+            >.</span
+          >
+        </h2>
+
+        <div class="services-grid">
+          <div class="service-card glass">
+            <div class="service-name">
+              calm<span class="text-teal">.</span>profile
+            </div>
+            <div class="service-timeline">diagnostic snapshot</div>
+            <div class="service-description">
+              Discover your unique workstyle through our scientific assessment.
+            </div>
+            <ul class="service-features">
+              <li>15-question workstyle analysis</li>
+              <li>Archetype identification</li>
+              <li>12-page profile report</li>
+              <li>Workflow templates</li>
+            </ul>
+            <a href="/calm-profile.html" class="btn btn-glass"
+              >start free assessment</a
+            >
+          </div>
+
+          <div class="service-card glass level-2">
+            <div class="service-name">
+              calm<span class="text-teal">.</span>stack
+            </div>
+            <div class="service-timeline">implementation sprint</div>
+            <div class="service-description">
+              Systematic redesign of your team's operations for maximum
+              efficiency.
+            </div>
+            <ul class="service-features">
+              <li>Comprehensive time audit</li>
+              <li>Workflow redesign</li>
+              <li>Automation architecture</li>
+              <li>Team training & adoption</li>
+            </ul>
+            <a href="/calm-stack.html" class="btn btn-glass"
+              >explore methodology</a
+            >
+          </div>
+
+          <div class="service-card glass">
+            <div class="service-name">
+              calm<span class="text-teal">.</span>os
+            </div>
+            <div class="service-timeline">transformation layer</div>
+            <div class="service-description">
+              Ongoing partnership for enterprise teams with continuous
+              optimization.
+            </div>
+            <ul class="service-features">
+              <li>Enterprise-wide assessment</li>
+              <li>Phased implementation</li>
+              <li>Custom tool development</li>
+              <li>Quarterly optimization</li>
+            </ul>
+            <a
+              href="https://calendly.com/syris/30min"
+              target="_blank"
+              class="btn btn-glass"
+              >schedule consultation</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-container">
+        <h2 class="cta-title">
+          ready to eliminate coordination chaos<span class="text-teal">?</span>
+        </h2>
+        <p class="cta-subtitle">
+          Start with our free assessment or schedule a discovery consultation.
+        </p>
+        <a
+          href="https://calendly.com/syris/30min"
+          target="_blank"
+          class="cta-button"
+          >book discovery call</a
+        >
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        syris<span class="text-teal">.</span> © 2025 | calm<span
+          class="text-teal"
+          >.</span
+        >sys - systematic solutions for modern chaos<br />
+        <a href="/">home</a> | <a href="/about.html">about</a> |
+        <a href="/services.html">services</a> |
+        <a href="/calm-profile.html">assessment</a>
+      </div>
+    </footer>
+  </body>
 </html>

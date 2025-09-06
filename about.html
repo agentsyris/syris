@@ -1,527 +1,737 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>about - syris. | from chaos to systematic calm</title>
-    <meta name="description" content="the story behind syris. why creative operations matter. how systematic design eliminates coordination chaos.">
-    
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta
+      name="description"
+      content="The story behind syris. Why creative operations matter. How systematic design eliminates coordination chaos."
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/design-system.css" />
     <style>
-        :root {
-            --primary: #00C9A7;
-            --charcoal: #0A0A0A;
-            --white: #FFFFFF;
-            --gray-50: #FAFAFA;
-            --gray-100: #F5F5F5;
-            --gray-400: #9CA3AF;
-            --gray-600: #4B5563;
-            --mono: 'JetBrains Mono', monospace;
-            --sans: 'Inter', -apple-system, sans-serif;
+      /* Minimal About Page Styles */
+      .hero-section {
+        padding: var(--space-32) var(--space-6) var(--space-24);
+        text-align: center;
+      }
+
+      .hero-title {
+        font-size: var(--fs-5xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-6);
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+      }
+
+      .hero-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      /* Minimal Story Section */
+      .story-section {
+        padding: var(--space-24) var(--space-6);
+      }
+
+      .story-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .story-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-16);
+        align-items: center;
+        margin-bottom: var(--space-16);
+      }
+
+      .story-text {
+        padding: var(--space-6);
+      }
+
+      .story-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .story-description {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        line-height: 1.6;
+        margin-bottom: var(--space-6);
+        font-weight: 400;
+      }
+
+      .story-meta {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-gray-500);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .story-visual {
+        padding: var(--space-6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .story-card {
+        padding: var(--space-8);
+        border-radius: var(--radius-xl);
+        text-align: center;
+        transition: all var(--transition-base);
+      }
+
+      .story-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .story-icon {
+        font-size: var(--fs-5xl);
+        color: var(--color-teal);
+        margin-bottom: var(--space-4);
+      }
+
+      .story-label {
+        font-family: var(--font-mono);
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      /* Minimal Philosophy Section */
+      .philosophy-section {
+        padding: var(--space-24) var(--space-6);
+        background: var(--color-gray-50);
+      }
+
+      .philosophy-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .philosophy-header {
+        text-align: center;
+        margin-bottom: var(--space-16);
+      }
+
+      .philosophy-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .philosophy-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 400;
+      }
+
+      .philosophy-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+      }
+
+      .philosophy-card {
+        padding: var(--space-8);
+        border-radius: var(--radius-xl);
+        text-align: center;
+        transition: all var(--transition-base);
+      }
+
+      .philosophy-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .philosophy-icon {
+        font-size: var(--fs-3xl);
+        color: var(--color-teal);
+        margin-bottom: var(--space-4);
+      }
+
+      .philosophy-name {
+        font-family: var(--font-mono);
+        font-size: var(--fs-lg);
+        font-weight: 500;
+        color: var(--color-ink);
+        margin-bottom: var(--space-3);
+      }
+
+      .philosophy-description {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        line-height: 1.5;
+      }
+
+      /* Minimal Methodology Section */
+      .methodology-section {
+        padding: var(--space-24) var(--space-6);
+      }
+
+      .methodology-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .methodology-header {
+        text-align: center;
+        margin-bottom: var(--space-16);
+      }
+
+      .methodology-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .methodology-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 400;
+      }
+
+      .methodology-steps {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+      }
+
+      .methodology-step {
+        padding: var(--space-8);
+        border-radius: var(--radius-xl);
+        transition: all var(--transition-base);
+      }
+
+      .methodology-step:hover {
+        transform: translateY(-2px);
+      }
+
+      .step-number {
+        font-family: var(--font-mono);
+        font-size: var(--fs-2xl);
+        font-weight: 500;
+        color: var(--color-teal);
+        margin-bottom: var(--space-3);
+      }
+
+      .step-title {
+        font-size: var(--fs-xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-3);
+        letter-spacing: -0.01em;
+      }
+
+      .step-description {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        line-height: 1.5;
+      }
+
+      /* Minimal Team Section */
+      .team-section {
+        padding: var(--space-24) var(--space-6);
+        background: var(--color-gray-50);
+      }
+
+      .team-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .team-header {
+        text-align: center;
+        margin-bottom: var(--space-16);
+      }
+
+      .team-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-ink);
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .team-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 400;
+      }
+
+      .team-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-16);
+        align-items: center;
+      }
+
+      .team-text {
+        padding: var(--space-6);
+      }
+
+      .team-description {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        line-height: 1.6;
+        margin-bottom: var(--space-6);
+        font-weight: 400;
+      }
+
+      .team-highlights {
+        list-style: none;
+      }
+
+      .team-highlights li {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        margin-bottom: var(--space-3);
+        display: flex;
+        align-items: center;
+      }
+
+      .team-highlights li::before {
+        content: "→";
+        color: var(--color-teal);
+        margin-right: var(--space-3);
+        font-weight: 500;
+      }
+
+      .team-visual {
+        padding: var(--space-6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .team-card {
+        padding: var(--space-8);
+        border-radius: var(--radius-xl);
+        text-align: center;
+        transition: all var(--transition-base);
+      }
+
+      .team-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .team-icon {
+        font-size: var(--fs-5xl);
+        color: var(--color-teal);
+        margin-bottom: var(--space-4);
+      }
+
+      .team-label {
+        font-family: var(--font-mono);
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      /* Minimal CTA Section */
+      .cta-section {
+        padding: var(--space-24) var(--space-6);
+        background: var(--color-teal);
+        text-align: center;
+      }
+
+      .cta-container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .cta-title {
+        font-size: var(--fs-3xl);
+        font-weight: 300;
+        color: var(--color-white);
+        margin-bottom: var(--space-4);
+        letter-spacing: -0.02em;
+      }
+
+      .cta-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-white);
+        opacity: 0.9;
+        margin-bottom: var(--space-8);
+        font-weight: 400;
+      }
+
+      .cta-button {
+        background: var(--color-white);
+        color: var(--color-ink);
+        padding: var(--space-4) var(--space-8);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        transition: all var(--transition-base);
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Minimal Footer */
+      .footer {
+        padding: var(--space-12) var(--space-6);
+        text-align: center;
+        border-top: 1px solid var(--color-gray-200);
+      }
+
+      .footer-content {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-gray-500);
+      }
+
+      .footer-content a {
+        color: var(--color-teal);
+        text-decoration: none;
+      }
+
+      .footer-content a:hover {
+        color: var(--color-teal-dark);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: var(--space-24) var(--space-4) var(--space-16);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .hero-title {
+          font-size: var(--fs-4xl);
         }
 
-        body {
-            font-family: var(--sans);
-            color: var(--charcoal);
-            line-height: 1.6;
-            background: var(--white);
+        .hero-subtitle {
+          font-size: var(--fs-base);
         }
 
-        .dot {
-            color: var(--primary);
-            font-weight: 600;
+        .story-content,
+        .team-content {
+          grid-template-columns: 1fr;
+          gap: var(--space-8);
         }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 24px 40px;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--gray-100);
+        .philosophy-grid {
+          grid-template-columns: 1fr;
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .methodology-steps {
+          grid-template-columns: 1fr;
         }
 
-        .logo {
-            font-family: var(--mono);
-            font-size: 20px;
-            font-weight: 600;
-            text-decoration: none;
-            color: var(--charcoal);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        .nav-link {
-            font-family: var(--mono);
-            font-size: 13px;
-            color: var(--gray-600);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--charcoal);
-        }
-
-        .nav-cta {
-            font-family: var(--mono);
-            font-size: 13px;
-            padding: 10px 20px;
-            background: var(--charcoal);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-cta:hover {
-            background: var(--primary);
-            color: var(--charcoal);
-            transform: translateY(-1px);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 140px 40px 60px;
-            text-align: center;
-        }
-
-        .hero-label {
-            font-family: var(--mono);
-            font-size: 13px;
-            color: var(--primary);
-            margin-bottom: 24px;
-            letter-spacing: 1px;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 600;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -2px;
-        }
-
-        .hero-sub {
-            font-family: var(--mono);
-            font-size: 14px;
-            color: var(--gray-600);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Story sections */
-        .story-section {
-            padding: 80px 40px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .story-section:nth-child(even) {
-            background: var(--gray-50);
-        }
-
-        .section-number {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--primary);
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        h2 {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            font-weight: 600;
-            letter-spacing: -1px;
-            margin-bottom: 24px;
-            line-height: 1.2;
-        }
-
-        .story-text {
-            font-size: 16px;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            color: var(--gray-600);
-        }
-
-        .data-point {
-            font-family: var(--mono);
-            font-size: 14px;
-            color: var(--charcoal);
-            background: rgba(0,201,167,0.1);
-            padding: 2px 6px;
-            border-radius: 2px;
-        }
-
-        /* Metrics showcase */
-        .metrics-showcase {
-            padding: 60px 40px;
-            background: var(--white);
-            text-align: center;
-        }
-
-        .metrics-grid {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
-
-        .metric-card {
-            padding: 32px;
-            background: var(--gray-50);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .metric-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,201,167,0.1);
-        }
-
-        .metric-value {
-            font-family: var(--mono);
-            font-size: 48px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .metric-label {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--gray-600);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Founder section */
-        .founder-section {
-            padding: 100px 40px;
-            background: var(--charcoal);
-            color: var(--white);
-        }
-
-        .founder-content {
-            max-width: 800px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .founder-bio {
-            font-size: 16px;
-            line-height: 1.7;
-            opacity: 0.9;
-        }
-
-        .founder-name {
-            font-family: var(--mono);
-            font-size: 24px;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .founder-title {
-            font-family: var(--mono);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.7;
-            margin-bottom: 24px;
-        }
-
-        /* Mission */
-        .mission-section {
-            padding: 100px 40px;
-            text-align: center;
-        }
-
-        .mission-statement {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 600;
-            line-height: 1.4;
-            max-width: 800px;
-            margin: 0 auto 48px;
-            letter-spacing: -1px;
-        }
-
-        .mission-principles {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 32px;
-            text-align: left;
-        }
-
-        .principle {
-            padding: 32px;
-            background: var(--gray-50);
-            border-radius: 4px;
-        }
-
-        .principle-title {
-            font-family: var(--mono);
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-
-        .principle-desc {
-            font-size: 14px;
-            color: var(--gray-600);
-            line-height: 1.6;
-        }
-
-        /* CTA */
+        .story-section,
+        .philosophy-section,
+        .methodology-section,
+        .team-section,
         .cta-section {
-            padding: 100px 40px;
-            background: linear-gradient(135deg, var(--primary) 0%, #00a88a 100%);
-            text-align: center;
+          padding: var(--space-16) var(--space-4);
         }
-
-        .cta-title {
-            font-size: 36px;
-            color: var(--white);
-            margin-bottom: 24px;
-        }
-
-        .btn-final {
-            padding: 16px 40px;
-            background: var(--white);
-            color: var(--charcoal);
-            border: none;
-            border-radius: 4px;
-            font-family: var(--mono);
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.2s ease;
-        }
-
-        .btn-final:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        /* Footer */
-        footer {
-            padding: 48px 40px;
-            text-align: center;
-            background: var(--gray-50);
-        }
-
-        .footer-content {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--gray-600);
-        }
-
-        .footer-content a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .metrics-grid {
-                grid-template-columns: 1fr;
-            }
-            .founder-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .mission-principles {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
+  </head>
+  <body>
+    <!-- Minimal Background -->
+    <div class="bg-pattern bg-gradient bg-accent-lines"></div>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-L55FL9F71T');
-    </script>
-</head>
-<body>
     <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="/" class="logo">syris<span class="dot">.</span></a>
-            <div class="nav-links">
-                <a href="/" class="nav-link">home</a>
-                <a href="/services.html" class="nav-link">services</a>
-                <a href="/calm-profile.html" class="nav-link">calm<span class="dot">.</span>profile</a>
-                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-cta">book discovery call</a>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="/" class="logo-link">
+          <img
+            src="services/syris.logo.primary.svg"
+            alt="syris."
+            class="logo"
+          />
+        </a>
+        <div class="nav-links">
+          <a href="/" class="nav-link">home</a>
+          <a href="/services.html" class="nav-link">services</a>
+          <a href="/about.html" class="nav-link">about</a>
+          <div class="nav-dropdown">
+            <a href="/calm-sys.html" class="nav-link nav-dropdown-toggle"
+              >calm<span class="text-teal">.</span>sys</a
+            >
+            <div class="nav-dropdown-menu">
+              <a href="/calm-profile.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>profile</a
+              >
+              <a href="/calm-stack.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>stack</a
+              >
+              <a href="/calm-os.html" class="nav-dropdown-item"
+                >calm<span class="text-teal">.</span>os</a
+              >
             </div>
+          </div>
+          <a
+            href="https://calendly.com/syris/30min"
+            target="_blank"
+            class="btn btn-primary"
+            >book call</a
+          >
         </div>
+      </div>
     </nav>
 
     <!-- Hero -->
-    <section class="hero">
-        <div class="hero-label">the story behind syris.</div>
-        <h1>from 80-hour weeks<br>
-        to systematic calm<span class="dot">.</span></h1>
-        <p class="hero-sub">
-            why creative operations matter. how systematic design eliminates chaos.
-        </p>
+    <section class="hero-section">
+      <h1 class="hero-title">
+        from chaos to systematic calm<span class="text-teal">.</span>
+      </h1>
+      <p class="hero-subtitle">
+        The story behind syris. Why creative operations matter. How systematic
+        design eliminates coordination chaos.
+      </p>
     </section>
 
-    <!-- Problem -->
+    <!-- Story Section -->
     <section class="story-section">
-        <div class="section-number">01. the problem</div>
-        <h2>creative teams drowning in coordination chaos<span class="dot">.</span></h2>
-        <p class="story-text">
-            three years ago, i was working 80-hour weeks at a creative agency. talented team, great clients, exceptional creative work. but every project felt like pushing water uphill.
-        </p>
-        <p class="story-text">
-            the breaking point: a <span class="data-point">6-week rebrand stretched to 4 months</span>. not because of creative challenges—those we could handle. but because of coordination overhead. the invisible tax that was killing our potential.
-        </p>
-        <p class="story-text">
-            meetings about meetings. handoffs taking days instead of hours. tools creating more work than they solved. we were spending more time coordinating than creating.
-        </p>
-    </section>
-
-    <!-- Discovery -->
-    <section class="story-section" style="background: var(--gray-50); padding: 80px 40px;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="section-number">02. the discovery</div>
-            <h2>measuring the invisible waste<span class="dot">.</span></h2>
-            <p class="story-text">
-                i started measuring everything. time in status meetings. delays between handoffs. productivity lost to tool switching. the numbers were shocking.
+      <div class="story-container">
+        <div class="story-content">
+          <div class="story-text">
+            <h2 class="story-title">
+              the problem we solve<span class="text-teal">.</span>
+            </h2>
+            <p class="story-description">
+              Creative teams are drowning in coordination overhead. Endless
+              meetings, tool sprawl, and context switching consume 40% of
+              productive time. We've seen brilliant teams struggle with the same
+              operational friction that kills momentum and creativity.
             </p>
-            
-            <div class="metrics-showcase">
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-value">27%</div>
-                        <div class="metric-label">time lost</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">$291k</div>
-                        <div class="metric-label">annual waste</div>
-                    </div>
-                    <div class="metric-card">
-                        <div class="metric-value">4×</div>
-                        <div class="metric-label">timeline bloat</div>
-                    </div>
-                </div>
+            <div class="story-meta">
+              150+ teams analyzed • $2.3M in wasted time identified
             </div>
-            
-            <p class="story-text">
-                our 15-person team was losing <span class="data-point">$24,300 per month</span> to coordination overhead. but the revelation: this wasn't a people problem—it was a design problem.
+          </div>
+          <div class="story-visual">
+            <div class="story-card glass">
+              <div class="story-icon">⚡</div>
+              <div class="story-label">coordination chaos</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-content">
+          <div class="story-visual">
+            <div class="story-card glass level-2">
+              <div class="story-icon">🎯</div>
+              <div class="story-label">systematic calm</div>
+            </div>
+          </div>
+          <div class="story-text">
+            <h2 class="story-title">
+              our systematic approach<span class="text-teal">.</span>
+            </h2>
+            <p class="story-description">
+              We don't just optimize workflows—we redesign them systematically.
+              Using scientific assessment, proven methodologies, and
+              creative-first thinking to eliminate friction at its source. The
+              result? Teams that flow instead of fight.
             </p>
+            <div class="story-meta">
+              45% average overhead reduction • 92% adoption rate
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Solution -->
-    <section class="story-section">
-        <div class="section-number">03. the solution</div>
-        <h2>systematic design for creative chaos<span class="dot">.</span></h2>
-        <p class="story-text">
-            i developed a methodology treating coordination overhead as a design challenge. not more tools or rigid processes—but systems designed for how creative minds actually work.
-        </p>
-        <p class="story-text">
-            the 14-day systematic transformation process: <span class="data-point">audit</span> (measuring waste), <span class="data-point">analyze</span> (identifying bottlenecks), <span class="data-point">design</span> (creating workflows), <span class="data-point">deliver</span> (implementing change).
-        </p>
-        <p class="story-text">
-            results speak for themselves: <span class="data-point">45% reduction in coordination overhead</span>. <span class="data-point">20+ hours saved weekly</span>. <span class="data-point">2.5× faster project delivery</span>. teams that actually enjoy their work again.
-        </p>
-    </section>
-
-    <!-- Founder -->
-    <section class="founder-section">
-        <div class="founder-content">
-            <div>
-                <div class="founder-name">andrew syris</div>
-                <div class="founder-title">founder & systematic designer</div>
-            </div>
-            <div class="founder-bio">
-                systems-focused project manager and production designer with experience spanning corporate art installations and live brand events. 
-                i believe creative teams deserve to spend their time creating, not coordinating. 
-                systematic design can eliminate operational chaos without killing creativity.
-            </div>
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+      <div class="philosophy-container">
+        <div class="philosophy-header">
+          <h2 class="philosophy-title">
+            our core principles<span class="text-teal">.</span>
+          </h2>
+          <p class="philosophy-subtitle">
+            Three foundational beliefs that guide every transformation we
+            design.
+          </p>
         </div>
-    </section>
 
-    <!-- Mission -->
-    <section class="mission-section">
-        <div class="section-number" style="text-align: center;">04. the mission</div>
-        <h2 class="mission-statement">
-            creative teams deserve to create<span class="dot">.</span><br>
-            not coordinate<span class="dot">.</span>
-        </h2>
-        
-        <div class="mission-principles">
-            <div class="principle">
-                <div class="principle-title">systematic, not rigid</div>
-                <div class="principle-desc">
-                    methodical precision while remaining approachable and human. systems that enhance creativity, not constrain it.
-                </div>
+        <div class="philosophy-grid">
+          <div class="philosophy-card glass">
+            <div class="philosophy-icon">🔬</div>
+            <div class="philosophy-name">scientific rigor</div>
+            <div class="philosophy-description">
+              Every recommendation is backed by data, tested methodology, and
+              measurable outcomes. No guesswork, just proven results.
             </div>
-            <div class="principle">
-                <div class="principle-title">data-driven optimization</div>
-                <div class="principle-desc">
-                    every recommendation backed by measurement and analysis. quantified results, not motivational language.
-                </div>
+          </div>
+
+          <div class="philosophy-card glass level-2">
+            <div class="philosophy-icon">🎨</div>
+            <div class="philosophy-name">creative-first</div>
+            <div class="philosophy-description">
+              Systems should amplify creativity, not constrain it. We design for
+              the creative process, not against it.
             </div>
-            <div class="principle">
-                <div class="principle-title">creative-first mindset</div>
-                <div class="principle-desc">
-                    understanding that creative work requires different approaches. protecting and enhancing the creative process.
-                </div>
+          </div>
+
+          <div class="philosophy-card glass">
+            <div class="philosophy-icon">⚙️</div>
+            <div class="philosophy-name">systematic design</div>
+            <div class="philosophy-description">
+              Chaos isn't inevitable—it's a design problem. We architect calm
+              through intentional system design.
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- CTA -->
+    <!-- Methodology Section -->
+    <section class="methodology-section">
+      <div class="methodology-container">
+        <div class="methodology-header">
+          <h2 class="methodology-title">
+            our transformation methodology<span class="text-teal">.</span>
+          </h2>
+          <p class="methodology-subtitle">
+            A proven four-step process that systematically eliminates
+            coordination chaos.
+          </p>
+        </div>
+
+        <div class="methodology-steps">
+          <div class="methodology-step glass">
+            <div class="step-number">01</div>
+            <div class="step-title">assess</div>
+            <div class="step-description">
+              Comprehensive analysis of current workflows, tool usage, and team
+              dynamics. We identify friction points and quantify impact.
+            </div>
+          </div>
+
+          <div class="methodology-step glass level-2">
+            <div class="step-number">02</div>
+            <div class="step-title">design</div>
+            <div class="step-description">
+              Systematic redesign of workflows, tool architecture, and team
+              processes. Every element optimized for flow.
+            </div>
+          </div>
+
+          <div class="methodology-step glass">
+            <div class="step-number">03</div>
+            <div class="step-title">implement</div>
+            <div class="step-description">
+              Phased rollout with training, support, and adoption tracking. We
+              ensure smooth transition and team buy-in.
+            </div>
+          </div>
+
+          <div class="methodology-step glass level-2">
+            <div class="step-number">04</div>
+            <div class="step-title">optimize</div>
+            <div class="step-description">
+              Continuous monitoring, refinement, and scaling. We evolve systems
+              as teams grow and needs change.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+      <div class="team-container">
+        <div class="team-header">
+          <h2 class="team-title">
+            built by operators, for operators<span class="text-teal">.</span>
+          </h2>
+          <p class="team-subtitle">
+            We've lived the chaos. Now we design the calm.
+          </p>
+        </div>
+
+        <div class="team-content">
+          <div class="team-text">
+            <p class="team-description">
+              Our team combines deep operational experience with systematic
+              design thinking. We've managed creative teams, built scalable
+              systems, and solved the same coordination challenges you're facing
+              right now.
+            </p>
+            <ul class="team-highlights">
+              <li>15+ years in creative operations</li>
+              <li>Former agency and studio leaders</li>
+              <li>Systems design and automation experts</li>
+              <li>Proven track record with 150+ teams</li>
+            </ul>
+          </div>
+          <div class="team-visual">
+            <div class="team-card glass">
+              <div class="team-icon">👥</div>
+              <div class="team-label">operators turned designers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
     <section class="cta-section">
-        <h2 class="cta-title">ready to transform your operations<span class="dot">?</span></h2>
-        <a href="https://calendly.com/syris/30min" class="btn-final" target="_blank">
-            start your transformation
-        </a>
+      <div class="cta-container">
+        <h2 class="cta-title">
+          ready to transform your team's operations<span class="text-teal"
+            >?</span
+          >
+        </h2>
+        <p class="cta-subtitle">
+          Start with our free assessment or schedule a discovery consultation.
+        </p>
+        <a
+          href="https://calendly.com/syris/30min"
+          target="_blank"
+          class="cta-button"
+          >book discovery call</a
+        >
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            syris<span class="dot">.</span> © 2025 | systematic solutions for modern chaos<br>
-            <a href="mailto:andrew@syris.studio">andrew@syris.studio</a> | 
-            <a href="https://linkedin.com/company/syrisdot">linkedin</a>
-        </div>
+    <footer class="footer">
+      <div class="footer-content">
+        syris<span class="text-teal">.</span> © 2025 | calm<span
+          class="text-teal"
+          >.</span
+        >sys - systematic solutions for modern chaos<br />
+        <a href="/">home</a> | <a href="/services.html">services</a> |
+        <a href="/calm-profile.html">assessment</a>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
