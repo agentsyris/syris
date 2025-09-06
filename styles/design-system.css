@@ -24,7 +24,7 @@
     sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", Monaco, "Cascadia Code", monospace;
 
-  /* Font Sizes - Minimal Scale */
+  /* Font Sizes - Refined Premium Scale */
   --fs-xs: 0.75rem; /* 12px */
   --fs-sm: 0.875rem; /* 14px */
   --fs-base: 1rem; /* 16px */
@@ -35,6 +35,8 @@
   --fs-4xl: 2.25rem; /* 36px */
   --fs-5xl: 3rem; /* 48px */
   --fs-6xl: 3.75rem; /* 60px */
+  --fs-7xl: 4.5rem; /* 72px */
+  --fs-8xl: 5.25rem; /* 84px */
 
   /* Spacing - Minimal Scale */
   --space-1: 0.25rem; /* 4px */
@@ -70,15 +72,18 @@
   --transition-base: 250ms ease;
   --transition-slow: 350ms ease;
 
-  /* Glass Effects - Minimal */
+  /* Glass Effects - Premium Multi-Layer */
   --glass-bg-rgb: 255, 255, 255;
   --glass-border-rgb: 255, 255, 255;
-  --glass-1-bg-alpha: 0.03;
-  --glass-1-border-alpha: 0.05;
-  --glass-1-blur: 8px;
-  --glass-2-bg-alpha: 0.05;
-  --glass-2-border-alpha: 0.08;
-  --glass-2-blur: 12px;
+  --glass-1-bg-alpha: 0.04;
+  --glass-1-border-alpha: 0.08;
+  --glass-1-blur: 12px;
+  --glass-2-bg-alpha: 0.06;
+  --glass-2-border-alpha: 0.12;
+  --glass-2-blur: 16px;
+  --glass-3-bg-alpha: 0.08;
+  --glass-3-border-alpha: 0.15;
+  --glass-3-blur: 20px;
 }
 
 /* Reset */
@@ -136,6 +141,14 @@ h6 {
   box-shadow: var(--shadow-md);
 }
 
+.glass.level-3 {
+  background: rgba(var(--glass-bg-rgb), var(--glass-3-bg-alpha));
+  border: 1px solid rgba(var(--glass-border-rgb), var(--glass-3-border-alpha));
+  backdrop-filter: blur(var(--glass-3-blur));
+  -webkit-backdrop-filter: blur(var(--glass-3-blur));
+  box-shadow: var(--shadow-lg);
+}
+
 /* Fallback for browsers without backdrop-filter support */
 @supports not (backdrop-filter: blur(8px)) {
   .glass {
@@ -146,6 +159,11 @@ h6 {
   .glass.level-2 {
     background: rgba(var(--glass-bg-rgb), 0.2);
     border: 1px solid rgba(var(--glass-border-rgb), 0.25);
+  }
+
+  .glass.level-3 {
+    background: rgba(var(--glass-bg-rgb), 0.25);
+    border: 1px solid rgba(var(--glass-border-rgb), 0.3);
   }
 }
 
