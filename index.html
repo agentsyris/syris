@@ -21,13 +21,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: var(--space-32) var(--space-8);
+        padding: var(--space-48) var(--space-8) var(--space-40);
         text-align: center;
         animation: fadeInUp 1s ease-out;
+        position: relative;
       }
       .hero-content {
-        max-width: 900px;
+        max-width: 1000px;
         margin: 0 auto;
+        width: 100%;
       }
 
       .hero-title {
@@ -36,7 +38,7 @@
         color: var(--color-ink);
         letter-spacing: -0.06em;
         line-height: 0.95;
-        margin-bottom: var(--space-16);
+        margin-bottom: var(--space-20);
         text-align: center;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
@@ -45,21 +47,26 @@
       .hero-subtitle {
         font-size: var(--fs-xl);
         color: var(--color-gray-600);
-        margin-bottom: var(--space-16);
+        margin-bottom: var(--space-20);
         line-height: 1.7;
         font-weight: 400;
         letter-spacing: -0.01em;
-        max-width: 700px;
+        max-width: 800px;
         margin-left: auto;
         margin-right: auto;
       }
 
       .hero-cta {
-        margin-bottom: var(--space-16);
+        margin-bottom: var(--space-20);
+        display: flex;
+        gap: var(--space-4);
+        justify-content: center;
+        flex-wrap: wrap;
       }
 
       .hero-cta .btn {
-        margin: 0 var(--space-2);
+        flex: 0 0 auto;
+        min-width: 200px;
       }
 
       .hero-tagline {
@@ -68,7 +75,7 @@
         color: var(--color-teal);
         text-transform: uppercase;
         letter-spacing: 0.15em;
-        margin-bottom: var(--space-8);
+        margin-bottom: var(--space-12);
         font-weight: 500;
       }
 
@@ -84,7 +91,7 @@
 
       /* Luxurious Proof Section */
       .proof-section {
-        padding: var(--space-40) var(--space-8);
+        padding: var(--space-48) var(--space-8);
         background: linear-gradient(
           180deg,
           var(--color-gray-50) 0%,
@@ -110,7 +117,7 @@
       }
 
       .proof-container {
-        max-width: 1000px;
+        max-width: 1200px;
         margin: 0 auto;
         text-align: center;
       }
@@ -119,7 +126,7 @@
         font-size: var(--fs-4xl);
         font-weight: 200;
         color: var(--color-ink);
-        margin-bottom: var(--space-8);
+        margin-bottom: var(--space-12);
         letter-spacing: -0.03em;
         text-rendering: optimizeLegibility;
       }
@@ -127,9 +134,9 @@
       .proof-subtitle {
         font-size: var(--fs-xl);
         color: var(--color-gray-600);
-        margin-bottom: var(--space-4);
+        margin-bottom: var(--space-8);
         font-weight: 400;
-        max-width: 700px;
+        max-width: 800px;
         margin-left: auto;
         margin-right: auto;
         line-height: 1.6;
@@ -138,9 +145,9 @@
       .proof-description {
         font-size: var(--fs-lg);
         color: var(--color-gray-500);
-        margin-bottom: var(--space-16);
+        margin-bottom: var(--space-20);
         font-weight: 300;
-        max-width: 500px;
+        max-width: 600px;
         margin-left: auto;
         margin-right: auto;
         line-height: 1.5;
@@ -149,14 +156,19 @@
       .proof-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-8);
-        margin-bottom: var(--space-16);
+        gap: var(--space-12);
+        margin-bottom: var(--space-20);
+        align-items: start;
       }
 
       .proof-card {
-        padding: var(--space-8);
+        padding: var(--space-10);
         border-radius: var(--radius-xl);
         transition: all var(--transition-base);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       .proof-card:hover {
@@ -165,10 +177,11 @@
 
       .proof-metric {
         font-family: var(--font-mono);
-        font-size: var(--fs-4xl);
+        font-size: var(--fs-5xl);
         font-weight: 500;
         color: var(--color-teal);
-        margin-bottom: var(--space-2);
+        margin-bottom: var(--space-4);
+        line-height: 1;
       }
 
       .proof-label {
@@ -176,18 +189,20 @@
         color: var(--color-gray-600);
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        margin-bottom: var(--space-3);
+        margin-bottom: var(--space-4);
+        font-weight: 500;
       }
 
-      .proof-description {
+      .proof-card-description {
         font-size: var(--fs-sm);
         color: var(--color-gray-500);
         line-height: 1.5;
+        margin-top: auto;
       }
 
       /* Luxurious Services Preview */
       .services-section {
-        padding: var(--space-40) var(--space-8);
+        padding: var(--space-48) var(--space-8);
         position: relative;
       }
 
@@ -207,7 +222,7 @@
       }
 
       .services-container {
-        max-width: 1000px;
+        max-width: 1200px;
         margin: 0 auto;
         text-align: center;
       }
@@ -216,7 +231,7 @@
         font-size: var(--fs-4xl);
         font-weight: 200;
         color: var(--color-ink);
-        margin-bottom: var(--space-8);
+        margin-bottom: var(--space-12);
         letter-spacing: -0.03em;
         text-rendering: optimizeLegibility;
       }
@@ -224,9 +239,9 @@
       .services-subtitle {
         font-size: var(--fs-lg);
         color: var(--color-gray-600);
-        margin-bottom: var(--space-16);
+        margin-bottom: var(--space-20);
         font-weight: 400;
-        max-width: 600px;
+        max-width: 700px;
         margin-left: auto;
         margin-right: auto;
         line-height: 1.6;
@@ -235,15 +250,20 @@
       .services-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-6);
-        margin-bottom: var(--space-16);
+        gap: var(--space-10);
+        margin-bottom: var(--space-20);
+        align-items: stretch;
       }
 
       .service-card {
-        padding: var(--space-8);
+        padding: var(--space-10);
         border-radius: var(--radius-xl);
         transition: all var(--transition-base);
         text-align: left;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       .service-card:hover {
@@ -252,10 +272,10 @@
 
       .service-name {
         font-family: var(--font-mono);
-        font-size: var(--fs-lg);
+        font-size: var(--fs-xl);
         font-weight: 500;
         color: var(--color-ink);
-        margin-bottom: var(--space-2);
+        margin-bottom: var(--space-3);
       }
 
       .service-timeline {
@@ -264,39 +284,44 @@
         color: var(--color-teal);
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        margin-bottom: var(--space-4);
+        margin-bottom: var(--space-6);
+        font-weight: 500;
       }
 
       .service-description {
-        font-size: var(--fs-sm);
+        font-size: var(--fs-base);
         color: var(--color-gray-600);
         line-height: 1.5;
-        margin-bottom: var(--space-6);
+        margin-bottom: var(--space-8);
+        flex-grow: 1;
       }
 
       .service-features {
         list-style: none;
-        margin-bottom: var(--space-6);
+        margin-bottom: var(--space-8);
+        flex-grow: 1;
       }
 
       .service-features li {
-        font-size: var(--fs-xs);
+        font-size: var(--fs-sm);
         color: var(--color-gray-500);
-        margin-bottom: var(--space-1);
+        margin-bottom: var(--space-2);
         display: flex;
-        align-items: center;
+        align-items: flex-start;
       }
 
       .service-features li::before {
         content: "→";
         color: var(--color-teal);
-        margin-right: var(--space-2);
+        margin-right: var(--space-3);
         font-weight: 500;
+        margin-top: 0.1em;
+        flex-shrink: 0;
       }
 
       /* Luxurious CTA Section */
       .cta-section {
-        padding: var(--space-40) var(--space-8);
+        padding: var(--space-48) var(--space-8);
         background: linear-gradient(
           135deg,
           var(--color-teal) 0%,
@@ -324,14 +349,14 @@
       }
 
       .cta-container {
-        max-width: 600px;
+        max-width: 700px;
         margin: 0 auto;
       }
 
       .cta-title {
         font-size: var(--fs-4xl);
         font-weight: 200;
-        margin-bottom: var(--space-6);
+        margin-bottom: var(--space-8);
         letter-spacing: -0.03em;
         text-rendering: optimizeLegibility;
       }
@@ -339,25 +364,26 @@
       .cta-subtitle {
         font-size: var(--fs-lg);
         opacity: 0.9;
-        margin-bottom: var(--space-4);
+        margin-bottom: var(--space-6);
         font-weight: 400;
       }
 
       .cta-description {
         font-size: var(--fs-base);
         opacity: 0.8;
-        margin-bottom: var(--space-8);
+        margin-bottom: var(--space-12);
         font-weight: 300;
       }
 
       .cta-button {
         background: var(--color-white);
         color: var(--color-ink);
-        padding: var(--space-4) var(--space-8);
+        padding: var(--space-5) var(--space-10);
         border-radius: var(--radius-md);
         text-decoration: none;
         font-family: var(--font-mono);
         font-weight: 500;
+        font-size: var(--fs-base);
         transition: all var(--transition-base);
         display: inline-block;
       }
@@ -369,7 +395,7 @@
 
       /* Luxurious Footer */
       .footer {
-        padding: var(--space-20) var(--space-8);
+        padding: var(--space-24) var(--space-8);
         text-align: center;
         border-top: 1px solid var(--color-gray-200);
         background: var(--color-white);
@@ -405,7 +431,7 @@
       /* Responsive */
       @media (max-width: 768px) {
         .hero-section {
-          padding: var(--space-24) var(--space-6);
+          padding: var(--space-32) var(--space-6) var(--space-24);
         }
 
         .hero-title {
@@ -413,7 +439,17 @@
         }
 
         .hero-subtitle {
-          font-size: var(--fs-base);
+          font-size: var(--fs-lg);
+        }
+
+        .hero-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hero-cta .btn {
+          width: 100%;
+          max-width: 300px;
         }
 
         .proof-subtitle {
@@ -424,21 +460,21 @@
           font-size: var(--fs-base);
         }
 
-        .hero-cta .btn {
-          display: block;
-          margin: var(--space-2) 0;
-          width: 100%;
-        }
-
         .proof-grid,
         .services-grid {
           grid-template-columns: 1fr;
+          gap: var(--space-8);
         }
 
         .proof-section,
         .services-section,
         .cta-section {
-          padding: var(--space-24) var(--space-6);
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .proof-card,
+        .service-card {
+          padding: var(--space-8);
         }
       }
     </style>
@@ -538,7 +574,7 @@
           <div class="proof-card glass">
             <div class="proof-metric">40%</div>
             <div class="proof-label">faster delivery</div>
-            <div class="proof-description">
+            <div class="proof-card-description">
               Average project completion time reduction through systematic
               workflow optimization.
             </div>
@@ -547,7 +583,7 @@
           <div class="proof-card glass">
             <div class="proof-metric">−60%</div>
             <div class="proof-label">revision cycles</div>
-            <div class="proof-description">
+            <div class="proof-card-description">
               Reduction in excessive revisions through clear approval roles and
               streamlined feedback.
             </div>
@@ -556,7 +592,7 @@
           <div class="proof-card glass">
             <div class="proof-metric">+15pts</div>
             <div class="proof-label">margin lift</div>
-            <div class="proof-description">
+            <div class="proof-card-description">
               Average margin improvement through reduced coordination overhead
               and faster delivery.
             </div>
