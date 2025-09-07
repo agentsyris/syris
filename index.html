@@ -756,6 +756,149 @@
         letter-spacing: 0;
       }
 
+      /* Pricing Section */
+      .pricing-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .pricing-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .pricing-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-16);
+        margin-bottom: var(--space-20);
+      }
+
+      .pricing-tier {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        padding: var(--space-8);
+        text-align: center;
+      }
+
+      .pricing-tier.recommended .tier-name {
+        color: var(--syris-teal);
+      }
+
+      .tier-name {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .tier-price {
+        font-family: var(--font-mono);
+        font-size: var(--fs-4xl);
+        font-weight: 500;
+        color: var(--ink);
+        margin: 0;
+        letter-spacing: 0.05em;
+        line-height: 1;
+      }
+
+      .tier-description {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink-60);
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0;
+        line-height: 1.4;
+      }
+
+      .tier-features {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        text-align: left;
+      }
+
+      .tier-features li {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-transform: lowercase;
+        letter-spacing: 0;
+        position: relative;
+        padding-left: var(--space-6);
+        line-height: 1.4;
+      }
+
+      .tier-features li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+        width: 4px;
+        height: 1px;
+        background: var(--ink-40);
+      }
+
+      .tier-cta {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        letter-spacing: 0;
+        padding: var(--space-3) var(--space-6);
+        border: 1px solid var(--ink);
+        background: var(--white);
+        transition: all var(--duration) var(--ease);
+        display: inline-block;
+        margin-top: var(--space-4);
+      }
+
+      .tier-cta:hover {
+        border-color: var(--syris-teal);
+        color: var(--ink);
+      }
+
+      .pricing-guarantee {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        font-weight: 400;
+        color: var(--ink-60);
+        text-align: center;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+        margin-top: var(--space-8);
+        padding-top: var(--space-8);
+        border-top: 1px solid var(--ink-10);
+      }
+
       /* Contact Section */
       .contact-section {
         padding: var(--space-48) var(--space-8);
@@ -1044,6 +1187,32 @@
           font-size: var(--fs-base);
           max-width: 280px;
         }
+
+        .pricing-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          gap: var(--space-12);
+        }
+
+        .pricing-tier {
+          padding: var(--space-6);
+        }
+
+        .tier-price {
+          font-size: var(--fs-3xl);
+        }
+
+        .tier-features {
+          text-align: center;
+        }
+
+        .tier-features li {
+          padding-left: var(--space-4);
+        }
+
       }
     </style>
   </head>
@@ -1366,6 +1535,73 @@
                 >
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Section -->
+      <section class="pricing-section">
+        <div class="pricing-container">
+          <div class="pricing-grid">
+            <div class="pricing-tier">
+              <h3 class="tier-name">calm.profile</h3>
+              <div class="tier-price">$495</div>
+              <div class="tier-description">
+                fast diagnostic that pays for itself
+              </div>
+              <ul class="tier-features">
+                <li>12-page diagnostic report</li>
+                <li>workstyle archetype analysis</li>
+                <li>roi & cost of inaction</li>
+                <li>30-minute debrief call</li>
+                <li>fee-credit toward calm.stack</li>
+              </ul>
+              <a href="https://calendly.com/syris/30min" target="_blank" class="tier-cta">
+                book diagnostic
+              </a>
+            </div>
+
+            <div class="pricing-tier recommended">
+              <h3 class="tier-name">calm.stack</h3>
+              <div class="tier-price">$2,500</div>
+              <div class="tier-description">
+                systematic redesign in 14 days
+              </div>
+              <ul class="tier-features">
+                <li>comprehensive time audit</li>
+                <li>workflow redesign</li>
+                <li>automation architecture</li>
+                <li>team training & adoption</li>
+                <li>implementation support</li>
+                <li>30-day optimization</li>
+              </ul>
+              <a href="https://calendly.com/syris/30min" target="_blank" class="tier-cta">
+                start transformation
+              </a>
+            </div>
+
+            <div class="pricing-tier">
+              <h3 class="tier-name">calm.os</h3>
+              <div class="tier-price">$5,000</div>
+              <div class="tier-description">
+                ongoing partnership for enterprise
+              </div>
+              <ul class="tier-features">
+                <li>enterprise-wide assessment</li>
+                <li>phased implementation</li>
+                <li>custom tool development</li>
+                <li>quarterly optimization</li>
+                <li>dedicated success manager</li>
+                <li>unlimited team support</li>
+              </ul>
+              <a href="https://calendly.com/syris/30min" target="_blank" class="tier-cta">
+                discuss enterprise
+              </a>
+            </div>
+          </div>
+          
+          <div class="pricing-guarantee">
+            roi guarantee: 2.5× return within 90 days or full refund
           </div>
         </div>
       </section>
