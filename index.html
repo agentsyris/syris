@@ -59,14 +59,54 @@
       .hero-cta {
         margin-bottom: var(--space-20);
         display: flex;
-        gap: var(--space-4);
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-8);
         justify-content: center;
-        flex-wrap: wrap;
       }
 
-      .hero-cta .btn {
-        flex: 0 0 auto;
-        min-width: 200px;
+      .hero-primary-btn {
+        background: var(--ink);
+        color: var(--white);
+        padding: var(--space-4) var(--space-8);
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 400;
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        transition: all var(--transition-base);
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0;
+        text-transform: lowercase;
+        position: relative;
+      }
+
+      .hero-primary-btn:hover {
+        background: var(--ink);
+        color: var(--white);
+        border-bottom: 1px solid var(--syris-teal);
+        transform: none;
+        box-shadow: none;
+      }
+
+      .hero-secondary-link {
+        margin-top: var(--space-4);
+      }
+
+      .hero-process-link {
+        color: var(--ink-60);
+        text-decoration: none;
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        transition: color var(--transition-base);
+        text-transform: lowercase;
+      }
+
+      .hero-process-link:hover {
+        color: var(--syris-teal);
       }
 
       .hero-tagline {
@@ -526,17 +566,16 @@
 
           <div class="hero-cta">
             <a
-              href="https://calmprofile.vercel.app"
+              href="https://calendly.com/syris/30min"
               target="_blank"
-              class="btn btn-primary"
-              >start your $495 diagnostic</a
+              class="btn btn-primary hero-primary-btn"
+              >book workflow audit</a
             >
-            <a href="/sample-report.html" class="btn btn-secondary"
-              >view sample report</a
-            >
-            <a href="/services.html" class="btn btn-secondary"
-              >explore services</a
-            >
+            <div class="hero-secondary-link">
+              <a href="/method.html" class="hero-process-link"
+                >see our process →</a
+              >
+            </div>
           </div>
 
           <div class="hero-meta">
@@ -679,9 +718,9 @@
                 <li>automation architecture</li>
                 <li>team training & adoption</li>
               </ul>
-            <a href="/services.html" class="btn btn-glass"
-              >explore methodology</a
-            >
+              <a href="/services.html" class="btn btn-glass"
+                >explore methodology</a
+              >
             </div>
 
             <div class="service-card glass">
@@ -738,7 +777,8 @@
           >.</span
         >sys - systematic solutions for modern chaos<br />
         <a href="/">home</a> | <a href="/services.html">services</a> |
-        <a href="/about.html">about</a> | <a href="/privacy-policy.html">privacy policy</a> |
+        <a href="/about.html">about</a> |
+        <a href="/privacy-policy.html">privacy policy</a> |
         <a href="mailto:agent@syris.studio">contact</a>
       </div>
     </footer>
