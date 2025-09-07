@@ -424,6 +424,15 @@ button:focus,
   outline-offset: 2px;
 }
 
+/* Enhanced focus indicators for better accessibility */
+.nav-link:focus-visible,
+.btn:focus-visible,
+.cta-button:focus-visible {
+  outline: 2px solid var(--syris-teal);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 1px var(--white);
+}
+
 /* Reduce Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -465,6 +474,11 @@ button:focus,
   box-shadow: var(--shadow-2);
 }
 
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-1);
+}
+
 .btn-secondary {
   background: transparent;
   color: var(--ink-60);
@@ -478,6 +492,11 @@ button:focus,
   transform: translateY(-1px);
 }
 
+.btn-secondary:active {
+  transform: translateY(0);
+  background: var(--ink-10);
+}
+
 .btn-glass {
   background: var(--white);
   color: var(--ink);
@@ -488,6 +507,18 @@ button:focus,
   background: var(--ink-5);
   transform: translateY(-1px);
   box-shadow: var(--shadow-1);
+}
+
+/* Improved disabled state visibility */
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 /* Animations - Subtle */
