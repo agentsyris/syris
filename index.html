@@ -554,7 +554,170 @@
         }
       }
 
-      /* Responsive */
+      /* Contact Section */
+      .contact-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .contact-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .contact-header {
+        text-align: center;
+        margin-bottom: var(--space-20);
+      }
+
+      .contact-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        color: var(--ink);
+        margin-bottom: var(--space-8);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+        font-family: var(--font-sans);
+        text-transform: lowercase;
+      }
+
+      .contact-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--ink-60);
+        font-weight: 400;
+        font-family: var(--font-sans);
+        text-transform: lowercase;
+        line-height: 1.6;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-16);
+        align-items: start;
+      }
+
+      .contact-calendly {
+        background: var(--white);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-1);
+      }
+
+      .calendly-wrapper {
+        position: relative;
+        width: 100%;
+        height: 600px;
+      }
+
+      .calendly-wrapper iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Custom Calendly Styling */
+      .calendly-wrapper iframe {
+        filter: grayscale(100%) contrast(1.2);
+      }
+
+      .contact-form-wrapper {
+        padding: var(--space-8);
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .form-label {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .form-input {
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 400;
+        color: var(--ink);
+        background: transparent;
+        border: 1px solid var(--ink);
+        border-radius: var(--radius-sm);
+        padding: var(--space-3) var(--space-4);
+        transition: all var(--duration) var(--ease);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--syris-teal);
+        box-shadow: none;
+      }
+
+      .form-input::placeholder {
+        color: var(--ink-40);
+        text-transform: lowercase;
+      }
+
+      .form-submit {
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 400;
+        color: var(--ink);
+        background: var(--white);
+        border: 1px solid var(--ink);
+        border-radius: var(--radius-sm);
+        padding: var(--space-3) var(--space-6);
+        cursor: pointer;
+        transition: all var(--duration) var(--ease);
+        text-transform: lowercase;
+        letter-spacing: 0;
+        margin-top: var(--space-4);
+      }
+
+      .form-submit:hover {
+        border-color: var(--syris-teal);
+        background: var(--white);
+        color: var(--ink);
+      }
+
+      .form-detail {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--ink-60);
+        text-align: center;
+        margin-top: var(--space-4);
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+      }
       @media (max-width: 768px) {
         .header-container {
           padding: 0 var(--space-6);
@@ -618,6 +781,31 @@
         .proof-card,
         .service-card {
           padding: var(--space-8);
+        }
+
+        .contact-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .contact-title {
+          font-size: var(--fs-3xl);
+        }
+
+        .contact-subtitle {
+          font-size: var(--fs-base);
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: var(--space-12);
+        }
+
+        .calendly-wrapper {
+          height: 500px;
+        }
+
+        .contact-form-wrapper {
+          padding: var(--space-6);
         }
       }
     </style>
@@ -846,22 +1034,90 @@
         </div>
       </section>
 
-      <!-- CTA Section -->
-      <section class="cta-section">
-        <div class="cta-container">
-          <h2 class="cta-title">
-            ready to reclaim creative time<span class="text-teal">?</span>
-          </h2>
-          <p class="cta-subtitle">
-            $495 diagnostic pays for itself by exposing concrete leaks.
-          </p>
-          <p class="cta-description">fee-credit toward calm.stack sprint.</p>
-          <a
-            href="https://calendly.com/syris/30min"
-            target="_blank"
-            class="cta-button"
-            >book discovery call</a
-          >
+      <!-- Contact Section -->
+      <section class="contact-section">
+        <div class="contact-container">
+          <div class="contact-header">
+            <h2 class="contact-title">
+              ready to eliminate workflow chaos<span class="text-teal">?</span>
+            </h2>
+            <p class="contact-subtitle">
+              14-day implementation. measurable results.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <!-- Left Column: Calendly -->
+            <div class="contact-calendly">
+              <div class="calendly-wrapper">
+                <iframe
+                  src="https://calendly.com/syris/30min"
+                  width="100%"
+                  height="600"
+                  frameborder="0"
+                  title="Schedule a call"
+                ></iframe>
+              </div>
+            </div>
+
+            <!-- Right Column: Contact Form -->
+            <div class="contact-form-wrapper">
+              <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                  <label for="name" class="form-label">name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="company" class="form-label">company</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    class="form-input"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="team-size" class="form-label">team size</label>
+                  <select
+                    id="team-size"
+                    name="team-size"
+                    class="form-input"
+                    required
+                  >
+                    <option value="">select team size</option>
+                    <option value="1-5">1-5 people</option>
+                    <option value="6-15">6-15 people</option>
+                    <option value="16-50">16-50 people</option>
+                    <option value="50+">50+ people</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="form-submit">send message</button>
+
+                <p class="form-detail">response within 24 hours</p>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </main>
