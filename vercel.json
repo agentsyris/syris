@@ -1,31 +1,25 @@
 {
   "version": 2,
-  "builds": [
+  "public": true,
+  "rewrites": [
     {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/index.html"
+      "source": "/maintenance-control",
+      "destination": "/maintenance-control.html"
     },
     {
-      "src": "/maintenance-control",
-      "dest": "/maintenance-control.html"
-    },
-    {
-      "src": "/protected-access",
-      "dest": "/protected-access.html"
+      "source": "/protected-access",
+      "destination": "/protected-access.html"
     }
   ],
-  "env": {
-    "MAINTENANCE_MODE": "@maintenance_mode"
-  },
-  "functions": {
-    "index.html": {
-      "runtime": "nodejs18.x"
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
     }
-  }
+  ]
 }
