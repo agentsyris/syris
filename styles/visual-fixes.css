@@ -1,0 +1,166 @@
+/* 
+ * Visual Design Fixes for syris.studios
+ * Addresses top 10 consistency issues
+ * Safe, non-breaking changes only
+ */
+
+/* 1. Standardize Heading Hierarchy */
+.hero-title,
+.proof-title,
+.services-title,
+.method-hero h1,
+.sample-hero h1,
+.about-hero h1 {
+  font-size: var(--fs-5xl);
+}
+
+/* 2. Reduce Teal Overuse - Replace with Gray */
+.text-teal,
+.proof-metric,
+.method-data-metric,
+.result-metric,
+.step-number,
+.method-number {
+  color: var(--color-gray-600);
+}
+
+/* 3. Standardize Border Radius */
+.glass,
+.proof-card,
+.service-card,
+.method-card,
+.sample-card,
+.philosophy-card,
+.methodology-step {
+  border-radius: var(--radius-lg);
+}
+
+/* 4. Improve Mobile Spacing */
+@media (max-width: 768px) {
+  .hero-section,
+  .proof-section,
+  .services-section,
+  .method-hero,
+  .sample-hero,
+  .about-hero {
+    padding: var(--space-32) var(--space-6) var(--space-24);
+  }
+
+  .proof-card,
+  .service-card,
+  .method-card {
+    padding: var(--space-6);
+  }
+}
+
+/* 5. Standardize Button Styling */
+.btn-primary,
+.btn-secondary,
+.btn-glass,
+.cta-button,
+.method-cta-button,
+.sample-cta-button {
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+}
+
+/* 6. Simplify Typography Scale */
+.hero-subtitle,
+.proof-subtitle,
+.services-subtitle,
+.method-hero p,
+.sample-hero p {
+  font-size: var(--fs-lg);
+}
+
+/* 7. Standardize Hover Shadows */
+.glass:hover,
+.btn-primary:hover,
+.proof-card:hover,
+.service-card:hover,
+.method-card:hover {
+  box-shadow: var(--shadow-2);
+}
+
+/* 8. Consistent Navigation Spacing */
+.nav-links {
+  gap: var(--space-6);
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    gap: var(--space-6);
+  }
+}
+
+/* 9. Consolidate Color Tokens */
+.color-gray-600,
+.ink-60 {
+  color: var(--ink-60);
+}
+
+/* 10. Standardize Card Padding */
+.proof-card,
+.service-card,
+.method-card,
+.sample-card,
+.philosophy-card,
+.methodology-step {
+  padding: var(--space-8);
+}
+
+/* Additional Consistency Fixes */
+
+/* Standardize Section Padding */
+.proof-section,
+.services-section,
+.method-process,
+.method-data,
+.sample-preview {
+  padding: var(--space-48) var(--space-8);
+}
+
+/* Consistent Grid Gaps */
+.proof-grid,
+.services-grid,
+.method-grid,
+.sample-grid {
+  gap: var(--space-8);
+}
+
+/* Standardize Form Elements */
+.form-select,
+.email-input {
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+}
+
+/* Consistent Focus States */
+.btn:focus,
+.nav-link:focus,
+.form-select:focus,
+.email-input:focus {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Mobile Grid Adjustments */
+@media (max-width: 768px) {
+  .proof-grid,
+  .services-grid,
+  .method-grid,
+  .sample-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+/* Print Optimizations */
+@media print {
+  .glass,
+  .proof-card,
+  .service-card {
+    box-shadow: none;
+    border: 1px solid var(--ink-20);
+  }
+}
