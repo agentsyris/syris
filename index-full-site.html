@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>syris. | calm.sys - systematic solutions for modern chaos</title>
+    <meta
+      name="description"
+      content="calm.sys transforms creative team operations through systematic design. From diagnostic assessment to implementation sprint to transformation layer."
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/design-system.css" />
+    <style>
+      /* Minimal Sticky Header */
+      .sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: transparent;
+        transition: all var(--duration) var(--ease);
+        padding: var(--space-6) 0;
+      }
+
+      .sticky-header.scrolled {
+        background: var(--white);
+        box-shadow: var(--shadow-1);
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-8);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header-logo {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .header-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--space-8);
+      }
+
+      .header-link {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        transition: all var(--duration) var(--ease);
+        padding: var(--space-2) 0;
+        position: relative;
+      }
+
+      .header-link:hover {
+        color: var(--ink);
+      }
+
+      .header-link:hover::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--syris-teal);
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-2);
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+
+      .hamburger-line {
+        width: 20px;
+        height: 1px;
+        background: var(--ink);
+        transition: all var(--duration) var(--ease);
+      }
+
+      /* Minimal Homepage Styles */
+      .hero-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: calc(var(--space-48) + var(--space-6)) var(--space-8)
+          var(--space-40);
+        text-align: center;
+        animation: fadeInUp 1s ease-out;
+        position: relative;
+      }
+      .hero-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .hero-title {
+        font-size: var(--fs-8xl);
+        font-weight: 200;
+        color: var(--color-ink);
+        letter-spacing: -0.06em;
+        line-height: 0.95;
+        margin-bottom: var(--space-20);
+        text-align: center;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .hero-subtitle {
+        font-size: var(--fs-xl);
+        color: var(--color-gray-600);
+        margin-bottom: var(--space-20);
+        line-height: 1.7;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-cta {
+        margin-bottom: var(--space-20);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-8);
+        justify-content: center;
+      }
+
+      .hero-primary-btn {
+        background: var(--ink);
+        color: var(--white);
+        padding: var(--space-4) var(--space-8);
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 400;
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        transition: all var(--transition-base);
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0;
+        text-transform: lowercase;
+        position: relative;
+      }
+
+      .hero-primary-btn:hover {
+        background: var(--ink);
+        color: var(--white);
+        border-bottom: 1px solid var(--syris-teal);
+        transform: none;
+        box-shadow: none;
+      }
+
+      .hero-secondary-link {
+        margin-top: var(--space-4);
+      }
+
+      .hero-process-link {
+        color: var(--ink-60);
+        text-decoration: none;
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        transition: color var(--transition-base);
+        text-transform: lowercase;
+      }
+
+      .hero-process-link:hover {
+        color: var(--syris-teal);
+      }
+
+      .hero-tagline {
+        font-family: var(--font-mono);
+        font-size: var(--fs-sm);
+        color: var(--color-teal);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: var(--space-12);
+        font-weight: 500;
+      }
+
+      .hero-meta a {
+        color: var(--color-teal);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+      }
+
+      .hero-meta a:hover {
+        color: var(--color-teal-dark);
+      }
+
+      /* Luxurious Proof Section */
+      .proof-section {
+        padding: var(--space-48) var(--space-8);
+        background: linear-gradient(
+          180deg,
+          var(--color-gray-50) 0%,
+          var(--color-white) 50%,
+          var(--color-gray-50) 100%
+        );
+        position: relative;
+      }
+
+      .proof-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .proof-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .proof-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        color: var(--color-ink);
+        margin-bottom: var(--space-12);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+      }
+
+      .proof-subtitle {
+        font-size: var(--fs-xl);
+        color: var(--color-gray-600);
+        margin-bottom: var(--space-8);
+        font-weight: 400;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+      }
+
+      .proof-description {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-500);
+        margin-bottom: var(--space-20);
+        font-weight: 300;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.5;
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-12);
+        margin-bottom: var(--space-20);
+        align-items: start;
+      }
+
+      .proof-card {
+        padding: var(--space-10);
+        border-radius: var(--radius-xl);
+        transition: all var(--transition-base);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .proof-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .proof-metric {
+        font-family: var(--font-mono);
+        font-size: var(--fs-5xl);
+        font-weight: 500;
+        color: var(--color-teal);
+        margin-bottom: var(--space-4);
+        line-height: 1;
+      }
+
+      .proof-label {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-600);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: var(--space-4);
+        font-weight: 500;
+      }
+
+      .proof-card-description {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-500);
+        line-height: 1.5;
+        margin-top: auto;
+      }
+
+      /* Luxurious Services Preview */
+      .services-section {
+        padding: var(--space-48) var(--space-8);
+        position: relative;
+      }
+
+      .services-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .services-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .services-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        color: var(--color-ink);
+        margin-bottom: var(--space-12);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+      }
+
+      .services-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--color-gray-600);
+        margin-bottom: var(--space-20);
+        font-weight: 400;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-10);
+        margin-bottom: var(--space-20);
+        align-items: stretch;
+      }
+
+      .service-card {
+        padding: var(--space-10);
+        border-radius: var(--radius-xl);
+        transition: all var(--transition-base);
+        text-align: left;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .service-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .service-name {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xl);
+        font-weight: 500;
+        color: var(--color-ink);
+        margin-bottom: var(--space-3);
+      }
+
+      .service-timeline {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-teal);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: var(--space-6);
+        font-weight: 500;
+      }
+
+      .service-description {
+        font-size: var(--fs-base);
+        color: var(--color-gray-600);
+        line-height: 1.5;
+        margin-bottom: var(--space-8);
+        flex-grow: 1;
+      }
+
+      .service-features {
+        list-style: none;
+        margin-bottom: var(--space-8);
+        flex-grow: 1;
+      }
+
+      .service-features li {
+        font-size: var(--fs-sm);
+        color: var(--color-gray-500);
+        margin-bottom: var(--space-2);
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .service-features li::before {
+        content: "→";
+        color: var(--color-teal);
+        margin-right: var(--space-3);
+        font-weight: 500;
+        margin-top: 0.1em;
+        flex-shrink: 0;
+      }
+
+      /* Luxurious CTA Section */
+      .cta-section {
+        padding: var(--space-48) var(--space-8);
+        background: linear-gradient(
+          135deg,
+          var(--color-teal) 0%,
+          var(--color-teal-600) 50%,
+          var(--color-teal) 100%
+        );
+        color: var(--color-white);
+        text-align: center;
+        position: relative;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.2) 50%,
+          transparent 100%
+        );
+      }
+
+      .cta-container {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .cta-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        margin-bottom: var(--space-8);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+      }
+
+      .cta-subtitle {
+        font-size: var(--fs-lg);
+        opacity: 0.9;
+        margin-bottom: var(--space-6);
+        font-weight: 400;
+      }
+
+      .cta-description {
+        font-size: var(--fs-base);
+        opacity: 0.8;
+        margin-bottom: var(--space-12);
+        font-weight: 300;
+      }
+
+      .cta-button {
+        background: var(--color-white);
+        color: var(--color-ink);
+        padding: var(--space-5) var(--space-10);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        font-size: var(--fs-base);
+        transition: all var(--transition-base);
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Luxurious Footer */
+      .footer {
+        padding: var(--space-24) var(--space-8);
+        text-align: center;
+        border-top: 1px solid var(--color-gray-200);
+        background: var(--color-white);
+      }
+
+      .footer-content {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--color-gray-500);
+      }
+
+      .footer-content a {
+        color: var(--color-teal);
+        text-decoration: none;
+      }
+
+      .footer-content a:hover {
+        color: var(--color-teal-dark);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Key Metrics Section */
+      .metrics-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .metrics-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .metrics-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-16);
+        align-items: center;
+        text-align: center;
+      }
+
+      .metric-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+
+      .metric-value {
+        font-family: var(--font-mono);
+        font-size: var(--fs-7xl);
+        font-weight: 500;
+        color: var(--ink);
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+
+      .metric-number {
+        display: inline-block;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .metric-symbol {
+        color: var(--syris-teal);
+        font-family: var(--font-mono);
+        font-size: var(--fs-7xl);
+        font-weight: 500;
+        margin-left: 0.1em;
+      }
+
+      .metric-unit {
+        font-family: var(--font-mono);
+        font-size: var(--fs-7xl);
+        font-weight: 500;
+        color: var(--ink);
+        margin-left: 0.1em;
+      }
+
+      .metric-description {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink-60);
+        line-height: 1.5;
+        text-transform: lowercase;
+        letter-spacing: 0;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      /* Animation classes */
+      .metric-number.animate {
+        animation: countUp 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes countUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Testimonials Section */
+      .testimonials-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .testimonials-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .testimonials-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonials-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        color: var(--ink);
+        margin-bottom: var(--space-20);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+        font-family: var(--font-sans);
+        text-transform: lowercase;
+        text-align: center;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-12);
+        align-items: start;
+      }
+
+      .testimonial {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: left;
+      }
+
+      .testimonial-quote {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.6;
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .testimonial-metric {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xl);
+        font-weight: 500;
+        color: var(--ink);
+        margin: var(--space-2) 0;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+      }
+
+      .testimonial-metric .percentage {
+        color: var(--syris-teal);
+      }
+
+      .testimonial-attribution {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        margin-top: var(--space-2);
+      }
+
+      .testimonial-name {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink-60);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .testimonial-company {
+        font-family: var(--font-sans);
+        font-size: var(--fs-xs);
+        font-weight: 400;
+        color: var(--ink-40);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      /* Pricing Section */
+      .pricing-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .pricing-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .pricing-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-16);
+        margin-bottom: var(--space-20);
+      }
+
+      .pricing-tier {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+        padding: var(--space-8);
+        text-align: center;
+      }
+
+      .pricing-tier.recommended .tier-name {
+        color: var(--syris-teal);
+      }
+
+      .tier-name {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .tier-price {
+        font-family: var(--font-mono);
+        font-size: var(--fs-4xl);
+        font-weight: 500;
+        color: var(--ink);
+        margin: 0;
+        letter-spacing: 0.05em;
+        line-height: 1;
+      }
+
+      .tier-description {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink-60);
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0;
+        line-height: 1.4;
+      }
+
+      .tier-features {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        text-align: left;
+      }
+
+      .tier-features li {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-transform: lowercase;
+        letter-spacing: 0;
+        position: relative;
+        padding-left: var(--space-6);
+        line-height: 1.4;
+      }
+
+      .tier-features li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+        width: 4px;
+        height: 1px;
+        background: var(--ink-40);
+      }
+
+      .tier-cta {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        letter-spacing: 0;
+        padding: var(--space-3) var(--space-6);
+        border: 1px solid var(--ink);
+        background: var(--white);
+        transition: all var(--duration) var(--ease);
+        display: inline-block;
+        margin-top: var(--space-4);
+      }
+
+      .tier-cta:hover {
+        border-color: var(--syris-teal);
+        color: var(--ink);
+      }
+
+      .pricing-guarantee {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        font-weight: 400;
+        color: var(--ink-60);
+        text-align: center;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+        margin-top: var(--space-8);
+        padding-top: var(--space-8);
+        border-top: 1px solid var(--ink-10);
+      }
+
+      /* Contact Section */
+      .contact-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .contact-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .contact-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .contact-header {
+        text-align: center;
+        margin-bottom: var(--space-20);
+      }
+
+      .contact-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        color: var(--ink);
+        margin-bottom: var(--space-8);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+        font-family: var(--font-sans);
+        text-transform: lowercase;
+      }
+
+      .contact-subtitle {
+        font-size: var(--fs-lg);
+        color: var(--ink-60);
+        font-weight: 400;
+        font-family: var(--font-sans);
+        text-transform: lowercase;
+        line-height: 1.6;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-16);
+        align-items: start;
+      }
+
+      .contact-calendly {
+        background: var(--white);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-1);
+      }
+
+      .calendly-wrapper {
+        position: relative;
+        width: 100%;
+        height: 600px;
+      }
+
+      .calendly-wrapper iframe {
+        border: none;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Custom Calendly Styling */
+      .calendly-wrapper iframe {
+        filter: grayscale(100%) contrast(1.2);
+      }
+
+      .contact-form-wrapper {
+        padding: var(--space-8);
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .form-label {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .form-input {
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 400;
+        color: var(--ink);
+        background: transparent;
+        border: 1px solid var(--ink);
+        border-radius: var(--radius-sm);
+        padding: var(--space-3) var(--space-4);
+        transition: all var(--duration) var(--ease);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--syris-teal);
+        box-shadow: none;
+      }
+
+      .form-input::placeholder {
+        color: var(--ink-40);
+        text-transform: lowercase;
+      }
+
+      .form-submit {
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 400;
+        color: var(--ink);
+        background: var(--white);
+        border: 1px solid var(--ink);
+        border-radius: var(--radius-sm);
+        padding: var(--space-3) var(--space-6);
+        cursor: pointer;
+        transition: all var(--duration) var(--ease);
+        text-transform: lowercase;
+        letter-spacing: 0;
+        margin-top: var(--space-4);
+      }
+
+      .form-submit:hover {
+        border-color: var(--syris-teal);
+        background: var(--white);
+        color: var(--ink);
+      }
+
+      .form-detail {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xs);
+        color: var(--ink-60);
+        text-align: center;
+        margin-top: var(--space-4);
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+      }
+      @media (max-width: 768px) {
+        .header-container {
+          padding: 0 var(--space-6);
+        }
+
+        .header-nav {
+          gap: var(--space-4);
+        }
+
+        .header-link {
+          display: none;
+        }
+
+        .mobile-menu-toggle {
+          display: flex;
+        }
+
+        .hero-section {
+          padding: calc(var(--space-32) + var(--space-6)) var(--space-6)
+            var(--space-24);
+        }
+
+        .hero-title {
+          font-size: var(--fs-6xl);
+        }
+
+        .hero-subtitle {
+          font-size: var(--fs-lg);
+        }
+
+        .hero-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hero-cta .btn {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .proof-subtitle {
+          font-size: var(--fs-lg);
+        }
+
+        .services-subtitle {
+          font-size: var(--fs-base);
+        }
+
+        .proof-grid,
+        .services-grid {
+          grid-template-columns: 1fr;
+          gap: var(--space-8);
+        }
+
+        .proof-section,
+        .services-section,
+        .cta-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .proof-card,
+        .service-card {
+          padding: var(--space-8);
+        }
+
+        .contact-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .contact-title {
+          font-size: var(--fs-3xl);
+        }
+
+        .contact-subtitle {
+          font-size: var(--fs-base);
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: var(--space-12);
+        }
+
+        .calendly-wrapper {
+          height: 500px;
+        }
+
+        .contact-form-wrapper {
+          padding: var(--space-6);
+        }
+
+        .testimonials-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .testimonials-title {
+          font-size: var(--fs-3xl);
+        }
+
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+          gap: var(--space-8);
+        }
+
+        .testimonial-quote {
+          font-size: var(--fs-base);
+        }
+
+        .metrics-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .metrics-grid {
+          grid-template-columns: 1fr;
+          gap: var(--space-12);
+        }
+
+        .metric-value {
+          font-size: var(--fs-5xl);
+        }
+
+        .metric-description {
+          font-size: var(--fs-base);
+          max-width: 280px;
+        }
+
+        .pricing-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          gap: var(--space-12);
+        }
+
+        .pricing-tier {
+          padding: var(--space-6);
+        }
+
+        .tier-price {
+          font-size: var(--fs-3xl);
+        }
+
+        .tier-features {
+          text-align: center;
+        }
+
+        .tier-features li {
+          padding-left: var(--space-4);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">skip to main content</a>
+
+    <!-- Minimal Background -->
+    <div class="bg-pattern bg-gradient"></div>
+
+    <!-- Minimal Sticky Header -->
+    <header class="sticky-header" role="banner">
+      <div class="header-container">
+        <a href="/" class="header-logo">syrıs.</a>
+        <div class="header-nav">
+          <a href="/services.html" class="header-link">services</a>
+          <a href="/method.html" class="header-link">method</a>
+          <a href="/about.html" class="header-link">about</a>
+          <a
+            href="https://calendly.com/syris/30min"
+            target="_blank"
+            class="header-link"
+            >schedule call</a
+          >
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main id="main-content" role="main">
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="hero-tagline">systematic solutions for modern chaos</div>
+          <h1 class="hero-title">calm<span class="text-teal">.</span>sys</h1>
+
+          <p class="hero-subtitle">
+            eliminate 40% of coordination overhead in 90 days.<br />
+            <span class="text-teal">more creative time, less admin.</span>
+            projects 40% faster, revisions −60%, margins +12–15pts.
+          </p>
+
+          <div class="hero-cta">
+            <a
+              href="https://calendly.com/syris/30min"
+              target="_blank"
+              class="btn btn-primary hero-primary-btn"
+              >book workflow audit</a
+            >
+            <div class="hero-secondary-link">
+              <a href="/method.html" class="hero-process-link"
+                >see our process →</a
+              >
+            </div>
+          </div>
+
+          <div class="hero-meta">
+            <a href="mailto:agent@syris.studio">agent@syris.studio</a>
+          </div>
+
+          <!-- Sample Report Preview -->
+          <div
+            style="
+              margin-top: var(--space-16);
+              padding: var(--space-8);
+              background: rgba(0, 201, 167, 0.05);
+              border-radius: var(--radius-xl);
+              border: 1px solid rgba(0, 201, 167, 0.1);
+            "
+          >
+            <div style="text-align: center; margin-bottom: var(--space-4)">
+              <a
+                href="/sample-report.html"
+                style="
+                  color: var(--color-teal);
+                  text-decoration: none;
+                  font-family: var(--font-mono);
+                  font-size: var(--fs-sm);
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                "
+              >
+                view sample report →
+              </a>
+            </div>
+            <div
+              style="
+                font-size: var(--fs-sm);
+                color: var(--color-gray-600);
+                text-align: center;
+              "
+            >
+              see exactly what you'll get: 12-page diagnostic with roi analysis,
+              workstyle insights, and 30/90-day implementation plan
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Metrics Section -->
+      <section class="metrics-section">
+        <div class="metrics-container">
+          <div class="metrics-grid">
+            <div class="metric-item">
+              <div class="metric-value">
+                <span class="metric-number" data-target="2.5">0</span
+                ><span class="metric-symbol">×</span>
+              </div>
+              <div class="metric-description">
+                faster project delivery through systematic workflow optimization
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-value">
+                <span class="metric-number" data-target="45">0</span
+                ><span class="metric-unit">%</span>
+              </div>
+              <div class="metric-description">
+                reduction in coordination overhead and unnecessary meetings
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-value">
+                <span class="metric-number" data-target="14">0</span
+                ><span class="metric-unit"> days</span>
+              </div>
+              <div class="metric-description">
+                average implementation timeline for measurable workflow
+                improvements
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proof Section -->
+      <section class="proof-section">
+        <div class="proof-container">
+          <h2 class="proof-title">
+            quantified transformation outcomes<span class="text-teal">.</span>
+          </h2>
+          <p class="proof-subtitle">
+            diagnose before you prescribe. fast, low-risk x-ray that pays for
+            itself by exposing concrete leaks.
+          </p>
+          <p class="proof-description">
+            measured outcomes: hours back, cycles reduced, margin lift.
+          </p>
+
+          <div class="proof-grid">
+            <div class="proof-card glass">
+              <div class="proof-metric">40%</div>
+              <div class="proof-label">faster delivery</div>
+              <div class="proof-card-description">
+                Average project completion time reduction through systematic
+                workflow optimization.
+              </div>
+            </div>
+
+            <div class="proof-card glass">
+              <div class="proof-metric">−60%</div>
+              <div class="proof-label">revision cycles</div>
+              <div class="proof-card-description">
+                Reduction in excessive revisions through clear approval roles
+                and streamlined feedback.
+              </div>
+            </div>
+
+            <div class="proof-card glass">
+              <div class="proof-metric">+15pts</div>
+              <div class="proof-label">margin lift</div>
+              <div class="proof-card-description">
+                Average margin improvement through reduced coordination overhead
+                and faster delivery.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Preview -->
+      <section class="services-section">
+        <div class="services-container">
+          <h2 class="services-title">
+            calm<span class="text-teal">.</span>sys product suite<span
+              class="text-teal"
+              >.</span
+            >
+          </h2>
+          <p class="services-subtitle">
+            systematic transformation through three integrated offerings.
+          </p>
+
+          <div class="services-grid">
+            <div class="service-card glass">
+              <div class="service-name">
+                calm<span class="text-teal">.</span>profile
+              </div>
+              <div class="service-timeline">$495 diagnostic</div>
+              <div class="service-description">
+                fast, low-risk x-ray that pays for itself by exposing concrete
+                leaks.
+              </div>
+              <ul class="service-features">
+                <li>12-page diagnostic report</li>
+                <li>workstyle archetype analysis</li>
+                <li>roi & cost of inaction</li>
+                <li>30-minute debrief call</li>
+              </ul>
+              <a
+                href="https://calmprofile.vercel.app"
+                target="_blank"
+                class="btn btn-glass"
+                >explore your calm.profile</a
+              >
+            </div>
+
+            <div class="service-card glass level-2">
+              <div class="service-name">
+                calm<span class="text-teal">.</span>stack
+              </div>
+              <div class="service-timeline">implementation sprint</div>
+              <div class="service-description">
+                systematic redesign of your team's operations for maximum
+                efficiency.
+              </div>
+              <ul class="service-features">
+                <li>comprehensive time audit</li>
+                <li>workflow redesign</li>
+                <li>automation architecture</li>
+                <li>team training & adoption</li>
+              </ul>
+              <a href="/services.html" class="btn btn-glass"
+                >explore methodology</a
+              >
+            </div>
+
+            <div class="service-card glass">
+              <div class="service-name">
+                calm<span class="text-teal">.</span>os
+              </div>
+              <div class="service-timeline">transformation layer</div>
+              <div class="service-description">
+                ongoing partnership for enterprise teams with continuous
+                optimization.
+              </div>
+              <ul class="service-features">
+                <li>enterprise-wide assessment</li>
+                <li>phased implementation</li>
+                <li>custom tool development</li>
+                <li>quarterly optimization</li>
+              </ul>
+              <a
+                href="https://calendly.com/syris/30min"
+                target="_blank"
+                class="btn btn-glass"
+                >schedule consultation</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="testimonials-section">
+        <div class="testimonials-container">
+          <h2 class="testimonials-title">results from creative teams</h2>
+
+          <div class="testimonials-grid">
+            <div class="testimonial">
+              <p class="testimonial-quote">
+                we eliminated 47% of our internal meetings within the first
+                month. the team now has actual creative time instead of constant
+                coordination overhead.
+              </p>
+              <div class="testimonial-metric">
+                -<span class="percentage">47</span>% meetings
+              </div>
+              <div class="testimonial-attribution">
+                <span class="testimonial-name">sarah chen</span>
+                <span class="testimonial-company"
+                  >creative director, pixel studio</span
+                >
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <p class="testimonial-quote">
+                project delivery went from 6 weeks to 3.5 weeks average. clients
+                are happier, margins are better, and the team is less stressed.
+              </p>
+              <div class="testimonial-metric">
+                -<span class="percentage">42</span>% delivery time
+              </div>
+              <div class="testimonial-attribution">
+                <span class="testimonial-name">marcus rivera</span>
+                <span class="testimonial-company"
+                  >founder, design collective</span
+                >
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <p class="testimonial-quote">
+                revision cycles dropped from 8 rounds to 3 on average. clear
+                approval workflows eliminated the endless back-and-forth.
+              </p>
+              <div class="testimonial-metric">
+                -<span class="percentage">63</span>% revisions
+              </div>
+              <div class="testimonial-attribution">
+                <span class="testimonial-name">alex kim</span>
+                <span class="testimonial-company"
+                  >head of design, tech startup</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Section -->
+      <section class="pricing-section">
+        <div class="pricing-container">
+          <div class="pricing-grid">
+            <div class="pricing-tier">
+              <h3 class="tier-name">calm.profile</h3>
+              <div class="tier-price">$495</div>
+              <div class="tier-description">
+                fast diagnostic that pays for itself
+              </div>
+              <ul class="tier-features">
+                <li>12-page diagnostic report</li>
+                <li>workstyle archetype analysis</li>
+                <li>roi & cost of inaction</li>
+                <li>30-minute debrief call</li>
+                <li>fee-credit toward calm.stack</li>
+              </ul>
+              <a
+                href="https://calendly.com/syris/30min"
+                target="_blank"
+                class="tier-cta"
+              >
+                book diagnostic
+              </a>
+            </div>
+
+            <div class="pricing-tier recommended">
+              <h3 class="tier-name">calm.stack</h3>
+              <div class="tier-price">$2,500</div>
+              <div class="tier-description">systematic redesign in 14 days</div>
+              <ul class="tier-features">
+                <li>comprehensive time audit</li>
+                <li>workflow redesign</li>
+                <li>automation architecture</li>
+                <li>team training & adoption</li>
+                <li>implementation support</li>
+                <li>30-day optimization</li>
+              </ul>
+              <a
+                href="https://calendly.com/syris/30min"
+                target="_blank"
+                class="tier-cta"
+              >
+                start transformation
+              </a>
+            </div>
+
+            <div class="pricing-tier">
+              <h3 class="tier-name">calm.os</h3>
+              <div class="tier-price">$15-25k</div>
+              <div class="tier-description">
+                ongoing partnership for enterprise
+              </div>
+              <ul class="tier-features">
+                <li>enterprise-wide assessment</li>
+                <li>phased implementation</li>
+                <li>custom tool development</li>
+                <li>quarterly optimization</li>
+                <li>dedicated success manager</li>
+                <li>unlimited team support</li>
+              </ul>
+              <a
+                href="https://calendly.com/syris/30min"
+                target="_blank"
+                class="tier-cta"
+              >
+                discuss enterprise
+              </a>
+            </div>
+          </div>
+
+          <div class="pricing-guarantee">
+            roi guarantee: 2.5× return within 90 days or full refund
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="contact-section">
+        <div class="contact-container">
+          <div class="contact-header">
+            <h2 class="contact-title">
+              ready to eliminate workflow chaos<span class="text-teal">?</span>
+            </h2>
+            <p class="contact-subtitle">
+              14-day implementation. measurable results.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <!-- Left Column: Calendly -->
+            <div class="contact-calendly">
+              <div class="calendly-wrapper">
+                <iframe
+                  src="https://calendly.com/syris/30min"
+                  width="100%"
+                  height="600"
+                  frameborder="0"
+                  title="Schedule a call"
+                ></iframe>
+              </div>
+            </div>
+
+            <!-- Right Column: Contact Form -->
+            <div class="contact-form-wrapper">
+              <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                  <label for="name" class="form-label">name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-input"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-input"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="company" class="form-label">company</label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    class="form-input"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="team-size" class="form-label">team size</label>
+                  <select
+                    id="team-size"
+                    name="team-size"
+                    class="form-input"
+                    required
+                  >
+                    <option value="">select team size</option>
+                    <option value="1-5">1-5 people</option>
+                    <option value="6-15">6-15 people</option>
+                    <option value="16-50">16-50 people</option>
+                    <option value="50+">50+ people</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="form-submit">send message</button>
+
+                <p class="form-detail">response within 24 hours</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-content">
+        syris<span class="text-teal">.</span> © 2025 | calm<span
+          class="text-teal"
+          >.</span
+        >sys - systematic solutions for modern chaos<br />
+        <a href="/">home</a> | <a href="/services.html">services</a> |
+        <a href="/about.html">about</a> |
+        <a href="/privacy-policy.html">privacy policy</a> |
+        <a href="mailto:agent@syris.studio">contact</a>
+      </div>
+    </footer>
+
+    <script>
+      // Sticky header scroll behavior
+      const header = document.querySelector(".sticky-header");
+
+      function handleScroll() {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      }
+
+      window.addEventListener("scroll", handleScroll);
+
+      // Mobile menu toggle
+      const mobileToggle = document.querySelector(".mobile-menu-toggle");
+
+      if (mobileToggle) {
+        mobileToggle.addEventListener("click", function () {
+          // For now, just redirect to schedule call
+          window.open("https://calendly.com/syris/30min", "_blank");
+        });
+      }
+
+      // Metrics counter animation
+      function animateCounters() {
+        const counters = document.querySelectorAll(".metric-number");
+
+        counters.forEach((counter) => {
+          const target = parseFloat(counter.getAttribute("data-target"));
+          const duration = 1500; // 1.5 seconds
+          const increment = target / (duration / 16); // 60fps
+          let current = 0;
+
+          const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+              counter.textContent = Math.floor(current * 10) / 10; // Keep one decimal place
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target;
+            }
+          };
+
+          updateCounter();
+        });
+      }
+
+      // Intersection Observer for metrics animation
+      const metricsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const metricNumbers =
+                entry.target.querySelectorAll(".metric-number");
+              metricNumbers.forEach((number) => {
+                number.classList.add("animate");
+              });
+              animateCounters();
+              metricsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      const metricsSection = document.querySelector(".metrics-section");
+      if (metricsSection) {
+        metricsObserver.observe(metricsSection);
+      }
+    </script>
+  </body>
+</html>
