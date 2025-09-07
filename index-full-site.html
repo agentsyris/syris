@@ -17,7 +17,12 @@
     <style>
       /* Animated Background System */
       body {
-        background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 50%, #ffffff 100%);
+        background: linear-gradient(
+          135deg,
+          #fafafa 0%,
+          #f0f0f0 50%,
+          #ffffff 100%
+        );
       }
 
       .background-layer {
@@ -29,7 +34,10 @@
       .grid-animation {
         position: absolute;
         inset: 0;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.03) 1px,
+            transparent 1px
+          ),
           linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
         background-size: 50px 50px;
         animation: gridMove 20s linear infinite;
@@ -54,7 +62,11 @@
       .orb-1 {
         width: 400px;
         height: 400px;
-        background: radial-gradient(circle, rgba(0, 201, 167, 0.08), transparent);
+        background: radial-gradient(
+          circle,
+          rgba(0, 201, 167, 0.08),
+          transparent
+        );
         top: -200px;
         left: -200px;
       }
@@ -296,6 +308,51 @@
 
       .hero-meta a:hover {
         color: var(--color-teal-dark);
+      }
+
+      /* Hero Glass Panel */
+      .hero-glass-panel {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px) saturate(140%);
+        -webkit-backdrop-filter: blur(20px) saturate(140%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 24px;
+        padding: var(--space-20);
+        box-shadow: 
+          0 8px 32px rgba(31, 38, 135, 0.15),
+          inset 0 2px 2px rgba(255, 255, 255, 0.3),
+          inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Add light ray effect */
+      .hero-glass-panel::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.05) 50%,
+          transparent 70%
+        );
+        animation: shimmer 6s infinite;
+        pointer-events: none;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: rotate(0deg) translateX(-100%);
+        }
+        100% {
+          transform: rotate(0deg) translateX(100%);
+        }
       }
 
       /* Luxurious Proof Section */
@@ -1306,6 +1363,10 @@
         .orb {
           animation: none;
         }
+
+        .hero-glass-panel::before {
+          animation: none;
+        }
       }
     </style>
   </head>
@@ -1346,75 +1407,77 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <main id="main-content" role="main">
-      <section class="hero-section">
-        <div class="hero-content">
-          <div class="hero-tagline">systematic solutions for modern chaos</div>
-          <h1 class="hero-title">calm<span class="text-teal">.</span>sys</h1>
+      <!-- Hero Section -->
+      <main id="main-content" role="main">
+        <section class="hero-section">
+          <div class="hero-glass-panel">
+            <div class="hero-content">
+              <div class="hero-tagline">systematic solutions for modern chaos</div>
+              <h1 class="hero-title">calm<span class="text-teal">.</span>sys</h1>
 
-          <p class="hero-subtitle">
-            eliminate 40% of coordination overhead in 90 days.<br />
-            <span class="text-teal">more creative time, less admin.</span>
-            projects 40% faster, revisions −60%, margins +12–15pts.
-          </p>
+              <p class="hero-subtitle">
+                eliminate 40% of coordination overhead in 90 days.<br />
+                <span class="text-teal">more creative time, less admin.</span>
+                projects 40% faster, revisions −60%, margins +12–15pts.
+              </p>
 
-          <div class="hero-cta">
-            <a
-              href="https://calendly.com/syris/30min"
-              target="_blank"
-              class="btn btn-primary hero-primary-btn"
-              >book workflow audit</a
-            >
-            <div class="hero-secondary-link">
-              <a href="/method.html" class="hero-process-link"
-                >see our process →</a
-              >
-            </div>
-          </div>
+              <div class="hero-cta">
+                <a
+                  href="https://calendly.com/syris/30min"
+                  target="_blank"
+                  class="btn btn-primary hero-primary-btn"
+                  >book workflow audit</a
+                >
+                <div class="hero-secondary-link">
+                  <a href="/method.html" class="hero-process-link"
+                    >see our process →</a
+                  >
+                </div>
+              </div>
 
-          <div class="hero-meta">
-            <a href="mailto:agent@syris.studio">agent@syris.studio</a>
-          </div>
+              <div class="hero-meta">
+                <a href="mailto:agent@syris.studio">agent@syris.studio</a>
+              </div>
 
-          <!-- Sample Report Preview -->
-          <div
-            style="
-              margin-top: var(--space-16);
-              padding: var(--space-8);
-              background: rgba(0, 201, 167, 0.05);
-              border-radius: var(--radius-xl);
-              border: 1px solid rgba(0, 201, 167, 0.1);
-            "
-          >
-            <div style="text-align: center; margin-bottom: var(--space-4)">
-              <a
-                href="/sample-report.html"
+              <!-- Sample Report Preview -->
+              <div
                 style="
-                  color: var(--color-teal);
-                  text-decoration: none;
-                  font-family: var(--font-mono);
-                  font-size: var(--fs-sm);
-                  text-transform: uppercase;
-                  letter-spacing: 0.1em;
+                  margin-top: var(--space-16);
+                  padding: var(--space-8);
+                  background: rgba(0, 201, 167, 0.05);
+                  border-radius: var(--radius-xl);
+                  border: 1px solid rgba(0, 201, 167, 0.1);
                 "
               >
-                view sample report →
-              </a>
-            </div>
-            <div
-              style="
-                font-size: var(--fs-sm);
-                color: var(--color-gray-600);
-                text-align: center;
-              "
-            >
-              see exactly what you'll get: 12-page diagnostic with roi analysis,
-              workstyle insights, and 30/90-day implementation plan
+                <div style="text-align: center; margin-bottom: var(--space-4)">
+                  <a
+                    href="/sample-report.html"
+                    style="
+                      color: var(--color-teal);
+                      text-decoration: none;
+                      font-family: var(--font-mono);
+                      font-size: var(--fs-sm);
+                      text-transform: uppercase;
+                      letter-spacing: 0.1em;
+                    "
+                  >
+                    view sample report →
+                  </a>
+                </div>
+                <div
+                  style="
+                    font-size: var(--fs-sm);
+                    color: var(--color-gray-600);
+                    text-align: center;
+                  "
+                >
+                  see exactly what you'll get: 12-page diagnostic with roi analysis,
+                  workstyle insights, and 30/90-day implementation plan
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       <!-- Key Metrics Section -->
       <section class="metrics-section">
