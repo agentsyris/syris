@@ -273,16 +273,6 @@ body {
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* Email Form */
-.email-form {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  margin: 0 0 80px 0;
-  animation: fadeUp 0.8s ease-out 0.4s forwards;
-  opacity: 0;
-}
-
 .glass-input {
   padding: 14px 20px;
   width: 250px;

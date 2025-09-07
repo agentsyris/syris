@@ -1,3 +1,19 @@
+// HTTPS Enforcement and Security
+(function () {
+  // Force HTTPS redirect
+  if (location.protocol !== "https:" && location.hostname !== "localhost") {
+    location.replace(
+      "https:" + window.location.href.substring(window.location.protocol.length)
+    );
+  }
+
+  // Additional security checks
+  if (window.location.protocol === "https:") {
+    // Add security indicators
+    document.documentElement.setAttribute("data-secure", "true");
+  }
+})();
+
 // Email form handler for glass coming soon page
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("emailForm");
