@@ -554,6 +554,105 @@
         }
       }
 
+      /* Key Metrics Section */
+      .metrics-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .metrics-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .metrics-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-16);
+        align-items: center;
+        text-align: center;
+      }
+
+      .metric-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+
+      .metric-value {
+        font-family: var(--font-mono);
+        font-size: var(--fs-7xl);
+        font-weight: 500;
+        color: var(--ink);
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+
+      .metric-number {
+        display: inline-block;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .metric-symbol {
+        color: var(--syris-teal);
+        font-family: var(--font-mono);
+        font-size: var(--fs-7xl);
+        font-weight: 500;
+        margin-left: 0.1em;
+      }
+
+      .metric-unit {
+        font-family: var(--font-mono);
+        font-size: var(--fs-7xl);
+        font-weight: 500;
+        color: var(--ink);
+        margin-left: 0.1em;
+      }
+
+      .metric-description {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink-60);
+        line-height: 1.5;
+        text-transform: lowercase;
+        letter-spacing: 0;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      /* Animation classes */
+      .metric-number.animate {
+        animation: countUp 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes countUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       /* Testimonials Section */
       .testimonials-section {
         padding: var(--space-48) var(--space-8);
@@ -927,6 +1026,24 @@
         .testimonial-quote {
           font-size: var(--fs-base);
         }
+
+        .metrics-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .metrics-grid {
+          grid-template-columns: 1fr;
+          gap: var(--space-12);
+        }
+
+        .metric-value {
+          font-size: var(--fs-5xl);
+        }
+
+        .metric-description {
+          font-size: var(--fs-base);
+          max-width: 280px;
+        }
       }
     </style>
   </head>
@@ -1021,6 +1138,44 @@
             >
               see exactly what you'll get: 12-page diagnostic with roi analysis,
               workstyle insights, and 30/90-day implementation plan
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Metrics Section -->
+      <section class="metrics-section">
+        <div class="metrics-container">
+          <div class="metrics-grid">
+            <div class="metric-item">
+              <div class="metric-value">
+                <span class="metric-number" data-target="2.5">0</span
+                ><span class="metric-symbol">×</span>
+              </div>
+              <div class="metric-description">
+                faster project delivery through systematic workflow optimization
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-value">
+                <span class="metric-number" data-target="45">0</span
+                ><span class="metric-unit">%</span>
+              </div>
+              <div class="metric-description">
+                reduction in coordination overhead and unnecessary meetings
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-value">
+                <span class="metric-number" data-target="14">0</span
+                ><span class="metric-unit"> days</span>
+              </div>
+              <div class="metric-description">
+                average implementation timeline for measurable workflow
+                improvements
+              </div>
             </div>
           </div>
         </div>
@@ -1336,6 +1491,53 @@
           // For now, just redirect to schedule call
           window.open("https://calendly.com/syris/30min", "_blank");
         });
+      }
+
+      // Metrics counter animation
+      function animateCounters() {
+        const counters = document.querySelectorAll(".metric-number");
+
+        counters.forEach((counter) => {
+          const target = parseFloat(counter.getAttribute("data-target"));
+          const duration = 1500; // 1.5 seconds
+          const increment = target / (duration / 16); // 60fps
+          let current = 0;
+
+          const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+              counter.textContent = Math.floor(current * 10) / 10; // Keep one decimal place
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target;
+            }
+          };
+
+          updateCounter();
+        });
+      }
+
+      // Intersection Observer for metrics animation
+      const metricsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const metricNumbers =
+                entry.target.querySelectorAll(".metric-number");
+              metricNumbers.forEach((number) => {
+                number.classList.add("animate");
+              });
+              animateCounters();
+              metricsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      const metricsSection = document.querySelector(".metrics-section");
+      if (metricsSection) {
+        metricsObserver.observe(metricsSection);
       }
     </script>
   </body>
