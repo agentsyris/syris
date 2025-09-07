@@ -15,6 +15,208 @@
     />
     <link rel="stylesheet" href="styles/design-system.css" />
     <style>
+      /* Minimal Sticky Header */
+      .sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: transparent;
+        transition: all var(--duration) var(--ease);
+        padding: var(--space-6) 0;
+      }
+
+      .sticky-header.scrolled {
+        background: var(--white);
+        box-shadow: var(--shadow-1);
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-8);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header-logo {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .header-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--space-8);
+      }
+
+      .header-link {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        transition: all var(--duration) var(--ease);
+        padding: var(--space-2) 0;
+        position: relative;
+      }
+
+      .header-link:hover {
+        color: var(--ink);
+      }
+
+      .header-link:hover::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--syris-teal);
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-2);
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+
+      .hamburger-line {
+        width: 20px;
+        height: 1px;
+        background: var(--ink);
+        transition: all var(--duration) var(--ease);
+      }
+
+      /* Process Timeline Section */
+      .process-timeline-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .process-timeline-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .process-timeline-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .process-timeline-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        color: var(--ink);
+        margin-bottom: var(--space-20);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+        font-family: var(--font-sans);
+        text-transform: lowercase;
+        text-align: center;
+      }
+
+      .process-timeline {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+        gap: var(--space-16);
+      }
+
+      .process-timeline::before {
+        content: "";
+        position: absolute;
+        top: 24px;
+        left: 48px;
+        right: 48px;
+        height: 1px;
+        background: var(--ink);
+        z-index: 1;
+      }
+
+      .timeline-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        position: relative;
+        z-index: 2;
+        flex: 1;
+      }
+
+      .timeline-step.active .timeline-number {
+        color: var(--syris-teal);
+      }
+
+      .timeline-number {
+        font-family: var(--font-mono);
+        font-size: var(--fs-2xl);
+        font-weight: 500;
+        color: var(--ink);
+        background: var(--white);
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid var(--ink);
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+        line-height: 1;
+      }
+
+      .timeline-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        text-align: center;
+        max-width: 200px;
+      }
+
+      .timeline-days {
+        font-family: var(--font-sans);
+        font-size: var(--fs-xs);
+        font-weight: 400;
+        color: var(--ink-60);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .timeline-description {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.5;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
       /* Method Page Styles */
       .method-hero {
         padding: var(--space-24) var(--space-6) var(--space-16);
@@ -275,43 +477,80 @@
     <!-- Minimal Background -->
     <div class="bg-pattern bg-gradient bg-accent-lines"></div>
 
-    <!-- Navigation -->
-    <nav class="nav" role="navigation">
-      <div class="nav-container">
-        <a href="/" class="logo-link">
-          <img
-            src="assets/images/syris.logo.primary.svg"
-            alt="syrıs."
-            class="logo"
-          />
-        </a>
-        <div class="nav-links">
-          <a href="/" class="nav-link">home</a>
-          <a href="/services.html" class="nav-link">services</a>
-          <a href="/about.html" class="nav-link">about</a>
-          <a href="mailto:agent@syris.studio" class="nav-link">contact</a>
+    <!-- Minimal Sticky Header -->
+    <header class="sticky-header" role="banner">
+      <div class="header-container">
+        <a href="/" class="header-logo">syrıs.</a>
+        <div class="header-nav">
+          <a href="/services.html" class="header-link">services</a>
+          <a href="/method.html" class="header-link">method</a>
+          <a href="/about.html" class="header-link">about</a>
           <a
             href="https://calendly.com/syris/30min"
             target="_blank"
-            class="btn btn-primary"
-            >schedule consultation</a
+            class="header-link"
+            >schedule call</a
           >
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
         </div>
       </div>
-    </nav>
+    </header>
 
-    <!-- Method Hero -->
+    <!-- Process Timeline Section -->
     <main id="main-content" role="main">
-      <section class="method-hero">
-        <div class="method-hero-content">
-          <h1>method<span class="text-teal">.</span></h1>
-          <p>
-            Our systematic approach to transforming creative team operations
-            through diagnostic assessment, implementation sprint, and
-            transformation layer.
-          </p>
+      <section class="process-timeline-section">
+        <div class="process-timeline-container">
+          <h2 class="process-timeline-title">
+            chaos to calm in <span class="text-teal">14 days</span>
+          </h2>
+
+          <div class="process-timeline">
+            <div class="timeline-step">
+              <div class="timeline-number">01</div>
+              <div class="timeline-content">
+                <div class="timeline-days">days 1-2</div>
+                <div class="timeline-description">
+                  diagnostic assessment and workflow analysis
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step">
+              <div class="timeline-number">02</div>
+              <div class="timeline-content">
+                <div class="timeline-days">days 3-7</div>
+                <div class="timeline-description">
+                  systematic redesign and automation setup
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step active">
+              <div class="timeline-number">03</div>
+              <div class="timeline-content">
+                <div class="timeline-days">days 8-12</div>
+                <div class="timeline-description">
+                  team training and implementation rollout
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step">
+              <div class="timeline-number">04</div>
+              <div class="timeline-content">
+                <div class="timeline-days">days 13-14</div>
+                <div class="timeline-description">
+                  optimization and handoff documentation
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+    </main>
 
       <!-- Method Process -->
       <section class="method-process">
@@ -454,5 +693,30 @@
         <a href="mailto:agent@syris.studio">contact</a>
       </div>
     </footer>
+
+    <script>
+      // Sticky header scroll behavior
+      const header = document.querySelector(".sticky-header");
+      
+      function handleScroll() {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      }
+      
+      window.addEventListener("scroll", handleScroll);
+      
+      // Mobile menu toggle
+      const mobileToggle = document.querySelector(".mobile-menu-toggle");
+      
+      if (mobileToggle) {
+        mobileToggle.addEventListener("click", function () {
+          // For now, just redirect to schedule call
+          window.open("https://calendly.com/syris/30min", "_blank");
+        });
+      }
+    </script>
   </body>
 </html>

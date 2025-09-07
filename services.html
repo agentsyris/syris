@@ -15,6 +15,189 @@
     />
     <link rel="stylesheet" href="styles/design-system.css" />
     <style>
+      /* Minimal Sticky Header */
+      .sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: transparent;
+        transition: all var(--duration) var(--ease);
+        padding: var(--space-6) 0;
+      }
+
+      .sticky-header.scrolled {
+        background: var(--white);
+        box-shadow: var(--shadow-1);
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-8);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header-logo {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .header-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--space-8);
+      }
+
+      .header-link {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        transition: all var(--duration) var(--ease);
+        padding: var(--space-2) 0;
+        position: relative;
+      }
+
+      .header-link:hover {
+        color: var(--ink);
+      }
+
+      .header-link:hover::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--syris-teal);
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-2);
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+
+      .hamburger-line {
+        width: 20px;
+        height: 1px;
+        background: var(--ink);
+        transition: all var(--duration) var(--ease);
+      }
+
+      /* Service Cards Section */
+      .service-cards-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .service-cards-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .service-cards-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .service-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-16);
+        align-items: start;
+      }
+
+      .service-card {
+        padding: var(--space-8);
+        border-left: 1px solid transparent;
+        transition: all var(--duration) var(--ease);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+
+      .service-card:hover {
+        border-left-color: var(--syris-teal);
+      }
+
+      .service-card-heading {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xl);
+        font-weight: 500;
+        color: var(--ink);
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+        line-height: 1.2;
+      }
+
+      .service-card-description {
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.6;
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .service-card-features {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .service-card-features li {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink-60);
+        text-transform: lowercase;
+        letter-spacing: 0;
+        position: relative;
+        padding-left: var(--space-4);
+      }
+
+      .service-card-features li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--ink-40);
+        font-weight: 400;
+      }
+
       /* Minimal Services Page Styles */
       .hero-section {
         padding: var(--space-32) var(--space-6) var(--space-24);
@@ -477,48 +660,78 @@
     <!-- Minimal Background -->
     <div class="bg-pattern bg-gradient bg-accent-lines"></div>
 
-    <!-- Navigation -->
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="/" class="logo-link">
-          <img
-            src="assets/images/syris.logo.primary.svg"
-            alt="syris."
-            class="logo"
-          />
-        </a>
-        <div class="nav-links">
-          <a href="/" class="nav-link">home</a>
-          <a href="/services.html" class="nav-link">services</a>
-          <a href="/about.html" class="nav-link">about</a>
-          <a href="mailto:agent@syris.studio" class="nav-link">contact</a>
+    <!-- Minimal Sticky Header -->
+    <header class="sticky-header" role="banner">
+      <div class="header-container">
+        <a href="/" class="header-logo">syrıs.</a>
+        <div class="header-nav">
+          <a href="/services.html" class="header-link">services</a>
+          <a href="/method.html" class="header-link">method</a>
+          <a href="/about.html" class="header-link">about</a>
           <a
             href="https://calendly.com/syris/30min"
             target="_blank"
-            class="btn btn-primary"
-            >schedule consultation</a
+            class="header-link"
+            >schedule call</a
           >
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
         </div>
       </div>
-    </nav>
+    </header>
 
-    <!-- Hero -->
-    <section class="hero-section">
-      <h1 class="hero-title">
-        calm<span class="text-teal">.</span>sys product suite<span
-          class="text-teal"
-          >.</span
-        >
-      </h1>
-      <p class="hero-subtitle">
-        Transform creative teams through diagnostic assessment, implementation
-        sprint, and transformation layer.<br />
-        Proven methodology. Quantified results. Creative-first approach.
-      </p>
-      <div class="hero-meta">
-        45% average overhead reduction • 150+ teams transformed
-      </div>
-    </section>
+    <!-- Service Cards Section -->
+    <main id="main-content" role="main">
+      <section class="service-cards-section">
+        <div class="service-cards-container">
+          <div class="service-cards-grid">
+            <div class="service-card">
+              <h3 class="service-card-heading">calm.profile</h3>
+              <p class="service-card-description">
+                fast, low-risk diagnostic that pays for itself by exposing concrete 
+                workflow leaks and coordination overhead.
+              </p>
+              <ul class="service-card-features">
+                <li>12-page diagnostic report</li>
+                <li>workstyle archetype analysis</li>
+                <li>roi & cost of inaction</li>
+                <li>30-minute debrief call</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <h3 class="service-card-heading">calm.stack</h3>
+              <p class="service-card-description">
+                systematic redesign of your team's operations for maximum efficiency 
+                and predictable project delivery.
+              </p>
+              <ul class="service-card-features">
+                <li>comprehensive time audit</li>
+                <li>workflow redesign</li>
+                <li>automation architecture</li>
+                <li>team training & adoption</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <h3 class="service-card-heading">calm.os</h3>
+              <p class="service-card-description">
+                ongoing partnership for enterprise teams with continuous optimization 
+                and systematic workflow evolution.
+              </p>
+              <ul class="service-card-features">
+                <li>enterprise-wide assessment</li>
+                <li>phased implementation</li>
+                <li>custom tool development</li>
+                <li>quarterly optimization</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- Service Comparison -->
     <section class="comparison-section">
@@ -743,5 +956,30 @@
         <a href="mailto:agent@syris.studio">contact</a>
       </div>
     </footer>
+
+    <script>
+      // Sticky header scroll behavior
+      const header = document.querySelector(".sticky-header");
+      
+      function handleScroll() {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      }
+      
+      window.addEventListener("scroll", handleScroll);
+      
+      // Mobile menu toggle
+      const mobileToggle = document.querySelector(".mobile-menu-toggle");
+      
+      if (mobileToggle) {
+        mobileToggle.addEventListener("click", function () {
+          // For now, just redirect to schedule call
+          window.open("https://calendly.com/syris/30min", "_blank");
+        });
+      }
+    </script>
   </body>
 </html>

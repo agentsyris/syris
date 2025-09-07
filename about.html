@@ -15,6 +15,179 @@
     />
     <link rel="stylesheet" href="styles/design-system.css" />
     <style>
+      /* Minimal Sticky Header */
+      .sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: transparent;
+        transition: all var(--duration) var(--ease);
+        padding: var(--space-6) 0;
+      }
+
+      .sticky-header.scrolled {
+        background: var(--white);
+        box-shadow: var(--shadow-1);
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-8);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header-logo {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .header-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--space-8);
+      }
+
+      .header-link {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        transition: all var(--duration) var(--ease);
+        padding: var(--space-2) 0;
+        position: relative;
+      }
+
+      .header-link:hover {
+        color: var(--ink);
+      }
+
+      .header-link:hover::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--syris-teal);
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-2);
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+
+      .hamburger-line {
+        width: 20px;
+        height: 1px;
+        background: var(--ink);
+        transition: all var(--duration) var(--ease);
+      }
+
+      /* About Section */
+      .about-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .about-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .about-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 var(--space-20);
+      }
+
+      .about-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        color: var(--ink);
+        margin-bottom: var(--space-16);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+        font-family: var(--font-sans);
+        text-transform: lowercase;
+        text-align: center;
+      }
+
+      .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+      }
+
+      .about-paragraph {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.8;
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .about-founder {
+        margin-top: var(--space-8);
+        padding-top: var(--space-8);
+        border-top: 1px solid var(--ink-10);
+      }
+
+      .founder-info {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        margin: 0;
+      }
+
+      .founder-name {
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 500;
+        color: var(--ink);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .founder-role {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink-60);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
       /* Minimal About Page Styles */
       .hero-section {
         padding: var(--space-32) var(--space-6) var(--space-24);
@@ -466,41 +639,65 @@
     <!-- Minimal Background -->
     <div class="bg-pattern bg-gradient bg-accent-lines"></div>
 
-    <!-- Navigation -->
-    <nav class="nav">
-      <div class="nav-container">
-        <a href="/" class="logo-link">
-          <img
-            src="assets/images/syris.logo.primary.svg"
-            alt="syris."
-            class="logo"
-          />
-        </a>
-        <div class="nav-links">
-          <a href="/" class="nav-link">home</a>
-          <a href="/services.html" class="nav-link">services</a>
-          <a href="/about.html" class="nav-link">about</a>
-          <a href="mailto:agent@syris.studio" class="nav-link">contact</a>
+    <!-- Minimal Sticky Header -->
+    <header class="sticky-header" role="banner">
+      <div class="header-container">
+        <a href="/" class="header-logo">syrıs.</a>
+        <div class="header-nav">
+          <a href="/services.html" class="header-link">services</a>
+          <a href="/method.html" class="header-link">method</a>
+          <a href="/about.html" class="header-link">about</a>
           <a
             href="https://calendly.com/syris/30min"
             target="_blank"
-            class="btn btn-primary"
-            >schedule consultation</a
+            class="header-link"
+            >schedule call</a
           >
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
         </div>
       </div>
-    </nav>
+    </header>
 
-    <!-- Hero -->
-    <section class="hero-section">
-      <h1 class="hero-title">
-        from chaos to systematic calm<span class="text-teal">.</span>
-      </h1>
-      <p class="hero-subtitle">
-        The story behind syris. Why creative operations matter. How systematic
-        design eliminates coordination chaos.
-      </p>
-    </section>
+    <!-- About Section -->
+    <main id="main-content" role="main">
+      <section class="about-section">
+        <div class="about-container">
+          <h2 class="about-title">
+            we understand creative <span class="text-teal">chaos</span>
+          </h2>
+
+          <div class="about-content">
+            <p class="about-paragraph">
+              after <span class="text-teal">15 years</span> leading creative teams at agencies and startups, 
+              we've seen the same patterns repeat: brilliant people drowning in coordination overhead, 
+              endless revision cycles, and projects that should take weeks stretching into months.
+            </p>
+
+            <p class="about-paragraph">
+              the problem isn't talent or creativity—it's systematic. most teams lack the operational 
+              frameworks that turn creative energy into predictable, profitable outcomes. we built 
+              calm.sys to solve this exact problem.
+            </p>
+
+            <p class="about-paragraph">
+              our approach is diagnostic first, implementation second. we measure before we prescribe, 
+              quantify before we optimize. because the best creative work happens when teams can focus 
+              on creating, not coordinating.
+            </p>
+
+            <div class="about-founder">
+              <p class="founder-info">
+                <span class="founder-name">alex syris</span>
+                <span class="founder-role">founder & systematic design lead</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- Story Section -->
     <section class="story-section">
@@ -720,5 +917,30 @@
         <a href="mailto:agent@syris.studio">contact</a>
       </div>
     </footer>
+
+    <script>
+      // Sticky header scroll behavior
+      const header = document.querySelector(".sticky-header");
+      
+      function handleScroll() {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      }
+      
+      window.addEventListener("scroll", handleScroll);
+      
+      // Mobile menu toggle
+      const mobileToggle = document.querySelector(".mobile-menu-toggle");
+      
+      if (mobileToggle) {
+        mobileToggle.addEventListener("click", function () {
+          // For now, just redirect to schedule call
+          window.open("https://calendly.com/syris/30min", "_blank");
+        });
+      }
+    </script>
   </body>
 </html>
