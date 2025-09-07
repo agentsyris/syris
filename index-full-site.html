@@ -110,6 +110,18 @@
         z-index: 1;
       }
 
+      /* Ensure all section containers are above background */
+      .proof-container,
+      .metrics-container,
+      .services-container,
+      .testimonials-container,
+      .pricing-container,
+      .contact-container,
+      .cta-container {
+        position: relative;
+        z-index: 1;
+      }
+
       /* Minimal Sticky Header */
       .sticky-header {
         position: fixed;
@@ -318,8 +330,7 @@
         border: 1px solid rgba(255, 255, 255, 0.18);
         border-radius: 24px;
         padding: var(--space-20);
-        box-shadow: 
-          0 8px 32px rgba(31, 38, 135, 0.15),
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15),
           inset 0 2px 2px rgba(255, 255, 255, 0.3),
           inset 0 -1px 1px rgba(0, 0, 0, 0.05);
         max-width: 1000px;
@@ -330,7 +341,7 @@
 
       /* Add light ray effect */
       .hero-glass-panel::before {
-        content: '';
+        content: "";
         position: absolute;
         top: -50%;
         left: -50%;
@@ -358,12 +369,7 @@
       /* Luxurious Proof Section */
       .proof-section {
         padding: var(--space-48) var(--space-8);
-        background: linear-gradient(
-          180deg,
-          var(--color-gray-50) 0%,
-          var(--color-white) 50%,
-          var(--color-gray-50) 100%
-        );
+        background: transparent;
         position: relative;
       }
 
@@ -469,6 +475,7 @@
       /* Luxurious Services Preview */
       .services-section {
         padding: var(--space-48) var(--space-8);
+        background: transparent;
         position: relative;
       }
 
@@ -588,12 +595,7 @@
       /* Luxurious CTA Section */
       .cta-section {
         padding: var(--space-48) var(--space-8);
-        background: linear-gradient(
-          135deg,
-          var(--color-teal) 0%,
-          var(--color-teal-600) 50%,
-          var(--color-teal) 100%
-        );
+        background: transparent;
         color: var(--color-white);
         text-align: center;
         position: relative;
@@ -664,7 +666,7 @@
         padding: var(--space-24) var(--space-8);
         text-align: center;
         border-top: 1px solid var(--color-gray-200);
-        background: var(--color-white);
+        background: transparent;
       }
 
       .footer-content {
@@ -697,7 +699,7 @@
       /* Key Metrics Section */
       .metrics-section {
         padding: var(--space-48) var(--space-8);
-        background: var(--white);
+        background: transparent;
         position: relative;
       }
 
@@ -796,7 +798,7 @@
       /* Testimonials Section */
       .testimonials-section {
         padding: var(--space-48) var(--space-8);
-        background: var(--white);
+        background: transparent;
         position: relative;
       }
 
@@ -899,7 +901,7 @@
       /* Pricing Section */
       .pricing-section {
         padding: var(--space-48) var(--space-8);
-        background: var(--white);
+        background: transparent;
         position: relative;
       }
 
@@ -1042,7 +1044,7 @@
       /* Contact Section */
       .contact-section {
         padding: var(--space-48) var(--space-8);
-        background: var(--white);
+        background: transparent;
         position: relative;
       }
 
@@ -1407,77 +1409,79 @@
       </div>
     </header>
 
-      <!-- Hero Section -->
-      <main id="main-content" role="main">
-        <section class="hero-section">
-          <div class="hero-glass-panel">
-            <div class="hero-content">
-              <div class="hero-tagline">systematic solutions for modern chaos</div>
-              <h1 class="hero-title">calm<span class="text-teal">.</span>sys</h1>
+    <!-- Hero Section -->
+    <main id="main-content" role="main">
+      <section class="hero-section">
+        <div class="hero-glass-panel">
+          <div class="hero-content">
+            <div class="hero-tagline">
+              systematic solutions for modern chaos
+            </div>
+            <h1 class="hero-title">calm<span class="text-teal">.</span>sys</h1>
 
-              <p class="hero-subtitle">
-                eliminate 40% of coordination overhead in 90 days.<br />
-                <span class="text-teal">more creative time, less admin.</span>
-                projects 40% faster, revisions −60%, margins +12–15pts.
-              </p>
+            <p class="hero-subtitle">
+              eliminate 40% of coordination overhead in 90 days.<br />
+              <span class="text-teal">more creative time, less admin.</span>
+              projects 40% faster, revisions −60%, margins +12–15pts.
+            </p>
 
-              <div class="hero-cta">
-                <a
-                  href="https://calendly.com/syris/30min"
-                  target="_blank"
-                  class="btn btn-primary hero-primary-btn"
-                  >book workflow audit</a
-                >
-                <div class="hero-secondary-link">
-                  <a href="/method.html" class="hero-process-link"
-                    >see our process →</a
-                  >
-                </div>
-              </div>
-
-              <div class="hero-meta">
-                <a href="mailto:agent@syris.studio">agent@syris.studio</a>
-              </div>
-
-              <!-- Sample Report Preview -->
-              <div
-                style="
-                  margin-top: var(--space-16);
-                  padding: var(--space-8);
-                  background: rgba(0, 201, 167, 0.05);
-                  border-radius: var(--radius-xl);
-                  border: 1px solid rgba(0, 201, 167, 0.1);
-                "
+            <div class="hero-cta">
+              <a
+                href="https://calendly.com/syris/30min"
+                target="_blank"
+                class="btn btn-primary hero-primary-btn"
+                >book workflow audit</a
               >
-                <div style="text-align: center; margin-bottom: var(--space-4)">
-                  <a
-                    href="/sample-report.html"
-                    style="
-                      color: var(--color-teal);
-                      text-decoration: none;
-                      font-family: var(--font-mono);
-                      font-size: var(--fs-sm);
-                      text-transform: uppercase;
-                      letter-spacing: 0.1em;
-                    "
-                  >
-                    view sample report →
-                  </a>
-                </div>
-                <div
+              <div class="hero-secondary-link">
+                <a href="/method.html" class="hero-process-link"
+                  >see our process →</a
+                >
+              </div>
+            </div>
+
+            <div class="hero-meta">
+              <a href="mailto:agent@syris.studio">agent@syris.studio</a>
+            </div>
+
+            <!-- Sample Report Preview -->
+            <div
+              style="
+                margin-top: var(--space-16);
+                padding: var(--space-8);
+                background: rgba(0, 201, 167, 0.05);
+                border-radius: var(--radius-xl);
+                border: 1px solid rgba(0, 201, 167, 0.1);
+              "
+            >
+              <div style="text-align: center; margin-bottom: var(--space-4)">
+                <a
+                  href="/sample-report.html"
                   style="
+                    color: var(--color-teal);
+                    text-decoration: none;
+                    font-family: var(--font-mono);
                     font-size: var(--fs-sm);
-                    color: var(--color-gray-600);
-                    text-align: center;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
                   "
                 >
-                  see exactly what you'll get: 12-page diagnostic with roi analysis,
-                  workstyle insights, and 30/90-day implementation plan
-                </div>
+                  view sample report →
+                </a>
+              </div>
+              <div
+                style="
+                  font-size: var(--fs-sm);
+                  color: var(--color-gray-600);
+                  text-align: center;
+                "
+              >
+                see exactly what you'll get: 12-page diagnostic with roi
+                analysis, workstyle insights, and 30/90-day implementation plan
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
       <!-- Key Metrics Section -->
       <section class="metrics-section">
