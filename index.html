@@ -15,13 +15,99 @@
     />
     <link rel="stylesheet" href="styles/design-system.css" />
     <style>
+      /* Minimal Sticky Header */
+      .sticky-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: transparent;
+        transition: all var(--duration) var(--ease);
+        padding: var(--space-6) 0;
+      }
+
+      .sticky-header.scrolled {
+        background: var(--white);
+        box-shadow: var(--shadow-1);
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-8);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header-logo {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .header-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--space-8);
+      }
+
+      .header-link {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        transition: all var(--duration) var(--ease);
+        padding: var(--space-2) 0;
+        position: relative;
+      }
+
+      .header-link:hover {
+        color: var(--ink);
+      }
+
+      .header-link:hover::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--syris-teal);
+      }
+
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: var(--space-2);
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+
+      .hamburger-line {
+        width: 20px;
+        height: 1px;
+        background: var(--ink);
+        transition: all var(--duration) var(--ease);
+      }
+
       /* Minimal Homepage Styles */
       .hero-section {
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: var(--space-48) var(--space-8) var(--space-40);
+        padding: calc(var(--space-48) + var(--space-6)) var(--space-8)
+          var(--space-40);
         text-align: center;
         animation: fadeInUp 1s ease-out;
         position: relative;
@@ -470,8 +556,25 @@
 
       /* Responsive */
       @media (max-width: 768px) {
+        .header-container {
+          padding: 0 var(--space-6);
+        }
+
+        .header-nav {
+          gap: var(--space-4);
+        }
+
+        .header-link {
+          display: none;
+        }
+
+        .mobile-menu-toggle {
+          display: flex;
+        }
+
         .hero-section {
-          padding: var(--space-32) var(--space-6) var(--space-24);
+          padding: calc(var(--space-32) + var(--space-6)) var(--space-6)
+            var(--space-24);
         }
 
         .hero-title {
@@ -526,30 +629,24 @@
     <!-- Minimal Background -->
     <div class="bg-pattern bg-gradient"></div>
 
-    <!-- Navigation -->
-    <nav class="nav" role="navigation">
-      <div class="nav-container">
-        <a href="/" class="logo-link">
-          <img
-            src="assets/images/syris.logo.primary.svg"
-            alt="syrıs."
-            class="logo"
-          />
-        </a>
-        <div class="nav-links">
-          <a href="/" class="nav-link">home</a>
-          <a href="/services.html" class="nav-link">services</a>
-          <a href="/about.html" class="nav-link">about</a>
-          <a href="mailto:agent@syris.studio" class="nav-link">contact</a>
+    <!-- Minimal Sticky Header -->
+    <header class="sticky-header" role="banner">
+      <div class="header-container">
+        <a href="/" class="header-logo">syrıs.</a>
+        <div class="header-nav">
           <a
             href="https://calendly.com/syris/30min"
             target="_blank"
-            class="btn btn-primary"
-            >schedule consultation</a
+            class="header-link"
+            >schedule call</a
           >
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
         </div>
       </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
     <main id="main-content" role="main">
@@ -782,5 +879,30 @@
         <a href="mailto:agent@syris.studio">contact</a>
       </div>
     </footer>
+
+    <script>
+      // Sticky header scroll behavior
+      const header = document.querySelector(".sticky-header");
+
+      function handleScroll() {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      }
+
+      window.addEventListener("scroll", handleScroll);
+
+      // Mobile menu toggle
+      const mobileToggle = document.querySelector(".mobile-menu-toggle");
+
+      if (mobileToggle) {
+        mobileToggle.addEventListener("click", function () {
+          // For now, just redirect to schedule call
+          window.open("https://calendly.com/syris/30min", "_blank");
+        });
+      }
+    </script>
   </body>
 </html>
