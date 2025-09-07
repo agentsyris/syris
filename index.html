@@ -756,6 +756,333 @@
         letter-spacing: 0;
       }
 
+      /* About Section */
+      .about-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .about-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .about-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 var(--space-20);
+      }
+
+      .about-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        color: var(--ink);
+        margin-bottom: var(--space-16);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+        font-family: var(--font-sans);
+        text-transform: lowercase;
+        text-align: center;
+      }
+
+      .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+      }
+
+      .about-paragraph {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.8;
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .about-founder {
+        margin-top: var(--space-8);
+        padding-top: var(--space-8);
+        border-top: 1px solid var(--ink-10);
+      }
+
+      .founder-info {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        margin: 0;
+      }
+
+      .founder-name {
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 500;
+        color: var(--ink);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .founder-role {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink-60);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .about-link {
+        margin-top: var(--space-8);
+        text-align: center;
+      }
+
+      .about-page-link {
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 400;
+        color: var(--ink);
+        text-decoration: none;
+        text-transform: lowercase;
+        letter-spacing: 0;
+        transition: all var(--duration) var(--ease);
+        position: relative;
+      }
+
+      .about-page-link:hover {
+        color: var(--ink);
+        text-decoration: underline;
+        text-decoration-color: var(--syris-teal);
+        text-underline-offset: 4px;
+      }
+
+      /* Service Cards Section */
+      .service-cards-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .service-cards-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .service-cards-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .service-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-16);
+        align-items: start;
+      }
+
+      .service-card {
+        padding: var(--space-8);
+        border-left: 1px solid transparent;
+        transition: all var(--duration) var(--ease);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+
+      .service-card:hover {
+        border-left-color: var(--syris-teal);
+      }
+
+      .service-card-heading {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xl);
+        font-weight: 500;
+        color: var(--ink);
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+        line-height: 1.2;
+      }
+
+      .service-card-description {
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.6;
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .service-card-features {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .service-card-features li {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink-60);
+        text-transform: lowercase;
+        letter-spacing: 0;
+        position: relative;
+        padding-left: var(--space-4);
+      }
+
+      .service-card-features li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: var(--ink-40);
+        font-weight: 400;
+      }
+
+      /* Process Timeline Section */
+      .process-timeline-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .process-timeline-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .process-timeline-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .process-timeline-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        color: var(--ink);
+        margin-bottom: var(--space-20);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+        font-family: var(--font-sans);
+        text-transform: lowercase;
+        text-align: center;
+      }
+
+      .process-timeline {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+        gap: var(--space-16);
+      }
+
+      .process-timeline::before {
+        content: "";
+        position: absolute;
+        top: 24px;
+        left: 48px;
+        right: 48px;
+        height: 1px;
+        background: var(--ink);
+        z-index: 1;
+      }
+
+      .timeline-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-4);
+        position: relative;
+        z-index: 2;
+        flex: 1;
+      }
+
+      .timeline-step.active .timeline-number {
+        color: var(--syris-teal);
+      }
+
+      .timeline-number {
+        font-family: var(--font-mono);
+        font-size: var(--fs-2xl);
+        font-weight: 500;
+        color: var(--ink);
+        background: var(--white);
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid var(--ink);
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+        line-height: 1;
+      }
+
+      .timeline-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        text-align: center;
+        max-width: 200px;
+      }
+
+      .timeline-days {
+        font-family: var(--font-sans);
+        font-size: var(--fs-xs);
+        font-weight: 400;
+        color: var(--ink-60);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .timeline-description {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.5;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
       /* Contact Section */
       .contact-section {
         padding: var(--space-48) var(--space-8);
@@ -1043,6 +1370,69 @@
         .metric-description {
           font-size: var(--fs-base);
           max-width: 280px;
+        }
+
+        .about-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .about-container {
+          padding: 0 var(--space-6);
+        }
+
+        .about-title {
+          font-size: var(--fs-3xl);
+        }
+
+        .about-paragraph {
+          font-size: var(--fs-base);
+          line-height: 1.7;
+        }
+
+        .service-cards-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .service-cards-grid {
+          grid-template-columns: 1fr;
+          gap: var(--space-8);
+        }
+
+        .service-card {
+          padding: var(--space-6);
+        }
+
+        .service-card-heading {
+          font-size: var(--fs-lg);
+        }
+
+        .process-timeline-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .process-timeline-title {
+          font-size: var(--fs-3xl);
+        }
+
+        .process-timeline {
+          flex-direction: column;
+          gap: var(--space-12);
+        }
+
+        .process-timeline::before {
+          display: none;
+        }
+
+        .timeline-step {
+          flex-direction: row;
+          align-items: center;
+          text-align: left;
+          gap: var(--space-6);
+        }
+
+        .timeline-content {
+          text-align: left;
+          max-width: none;
         }
       }
     </style>
@@ -1361,6 +1751,154 @@
                 <span class="testimonial-company"
                   >head of design, tech startup</span
                 >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about-section">
+        <div class="about-container">
+          <h2 class="about-title">
+            we understand creative <span class="text-teal">chaos</span>
+          </h2>
+
+          <div class="about-content">
+            <p class="about-paragraph">
+              after <span class="text-teal">15 years</span> leading creative
+              teams at agencies and startups, we've seen the same patterns
+              repeat: brilliant people drowning in coordination overhead,
+              endless revision cycles, and projects that should take weeks
+              stretching into months.
+            </p>
+
+            <p class="about-paragraph">
+              the problem isn't talent or creativity—it's systematic. most teams
+              lack the operational frameworks that turn creative energy into
+              predictable, profitable outcomes. we built calm.sys to solve this
+              exact problem.
+            </p>
+
+            <p class="about-paragraph">
+              our approach is diagnostic first, implementation second. we
+              measure before we prescribe, quantify before we optimize. because
+              the best creative work happens when teams can focus on creating,
+              not coordinating.
+            </p>
+
+            <div class="about-founder">
+              <p class="founder-info">
+                <span class="founder-name">alex syris</span>
+                <span class="founder-role"
+                  >founder & systematic design lead</span
+                >
+              </p>
+            </div>
+
+            <div class="about-link">
+              <a href="/about.html" class="about-page-link">
+                learn more about our approach →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Service Cards Section -->
+      <section class="service-cards-section">
+        <div class="service-cards-container">
+          <div class="service-cards-grid">
+            <div class="service-card">
+              <h3 class="service-card-heading">calm.profile</h3>
+              <p class="service-card-description">
+                fast, low-risk diagnostic that pays for itself by exposing
+                concrete workflow leaks and coordination overhead.
+              </p>
+              <ul class="service-card-features">
+                <li>12-page diagnostic report</li>
+                <li>workstyle archetype analysis</li>
+                <li>roi & cost of inaction</li>
+                <li>30-minute debrief call</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <h3 class="service-card-heading">calm.stack</h3>
+              <p class="service-card-description">
+                systematic redesign of your team's operations for maximum
+                efficiency and predictable project delivery.
+              </p>
+              <ul class="service-card-features">
+                <li>comprehensive time audit</li>
+                <li>workflow redesign</li>
+                <li>automation architecture</li>
+                <li>team training & adoption</li>
+              </ul>
+            </div>
+
+            <div class="service-card">
+              <h3 class="service-card-heading">calm.os</h3>
+              <p class="service-card-description">
+                ongoing partnership for enterprise teams with continuous
+                optimization and systematic workflow evolution.
+              </p>
+              <ul class="service-card-features">
+                <li>enterprise-wide assessment</li>
+                <li>phased implementation</li>
+                <li>custom tool development</li>
+                <li>quarterly optimization</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Process Timeline Section -->
+      <section class="process-timeline-section">
+        <div class="process-timeline-container">
+          <h2 class="process-timeline-title">
+            chaos to calm in <span class="text-teal">14 days</span>
+          </h2>
+
+          <div class="process-timeline">
+            <div class="timeline-step">
+              <div class="timeline-number">01</div>
+              <div class="timeline-content">
+                <div class="timeline-days">days 1-2</div>
+                <div class="timeline-description">
+                  diagnostic assessment and workflow analysis
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step">
+              <div class="timeline-number">02</div>
+              <div class="timeline-content">
+                <div class="timeline-days">days 3-7</div>
+                <div class="timeline-description">
+                  systematic redesign and automation setup
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step active">
+              <div class="timeline-number">03</div>
+              <div class="timeline-content">
+                <div class="timeline-days">days 8-12</div>
+                <div class="timeline-description">
+                  team training and implementation rollout
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-step">
+              <div class="timeline-number">04</div>
+              <div class="timeline-content">
+                <div class="timeline-days">days 13-14</div>
+                <div class="timeline-description">
+                  optimization and handoff documentation
+                </div>
               </div>
             </div>
           </div>
