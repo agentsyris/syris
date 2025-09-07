@@ -1,7 +1,7 @@
 {
   "redirects": [
     {
-      "source": "/((?!index\\.html$|style\\.css$|script\\.js$|favicon\\.svg$|assets/).*)",
+      "source": "/(about|services|method|calm-profile|calm-ops|privacy-policy|sample-report)\\.html",
       "destination": "/",
       "permanent": false
     }
