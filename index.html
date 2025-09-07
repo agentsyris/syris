@@ -554,6 +554,109 @@
         }
       }
 
+      /* Testimonials Section */
+      .testimonials-section {
+        padding: var(--space-48) var(--space-8);
+        background: var(--white);
+        position: relative;
+      }
+
+      .testimonials-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 201, 167, 0.1) 50%,
+          transparent 100%
+        );
+      }
+
+      .testimonials-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonials-title {
+        font-size: var(--fs-4xl);
+        font-weight: 200;
+        color: var(--ink);
+        margin-bottom: var(--space-20);
+        letter-spacing: -0.03em;
+        text-rendering: optimizeLegibility;
+        font-family: var(--font-sans);
+        text-transform: lowercase;
+        text-align: center;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-12);
+        align-items: start;
+      }
+
+      .testimonial {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: left;
+      }
+
+      .testimonial-quote {
+        font-family: var(--font-sans);
+        font-size: var(--fs-lg);
+        font-weight: 400;
+        color: var(--ink);
+        line-height: 1.6;
+        margin: 0;
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .testimonial-metric {
+        font-family: var(--font-mono);
+        font-size: var(--fs-xl);
+        font-weight: 500;
+        color: var(--ink);
+        margin: var(--space-2) 0;
+        text-transform: lowercase;
+        letter-spacing: 0.05em;
+      }
+
+      .testimonial-metric .percentage {
+        color: var(--syris-teal);
+      }
+
+      .testimonial-attribution {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        margin-top: var(--space-2);
+      }
+
+      .testimonial-name {
+        font-family: var(--font-sans);
+        font-size: var(--fs-sm);
+        font-weight: 400;
+        color: var(--ink-60);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
+      .testimonial-company {
+        font-family: var(--font-sans);
+        font-size: var(--fs-xs);
+        font-weight: 400;
+        color: var(--ink-40);
+        text-transform: lowercase;
+        letter-spacing: 0;
+      }
+
       /* Contact Section */
       .contact-section {
         padding: var(--space-48) var(--space-8);
@@ -807,6 +910,23 @@
         .contact-form-wrapper {
           padding: var(--space-6);
         }
+
+        .testimonials-section {
+          padding: var(--space-32) var(--space-6);
+        }
+
+        .testimonials-title {
+          font-size: var(--fs-3xl);
+        }
+
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+          gap: var(--space-8);
+        }
+
+        .testimonial-quote {
+          font-size: var(--fs-base);
+        }
       }
     </style>
   </head>
@@ -1029,6 +1149,64 @@
                 class="btn btn-glass"
                 >schedule consultation</a
               >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="testimonials-section">
+        <div class="testimonials-container">
+          <h2 class="testimonials-title">results from creative teams</h2>
+
+          <div class="testimonials-grid">
+            <div class="testimonial">
+              <p class="testimonial-quote">
+                we eliminated 47% of our internal meetings within the first
+                month. the team now has actual creative time instead of constant
+                coordination overhead.
+              </p>
+              <div class="testimonial-metric">
+                -<span class="percentage">47</span>% meetings
+              </div>
+              <div class="testimonial-attribution">
+                <span class="testimonial-name">sarah chen</span>
+                <span class="testimonial-company"
+                  >creative director, pixel studio</span
+                >
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <p class="testimonial-quote">
+                project delivery went from 6 weeks to 3.5 weeks average. clients
+                are happier, margins are better, and the team is less stressed.
+              </p>
+              <div class="testimonial-metric">
+                -<span class="percentage">42</span>% delivery time
+              </div>
+              <div class="testimonial-attribution">
+                <span class="testimonial-name">marcus rivera</span>
+                <span class="testimonial-company"
+                  >founder, design collective</span
+                >
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <p class="testimonial-quote">
+                revision cycles dropped from 8 rounds to 3 on average. clear
+                approval workflows eliminated the endless back-and-forth.
+              </p>
+              <div class="testimonial-metric">
+                -<span class="percentage">63</span>% revisions
+              </div>
+              <div class="testimonial-attribution">
+                <span class="testimonial-name">alex kim</span>
+                <span class="testimonial-company"
+                  >head of design, tech startup</span
+                >
+              </div>
             </div>
           </div>
         </div>
