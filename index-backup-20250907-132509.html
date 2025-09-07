@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>syrıs. — systematic solutions for modern chaos</title>
+    <meta
+      name="description"
+      content="workflow optimization for creative teams. coming soon."
+    />
+
+    <!-- Open Graph tags -->
+    <meta
+      property="og:title"
+      content="syrıs. — systematic solutions for modern chaos"
+    />
+    <meta
+      property="og:description"
+      content="workflow optimization for creative teams. coming soon."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://syris.studio" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+    /></noscript>
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://syris.studio" />
+
+    <!-- Open Graph Image -->
+    <meta
+      property="og:image"
+      content="https://syris.studio/assets/images/syris.logo.primary.svg"
+    />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="314" />
+
+    <!-- Critical CSS -->
+    <style>
+      /* Critical CSS for immediate render */
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: radial-gradient(ellipse at top, #ffffff, #fafafa);
+        color: #000000;
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .container {
+        opacity: 0;
+        animation: fadeIn 0.8s forwards;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 120px 48px;
+        text-align: center;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "syrıs",
+        "url": "https://syris.studio",
+        "description": "workflow optimization for creative teams"
+      }
+    </script>
+
+    <!-- Noscript Fallback -->
+    <noscript>
+      <style>
+        .email-form {
+          display: block !important;
+        }
+        .success-message {
+          display: none !important;
+        }
+        .container {
+          opacity: 1 !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <main class="container" role="main">
+      <!-- Logo/Brand -->
+      <div class="logo">
+        <img
+          src="assets/images/syris.logo.primary.svg"
+          alt="syrıs."
+          class="logo-img"
+        />
+      </div>
+
+      <!-- Main Message -->
+      <h1 class="main-message">systematic calm for creative chaos</h1>
+
+      <!-- Status -->
+      <div class="status">soon</div>
+
+      <!-- Description -->
+      <p class="description">
+        <span class="description-line-1">we're at the final stages.</span><br />
+        <span class="description-line-2"
+          >workflow systems that actually work for creative minds.</span
+        >
+      </p>
+
+      <!-- Email Capture -->
+      <form
+        class="email-form"
+        id="emailForm"
+        aria-label="Email notification signup"
+        data-api-endpoint="/api/subscribe"
+      >
+        <label for="email" class="form-label">be the first to know</label>
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="your@email.com"
+            required
+            class="email-input"
+            autocomplete="email"
+          />
+          <button type="submit" class="submit-btn">notify me</button>
+        </div>
+      </form>
+
+      <!-- Success Message (hidden by default) -->
+      <div class="success-message" id="successMessage" style="display: none">
+        you're on the list
+      </div>
+
+      <!-- Current Services Hint -->
+      <div class="services-hint">
+        <span class="service-link"
+          >calm<span class="dot">&bull;</span>profile</span
+        >
+        •
+        <span class="service-link"
+          >calm<span class="dot">&bull;</span>stack</span
+        >
+        •
+        <span class="service-link">calm<span class="dot">&bull;</span>os</span>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
