@@ -1,25 +1,10 @@
 {
   "version": 2,
   "public": true,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/maintenance-control",
-      "destination": "/maintenance-control.html"
-    },
-    {
-      "source": "/protected-access",
-      "destination": "/protected-access.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
-        }
-      ]
+      "src": "/",
+      "dest": "/index-full-site.html"
     }
   ]
 }

@@ -2,995 +2,141 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>syrıs. - systematic solutions for modern chaos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
+    <!-- HTTPS Enforcement -->
+    <meta
+      http-equiv="Strict-Transport-Security"
+      content="max-age=31536000; includeSubDomains; preload"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    />
+
+    <title>syrıs. — calm in the chaos of creative work</title>
     <meta
       name="description"
-      content="transform creative operations through systematic design. reduce coordination overhead by 45% in 14 days. proven methodology for creative teams."
+      content="workflow optimization for creative teams. coming soon."
     />
 
-    <!-- SEO and Social Meta Tags -->
-    <meta name="author" content="Andrew Syris" />
-    <meta
-      name="keywords"
-      content="creative operations, systematic design, coordination overhead, workflow optimization, creative team efficiency"
-    />
-
+    <!-- Open Graph tags -->
     <meta
       property="og:title"
-      content="syrıs. - systematic solutions for modern chaos"
+      content="syrıs. — calm in the chaos of creative work"
     />
     <meta
       property="og:description"
-      content="45% less coordination overhead. 14-day systematic transformation."
+      content="workflow optimization for creative teams. coming soon."
     />
-    <meta property="og:url" content="https://syris.systems" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://syris.studio" />
 
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet"
+    /></noscript>
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://syris.studio" />
+
+    <!-- Open Graph Image -->
+    <meta
+      property="og:image"
+      content="https://syris.studio/assets/images/syris.logo.primary.svg"
+    />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="314" />
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "syrıs",
+        "url": "https://syris.studio",
+        "description": "workflow optimization for creative teams"
       }
-      gtag("js", new Date());
-      gtag("config", "G-L55FL9F71T");
     </script>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --primary: #00c9a7;
-        --charcoal: #0a0a0a;
-        --white: #ffffff;
-        --gray-50: #fafafa;
-        --gray-100: #f5f5f5;
-        --gray-400: #9ca3af;
-        --gray-600: #4b5563;
-        --mono: "JetBrains Mono", monospace;
-        --sans: "Inter", -apple-system, sans-serif;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      ::selection {
-        background: var(--primary);
-        color: var(--white);
-      }
-
-      body {
-        font-family: var(--sans);
-        color: var(--charcoal);
-        line-height: 1.6;
-        background: var(--white);
-        overflow-x: hidden;
-      }
-
-      /* Brand-specific: the dot motif */
-      .dot {
-        color: var(--primary);
-        font-weight: 600;
-      }
-
-      .dot-grid {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(
-          circle,
-          var(--primary) 1px,
-          transparent 1px
-        );
-        background-size: 40px 40px;
-        opacity: 0.02;
-        pointer-events: none;
-      }
-
-      /* Navigation - lowercase per brand guide */
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 24px 40px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-        border-bottom: 1px solid var(--gray-100);
-      }
-
-      .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        font-family: var(--mono);
-        font-size: 20px;
-        font-weight: 600;
-        letter-spacing: -0.5px;
-        text-decoration: none;
-        color: var(--charcoal);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 32px;
-        align-items: center;
-      }
-
-      .nav-link {
-        font-family: var(--mono);
-        font-size: 13px;
-        color: var(--gray-600);
-        text-decoration: none;
-        transition: color 0.2s ease;
-      }
-
-      .nav-link:hover {
-        color: var(--charcoal);
-      }
-
-      .nav-cta {
-        font-family: var(--mono);
-        font-size: 13px;
-        padding: 10px 20px;
-        background: var(--charcoal);
-        color: var(--white);
-        text-decoration: none;
-        border-radius: 4px;
-        transition: all 0.2s ease;
-      }
-
-      .nav-cta:hover {
-        background: var(--primary);
-        color: var(--charcoal);
-        transform: translateY(-1px);
-      }
-
-      /* Hero - systematic, data-driven per brand guide */
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 120px 40px 80px;
-        position: relative;
-      }
-
-      .hero-content {
-        max-width: 800px;
-        text-align: center;
-        position: relative;
-        z-index: 1;
-      }
-
-      .hero-label {
-        font-family: var(--mono);
-        font-size: 13px;
-        color: var(--primary);
-        margin-bottom: 32px;
-        letter-spacing: 1px;
-      }
-
-      h1 {
-        font-size: clamp(3rem, 8vw, 5rem);
-        font-weight: 600;
-        line-height: 0.95;
-        margin-bottom: 24px;
-        letter-spacing: -2px;
-      }
-
-      .hero-sub {
-        font-size: 18px;
-        color: var(--gray-600);
-        margin-bottom: 16px;
-        font-weight: 400;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-data {
-        font-family: var(--mono);
-        font-size: 14px;
-        color: var(--gray-600);
-        margin-bottom: 40px;
-      }
-
-      .hero-data strong {
-        color: var(--primary);
-      }
-
-      /* CTA Button - systematic language */
-      .btn-hero {
-        font-family: var(--mono);
-        padding: 16px 40px;
-        background: var(--charcoal);
-        color: var(--white);
-        border: none;
-        border-radius: 4px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        transition: all 0.2s ease;
-      }
-
-      .btn-hero:hover {
-        background: var(--primary);
-        color: var(--charcoal);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(0, 201, 167, 0.2);
-      }
-
-      /* Trust signal - data-driven */
-      .trust-signal {
-        margin-top: 48px;
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--gray-400);
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      /* Proof Section - quantified metrics */
-      .proof-section {
-        padding: 80px 40px;
-        background: var(--gray-50);
-        border-top: 1px solid var(--gray-100);
-      }
-
-      .proof-container {
-        max-width: 900px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 32px;
-        text-align: center;
-      }
-
-      .proof-item {
-        padding: 32px 24px;
-        background: var(--white);
-        border-radius: 4px;
-        transition: transform 0.2s ease;
-      }
-
-      .proof-item:hover {
-        transform: translateY(-4px);
-      }
-
-      .proof-metric {
-        font-size: 42px;
-        font-weight: 600;
-        color: var(--primary);
-        margin-bottom: 8px;
-        font-family: var(--mono);
-      }
-
-      .proof-label {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--gray-600);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      /* Methodology Section */
-      .methodology {
-        padding: 100px 40px;
-        background: var(--white);
-      }
-
-      .section-header {
-        max-width: 700px;
-        margin: 0 auto 60px;
-        text-align: center;
-      }
-
-      .section-label {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--primary);
-        margin-bottom: 16px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      h2 {
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-weight: 600;
-        letter-spacing: -1px;
-        margin-bottom: 16px;
-      }
-
-      .section-sub {
-        font-size: 16px;
-        color: var(--gray-600);
-        font-family: var(--mono);
-      }
-
-      .methodology-grid {
-        max-width: 1000px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 24px;
-      }
-
-      .methodology-step {
-        text-align: center;
-        padding: 40px 24px;
-        background: var(--gray-50);
-        border-radius: 4px;
-        transition: all 0.3s ease;
-      }
-
-      .methodology-step:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      }
-
-      .step-timeline {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--primary);
-        margin-bottom: 12px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .step-title {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 16px;
-      }
-
-      .step-items {
-        font-size: 13px;
-        color: var(--gray-600);
-        line-height: 1.8;
-        font-family: var(--mono);
-      }
-
-      /* calm.profile Section */
-      .profile-section {
-        padding: 100px 40px;
-        background: var(--charcoal);
-        color: var(--white);
-      }
-
-      .profile-section h2 {
-        color: var(--white);
-      }
-
-      .profile-stats {
-        max-width: 900px;
-        margin: 48px auto;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-        text-align: center;
-      }
-
-      .profile-stat {
-        padding: 24px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-      }
-
-      .stat-number {
-        font-family: var(--mono);
-        font-size: 48px;
-        font-weight: 600;
-        color: var(--primary);
-        margin-bottom: 8px;
-      }
-
-      .stat-label {
-        font-family: var(--mono);
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        opacity: 0.8;
-      }
-
-      .profile-framework {
-        max-width: 1000px;
-        margin: 60px auto 0;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
-      }
-
-      .framework-card {
-        padding: 32px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-        transition: all 0.3s ease;
-      }
-
-      .framework-card:hover {
-        background: rgba(0, 201, 167, 0.1);
-        border-color: var(--primary);
-      }
-
-      .framework-title {
-        font-family: var(--mono);
-        font-size: 18px;
-        margin-bottom: 12px;
-        color: var(--primary);
-      }
-
-      .framework-desc {
-        font-size: 14px;
-        line-height: 1.6;
-        opacity: 0.9;
-      }
-
-      /* Services Section */
-      .services {
-        padding: 100px 40px;
-        background: var(--gray-50);
-      }
-
-      .services-grid {
-        max-width: 1200px;
-        margin: 60px auto 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 32px;
-      }
-
-      .service-card {
-        padding: 48px;
-        background: var(--white);
-        border-radius: 4px;
-        text-align: center;
-        transition: all 0.3s ease;
-      }
-
-      .service-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 40px rgba(0, 201, 167, 0.1);
-      }
-
-      .service-name {
-        font-family: var(--mono);
-        font-size: 24px;
-        margin-bottom: 16px;
-        font-weight: 600;
-      }
-
-      .service-metric {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--primary);
-        margin-bottom: 16px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .service-desc {
-        color: var(--gray-600);
-        margin-bottom: 32px;
-        line-height: 1.6;
-        font-size: 14px;
-      }
-
-      .btn-service {
-        font-family: var(--mono);
-        padding: 12px 32px;
-        background: var(--charcoal);
-        color: var(--white);
-        border: none;
-        border-radius: 4px;
-        font-size: 13px;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        transition: all 0.2s ease;
-      }
-
-      .btn-service:hover {
-        background: var(--primary);
-        color: var(--charcoal);
-      }
-
-      /* Final CTA */
-      .final-cta {
-        padding: 120px 40px;
-        background: linear-gradient(135deg, var(--charcoal) 0%, #1a1a1a 100%);
-        color: var(--white);
-        text-align: center;
-      }
-
-      .final-cta h2 {
-        color: var(--white);
-        margin-bottom: 16px;
-      }
-
-      .final-cta-sub {
-        font-family: var(--mono);
-        font-size: 14px;
-        opacity: 0.8;
-        margin-bottom: 40px;
-      }
-
-      .btn-final {
-        padding: 16px 40px;
-        background: var(--primary);
-        color: var(--charcoal);
-        border: none;
-        border-radius: 4px;
-        font-family: var(--mono);
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        text-decoration: none;
-        display: inline-block;
-        transition: all 0.2s ease;
-      }
-
-      .btn-final:hover {
-        background: var(--white);
-        transform: translateY(-2px);
-      }
-
-      /* Footer */
-      footer {
-        padding: 48px 40px;
-        text-align: center;
-        border-top: 1px solid var(--gray-100);
-        background: var(--gray-50);
-      }
-
-      .footer-content {
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--gray-600);
-      }
-
-      .footer-content a {
-        color: var(--primary);
-        text-decoration: none;
-      }
-
-      .footer-content a:hover {
-        text-decoration: underline;
-      }
-
-      /* Mobile Responsive */
-      @media (max-width: 768px) {
-        nav {
-          padding: 20px;
-        }
-
-        .nav-links {
-          display: none;
-        }
-
-        .hero {
-          padding: 100px 24px 60px;
-        }
-
-        h1 {
-          font-size: 2.5rem;
-        }
-
-        .proof-container {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
-        }
-
-        .methodology-grid,
-        .services-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .profile-stats {
-          grid-template-columns: 1fr;
-        }
-
-        .profile-framework {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Navigation -->
-    <nav>
-      <div class="nav-container">
-        <a href="/" class="logo"> syrıs<span class="dot">.</span> </a>
-        <div class="nav-links">
-          <a href="/about.html" class="nav-link">about</a>
-          <a href="/blog.html" class="nav-link">insights</a>
-          <a href="/calm-profile.html" class="nav-link"
-            >calm<span class="dot">.</span>profile</a
-          >
-          <a href="/services.html" class="nav-link">services</a>
-          <a
-            href="https://calendly.com/syris/30min"
-            target="_blank"
-            class="nav-cta"
-            >book discovery call</a
-          >
+    <div class="background-layer">
+      <div class="grid-animation"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <main class="content-wrapper">
+      <div class="glass-panel">
+        <div class="logo">
+          <img
+            src="assets/images/syris.logo.primary.svg"
+            alt="syrıs."
+            class="logo-img"
+          />
         </div>
+        <h2 class="tagline">calm in the chaos of creative work</h2>
+        <div class="status">coming soon</div>
+
+        <div class="services">
+          <div class="service-chip">calm.profile</div>
+          <div class="service-chip">calm.stack</div>
+          <div class="service-chip">calm.os</div>
+        </div>
+
+        <form class="email-form" id="emailForm">
+          <input
+            type="email"
+            name="email"
+            class="glass-input"
+            placeholder="your email"
+            required
+            autocomplete="email"
+          />
+          <button type="submit" class="glass-button">notify me</button>
+        </form>
+
+        <footer class="panel-footer">
+          <a href="mailto:agent@syris.studio">agent@syris.studio</a>
+        </footer>
       </div>
-    </nav>
+    </main>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="dot-grid"></div>
-      <div class="hero-content">
-        <div class="hero-label">systematic solutions for creative chaos</div>
-
-        <h1>
-          your team loses<br />
-          2 days every week<br />
-          to operational chaos<span class="dot">.</span>
-        </h1>
-
-        <p class="hero-sub">we fix that in 14 days. systematically.</p>
-
-        <p class="hero-data">
-          creative teams waste <strong>40%</strong> of their time on
-          non-creative work.<br />
-          that's <strong>$80k+</strong> per employee annually.
-          <strong>$1.2m</strong> for a 15-person team.
-        </p>
-
-        <a href="/calm-profile" class="btn-hero">
-          take the calm.profile assessment (free) →
-        </a>
-
-        <div class="trust-signal">trusted by 47+ creative agencies</div>
-      </div>
-    </section>
-
-    <!-- Proof Points -->
-    <section class="proof-section">
-      <div class="proof-container">
-        <div class="proof-item">
-          <div class="proof-metric">10hrs</div>
-          <div class="proof-label">reclaimed weekly</div>
-        </div>
-        <div class="proof-item">
-          <div class="proof-metric">37%</div>
-          <div class="proof-label">productivity gain</div>
-        </div>
-        <div class="proof-item">
-          <div class="proof-metric">60%</div>
-          <div class="proof-label">fewer revisions</div>
-        </div>
-        <div class="proof-item">
-          <div class="proof-metric">12x</div>
-          <div class="proof-label">average ROI</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Problem Statement -->
-    <section class="methodology" id="methodology">
-      <div class="section-header">
-        <div class="section-label">the hidden crisis</div>
-        <h2>creativity is drowning in busywork<span class="dot">.</span></h2>
-        <p class="section-sub">
-          we studied 150+ creative teams. they all share the same problems:
-        </p>
-      </div>
-
-      <div
-        style="max-width: 800px; margin: 40px auto; display: grid; gap: 24px"
-      >
-        <div
-          style="
-            padding: 24px;
-            background: var(--gray-50);
-            border-left: 4px solid var(--primary);
-          "
-        >
-          <strong>"endless email ping-pong"</strong> – designers spend 3+ hours
-          daily chasing feedback, finding files, and updating everyone on status
-        </div>
-        <div
-          style="
-            padding: 24px;
-            background: var(--gray-50);
-            border-left: 4px solid var(--primary);
-          "
-        >
-          <strong>"death by a thousand tools"</strong> – work scattered across
-          slack, email, asana, notion, drive, figma comments...
-          context-switching kills flow
-        </div>
-        <div
-          style="
-            padding: 24px;
-            background: var(--gray-50);
-            border-left: 4px solid var(--primary);
-          "
-        >
-          <strong>"meetings about meetings"</strong> – status updates that could
-          be automated eat 8-10 hours per week per person
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 48px">
-        <p style="font-size: 20px; font-weight: 600">
-          result: your expensive creative talent does admin work instead of
-          creative work.
-        </p>
-      </div>
-    </section>
-
-    <!-- calm.profile Section -->
-    <section class="profile-section">
-      <div class="section-header">
-        <div class="section-label" style="color: var(--primary)">
-          step 1: understand your chaos
-        </div>
-        <h2>calm<span class="dot">.</span>profile assessment</h2>
-        <p class="section-sub" style="color: rgba(255, 255, 255, 0.7)">
-          discover your team's operational type and get a custom roadmap to
-          calm.
-        </p>
-      </div>
-
-      <div class="profile-stats">
-        <div class="profile-stat">
-          <div class="stat-number">$495</div>
-          <div class="stat-label">diagnostic value</div>
-        </div>
-        <div class="profile-stat">
-          <div class="stat-number">free</div>
-          <div class="stat-label">for qualified teams</div>
-        </div>
-        <div class="profile-stat">
-          <div class="stat-number">12pg</div>
-          <div class="stat-label">custom report</div>
-        </div>
-      </div>
-
-      <div class="profile-framework">
-        <div class="framework-card">
-          <div class="framework-title">operational archetype</div>
-          <div class="framework-desc">
-            are you "the firefighters" (always in crisis mode)? "the
-            perfectionists" (endless revisions)? or one of 14 other types? know
-            your pattern to break it.
-          </div>
-        </div>
-
-        <div class="framework-card">
-          <div class="framework-title">waste analysis</div>
-          <div class="framework-desc">
-            see exactly where time and money disappear. most teams are shocked
-            to discover they're losing $5-10k per person monthly to fixable
-            inefficiencies.
-          </div>
-        </div>
-
-        <div class="framework-card">
-          <div class="framework-title">quick wins</div>
-          <div class="framework-desc">
-            get 3 changes you can implement immediately to save 5+ hours per
-            week. these pay for the full transformation before we even start.
-          </div>
-        </div>
-
-        <div class="framework-card">
-          <div class="framework-title">roi projection</div>
-          <div class="framework-desc">
-            see your potential savings over 12 months. most teams can reclaim
-            $250k-500k in lost productivity. we show you exactly how.
-          </div>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin-top: 60px">
-        <h3
-          style="
-            font-family: var(--mono);
-            font-size: 24px;
-            margin-bottom: 16px;
-            color: var(--primary);
-          "
-        >
-          "we thought we just needed to work harder.<br />
-          turns out we needed to work differently<span class="dot">.</span>"
-        </h3>
-        <p style="font-size: 14px; margin-bottom: 32px; opacity: 0.7">
-          – sarah chen, studio mural (saved 12 hours/week after calm.profile)
-        </p>
-        <a href="/calm-profile" class="btn-final"> get your calm.profile → </a>
-        <p
-          style="
-            font-family: var(--mono);
-            font-size: 12px;
-            margin-top: 16px;
-            opacity: 0.6;
-          "
-        >
-          takes 5 minutes • results in 48 hours • no obligation
-        </p>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services" id="services">
-      <div class="section-header">
-        <div class="section-label">the calm system</div>
-        <h2>three ways to reclaim your time<span class="dot">.</span></h2>
-        <p class="section-sub">
-          start small or transform everything. you choose the pace.
-        </p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-name">calm<span class="dot">.</span>profile</div>
-          <div class="service-metric">$495 • 5 days</div>
-          <p class="service-desc">
-            diagnostic assessment that shows exactly where you're losing time
-            and money. includes 12-page report, quick wins, and ROI calculation.
-          </p>
-          <a href="/calm-profile" class="btn-service"> start assessment </a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-name">calm<span class="dot">.</span>stack</div>
-          <div class="service-metric">$2,950 • 14 days</div>
-          <p class="service-desc">
-            rapid implementation sprint. we fix your 3 biggest problems, cut
-            meetings by 30%, and consolidate your tool chaos.
-          </p>
-          <a href="/calm-stack" class="btn-service"> fix my workflow </a>
-        </div>
-
-        <div class="service-card">
-          <div class="service-name">calm<span class="dot">.</span>os</div>
-          <div class="service-metric">custom • 3-4 months</div>
-          <p class="service-desc">
-            complete operational transformation. custom systems, 40%+
-            productivity gains, typically $100k+ annual savings.
-          </p>
-          <a href="https://calendly.com/syris/30min" class="btn-service">
-            apply now
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Objection Handling -->
-    <section class="methodology" style="background: var(--gray-50)">
-      <div class="section-header">
-        <div class="section-label">common concerns</div>
-        <h2>yes, we've heard them all<span class="dot">.</span></h2>
-      </div>
-
-      <div style="max-width: 900px; margin: 0 auto; display: grid; gap: 32px">
-        <div
-          style="
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 24px;
-            align-items: start;
-          "
-        >
-          <strong>"we've tried project management tools"</strong>
-          <p>
-            this isn't about adding tools. we typically eliminate 50% of your
-            tools while making everything work better. less complexity, not
-            more.
-          </p>
-        </div>
-        <div
-          style="
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 24px;
-            align-items: start;
-          "
-        >
-          <strong>"process will kill our creativity"</strong>
-          <p>
-            the opposite. right now chaos is killing creativity. our system
-            gives creatives 10+ hours back per week for actual creative work.
-          </p>
-        </div>
-        <div
-          style="
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 24px;
-            align-items: start;
-          "
-        >
-          <strong>"our team won't adopt changes"</strong>
-          <p>
-            they will when it makes their lives easier. we design solutions your
-            team actually wants to use, and we train them personally.
-          </p>
-        </div>
-        <div
-          style="
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 24px;
-            align-items: start;
-          "
-        >
-          <strong>"we can't afford this right now"</strong>
-          <p>
-            you're already losing $80k+ per employee to inefficiency. our
-            solution costs less than one month of that waste and pays back 12x
-            in year one.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta">
-      <h2>every week you wait costs $1,500+<span class="dot">.</span></h2>
-      <p class="final-cta-sub">
-        that's not a scare tactic. that's math. 15 people × 10 wasted hours ×
-        $50/hour = $7,500/week.
-      </p>
-      <a href="/calm-profile" class="btn-final">
-        stop the bleed. get your calm.profile →
-      </a>
-      <p style="margin-top: 24px; font-size: 14px; opacity: 0.7">
-        or if you prefer to talk first:
-        <a
-          href="https://calendly.com/syris/30min"
-          style="color: var(--primary)"
-        >
-          book a 15-minute reality check
-        </a>
-      </p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-content">
-        syrıs<span class="dot">.</span> © 2025 | systematic solutions for modern
-        chaos<br />
-        <a href="mailto:andrew@syris.studio">andrew@syris.studio</a> |
-        <a href="https://linkedin.com/company/syrisdot">linkedin</a> |
-        <a href="/calm-profile.html">calm.profile assessment</a>
-      </div>
-    </footer>
-
-    <script>
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
-        });
-      });
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
+<- add small, removable console.debugs around state transitions to confirm fixes (only in Force deployment Sun Sep  7 15:41:12 EDT 2025 -->
