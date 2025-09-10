@@ -3,6 +3,10 @@
   "public": true,
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/index-full-site.html"
+    },
+    {
       "source": "/maintenance-control",
       "destination": "/maintenance-control.html"
     },
