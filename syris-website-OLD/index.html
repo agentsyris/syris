@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>syris. - systematic solutions for modern chaos</title>
+    <meta name="description" content="transform creative operations through systematic design. reduce coordination overhead by 45% in 14 days. proven methodology for creative teams.">
+    
+    <!-- SEO and Social Meta Tags -->
+    <meta name="author" content="Andrew Syris">
+    <meta name="keywords" content="creative operations, systematic design, coordination overhead, workflow optimization, creative team efficiency">
+    
+    <meta property="og:title" content="syris. - systematic solutions for modern chaos">
+    <meta property="og:description" content="45% less coordination overhead. 14-day systematic transformation.">
+    <meta property="og:url" content="https://syris.systems">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L55FL9F71T');
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00C9A7;
+            --charcoal: #0A0A0A;
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-400: #9CA3AF;
+            --gray-600: #4B5563;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        ::selection {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--charcoal);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Brand-specific: the dot motif */
+        .dot {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .dot-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, var(--primary) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.02;
+            pointer-events: none;
+        }
+
+        /* Navigation - lowercase per brand guide */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 24px 40px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--mono);
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--charcoal);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--charcoal);
+        }
+        
+        .nav-cta {
+            font-family: var(--mono);
+            font-size: 13px;
+            padding: 10px 20px;
+            background: var(--charcoal);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-cta:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+            transform: translateY(-1px);
+        }
+
+        /* Hero - systematic, data-driven per brand guide */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 80px;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-label {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--primary);
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 600;
+            line-height: 0.95;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+        
+        .hero-sub {
+            font-size: 18px;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-data {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+        }
+        
+        .hero-data strong {
+            color: var(--primary);
+        }
+
+        /* CTA Button - systematic language */
+        .btn-hero {
+            font-family: var(--mono);
+            padding: 16px 40px;
+            background: var(--charcoal);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-hero:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,201,167,0.2);
+        }
+        
+        /* Trust signal - data-driven */
+        .trust-signal {
+            margin-top: 48px;
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Proof Section - quantified metrics */
+        .proof-section {
+            padding: 80px 40px;
+            background: var(--gray-50);
+            border-top: 1px solid var(--gray-100);
+        }
+        
+        .proof-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+        
+        .proof-item {
+            padding: 32px 24px;
+            background: var(--white);
+            border-radius: 4px;
+            transition: transform 0.2s ease;
+        }
+        
+        .proof-item:hover {
+            transform: translateY(-4px);
+        }
+        
+        .proof-metric {
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-family: var(--mono);
+        }
+        
+        .proof-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Methodology Section */
+        .methodology {
+            padding: 100px 40px;
+            background: var(--white);
+        }
+        
+        .section-header {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        
+        .section-label {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+        
+        .section-sub {
+            font-size: 16px;
+            color: var(--gray-600);
+            font-family: var(--mono);
+        }
+        
+        .methodology-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        
+        .methodology-step {
+            text-align: center;
+            padding: 40px 24px;
+            background: var(--gray-50);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .methodology-step:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .step-timeline {
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .step-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .step-items {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.8;
+            font-family: var(--mono);
+        }
+
+        /* calm.profile Section */
+        .profile-section {
+            padding: 100px 40px;
+            background: var(--charcoal);
+            color: var(--white);
+        }
+        
+        .profile-section h2 {
+            color: var(--white);
+        }
+        
+        .profile-stats {
+            max-width: 900px;
+            margin: 48px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+        
+        .profile-stat {
+            padding: 24px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+        
+        .stat-number {
+            font-family: var(--mono);
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-family: var(--mono);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+        
+        .profile-framework {
+            max-width: 1000px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        
+        .framework-card {
+            padding: 32px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .framework-card:hover {
+            background: rgba(0,201,167,0.1);
+            border-color: var(--primary);
+        }
+        
+        .framework-title {
+            font-family: var(--mono);
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+        
+        .framework-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 40px;
+            background: var(--gray-50);
+        }
+        
+        .services-grid {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        
+        .service-card {
+            padding: 48px;
+            background: var(--white);
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,201,167,0.1);
+        }
+        
+        .service-name {
+            font-family: var(--mono);
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        
+        .service-metric {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .service-desc {
+            color: var(--gray-600);
+            margin-bottom: 32px;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .btn-service {
+            font-family: var(--mono);
+            padding: 12px 32px;
+            background: var(--charcoal);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-service:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 120px 40px;
+            background: linear-gradient(135deg, var(--charcoal) 0%, #1a1a1a 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        
+        .final-cta-sub {
+            font-family: var(--mono);
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+        
+        .btn-final {
+            padding: 16px 40px;
+            background: var(--primary);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--mono);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-final:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 40px;
+            text-align: center;
+            border-top: 1px solid var(--gray-100);
+            background: var(--gray-50);
+        }
+        
+        .footer-content {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+        
+        .footer-content a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 100px 24px 60px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .proof-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .methodology-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-framework {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                syris<span class="dot">.</span>
+            </a>
+            <div class="nav-links">
+                <a href="/about.html" class="nav-link">about</a>
+                <a href="/blog.html" class="nav-link">insights</a>
+                <a href="/calm-profile.html" class="nav-link">calm<span class="dot">.</span>profile</a>
+                <a href="/services.html" class="nav-link">services</a>
+                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-cta">book discovery call</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="dot-grid"></div>
+        <div class="hero-content">
+            <div class="hero-label">systematic solutions for modern chaos</div>
+            
+            <h1>reduce coordination<br>
+            overhead by 45%<span class="dot">.</span></h1>
+            
+            <p class="hero-sub">
+                14-day systematic transformation for creative agencies.
+            </p>
+            
+            <p class="hero-data">
+                creative teams lose <strong>27%</strong> of productive time to coordination chaos.<br>
+                that's <strong>$291k</strong> annual waste for a 15-person team.
+            </p>
+            
+            <a href="https://calendly.com/syris/30min" 
+               class="btn-hero" 
+               target="_blank"
+               onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Hero Discovery Call' });">
+                start systematic transformation →
+            </a>
+            
+            <div class="trust-signal">
+                150+ creative teams systematically transformed
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Points -->
+    <section class="proof-section">
+        <div class="proof-container">
+            <div class="proof-item">
+                <div class="proof-metric">45%</div>
+                <div class="proof-label">overhead reduction</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-metric">20hrs</div>
+                <div class="proof-label">saved weekly</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-metric">2.5×</div>
+                <div class="proof-label">faster delivery</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-metric">14</div>
+                <div class="proof-label">days to transform</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology -->
+    <section class="methodology" id="methodology">
+        <div class="section-header">
+            <div class="section-label">systematic transformation methodology</div>
+            <h2>from chaos audit to calm operations<span class="dot">.</span></h2>
+            <p class="section-sub">coordination overhead isn't a people problem—it's a design problem.</p>
+        </div>
+
+        <div class="methodology-grid">
+            <div class="methodology-step">
+                <div class="step-timeline">days 1-3</div>
+                <div class="step-title">audit<span class="dot">.</span></div>
+                <div class="step-items">
+                    time tracking analysis<br>
+                    tool inventory assessment<br>
+                    workflow mapping<br>
+                    overhead calculation
+                </div>
+            </div>
+            
+            <div class="methodology-step">
+                <div class="step-timeline">days 4-7</div>
+                <div class="step-title">analyze<span class="dot">.</span></div>
+                <div class="step-items">
+                    bottleneck prioritization<br>
+                    opportunity mapping<br>
+                    calm.profile assessment<br>
+                    solution architecture
+                </div>
+            </div>
+            
+            <div class="methodology-step">
+                <div class="step-timeline">days 8-11</div>
+                <div class="step-title">design<span class="dot">.</span></div>
+                <div class="step-items">
+                    workflow templates<br>
+                    automation planning<br>
+                    protocol optimization<br>
+                    implementation roadmap
+                </div>
+            </div>
+            
+            <div class="methodology-step">
+                <div class="step-timeline">days 12-14</div>
+                <div class="step-title">deliver<span class="dot">.</span></div>
+                <div class="step-items">
+                    implementation playbook<br>
+                    team training<br>
+                    success metrics<br>
+                    90-day roadmap
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- calm.profile Section -->
+    <section class="profile-section">
+        <div class="section-header">
+            <div class="section-label" style="color: var(--primary);">proprietary assessment</div>
+            <h2>calm<span class="dot">.</span>profile creative types</h2>
+            <p class="section-sub" style="color: rgba(255,255,255,0.7);">
+                scientific framework mapping creative cognitive patterns to optimal workflows.
+            </p>
+        </div>
+
+        <div class="profile-stats">
+            <div class="profile-stat">
+                <div class="stat-number">16</div>
+                <div class="stat-label">creative types</div>
+            </div>
+            <div class="profile-stat">
+                <div class="stat-number">20</div>
+                <div class="stat-label">strategic questions</div>
+            </div>
+            <div class="profile-stat">
+                <div class="stat-number">4</div>
+                <div class="stat-label">cognitive functions</div>
+            </div>
+        </div>
+
+        <div class="profile-framework">
+            <div class="framework-card">
+                <div class="framework-title">cognitive mapping</div>
+                <div class="framework-desc">
+                    inspired by psychological typology frameworks, adapted specifically for creative professionals. we map how you process information, make decisions, and sustain creative energy.
+                </div>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-title">creative functions</div>
+                <div class="framework-desc">
+                    analyzes your dominant, auxiliary, tertiary, and inferior cognitive functions to understand your natural creative strengths and growth edges.
+                </div>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-title">workflow optimization</div>
+                <div class="framework-desc">
+                    personalized recommendations for tools, environment, collaboration style, and project management based on your unique cognitive stack.
+                </div>
+            </div>
+            
+            <div class="framework-card">
+                <div class="framework-title">team compatibility</div>
+                <div class="framework-desc">
+                    understand how different creative types work together, enabling better team composition and reducing creative friction.
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <h3 style="font-family: var(--mono); font-size: 24px; margin-bottom: 16px; color: var(--primary);">
+                what's your creative type<span class="dot">?</span>
+            </h3>
+            <p style="font-size: 16px; margin-bottom: 32px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+                discover your optimal workflow systems through our scientific assessment. get personalized recommendations designed specifically for how your creative mind works.
+            </p>
+            <a href="/calm-profile.html" style="display: inline-block; padding: 16px 40px; background: var(--primary); color: var(--charcoal); border-radius: 4px; font-family: var(--mono); font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s ease;">
+                take free assessment →
+            </a>
+            <p style="font-family: var(--mono); font-size: 12px; margin-top: 16px; opacity: 0.6;">
+                no email required to start • results in 8 minutes
+            </p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <div class="section-label">systematic solutions</div>
+            <h2>transformation pathways<span class="dot">.</span></h2>
+            <p class="section-sub">from assessment to implementation to continuous optimization.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-name">calm<span class="dot">.</span>profile</div>
+                <div class="service-metric">8-minute assessment</div>
+                <p class="service-desc">
+                    discover your creative type through our framework. receive personalized workflow recommendations based on your cognitive patterns.
+                </p>
+                <a href="/calm-profile.html" class="btn-service">
+                    start free assessment
+                </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-name">calm<span class="dot">.</span>ops</div>
+                <div class="service-metric">14-day transformation</div>
+                <p class="service-desc">
+                    systematic business operations redesign. we implement in your tools and train your team for sustained success.
+                </p>
+                <a href="/calm-ops.html" class="btn-service">
+                    explore methodology
+                </a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-name">custom<span class="dot">.</span>sys</div>
+                <div class="service-metric">enterprise solutions</div>
+                <p class="service-desc">
+                    bespoke systematic transformation for complex operational challenges at scale.
+                </p>
+                <a href="https://calendly.com/syris/30min" class="btn-service" target="_blank">
+                    schedule consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>ready to eliminate coordination chaos<span class="dot">?</span></h2>
+        <p class="final-cta-sub">
+            quantified results. proven methodology. 14-day transformation.
+        </p>
+        <a href="https://calendly.com/syris/30min" 
+           class="btn-final" 
+           target="_blank"
+           onclick="gtag('event', 'click', { 'event_category': 'CTA', 'event_label': 'Final CTA' });">
+            book discovery consultation
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            syris<span class="dot">.</span> © 2025 | systematic solutions for modern chaos<br>
+            <a href="mailto:andrew@syris.studio">andrew@syris.studio</a> | 
+            <a href="https://linkedin.com/company/syrisdot">linkedin</a> | 
+            <a href="/calm-profile.html">calm.profile assessment</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

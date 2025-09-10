@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - syris.</title>
+    <meta name="description" content="Privacy policy for syris. How we collect, use, and protect your information.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00C9A7;
+            --charcoal: #0A0A0A;
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-400: #9CA3AF;
+            --gray-600: #4B5563;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--charcoal);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        .dot {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 24px 40px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--mono);
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--charcoal);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--charcoal);
+        }
+
+        .nav-cta {
+            font-family: var(--mono);
+            font-size: 13px;
+            padding: 10px 20px;
+            background: var(--charcoal);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+            transform: translateY(-1px);
+        }
+
+        /* Content */
+        .privacy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 40px 80px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .last-updated {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-bottom: 48px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 48px;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        ul {
+            margin-bottom: 16px;
+            margin-left: 24px;
+            color: var(--gray-600);
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .contact-info {
+            background: var(--gray-50);
+            padding: 24px;
+            border-radius: 4px;
+            margin-top: 48px;
+        }
+
+        .contact-info h3 {
+            margin-top: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 40px;
+            text-align: center;
+            border-top: 1px solid var(--gray-100);
+            background: var(--gray-50);
+        }
+
+        .footer-content {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+
+        .footer-content a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .privacy-container {
+                padding: 120px 24px 60px;
+            }
+        }
+    </style>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L55FL9F71T');
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">syris<span class="dot">.</span></a>
+            <div class="nav-links">
+                <a href="/about.html" class="nav-link">about</a>
+                <a href="/blog.html" class="nav-link">insights</a>
+                <a href="/calm-profile.html" class="nav-link">calm<span class="dot">.</span>profile</a>
+                <a href="/services.html" class="nav-link">services</a>
+                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-cta">book discovery call</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="privacy-container">
+        <h1>Privacy Policy<span class="dot">.</span></h1>
+        <div class="last-updated">last updated: january 2025</div>
+
+        <p>
+            At syris., we take your privacy seriously. This privacy policy explains how we collect, use, and protect your information when you use our website and services.
+        </p>
+
+        <h2>Information We Collect<span class="dot">.</span></h2>
+        
+        <h3>Information You Provide</h3>
+        <p>We collect information you provide directly to us, such as:</p>
+        <ul>
+            <li>Name and email address when you sign up for our newsletter or reports</li>
+            <li>Contact information when you book a consultation</li>
+            <li>Assessment responses when you complete the calm.profile assessment</li>
+            <li>Any information you provide when communicating with us</li>
+        </ul>
+
+        <h3>Automatically Collected Information</h3>
+        <p>When you visit our website, we automatically collect certain information:</p>
+        <ul>
+            <li>Browser type and version</li>
+            <li>Device information</li>
+            <li>IP address</li>
+            <li>Pages visited and time spent on pages</li>
+            <li>Referring website addresses</li>
+        </ul>
+
+        <h2>How We Use Your Information<span class="dot">.</span></h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+            <li>Provide, maintain, and improve our services</li>
+            <li>Send you requested reports and assessments</li>
+            <li>Communicate with you about our services</li>
+            <li>Send marketing communications (with your consent)</li>
+            <li>Analyze website usage and improve user experience</li>
+            <li>Comply with legal obligations</li>
+        </ul>
+
+        <h2>Information Sharing<span class="dot">.</span></h2>
+        <p>We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:</p>
+        <ul>
+            <li>With service providers who assist us in operating our website and conducting our business</li>
+            <li>To comply with legal obligations or respond to lawful requests</li>
+            <li>To protect our rights, privacy, safety, or property</li>
+            <li>With your consent or at your direction</li>
+        </ul>
+
+        <h2>Third-Party Services<span class="dot">.</span></h2>
+        <p>We use the following third-party services:</p>
+        <ul>
+            <li><strong>Google Analytics:</strong> For website analytics and performance monitoring</li>
+            <li><strong>Formspree:</strong> For form submissions and email collection</li>
+            <li><strong>Calendly:</strong> For scheduling consultations</li>
+            <li><strong>Vercel:</strong> For website hosting and analytics</li>
+        </ul>
+        <p>These services may collect information as described in their respective privacy policies.</p>
+
+        <h2>Data Security<span class="dot">.</span></h2>
+        <p>
+            We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure.
+        </p>
+
+        <h2>Your Rights<span class="dot">.</span></h2>
+        <p>You have the right to:</p>
+        <ul>
+            <li>Access the personal information we hold about you</li>
+            <li>Request correction of inaccurate information</li>
+            <li>Request deletion of your personal information</li>
+            <li>Opt-out of marketing communications</li>
+            <li>Withdraw consent where we rely on consent to process your information</li>
+        </ul>
+
+        <h2>Cookies<span class="dot">.</span></h2>
+        <p>
+            We use cookies and similar tracking technologies to track activity on our website and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
+        </p>
+
+        <h2>Children's Privacy<span class="dot">.</span></h2>
+        <p>
+            Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children under 18.
+        </p>
+
+        <h2>Changes to This Policy<span class="dot">.</span></h2>
+        <p>
+            We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the "last updated" date.
+        </p>
+
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>If you have any questions about this privacy policy, please contact us at:</p>
+            <p>
+                <strong>Email:</strong> <a href="mailto:andrew@syris.studio">andrew@syris.studio</a><br>
+                <strong>Website:</strong> <a href="https://syris.systems">syris.systems</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            syris<span class="dot">.</span> © 2025 | systematic solutions for modern chaos<br>
+            <a href="mailto:andrew@syris.studio">andrew@syris.studio</a> | 
+            <a href="https://linkedin.com/company/syrisdot">linkedin</a> | 
+            <a href="/privacy.html">privacy policy</a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/services/calm-ops",
+      "dest": "/services/calm-ops.html"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/calm-connect",
+      "destination": "https://calendly.com/syris/30min"
+    },
+    {
+      "source": "/calm-diagnosis",
+      "destination": "/services/calm-ops#diagnosis"
+    },
+    {
+      "source": "/calm-audit",
+      "destination": "/services/calm-ops#audit"
+    },
+    {
+      "source": "/calm-solution",
+      "destination": "/services/calm-ops"
+    },
+    {
+      "source": "/calm-system",
+      "destination": "/services/calm-ops#system"
+    }
+  ]
+}

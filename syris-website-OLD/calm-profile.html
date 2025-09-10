@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calm.profile assessment — syris.</title>
+    <meta name="description" content="Discover your personalized productivity profile. Take the calm.profile assessment to get customized workflow recommendations for creative professionals.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00C9A7;
+            --charcoal: #0A0A0A;
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E7EB;
+            --gray-400: #9CA3AF;
+            --gray-600: #4B5563;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--charcoal);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        .dot {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Top CTA Banner */
+        .top-cta {
+            padding: 12px 20px;
+            text-align: center;
+            border-bottom: 1px solid #F0F0F0;
+            background: #FAFAFA;
+        }
+
+        .top-cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+            color: #4B5563;
+            font-family: var(--mono);
+            font-size: 13px;
+        }
+
+        .top-cta a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .top-cta a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 24px 40px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--mono);
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--charcoal);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--charcoal);
+        }
+
+        .nav-link.active {
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .nav-cta {
+            font-family: var(--mono);
+            font-size: 13px;
+            padding: 10px 20px;
+            background: var(--charcoal);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+            transform: translateY(-1px);
+        }
+
+        /* Assessment Container */
+        .assessment-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 48px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--gray-200);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-600);
+            margin-top: 8px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Intro Section */
+        .intro {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .intro h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .intro-sub {
+            font-size: 18px;
+            color: var(--gray-600);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .intro-meta {
+            font-family: var(--mono);
+            font-size: 14px;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Question Section */
+        .question-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .question-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-header {
+            margin-bottom: 48px;
+        }
+
+        .question-category {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .question-title {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        .question-description {
+            color: var(--gray-600);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Answer Options */
+        .answer-options {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .answer-option {
+            padding: 24px;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--white);
+        }
+
+        .answer-option:hover {
+            border-color: var(--primary);
+            background: var(--gray-50);
+        }
+
+        .answer-option.selected {
+            border-color: var(--primary);
+            background: rgba(0, 201, 167, 0.05);
+        }
+
+        .answer-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--charcoal);
+        }
+
+        .answer-description {
+            font-size: 14px;
+            color: var(--gray-600);
+            line-height: 1.5;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn {
+            font-family: var(--mono);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary);
+            color: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gray-600);
+            border: 1px solid var(--gray-400);
+        }
+
+        .btn-secondary:hover {
+            color: var(--charcoal);
+            border-color: var(--charcoal);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+            text-align: center;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .results-header {
+            margin-bottom: 48px;
+        }
+
+        .results-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .profile-type {
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .profile-description {
+            font-size: 18px;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        /* Profile Details */
+        .profile-details {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 48px;
+            margin-bottom: 48px;
+            text-align: left;
+        }
+
+        .detail-section {
+            margin-bottom: 32px;
+        }
+
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--charcoal);
+        }
+
+        .detail-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .detail-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--gray-600);
+        }
+
+        .detail-list li:last-child {
+            border-bottom: none;
+        }
+
+        .detail-list li::before {
+            content: "→";
+            color: var(--primary);
+            font-weight: 600;
+            margin-right: 12px;
+        }
+
+        /* Email Capture */
+        .email-capture {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 48px;
+            border-radius: 8px;
+            margin-bottom: 48px;
+        }
+
+        .capture-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .capture-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 32px;
+        }
+
+        .capture-form {
+            display: flex;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .capture-input {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--sans);
+            font-size: 16px;
+        }
+
+        .capture-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0,201,167,0.3);
+        }
+
+        .capture-btn {
+            padding: 16px 32px;
+            background: var(--primary);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--mono);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .capture-btn:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* What You'll Receive Section */
+        .what-you-get {
+            padding: 48px 20px;
+        }
+
+        .what-you-get-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .what-you-get h2 {
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .what-you-get ul {
+            margin: 12px 0 0 18px;
+            color: #4B5563;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 40px;
+            text-align: center;
+            border-top: 1px solid var(--gray-100);
+            background: var(--gray-50);
+        }
+
+        .footer-content {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--gray-600);
+        }
+
+        .footer-content a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .assessment-container {
+                padding: 100px 24px 60px;
+            }
+
+            .answer-options {
+                gap: 12px;
+            }
+
+            .answer-option {
+                padding: 20px;
+            }
+
+            .profile-details {
+                padding: 32px 24px;
+            }
+
+            .email-capture {
+                padding: 32px 24px;
+            }
+
+            .capture-form {
+                flex-direction: column;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+
+    <link rel="canonical" href="https://syris.systems/calm-profile.html">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-L55FL9F71T');
+    </script>
+</head>
+<body>
+    <!-- Top CTA Banner -->
+    <section class="top-cta">
+        <div class="top-cta-content">
+            ready to implement your recommendations? <a href="https://calendly.com/syris/30min" target="_blank">book a free 30-min call</a> to get your personalized 14-day plan.
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav style="top: 44px;">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                syris<span class="dot">.</span>
+            </a>
+            <div class="nav-links">
+                <a href="/about.html" class="nav-link">about</a>
+                <a href="/blog.html" class="nav-link">insights</a>
+                <a href="/calm-profile.html" class="nav-link active">calm<span class="dot">.</span>profile</a>
+                <a href="/services.html" class="nav-link">services</a>
+                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-cta">book discovery call</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="assessment-container">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText"></div>
+        </div>
+
+        <!-- Intro Section -->
+        <section class="intro" id="introSection">
+            <h1>discover your calm.profile<span class="dot">.</span></h1>
+            <p class="intro-sub">
+                every creative professional has a unique workstyle. this assessment identifies your productivity patterns and generates personalized workflow recommendations designed specifically for creative minds.
+            </p>
+            <div class="intro-meta">15 questions • 5 minutes • personalized results</div>
+            <br><br>
+            <button class="btn btn-primary" onclick="startAssessment()">start assessment<span class="dot">.</span></button>
+        </section>
+
+        <!-- Question Sections -->
+        <section class="question-section" id="question1">
+            <div class="question-header">
+                <div class="question-category">information processing</div>
+                <h2 class="question-title">when reviewing project briefs, you prefer<span class="dot">.</span></h2>
+                <p class="question-description">how do you best absorb and understand new project requirements?</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="analytical" onclick="selectAnswer(this, 1)">
+                    <div class="answer-label">detailed written specifications</div>
+                    <div class="answer-description">comprehensive documentation with clear requirements, timelines, and deliverables</div>
+                </div>
+                <div class="answer-option" data-value="visual" onclick="selectAnswer(this, 1)">
+                    <div class="answer-label">visual mockups and references</div>
+                    <div class="answer-description">mood boards, inspiration images, and visual examples of desired outcomes</div>
+                </div>
+                <div class="answer-option" data-value="collaborative" onclick="selectAnswer(this, 1)">
+                    <div class="answer-label">verbal walkthrough with team</div>
+                    <div class="answer-description">discussion-based briefing with questions, clarifications, and team input</div>
+                </div>
+                <div class="answer-option" data-value="kinesthetic" onclick="selectAnswer(this, 1)">
+                    <div class="answer-label">hands-on exploration</div>
+                    <div class="answer-description">diving into existing materials, prototypes, or similar projects to understand context</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()" disabled>previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn1" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question2">
+            <div class="question-header">
+                <div class="question-category">information processing</div>
+                <h2 class="question-title">your ideal project kickoff includes<span class="dot">.</span></h2>
+                <p class="question-description">what elements help you start a project with confidence and clarity?</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="analytical" onclick="selectAnswer(this, 2)">
+                    <div class="answer-label">comprehensive documentation</div>
+                    <div class="answer-description">detailed project plan, specifications, and clear deliverable definitions</div>
+                </div>
+                <div class="answer-option" data-value="visual" onclick="selectAnswer(this, 2)">
+                    <div class="answer-label">mood boards and inspiration</div>
+                    <div class="answer-description">visual direction, style references, and aesthetic guidelines</div>
+                </div>
+                <div class="answer-option" data-value="collaborative" onclick="selectAnswer(this, 2)">
+                    <div class="answer-label">team discussion and alignment</div>
+                    <div class="answer-description">group brainstorming, role clarification, and shared understanding</div>
+                </div>
+                <div class="answer-option" data-value="kinesthetic" onclick="selectAnswer(this, 2)">
+                    <div class="answer-label">immediate prototyping</div>
+                    <div class="answer-description">quick sketches, wireframes, or rough concepts to explore ideas</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn2" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question3">
+            <div class="question-header">
+                <div class="question-category">task management</div>
+                <h2 class="question-title">your ideal task organization system<span class="dot">.</span></h2>
+                <p class="question-description">how do you prefer to organize and track your work?</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="systematic" onclick="selectAnswer(this, 3)">
+                    <div class="answer-label">detailed lists with subtasks</div>
+                    <div class="answer-description">hierarchical task breakdown with deadlines, dependencies, and progress tracking</div>
+                </div>
+                <div class="answer-option" data-value="adaptive" onclick="selectAnswer(this, 3)">
+                    <div class="answer-label">visual kanban boards</div>
+                    <div class="answer-description">flexible columns showing project status with easy drag-and-drop organization</div>
+                </div>
+                <div class="answer-option" data-value="collaborative" onclick="selectAnswer(this, 3)">
+                    <div class="answer-label">shared team priorities</div>
+                    <div class="answer-description">collaborative planning with team visibility and shared accountability</div>
+                </div>
+                <div class="answer-option" data-value="focused" onclick="selectAnswer(this, 3)">
+                    <div class="answer-label">simple daily themes</div>
+                    <div class="answer-description">minimal system focusing on daily priorities without overwhelming detail</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn3" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question4">
+            <div class="question-header">
+                <div class="question-category">time management</div>
+                <h2 class="question-title">your planning style looks like<span class="dot">.</span></h2>
+                <p class="question-description">how do you prefer to schedule and prioritize your day?</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="structured" onclick="selectAnswer(this, 4)">
+                    <div class="answer-label">strict agendas</div>
+                    <div class="answer-description">pre-planned calendars with clear slots for each task and milestone</div>
+                </div>
+                <div class="answer-option" data-value="adaptive" onclick="selectAnswer(this, 4)">
+                    <div class="answer-label">dynamic priorities</div>
+                    <div class="answer-description">flexible schedules that adapt to changing project needs and inspiration</div>
+                </div>
+                <div class="answer-option" data-value="focused" onclick="selectAnswer(this, 4)">
+                    <div class="answer-label">one thing at a time</div>
+                    <div class="answer-description">deep work blocks dedicated to a single high-impact task</div>
+                </div>
+                <div class="answer-option" data-value="exploratory" onclick="selectAnswer(this, 4)">
+                    <div class="answer-label">open windows</div>
+                    <div class="answer-description">loose structure leaving room for serendipitous creative exploration</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn4" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question5">
+            <div class="question-header">
+                <div class="question-category">communication</div>
+                <h2 class="question-title">how do you like to communicate with your team<span class="dot">?</span></h2>
+                <p class="question-description">choose the mode that keeps you most aligned and productive.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="asynchronous" onclick="selectAnswer(this, 5)">
+                    <div class="answer-label">async updates</div>
+                    <div class="answer-description">written summaries, recorded videos and shared dashboards to stay informed</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 5)">
+                    <div class="answer-label">real-time chat</div>
+                    <div class="answer-description">instant messaging and live conversations to keep the energy flowing</div>
+                </div>
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 5)">
+                    <div class="answer-label">minimal communication</div>
+                    <div class="answer-description">only essential check-ins, leaving maximum space for uninterrupted work</div>
+                </div>
+                <div class="answer-option" data-value="collaborative" onclick="selectAnswer(this, 5)">
+                    <div class="answer-label">structured meetings</div>
+                    <div class="answer-description">regular agendas with clear objectives and action items</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn5" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question6">
+            <div class="question-header">
+                <div class="question-category">collaboration</div>
+                <h2 class="question-title">your ideal meeting structure<span class="dot">.</span></h2>
+                <p class="question-description">what type of session helps you contribute effectively?</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 6)">
+                    <div class="answer-label">open brainstorms</div>
+                    <div class="answer-description">free-flowing discussions with the whole team sharing ideas in real time</div>
+                </div>
+                <div class="answer-option" data-value="asynchronous" onclick="selectAnswer(this, 6)">
+                    <div class="answer-label">async reviews</div>
+                    <div class="answer-description">written feedback cycles that don't require everyone at the same time</div>
+                </div>
+                <div class="answer-option" data-value="structured" onclick="selectAnswer(this, 6)">
+                    <div class="answer-label">agenda-driven</div>
+                    <div class="answer-description">short, purpose-driven meetings with clear roles and outcomes</div>
+                </div>
+                <div class="answer-option" data-value="exploratory" onclick="selectAnswer(this, 6)">
+                    <div class="answer-label">workshops</div>
+                    <div class="answer-description">hands-on sessions to co-create, sketch and prototype together</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn6" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question7">
+            <div class="question-header">
+                <div class="question-category">focus environment</div>
+                <h2 class="question-title">where do you do your best work<span class="dot">?</span></h2>
+                <p class="question-description">choose the setting that helps you produce your best creative output.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="protected" onclick="selectAnswer(this, 7)">
+                    <div class="answer-label">quiet corners</div>
+                    <div class="answer-description">a calm, distraction-free space with no interruptions</div>
+                </div>
+                <div class="answer-option" data-value="intensive" onclick="selectAnswer(this, 7)">
+                    <div class="answer-label">busy studios</div>
+                    <div class="answer-description">high-energy environments with constant stimulus and momentum</div>
+                </div>
+                <div class="answer-option" data-value="exploratory" onclick="selectAnswer(this, 7)">
+                    <div class="answer-label">varied spaces</div>
+                    <div class="answer-description">moving between cafés, parks and co-working spaces to stay inspired</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 7)">
+                    <div class="answer-label">team pods</div>
+                    <div class="answer-description">working shoulder-to-shoulder with teammates for instant feedback</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn7" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question8">
+            <div class="question-header">
+                <div class="question-category">energy rhythm</div>
+                <h2 class="question-title">when are you most productive<span class="dot">?</span></h2>
+                <p class="question-description">identify the time of day that unlocks your creative flow.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="focused" onclick="selectAnswer(this, 8)">
+                    <div class="answer-label">early mornings</div>
+                    <div class="answer-description">you thrive before the rest of the world wakes up</div>
+                </div>
+                <div class="answer-option" data-value="adaptive" onclick="selectAnswer(this, 8)">
+                    <div class="answer-label">it depends</div>
+                    <div class="answer-description">your energy cycles shift based on deadlines and inspiration</div>
+                </div>
+                <div class="answer-option" data-value="intensive" onclick="selectAnswer(this, 8)">
+                    <div class="answer-label">late nights</div>
+                    <div class="answer-description">you hit your stride once the day quiets down</div>
+                </div>
+                <div class="answer-option" data-value="protected" onclick="selectAnswer(this, 8)">
+                    <div class="answer-label">steady pace</div>
+                    <div class="answer-description">consistent energy throughout the day with scheduled breaks</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn8" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question9">
+            <div class="question-header">
+                <div class="question-category">creative process</div>
+                <h2 class="question-title">how do you like to brainstorm<span class="dot">?</span></h2>
+                <p class="question-description">select the method that sparks your best ideas.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="exploratory" onclick="selectAnswer(this, 9)">
+                    <div class="answer-label">open exploration</div>
+                    <div class="answer-description">unstructured ideation with sketches, mind maps and mood boards</div>
+                </div>
+                <div class="answer-option" data-value="structured" onclick="selectAnswer(this, 9)">
+                    <div class="answer-label">frameworks and prompts</div>
+                    <div class="answer-description">guided exercises and templates to channel creativity</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 9)">
+                    <div class="answer-label">group sessions</div>
+                    <div class="answer-description">collaborative brainstorming with diverse perspectives</div>
+                </div>
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 9)">
+                    <div class="answer-label">solo reflection</div>
+                    <div class="answer-description">quiet thinking time to connect the dots on your own</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn9" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question10">
+            <div class="question-header">
+                <div class="question-category">feedback</div>
+                <h2 class="question-title">how do you prefer to receive feedback<span class="dot">?</span></h2>
+                <p class="question-description">feedback helps improve creative work — pick the style that resonates.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="supported" onclick="selectAnswer(this, 10)">
+                    <div class="answer-label">step-by-step guidance</div>
+                    <div class="answer-description">detailed notes explaining what's working and what to adjust</div>
+                </div>
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 10)">
+                    <div class="answer-label">high-level direction</div>
+                    <div class="answer-description">general pointers so you can iterate on your own</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 10)">
+                    <div class="answer-label">group critique</div>
+                    <div class="answer-description">collaborative reviews with peers offering diverse perspectives</div>
+                </div>
+                <div class="answer-option" data-value="asynchronous" onclick="selectAnswer(this, 10)">
+                    <div class="answer-label">written comments</div>
+                    <div class="answer-description">annotated documents or messages you can digest in your own time</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn10" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question11">
+            <div class="question-header">
+                <div class="question-category">learning</div>
+                <h2 class="question-title">how do you learn new tools<span class="dot">?</span></h2>
+                <p class="question-description">select the approach that makes new technology click for you.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="analytical" onclick="selectAnswer(this, 11)">
+                    <div class="answer-label">reading the docs</div>
+                    <div class="answer-description">detailed documentation and step-by-step tutorials</div>
+                </div>
+                <div class="answer-option" data-value="kinesthetic" onclick="selectAnswer(this, 11)">
+                    <div class="answer-label">hands-on practice</div>
+                    <div class="answer-description">learning by doing through experimentation and tinkering</div>
+                </div>
+                <div class="answer-option" data-value="visual" onclick="selectAnswer(this, 11)">
+                    <div class="answer-label">videos & demos</div>
+                    <div class="answer-description">watching others use the tool before trying it yourself</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 11)">
+                    <div class="answer-label">pair learning</div>
+                    <div class="answer-description">collaborating with someone experienced to learn together</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn11" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question12">
+            <div class="question-header">
+                <div class="question-category">work style</div>
+                <h2 class="question-title">how do you handle multiple tasks<span class="dot">?</span></h2>
+                <p class="question-description">pick the statement that reflects how you approach workload.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="intensive" onclick="selectAnswer(this, 12)">
+                    <div class="answer-label">juggling many projects</div>
+                    <div class="answer-description">you thrive when bouncing between different tasks and deadlines</div>
+                </div>
+                <div class="answer-option" data-value="focused" onclick="selectAnswer(this, 12)">
+                    <div class="answer-label">single-task focus</div>
+                    <div class="answer-description">you deliver best when concentrating on one thing at a time</div>
+                </div>
+                <div class="answer-option" data-value="adaptive" onclick="selectAnswer(this, 12)">
+                    <div class="answer-label">switch as needed</div>
+                    <div class="answer-description">you're comfortable shifting gears based on priorities</div>
+                </div>
+                <div class="answer-option" data-value="protected" onclick="selectAnswer(this, 12)">
+                    <div class="answer-label">time-blocked flow</div>
+                    <div class="answer-description">you batch similar tasks into dedicated blocks to maintain momentum</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn12" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question13">
+            <div class="question-header">
+                <div class="question-category">autonomy</div>
+                <h2 class="question-title">what level of guidance helps you excel<span class="dot">?</span></h2>
+                <p class="question-description">consider how much direction you need to stay motivated.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 13)">
+                    <div class="answer-label">complete autonomy</div>
+                    <div class="answer-description">you prefer full control with minimal external input</div>
+                </div>
+                <div class="answer-option" data-value="supported" onclick="selectAnswer(this, 13)">
+                    <div class="answer-label">regular check-ins</div>
+                    <div class="answer-description">you value ongoing guidance and feedback from a mentor or manager</div>
+                </div>
+                <div class="answer-option" data-value="collaborative" onclick="selectAnswer(this, 13)">
+                    <div class="answer-label">shared ownership</div>
+                    <div class="answer-description">you do best when decisions are made together with the team</div>
+                </div>
+                <div class="answer-option" data-value="structured" onclick="selectAnswer(this, 13)">
+                    <div class="answer-label">clear frameworks</div>
+                    <div class="answer-description">you like having detailed guidelines but freedom within them</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn13" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question14">
+            <div class="question-header">
+                <div class="question-category">environment</div>
+                <h2 class="question-title">your preferred work arrangement<span class="dot">.</span></h2>
+                <p class="question-description">choose the option that reflects your ideal working setup.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 14)">
+                    <div class="answer-label">remote</div>
+                    <div class="answer-description">working from anywhere with full flexibility</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 14)">
+                    <div class="answer-label">in-studio</div>
+                    <div class="answer-description">together in a shared space to collaborate face-to-face</div>
+                </div>
+                <div class="answer-option" data-value="adaptive" onclick="selectAnswer(this, 14)">
+                    <div class="answer-label">hybrid</div>
+                    <div class="answer-description">a blend of remote and in-person depending on project needs</div>
+                </div>
+                <div class="answer-option" data-value="structured" onclick="selectAnswer(this, 14)">
+                    <div class="answer-label">fixed location</div>
+                    <div class="answer-description">consistent workspace with set hours and routine</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn14" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <section class="question-section" id="question15">
+            <div class="question-header">
+                <div class="question-category">support</div>
+                <h2 class="question-title">what kind of support empowers you<span class="dot">?</span></h2>
+                <p class="question-description">select the type of assistance that keeps you performing at your best.</p>
+            </div>
+            <div class="answer-options">
+                <div class="answer-option" data-value="supported" onclick="selectAnswer(this, 15)">
+                    <div class="answer-label">expert coaching</div>
+                    <div class="answer-description">regular access to specialists who guide your growth</div>
+                </div>
+                <div class="answer-option" data-value="independent" onclick="selectAnswer(this, 15)">
+                    <div class="answer-label">self-serve resources</div>
+                    <div class="answer-description">templates and documentation you can refer to on your own</div>
+                </div>
+                <div class="answer-option" data-value="social" onclick="selectAnswer(this, 15)">
+                    <div class="answer-label">peer network</div>
+                    <div class="answer-description">community of colleagues to share challenges and solutions</div>
+                </div>
+                <div class="answer-option" data-value="protected" onclick="selectAnswer(this, 15)">
+                    <div class="answer-label">administrative help</div>
+                    <div class="answer-description">support handling scheduling, emails and other logistics</div>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="previousQuestion()">previous</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn15" disabled>next<span class="dot">.</span></button>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection">
+            <div class="results-header">
+                <h1 class="results-title">your calm.profile<span class="dot">.</span></h1>
+                <div class="profile-type" id="profileType">the architect</div>
+                <p class="profile-description" id="profileDescription">
+                    you thrive on systematic organization and detailed planning. your productivity peaks when you have clear structure, comprehensive documentation, and autonomous control over your workflow.
+                </p>
+            </div>
+
+            <div class="profile-details" id="profileDetails">
+                <div class="detail-section">
+                    <h3 class="detail-title">your strengths<span class="dot">.</span></h3>
+                    <ul class="detail-list" id="strengthsList">
+                        <li>systematic approach to complex projects</li>
+                        <li>detailed planning prevents last-minute chaos</li>
+                        <li>autonomous work style with minimal supervision</li>
+                        <li>consistent output through structured routines</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3 class="detail-title">workflow recommendations<span class="dot">.</span></h3>
+                    <ul class="detail-list" id="workflowList">
+                        <li>detailed project templates with clear phases</li>
+                        <li>comprehensive brief documentation before starting</li>
+                        <li>structured daily/weekly planning sessions</li>
+                        <li>minimal meetings, async communication preferred</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3 class="detail-title">recommended tools<span class="dot">.</span></h3>
+                    <ul class="detail-list" id="toolsList">
+                        <li>notion or obsidian for comprehensive documentation</li>
+                        <li>time-blocking calendar with protected focus time</li>
+                        <li>detailed task management with dependencies</li>
+                        <li>systematic file organization and naming conventions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="email-capture">
+                <h3 class="capture-title">get your complete calm.profile report<span class="dot">.</span></h3>
+                <p class="capture-description">
+                    receive a detailed 12-page report with personalized workflow templates, tool recommendations, and systematic implementation guide.
+                </p>
+                <form class="capture-form" action="https://formspree.io/f/mkgvovee" method="POST" id="profileForm">
+                    <input type="hidden" name="_subject" value="calm.profile Assessment Results">
+                    <input type="hidden" name="profile_type" id="profileTypeInput" value="">
+                    <input type="hidden" name="assessment_data" id="assessmentDataInput" value="">
+                    <input type="hidden" name="source" value="calm.profile Assessment">
+                    <input type="email" name="email" class="capture-input" placeholder="your@email.com" required>
+                    <button type="submit" class="capture-btn" onclick="gtag('event', 'conversion', {'event_category': 'Assessment', 'event_label': 'Email Captured'});">get report<span class="dot">.</span></button>
+                </form>
+                <div style="margin-top: 16px; text-align: center;">
+                    <a href="https://calendly.com/syris/30min" 
+                       target="_blank" 
+                       class="btn btn-primary"
+                       onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Assessment Book Consultation'});">
+                       book consultation
+                    </a>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="restartAssessment()">retake assessment</button>
+                <a href="https://calendly.com/syris/30min" target="_blank" class="btn btn-primary">book a free 30-min call</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- What You'll Receive Section -->
+    <section class="what-you-get">
+        <div class="what-you-get-content">
+            <h2>what you'll receive<span class="dot">.</span></h2>
+            <ul>
+                <li>your workstyle summary and focus blockers</li>
+                <li>3-5 tailored recommendations inside your tools</li>
+                <li>a next-step option to map your 14-day calm.ops launch</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            syris<span class="dot">.</span> © 2025 | systematic solutions for modern chaos<br>
+            <a href="mailto:andrew@syris.studio">andrew@syris.studio</a> | 
+            <a href="https://linkedin.com/company/syrisdot">linkedin</a> | 
+            <a href="/calm-profile.html">calm.profile assessment</a>
+        </div>
+    </footer>
+
+    <script>
+        // Note: This is a simplified version for the artifact
+        // The full implementation would include all 15 questions
+        
+        let currentQuestion = 0;
+        let answers = {};
+        const totalQuestions = 15;
+
+        // Enhanced scoring weights for different traits
+        const traitWeights = {
+            analytical: { architect: 3, curator: 1, conductor: 1, craftsperson: 1 },
+            visual: { architect: 1, curator: 3, conductor: 1, craftsperson: 2 },
+            collaborative: { architect: 1, curator: 1, conductor: 3, craftsperson: 1 },
+            kinesthetic: { architect: 1, curator: 2, conductor: 1, craftsperson: 3 },
+            systematic: { architect: 3, curator: 1, conductor: 2, craftsperson: 1 },
+            adaptive: { architect: 1, curator: 3, conductor: 2, craftsperson: 2 },
+            focused: { architect: 2, curator: 1, conductor: 1, craftsperson: 3 },
+            independent: { architect: 3, curator: 2, conductor: 1, craftsperson: 3 },
+            social: { architect: 1, curator: 1, conductor: 3, craftsperson: 1 },
+            structured: { architect: 3, curator: 1, conductor: 2, craftsperson: 1 },
+            exploratory: { architect: 1, curator: 3, conductor: 2, craftsperson: 3 },
+            intensive: { architect: 2, curator: 2, conductor: 3, craftsperson: 1 },
+            protected: { architect: 3, curator: 2, conductor: 1, craftsperson: 3 },
+            supported: { architect: 1, curator: 2, conductor: 3, craftsperson: 1 },
+            asynchronous: { architect: 3, curator: 2, conductor: 1, craftsperson: 2 }
+        };
+
+        // Profile definitions
+        const profiles = {
+            architect: {
+                name: "the architect",
+                description: "you thrive on systematic organization and detailed planning. your productivity peaks when you have clear structure, comprehensive documentation, and autonomous control over your workflow.",
+                strengths: [
+                    "systematic approach to complex projects",
+                    "detailed planning prevents last-minute chaos", 
+                    "autonomous work style with minimal supervision",
+                    "consistent output through structured routines"
+                ],
+                workflows: [
+                    "detailed project templates with clear phases",
+                    "comprehensive brief documentation before starting",
+                    "structured daily/weekly planning sessions",
+                    "minimal meetings, async communication preferred"
+                ],
+                tools: [
+                    "notion or obsidian for comprehensive documentation",
+                    "time-blocking calendar with protected focus time",
+                    "detailed task management with dependencies",
+                    "systematic file organization and naming conventions"
+                ]
+            },
+            curator: {
+                name: "the curator",
+                description: "you process information through visual and spatial organization. your creativity flows through inspiration, mood boards, and aesthetic exploration with flexible systems that adapt to project discoveries.",
+                strengths: [
+                    "visual thinking and spatial organization",
+                    "inspiration-driven creative process",
+                    "flexible adaptation to project evolution",
+                    "aesthetic sensitivity and design intuition"
+                ],
+                workflows: [
+                    "visual project boards with inspiration libraries",
+                    "flexible planning that adapts to creative discoveries",
+                    "regular inspiration gathering and mood board creation",
+                    "iterative review cycles with visual feedback"
+                ],
+                tools: [
+                    "milanote or pinterest for visual organization",
+                    "kanban boards with visual project status",
+                    "inspiration libraries organized by theme",
+                    "collaborative mood boards and visual feedback tools"
+                ]
+            },
+            conductor: {
+                name: "the conductor",
+                description: "you're energized by team interaction and shared creativity. your productivity thrives on collaborative planning, group problem-solving, and the collective energy of working together.",
+                strengths: [
+                    "team coordination and collaborative leadership",
+                    "group problem-solving and brainstorming",
+                    "shared accountability and mutual support",
+                    "communication and relationship building"
+                ],
+                workflows: [
+                    "regular team check-ins and collaborative planning",
+                    "shared project visibility and team accountability",
+                    "brainstorming sessions for creative problem-solving",
+                    "collaborative tools for real-time feedback"
+                ],
+                tools: [
+                    "slack or teams for ongoing team communication",
+                    "shared project dashboards with team visibility",
+                    "collaborative design tools (figma, miro)",
+                    "peer accountability and support systems"
+                ]
+            },
+            craftsperson: {
+                name: "the craftsperson",
+                description: "you thrive on deep, uninterrupted work sessions and hands-on exploration. your creativity emerges through focused making, minimal administrative overhead, and protected creative time.",
+                strengths: [
+                    "deep focus and sustained concentration",
+                    "hands-on learning and rapid prototyping",
+                    "minimal system overhead and distraction",
+                    "intuitive creative process and flow states"
+                ],
+                workflows: [
+                    "large blocks of uninterrupted creative time",
+                    "minimal administrative overhead and simple systems",
+                    "hands-on exploration and rapid prototyping",
+                    "clear boundaries between focus and collaboration time"
+                ],
+                tools: [
+                    "simple task management (todoist, things)",
+                    "calendar blocking for deep work sessions",
+                    "minimal notification and distraction management",
+                    "rapid prototyping and iteration tools"
+                ]
+            }
+        };
+
+        function startAssessment() {
+            document.getElementById('introSection').style.display = 'none';
+            currentQuestion = 1;
+            showQuestion(currentQuestion);
+            updateProgress();
+        }
+
+        function showQuestion(questionNum) {
+            // Hide all questions
+            document.querySelectorAll('.question-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show current question
+            const questionElement = document.getElementById(`question${questionNum}`);
+            if (questionElement) {
+                questionElement.classList.add('active');
+            }
+        }
+
+        function selectAnswer(element, questionNum) {
+            // Remove selection from other options
+            element.parentNode.querySelectorAll('.answer-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Select current option
+            element.classList.add('selected');
+            
+            // Store answer
+            answers[questionNum] = element.dataset.value;
+            
+            // Enable next button
+            const nextBtn = document.getElementById(`nextBtn${questionNum}`);
+            if (nextBtn) {
+                nextBtn.disabled = false;
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+                updateProgress();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `question ${currentQuestion} of ${totalQuestions}`;
+        }
+
+        function calculateProfile() {
+            // Enhanced scoring algorithm
+            const profileScores = {
+                architect: 0,
+                curator: 0,
+                conductor: 0,
+                craftsperson: 0
+            };
+
+            // Calculate weighted scores for each profile
+            Object.values(answers).forEach(trait => {
+                if (traitWeights[trait]) {
+                    Object.keys(profileScores).forEach(profile => {
+                        profileScores[profile] += traitWeights[trait][profile] || 0;
+                    });
+                }
+            });
+
+            // Find the profile with highest score
+            let maxScore = 0;
+            let primaryProfile = 'architect';
+            
+            Object.entries(profileScores).forEach(([profile, score]) => {
+                if (score > maxScore) {
+                    maxScore = score;
+                    primaryProfile = profile;
+                }
+            });
+
+            return primaryProfile;
+        }
+
+        function showResults() {
+            // Hide all question sections
+            document.querySelectorAll('.question-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Calculate profile
+            const profileType = calculateProfile();
+            const profile = profiles[profileType];
+
+            // Update results content
+            document.getElementById('profileType').textContent = profile.name;
+            document.getElementById('profileDescription').textContent = profile.description;
+            
+            // Update strengths list
+            const strengthsList = document.getElementById('strengthsList');
+            strengthsList.innerHTML = '';
+            profile.strengths.forEach(strength => {
+                const li = document.createElement('li');
+                li.textContent = strength;
+                strengthsList.appendChild(li);
+            });
+
+            // Update workflow list
+            const workflowList = document.getElementById('workflowList');
+            workflowList.innerHTML = '';
+            profile.workflows.forEach(workflow => {
+                const li = document.createElement('li');
+                li.textContent = workflow;
+                workflowList.appendChild(li);
+            });
+
+            // Update tools list
+            const toolsList = document.getElementById('toolsList');
+            toolsList.innerHTML = '';
+            profile.tools.forEach(tool => {
+                const li = document.createElement('li');
+                li.textContent = tool;
+                toolsList.appendChild(li);
+            });
+
+            // Set hidden form values
+            document.getElementById('profileTypeInput').value = profile.name;
+            document.getElementById('assessmentDataInput').value = JSON.stringify(answers);
+
+            // Show results section
+            document.getElementById('resultsSection').classList.add('active');
+            
+            // Update progress to 100%
+            document.getElementById('progressFill').style.width = '100%';
+            document.getElementById('progressText').textContent = 'assessment complete';
+        }
+
+        function restartAssessment() {
+            currentQuestion = 0;
+            answers = {};
+            
+            // Reset all selections
+            document.querySelectorAll('.answer-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Reset all next buttons
+            document.querySelectorAll('[id^="nextBtn"]').forEach(btn => {
+                btn.disabled = true;
+            });
+            
+            // Hide results and show intro
+            document.getElementById('resultsSection').classList.remove('active');
+            document.getElementById('introSection').style.display = 'block';
+            
+            // Reset progress
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('progressText').textContent = '';
+        }
+
+        // Form submission handling
+        document.getElementById('profileForm').addEventListener('submit', function(e) {
+            setTimeout(() => {
+                alert('Thanks! Your complete calm.profile report will be sent to your email within 5 minutes.');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
