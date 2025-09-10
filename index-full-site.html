@@ -38,12 +38,82 @@
       }
       gtag("js", new Date());
       gtag("config", "G-L55FL9F71T");
+
+      // A/B Test Configuration
+      const AB_TEST_KEY = "cta_variant";
+      const AB_TEST_VARIANTS = {
+        A: "apply — $495 credited to sprint",
+        B: "start with calm.profile — $495 application credited",
+      };
+
+      // Get or assign variant
+      function getABTestVariant() {
+        let variant = localStorage.getItem(AB_TEST_KEY);
+        if (!variant) {
+          variant = Math.random() < 0.5 ? "A" : "B";
+          localStorage.setItem(AB_TEST_KEY, variant);
+        }
+        return variant;
+      }
+
+      // Track A/B test assignment
+      function trackABTestAssignment() {
+        const variant = getABTestVariant();
+        gtag("event", "ab_test_assignment", {
+          test_name: "cta_variant_test",
+          variant: variant,
+          cta_text: AB_TEST_VARIANTS[variant],
+        });
+        return variant;
+      }
+
+      // Enhanced event tracking function
+      function trackEvent(eventName, properties = {}) {
+        // Google Analytics 4
+        gtag("event", eventName, {
+          event_category: "user_journey",
+          event_label: properties.label || "",
+          value: properties.value || 0,
+          ...properties,
+        });
+
+        // Facebook Pixel (if available)
+        if (typeof fbq !== "undefined") {
+          fbq("track", eventName, properties);
+        }
+
+        // Console logging for debugging
+        console.log("Analytics Event:", eventName, properties);
+      }
+
+      // Track page view events
+      function trackPageEvents() {
+        // Track hero view
+        trackEvent("view_hero", {
+          page_location: window.location.href,
+          page_title: document.title,
+        });
+
+        // Track A/B test assignment
+        const variant = trackABTestAssignment();
+
+        // Update CTA text based on variant
+        const ctaElements = document.querySelectorAll(".cta-apply");
+        ctaElements.forEach((el) => {
+          el.textContent = AB_TEST_VARIANTS[variant];
+        });
+      }
+
+      // Initialize tracking when DOM is ready
+      document.addEventListener("DOMContentLoaded", trackPageEvents);
     </script>
 
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <script src="/lib/constants.js"></script>
+    <script src="/lib/analytics.js"></script>
     <style>
       :root {
         --primary: #00c9a7;
@@ -237,6 +307,44 @@
         box-shadow: 0 10px 30px rgba(0, 201, 167, 0.2);
       }
 
+      .btn-hero-secondary {
+        font-family: var(--mono);
+        padding: 16px 40px;
+        background: transparent;
+        color: var(--charcoal);
+        border: 2px solid var(--charcoal);
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        display: inline-block;
+        margin-left: 16px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-hero-secondary:hover {
+        background: var(--charcoal);
+        color: var(--white);
+        transform: translateY(-2px);
+      }
+
+      .guarantee-text {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--gray-600);
+        margin-top: 24px;
+        text-align: center;
+        line-height: 1.4;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .guarantee-text strong {
+        color: var(--primary);
+        font-weight: 500;
+      }
+
       /* Trust signal - data-driven */
       .trust-signal {
         margin-top: 48px;
@@ -245,6 +353,99 @@
         color: var(--gray-400);
         text-transform: uppercase;
         letter-spacing: 2px;
+      }
+
+      /* Credibility Strip */
+      .credibility-strip {
+        background: var(--gray-50);
+        padding: 48px 0;
+        border-top: 1px solid var(--gray-200);
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .credibility-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 var(--space-6);
+      }
+
+      .credibility-main {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .credibility-primary {
+        font-family: var(--sans);
+        font-size: 18px;
+        font-weight: 500;
+        color: var(--charcoal);
+        line-height: 1.6;
+        margin: 0 0 12px;
+      }
+
+      .credibility-secondary {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--gray-600);
+        text-transform: lowercase;
+        letter-spacing: 0.02em;
+        margin: 0;
+      }
+
+      .micro-proofs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .micro-proof {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid var(--gray-200);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .micro-proof .proof-stat {
+        font-family: var(--mono);
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--primary);
+        text-transform: lowercase;
+      }
+
+      .micro-proof .proof-desc {
+        font-family: var(--sans);
+        font-size: 14px;
+        color: var(--charcoal);
+        line-height: 1.5;
+      }
+
+      .micro-proof .proof-source {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--gray-500);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        align-self: flex-start;
+      }
+
+      .micro-proof .proof-source:hover {
+        color: var(--primary);
+      }
+
+      .micro-proof .proof-label {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--gray-500);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-style: italic;
       }
 
       /* Proof Section - quantified metrics */
@@ -300,6 +501,63 @@
         max-width: 700px;
         margin: 0 auto 60px;
         text-align: center;
+      }
+
+      .trust-module {
+        max-width: 600px;
+        margin: 0 auto 80px;
+        text-align: center;
+        padding: 40px 20px;
+        background: var(--gray-50);
+        border-radius: 8px;
+      }
+
+      .trust-module h3 {
+        font-family: var(--sans);
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--charcoal);
+        margin-bottom: 24px;
+        line-height: 1.3;
+      }
+
+      .trust-bullets {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 32px 0;
+        text-align: left;
+      }
+
+      .trust-bullets li {
+        font-family: var(--sans);
+        font-size: 16px;
+        color: var(--gray-700);
+        margin-bottom: 16px;
+        padding-left: 24px;
+        position: relative;
+        line-height: 1.5;
+      }
+
+      .trust-bullets li:before {
+        content: "•";
+        color: var(--primary);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .trust-link {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .trust-link:hover {
+        color: var(--charcoal);
       }
 
       .section-label {
@@ -494,6 +752,111 @@
         font-size: 14px;
       }
 
+      .service-note {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--primary);
+        margin-bottom: 24px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+      }
+
+      .service-checklist {
+        margin-bottom: 24px;
+      }
+
+      .report-preview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .preview-tile {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+        padding: 16px;
+        transition: all 0.2s ease;
+      }
+
+      .preview-tile:hover {
+        border-color: var(--primary);
+        box-shadow: 0 4px 12px rgba(0, 201, 167, 0.1);
+      }
+
+      .preview-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .page-number {
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--primary);
+        background: rgba(0, 201, 167, 0.1);
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin-right: 12px;
+        min-width: 40px;
+        text-align: center;
+      }
+
+      .preview-tile h4 {
+        font-family: var(--sans);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--charcoal);
+        margin: 0;
+        text-transform: lowercase;
+      }
+
+      .preview-caption {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--gray-600);
+        margin: 0;
+        line-height: 1.4;
+      }
+
+      .checklist-item {
+        margin-bottom: 16px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .checklist-item strong {
+        color: var(--charcoal);
+        font-weight: 600;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .checklist-item ul {
+        margin: 8px 0 0 16px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .checklist-item li {
+        position: relative;
+        margin-bottom: 6px;
+        padding-left: 16px;
+        color: var(--gray-600);
+      }
+
+      .checklist-item li:before {
+        content: "•";
+        color: var(--primary);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
       .btn-service {
         font-family: var(--mono);
         padding: 12px 32px;
@@ -567,6 +930,73 @@
         color: var(--gray-600);
       }
 
+      .footer-cta {
+        margin-bottom: 32px;
+        text-align: center;
+      }
+
+      .btn-footer-intro {
+        font-family: var(--mono);
+        padding: 12px 24px;
+        background: var(--primary);
+        color: var(--charcoal);
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        display: inline-block;
+        margin-bottom: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-footer-intro:hover {
+        background: var(--charcoal);
+        color: var(--white);
+        transform: translateY(-2px);
+      }
+
+      .footer-cta-note {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--gray-500);
+        margin: 0;
+        font-style: italic;
+      }
+
+      .footer-links {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--gray-600);
+      }
+
+      .calendly-section {
+        padding: 100px 40px;
+        background: var(--white);
+      }
+
+      .calendly-container {
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .calendly-note {
+        max-width: 600px;
+        margin: 40px auto 0;
+        text-align: center;
+      }
+
+      .calendly-note p {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--gray-600);
+        font-style: italic;
+        margin: 0;
+      }
+
       .footer-content a {
         color: var(--primary);
         text-decoration: none;
@@ -592,6 +1022,85 @@
 
         h1 {
           font-size: 2.5rem;
+        }
+
+        .btn-hero-secondary {
+          margin-left: 0;
+          margin-top: 12px;
+          display: block;
+          width: 100%;
+        }
+
+        .guarantee-text {
+          font-size: 11px;
+          margin-top: 20px;
+          padding: 0 16px;
+        }
+
+        /* Credibility Strip Mobile */
+        .credibility-strip {
+          padding: 32px 0;
+        }
+
+        .credibility-container {
+          padding: 0 var(--space-4);
+        }
+
+        .credibility-primary {
+          font-size: 16px;
+          line-height: 1.5;
+        }
+
+        .credibility-secondary {
+          font-size: 13px;
+        }
+
+        .micro-proofs {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .micro-proof {
+          padding: 16px;
+        }
+
+        .micro-proof .proof-stat {
+          font-size: 14px;
+        }
+
+        .micro-proof .proof-desc {
+          font-size: 13px;
+        }
+
+        .trust-module {
+          margin: 0 16px 60px;
+          padding: 32px 20px;
+        }
+
+        .trust-module h3 {
+          font-size: 20px;
+          margin-bottom: 20px;
+        }
+
+        .trust-bullets li {
+          font-size: 15px;
+          margin-bottom: 14px;
+        }
+
+        .calendly-section {
+          padding: 60px 20px;
+        }
+
+        .calendly-container {
+          margin: 0 16px;
+        }
+
+        .calendly-note {
+          margin: 32px 16px 0;
+        }
+
+        .calendly-note p {
+          font-size: 13px;
         }
 
         .proof-container {
@@ -627,10 +1136,10 @@
           >
           <a href="/services.html" class="nav-link">services</a>
           <a
-            href="https://calendly.com/syris/30min"
+            href="https://calendly.com/syris/intro"
             target="_blank"
             class="nav-cta"
-            >book discovery call</a
+            >book intro call</a
           >
         </div>
       </div>
@@ -643,25 +1152,92 @@
         <div class="hero-label">systematic solutions for creative chaos</div>
 
         <h1>
-          your team loses<br />
-          2 days every week<br />
-          to operational chaos<span class="dot">.</span>
+          start your calm<span class="dot">.</span>sys journey<span class="dot"
+            >.</span
+          >
         </h1>
 
-        <p class="hero-sub">we fix that in 14 days. systematically.</p>
-
-        <p class="hero-data">
-          creative teams waste <strong>40%</strong> of their time on
-          non-creative work.<br />
-          that's <strong>$80k+</strong> per employee annually.
-          <strong>$1.2m</strong> for a 15-person team.
+        <p class="hero-sub">
+          calm.profile is a $<span class="price-profile">495</span> application
+          step — fully credited toward your $<span class="price-stack"
+            >2,950</span
+          >
+          calm.stack sprint.
         </p>
 
-        <a href="/calm-profile" class="btn-hero">
-          take the calm.profile assessment (free) →
+        <a
+          href="/calm-profile"
+          class="btn-hero"
+          onclick="trackEvent('click_apply', { variant: getABTestVariant(), cta_text: AB_TEST_VARIANTS[getABTestVariant()] })"
+        >
+          <span class="cta-apply">apply — $495 credited to sprint</span> →
         </a>
 
+        <a
+          href="https://calendly.com/syris/intro"
+          class="btn-hero-secondary"
+          onclick="trackEvent('click_intro_call', { location: 'hero' })"
+        >
+          <span class="cta-call">book a 15-min intro call</span>
+        </a>
+
+        <div
+          class="guarantee-text"
+          role="text"
+          aria-label="5x ROI guarantee - if we can't find 5x or more in recoverable value within 90 days, we refund your $495"
+        >
+          <span class="guarantee-text"
+            >5x roi guarantee — if we can't find ≥5x in recoverable value within
+            90 days, we refund your $495.</span
+          >
+        </div>
+
         <div class="trust-signal">trusted by 47+ creative agencies</div>
+      </div>
+    </section>
+
+    <!-- Credibility Strip -->
+    <section class="credibility-strip">
+      <div class="credibility-container">
+        <div class="credibility-main">
+          <p class="credibility-primary">
+            built for founder-led creative teams (5–50 ppl) losing 10+ hrs/week
+            to coordination chaos<span class="dot">.</span>
+          </p>
+          <p class="credibility-secondary">
+            systematic, minimal, calm — not another dashboard<span class="dot"
+              >.</span
+            >
+          </p>
+        </div>
+
+        <div class="micro-proofs">
+          <div class="micro-proof">
+            <span class="proof-stat">90%+</span>
+            <span class="proof-desc"
+              >of creatives spend ≤25% of time on actual creative work — we
+              reverse that<span class="dot">.</span></span
+            >
+            <a href="/sources" class="proof-source">[source]</a>
+          </div>
+
+          <div class="micro-proof">
+            <span class="proof-stat">~30%</span>
+            <span class="proof-desc"
+              >typical quick wins cut meetings within 2 weeks<span class="dot"
+                >.</span
+              ></span
+            >
+            <span class="proof-label">based on pilot averages</span>
+          </div>
+
+          <div class="micro-proof">
+            <span class="proof-stat">tool sprawl</span>
+            <span class="proof-desc"
+              >down to a single source of truth<span class="dot">.</span></span
+            >
+          </div>
+        </div>
       </div>
     </section>
 
@@ -747,7 +1323,7 @@
         <div class="section-label" style="color: var(--primary)">
           step 1: understand your chaos
         </div>
-        <h2>calm<span class="dot">.</span>profile assessment</h2>
+        <h2>calm<span class="dot">.</span>profile application</h2>
         <p class="section-sub" style="color: rgba(255, 255, 255, 0.7)">
           discover your team's operational type and get a custom roadmap to
           calm.
@@ -756,7 +1332,7 @@
 
       <div class="profile-stats">
         <div class="profile-stat">
-          <div class="stat-number">$495</div>
+          <div class="stat-number">$<span class="price-profile">495</span></div>
           <div class="stat-label">diagnostic value</div>
         </div>
         <div class="profile-stat">
@@ -834,45 +1410,176 @@
       </div>
     </section>
 
+    <!-- Trust Module -->
+    <section class="trust-module">
+      <h3>human-reviewed, not auto-generated<span class="dot">.</span></h3>
+      <ul class="trust-bullets">
+        <li>
+          every calm.profile is manually analyzed by a syrıs consultant<span
+            class="dot"
+            >.</span
+          >
+        </li>
+        <li>
+          your answers are expanded into a 12-page report with benchmarks, roi
+          math, and a 30/60/90 plan<span class="dot">.</span>
+        </li>
+        <li>
+          the $<span class="price-profile">495</span> fee is an application
+          filter and is fully credited to your sprint<span class="dot">.</span>
+        </li>
+      </ul>
+      <a href="#sample-report" class="trust-link">view sample report →</a>
+    </section>
+
     <!-- Services -->
     <section class="services" id="services">
       <div class="section-header">
         <div class="section-label">the calm system</div>
-        <h2>three ways to reclaim your time<span class="dot">.</span></h2>
+        <h2>
+          your calm<span class="dot">.</span>sys journey<span class="dot"
+            >.</span
+          >
+        </h2>
         <p class="section-sub">
-          start small or transform everything. you choose the pace.
+          step 1: calm.profile ($<span class="price-profile">495</span>) → step
+          2: calm.stack ($<span class="price-stack">2,950</span>+) → step 3:
+          calm.os ($<span class="price-sys">15k</span>+)
         </p>
       </div>
 
       <div class="services-grid">
         <div class="service-card">
           <div class="service-name">calm<span class="dot">.</span>profile</div>
-          <div class="service-metric">$495 • 5 days</div>
+          <div class="service-metric">
+            $<span class="price-profile">495</span> • application step
+          </div>
           <p class="service-desc">
-            diagnostic assessment that shows exactly where you're losing time
+            diagnostic application that shows exactly where you're losing time
             and money. includes 12-page report, quick wins, and ROI calculation.
           </p>
-          <a href="/calm-profile" class="btn-service"> start assessment </a>
+          <div class="service-checklist">
+            <div class="report-preview-grid">
+              <!-- Page 1: Executive Summary -->
+              <div class="preview-tile">
+                <div class="preview-header">
+                  <span class="page-number">p1</span>
+                  <h4>executive summary</h4>
+                </div>
+                <p class="preview-caption">
+                  roi headline + top findings + methodology overview
+                </p>
+              </div>
+
+              <!-- Page 2: Scope & Methodology -->
+              <div class="preview-tile">
+                <div class="preview-header">
+                  <span class="page-number">p2</span>
+                  <h4>scope & methodology</h4>
+                </div>
+                <p class="preview-caption">
+                  assessment framework + confidence indicators + team context
+                </p>
+              </div>
+
+              <!-- Pages 3-4: Workstyle Profile -->
+              <div class="preview-tile">
+                <div class="preview-header">
+                  <span class="page-number">p3–p4</span>
+                  <h4>workstyle profile</h4>
+                </div>
+                <p class="preview-caption">
+                  behavioral axes + workflow responsibilities + handoff patterns
+                </p>
+              </div>
+
+              <!-- Pages 5-7: Findings -->
+              <div class="preview-tile">
+                <div class="preview-header">
+                  <span class="page-number">p5–p7</span>
+                  <h4>findings</h4>
+                </div>
+                <p class="preview-caption">
+                  5 evidence-based issues + process efficiency scores +
+                  bottleneck analysis
+                </p>
+              </div>
+
+              <!-- Pages 8-9: ROI Impact -->
+              <div class="preview-tile">
+                <div class="preview-header">
+                  <span class="page-number">p8–p9</span>
+                  <h4>roi impact</h4>
+                </div>
+                <p class="preview-caption">
+                  current costs + projected savings + 5-year scenarios +
+                  break-even timeline
+                </p>
+              </div>
+
+              <!-- Pages 10-11: Recommendations -->
+              <div class="preview-tile">
+                <div class="preview-header">
+                  <span class="page-number">p10–p11</span>
+                  <h4>recommendations</h4>
+                </div>
+                <p class="preview-caption">
+                  5 prioritized solutions + rice scores + impact matrix +
+                  critical path
+                </p>
+              </div>
+
+              <!-- Page 12: 30/60/90 Roadmap -->
+              <div class="preview-tile">
+                <div class="preview-header">
+                  <span class="page-number">p12</span>
+                  <h4>30/60/90 roadmap</h4>
+                </div>
+                <p class="preview-caption">
+                  quick wins + foundations + optimization + success kpis + next
+                  steps
+                </p>
+              </div>
+            </div>
+
+            <div class="checklist-item">
+              <strong>30-min strategy session:</strong> decision and next steps
+            </div>
+            <div class="checklist-item">
+              <strong
+                >full $<span class="price-profile">495</span> credit to
+                calm.stack</strong
+              >
+            </div>
+          </div>
+          <div class="service-note">fully credited toward calm.stack</div>
+          <a href="/calm-profile" class="btn-service"> apply now </a>
         </div>
 
         <div class="service-card">
           <div class="service-name">calm<span class="dot">.</span>stack</div>
-          <div class="service-metric">$2,950 • 14 days</div>
+          <div class="service-metric">
+            $<span class="price-stack">2,950</span>+ • 14 days
+          </div>
           <p class="service-desc">
             rapid implementation sprint. we fix your 3 biggest problems, cut
             meetings by 30%, and consolidate your tool chaos.
           </p>
+          <div class="service-note">
+            includes $<span class="price-profile">495</span> profile credit
+          </div>
           <a href="/calm-stack" class="btn-service"> fix my workflow </a>
         </div>
 
         <div class="service-card">
           <div class="service-name">calm<span class="dot">.</span>os</div>
-          <div class="service-metric">custom • 3-4 months</div>
+          <div class="service-metric">$15k+ • 3-4 months</div>
           <p class="service-desc">
             complete operational transformation. custom systems, 40%+
             productivity gains, typically $100k+ annual savings.
           </p>
-          <a href="https://calendly.com/syris/30min" class="btn-service">
+          <div class="service-note">by application only</div>
+          <a href="https://calendly.com/syris/intro" class="btn-service">
             apply now
           </a>
         </div>
@@ -961,7 +1668,7 @@
       <p style="margin-top: 24px; font-size: 14px; opacity: 0.7">
         or if you prefer to talk first:
         <a
-          href="https://calendly.com/syris/30min"
+          href="https://calendly.com/syris/intro"
           style="color: var(--primary)"
         >
           book a 15-minute reality check
@@ -969,18 +1676,97 @@
       </p>
     </section>
 
+    <!-- Calendly Booking Section -->
+    <section class="calendly-section" id="book-call">
+      <div class="section-header">
+        <div class="section-label">book your intro call</div>
+        <h2>15-minute fit check<span class="dot">.</span></h2>
+        <p class="section-sub">
+          this is a fit check, not a diagnostic<span class="dot">.</span> we'll
+          discuss your team's challenges and determine if calm.stack is right
+          for you.
+        </p>
+      </div>
+
+      <div class="calendly-container">
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/syris/intro"
+          style="min-width: 320px; height: 700px"
+        ></div>
+        <script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        ></script>
+      </div>
+
+      <div class="calendly-note">
+        <p>
+          after our call, you'll receive a follow-up email with next steps for
+          the $<span class="price-profile">495</span> application<span
+            class="dot"
+            >.</span
+          >
+        </p>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer>
       <div class="footer-content">
-        syrıs<span class="dot">.</span> © 2025 | systematic solutions for modern
-        chaos<br />
-        <a href="mailto:andrew@syris.studio">andrew@syris.studio</a> |
-        <a href="https://linkedin.com/company/syrisdot">linkedin</a> |
-        <a href="/calm-profile.html">calm.profile assessment</a>
+        <div class="footer-cta">
+          <a
+            href="https://calendly.com/syris/intro"
+            class="btn-footer-intro"
+            onclick="trackEvent('click_intro_call', { location: 'footer' })"
+          >
+            <span class="cta-call">book a 15-min intro call</span>
+          </a>
+          <p class="footer-cta-note">
+            this is a fit check, not a diagnostic<span class="dot">.</span>
+          </p>
+        </div>
+        <div class="footer-links">
+          syrıs<span class="dot">.</span> © 2025 | systematic solutions for
+          modern chaos<br />
+          <a href="mailto:andrew@syris.studio">andrew@syris.studio</a> |
+          <a href="https://linkedin.com/company/syrisdot">linkedin</a> |
+          <a href="/calm-profile.html">calm.profile application</a>
+        </div>
       </div>
     </footer>
 
     <script>
+      // Analytics tracking function
+      function trackEvent(eventName, properties = {}) {
+        // Google Analytics 4
+        if (typeof gtag !== "undefined") {
+          gtag("event", eventName, properties);
+        }
+
+        // Facebook Pixel
+        if (typeof fbq !== "undefined") {
+          fbq("track", eventName, properties);
+        }
+
+        // Console log for debugging
+        console.log("Analytics Event:", eventName, properties);
+      }
+
+      // Calendly event tracking
+      window.addEventListener("message", function (e) {
+        if (e.data.event && e.data.event.indexOf("calendly") === 0) {
+          if (e.data.event === "calendly.event_scheduled") {
+            trackEvent("book_debrief", {
+              event_type: e.data.payload.event_type,
+              invitee_email: e.data.payload.invitee.email,
+              event_name: e.data.payload.event_name,
+            });
+          }
+        }
+      });
+
       // Smooth scrolling for anchor links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
@@ -992,5 +1778,41 @@
       });
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+
+    <!-- Update DOM with constants -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.SyrisConstants) {
+          const prices = window.SyrisConstants.getFormattedPrices();
+
+          // Update price spans
+          document.querySelectorAll(".price-profile").forEach((el) => {
+            el.textContent = prices.profile;
+          });
+
+          document.querySelectorAll(".price-stack").forEach((el) => {
+            el.textContent = prices.stack;
+          });
+
+          document.querySelectorAll(".price-sys").forEach((el) => {
+            el.textContent = prices.sys;
+          });
+
+          // Update CTA text
+          document.querySelectorAll(".cta-apply").forEach((el) => {
+            el.textContent = window.SyrisConstants.CTA_APPLY;
+          });
+
+          document.querySelectorAll(".cta-call").forEach((el) => {
+            el.textContent = window.SyrisConstants.CTA_CALL;
+          });
+
+          // Update guarantee text
+          document.querySelectorAll(".guarantee-text").forEach((el) => {
+            el.textContent = window.SyrisConstants.GUARANTEE;
+          });
+        }
+      });
+    </script>
   </body>
 </html>

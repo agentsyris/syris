@@ -6,7 +6,7 @@
     <title>Sample Report | syris. - calm.sys</title>
     <meta
       name="description"
-      content="Preview the calm.profile assessment report and see exactly what you'll receive from our systematic transformation process."
+      content="Preview the calm.profile application report and see exactly what you'll receive from our systematic transformation process."
     />
 
     <link
@@ -14,6 +14,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/design-system.css" />
+    <script src="/lib/constants.js"></script>
     <style>
       /* Sample Report Page Styles */
       .sample-hero {
@@ -190,6 +191,101 @@
         .what-you-get-grid {
           grid-template-columns: 1fr !important;
         }
+
+        .report-preview-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: var(--space-4);
+          margin-bottom: var(--space-8);
+        }
+
+        .preview-tile {
+          background: var(--color-white);
+          border: 1px solid var(--color-gray-200);
+          border-radius: var(--radius-md);
+          padding: var(--space-4);
+          transition: all 0.2s ease;
+        }
+
+        .preview-tile:hover {
+          border-color: var(--color-primary);
+          box-shadow: 0 4px 12px rgba(0, 201, 167, 0.1);
+        }
+
+        .preview-header {
+          display: flex;
+          align-items: center;
+          margin-bottom: var(--space-3);
+        }
+
+        .page-number {
+          font-family: var(--font-mono);
+          font-size: var(--fs-sm);
+          font-weight: 500;
+          color: var(--color-primary);
+          background: rgba(0, 201, 167, 0.1);
+          padding: var(--space-1) var(--space-2);
+          border-radius: var(--radius-sm);
+          margin-right: var(--space-3);
+          min-width: 40px;
+          text-align: center;
+        }
+
+        .preview-tile h4 {
+          font-family: var(--font-sans);
+          font-size: var(--fs-base);
+          font-weight: 500;
+          color: var(--color-ink);
+          margin: 0;
+          text-transform: lowercase;
+        }
+
+        .preview-caption {
+          font-family: var(--font-mono);
+          font-size: var(--fs-sm);
+          color: var(--color-gray-600);
+          margin: 0;
+          line-height: 1.4;
+        }
+
+        .checklist-container {
+          margin: var(--space-6) 0;
+        }
+
+        .checklist-item {
+          margin-bottom: var(--space-4);
+          font-size: var(--fs-base);
+          line-height: 1.5;
+        }
+
+        .checklist-item strong {
+          color: var(--color-gray-900);
+          font-weight: 600;
+          display: block;
+          margin-bottom: var(--space-2);
+        }
+
+        .checklist-item ul {
+          margin: var(--space-2) 0 0 var(--space-4);
+          padding: 0;
+          list-style: none;
+        }
+
+        .checklist-item li {
+          position: relative;
+          margin-bottom: var(--space-1);
+          padding-left: var(--space-4);
+          color: var(--color-gray-600);
+        }
+
+        .checklist-item li:before {
+          content: "•";
+          color: var(--color-teal);
+          font-weight: bold;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
       }
     </style>
   </head>
@@ -213,10 +309,10 @@
           <a href="/about.html" class="nav-link">about</a>
           <a href="mailto:agent@syris.studio" class="nav-link">contact</a>
           <a
-            href="https://calendly.com/syris/30min"
+            href="https://calendly.com/syris/intro"
             target="_blank"
             class="btn btn-primary"
-            >schedule consultation</a
+            >book intro call</a
           >
         </div>
       </div>
@@ -309,35 +405,97 @@
           >
             what you'll get
           </h3>
-          <div
-            class="what-you-get-grid"
-            style="
-              display: grid;
-              grid-template-columns: repeat(3, 1fr);
-              gap: var(--space-6);
-              text-align: left;
-            "
-          >
-            <div>
-              <strong>12-page diagnostic report</strong><br />
-              <span
-                style="color: var(--color-gray-600); font-size: var(--fs-sm)"
-                >exec summary → methodology → workstyle insights →
-                inefficiencies → ROI → 30/90-day plan</span
-              >
+          <div class="report-preview-grid">
+            <!-- Page 1: Executive Summary -->
+            <div class="preview-tile">
+              <div class="preview-header">
+                <span class="page-number">p1</span>
+                <h4>executive summary</h4>
+              </div>
+              <p class="preview-caption">
+                roi headline + top findings + methodology overview
+              </p>
             </div>
-            <div>
-              <strong>3 quick wins</strong><br />
-              <span
-                style="color: var(--color-gray-600); font-size: var(--fs-sm)"
-                >within team capacity, week 1–2 implementation</span
-              >
+
+            <!-- Page 2: Scope & Methodology -->
+            <div class="preview-tile">
+              <div class="preview-header">
+                <span class="page-number">p2</span>
+                <h4>scope & methodology</h4>
+              </div>
+              <p class="preview-caption">
+                assessment framework + confidence indicators + team context
+              </p>
             </div>
-            <div>
-              <strong>30-minute debrief</strong><br />
-              <span
-                style="color: var(--color-gray-600); font-size: var(--fs-sm)"
-                >clear 30/60/90 path with owners & KPIs</span
+
+            <!-- Pages 3-4: Workstyle Profile -->
+            <div class="preview-tile">
+              <div class="preview-header">
+                <span class="page-number">p3–p4</span>
+                <h4>workstyle profile</h4>
+              </div>
+              <p class="preview-caption">
+                behavioral axes + workflow responsibilities + handoff patterns
+              </p>
+            </div>
+
+            <!-- Pages 5-7: Findings -->
+            <div class="preview-tile">
+              <div class="preview-header">
+                <span class="page-number">p5–p7</span>
+                <h4>findings</h4>
+              </div>
+              <p class="preview-caption">
+                5 evidence-based issues + process efficiency scores + bottleneck
+                analysis
+              </p>
+            </div>
+
+            <!-- Pages 8-9: ROI Impact -->
+            <div class="preview-tile">
+              <div class="preview-header">
+                <span class="page-number">p8–p9</span>
+                <h4>roi impact</h4>
+              </div>
+              <p class="preview-caption">
+                current costs + projected savings + 5-year scenarios +
+                break-even timeline
+              </p>
+            </div>
+
+            <!-- Pages 10-11: Recommendations -->
+            <div class="preview-tile">
+              <div class="preview-header">
+                <span class="page-number">p10–p11</span>
+                <h4>recommendations</h4>
+              </div>
+              <p class="preview-caption">
+                5 prioritized solutions + rice scores + impact matrix + critical
+                path
+              </p>
+            </div>
+
+            <!-- Page 12: 30/60/90 Roadmap -->
+            <div class="preview-tile">
+              <div class="preview-header">
+                <span class="page-number">p12</span>
+                <h4>30/60/90 roadmap</h4>
+              </div>
+              <p class="preview-caption">
+                quick wins + foundations + optimization + success kpis + next
+                steps
+              </p>
+            </div>
+          </div>
+
+          <div class="checklist-container">
+            <div class="checklist-item">
+              <strong>30-min strategy session:</strong> decision and next steps
+            </div>
+            <div class="checklist-item">
+              <strong
+                >full $<span class="price-profile">495</span> credit to
+                calm.stack</strong
               >
             </div>
           </div>
@@ -351,14 +509,15 @@
         ready to get your personalized report<span class="text-teal">?</span>
       </h2>
       <p>
-        Start with our free assessment or schedule a discovery consultation to
-        discuss your specific transformation goals.
+        Start with our $<span class="price-profile">495</span> application or
+        schedule a discovery consultation to discuss your specific
+        transformation goals.
       </p>
       <a
         href="https://calmprofile.vercel.app"
         target="_blank"
         class="sample-cta-button"
-        >start assessment</a
+        >apply now</a
       >
       <a
         href="https://calendly.com/syris/30min"
@@ -381,5 +540,18 @@
         <a href="mailto:agent@syris.studio">contact</a>
       </div>
     </footer>
+    <!-- Update DOM with constants -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.SyrisConstants) {
+          const prices = window.SyrisConstants.getFormattedPrices();
+
+          // Update price spans
+          document.querySelectorAll(".price-profile").forEach((el) => {
+            el.textContent = prices.profile;
+          });
+        }
+      });
+    </script>
   </body>
 </html>

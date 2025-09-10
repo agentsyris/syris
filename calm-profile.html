@@ -1,1013 +1,1211 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>calm.profile - syris. | discover your workstyle</title>
-    <meta name="description" content="Discover your creative workstyle through our scientific assessment. Get personalized workflow recommendations.">
-    
+    <meta
+      name="description"
+      content="Apply for calm.profile - discover your creative workstyle through our scientific application. Get personalized workflow recommendations."
+    />
+
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-L55FL9F71T"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-L55FL9F71T');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-L55FL9F71T");
+
+      // Event tracking function
+      function trackEvent(eventName, properties = {}) {
+        gtag("event", eventName, {
+          event_category: "user_journey",
+          event_label: properties.label || "",
+          value: properties.value || 0,
+          ...properties,
+        });
+        console.log("Analytics Event:", eventName, properties);
+      }
+
+      // Track assessment start when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        trackEvent("start_assessment", {
+          page_location: window.location.href,
+          page_title: document.title,
+        });
+      });
     </script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --primary: #00C9A7;
-            --charcoal: #0A0A0A;
-            --white: #FFFFFF;
-            --gray-50: #FAFAFA;
-            --gray-100: #F5F5F5;
-            --gray-200: #E5E7EB;
-            --gray-400: #9CA3AF;
-            --gray-600: #4B5563;
-            --mono: 'JetBrains Mono', monospace;
-            --sans: 'Inter', -apple-system, sans-serif;
-            
-            /* Spacing system */
-            --space-xs: 8px;
-            --space-sm: 16px;
-            --space-md: 32px;
-            --space-lg: 64px;
-            --space-xl: 120px;
-        }
+      :root {
+        --primary: #00c9a7;
+        --charcoal: #0a0a0a;
+        --white: #ffffff;
+        --gray-50: #fafafa;
+        --gray-100: #f5f5f5;
+        --gray-200: #e5e7eb;
+        --gray-400: #9ca3af;
+        --gray-600: #4b5563;
+        --mono: "JetBrains Mono", monospace;
+        --sans: "Inter", -apple-system, sans-serif;
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        ::selection {
-            background: var(--primary);
-            color: var(--white);
-        }
+        /* Spacing system */
+        --space-xs: 8px;
+        --space-sm: 16px;
+        --space-md: 32px;
+        --space-lg: 64px;
+        --space-xl: 120px;
+      }
 
-        body {
-            font-family: var(--sans);
-            color: var(--charcoal);
-            line-height: 1.6;
-            background: var(--white);
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        /* Typography System */
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 600;
-            line-height: 1.1;
-            letter-spacing: -2px;
-        }
-        
-        h2 {
-            font-size: clamp(1.8rem, 4vw, 2.2rem);
-            font-weight: 600;
-            letter-spacing: -1px;
-            margin-bottom: var(--space-md);
-        }
+      ::selection {
+        background: var(--primary);
+        color: var(--white);
+      }
 
-        .dot {
-            color: var(--primary);
-        }
+      body {
+        font-family: var(--sans);
+        color: var(--charcoal);
+        line-height: 1.6;
+        background: var(--white);
+      }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 24px 40px;
-            background: rgba(255,255,255,0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--gray-100);
+      /* Typography System */
+      h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: -2px;
+      }
+
+      h2 {
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+        font-weight: 600;
+        letter-spacing: -1px;
+        margin-bottom: var(--space-md);
+      }
+
+      .dot {
+        color: var(--primary);
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 24px 40px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        border-bottom: 1px solid var(--gray-100);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: var(--mono);
+        font-size: 20px;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--charcoal);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: var(--space-md);
+        align-items: center;
+      }
+
+      .nav-link {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--gray-600);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--charcoal);
+      }
+
+      .nav-cta {
+        font-family: var(--mono);
+        font-size: 13px;
+        padding: 10px 20px;
+        background: var(--charcoal);
+        color: var(--white);
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+      }
+
+      .nav-cta:hover {
+        background: var(--primary);
+        color: var(--charcoal);
+      }
+
+      /* Buttons */
+      .btn {
+        font-family: var(--mono);
+        padding: 16px 40px;
+        background: var(--charcoal);
+        color: var(--white);
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s ease;
+      }
+
+      .btn:hover {
+        background: var(--primary);
+        color: var(--charcoal);
+        transform: translateY(-2px);
+      }
+
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--gray-600);
+        border: 2px solid var(--gray-400);
+      }
+
+      .btn-secondary:hover:not(:disabled) {
+        color: var(--charcoal);
+        border-color: var(--charcoal);
+      }
+
+      /* Assessment Container */
+      .assessment-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 160px 40px 80px;
+      }
+
+      /* Progress Bar */
+      .progress-container {
+        margin-bottom: var(--space-lg);
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 4px;
+        background: var(--gray-200);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--primary);
+        transition: width 0.3s ease;
+        width: 0%;
+      }
+
+      .progress-text {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--gray-600);
+        margin-top: 8px;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Intro Section */
+      .intro {
+        text-align: center;
+        margin-bottom: var(--space-lg);
+      }
+
+      .intro h1 {
+        margin-bottom: var(--space-md);
+      }
+
+      .intro-sub {
+        font-size: 18px;
+        color: var(--gray-600);
+        margin-bottom: var(--space-md);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .intro-meta {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--gray-400);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: var(--space-lg);
+      }
+
+      /* Question Section */
+      .question-section {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .question-section.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        
-        .logo {
-            font-family: var(--mono);
-            font-size: 20px;
-            font-weight: 600;
-            text-decoration: none;
-            color: var(--charcoal);
-        }
-        
+      }
+
+      .question-header {
+        margin-bottom: var(--space-lg);
+      }
+
+      .question-category {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: var(--space-sm);
+      }
+
+      .question-statement {
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--charcoal);
+        line-height: 1.5;
+        margin-bottom: var(--space-md);
+      }
+
+      /* Likert Scale */
+      .likert-scale {
+        margin-bottom: var(--space-lg);
+      }
+
+      .likert-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: var(--space-sm);
+        padding: 0 10px;
+      }
+
+      .likert-label {
+        font-size: 12px;
+        color: var(--gray-600);
+        text-align: center;
+        flex: 1;
+        max-width: 120px;
+      }
+
+      .likert-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+      }
+
+      .likert-option {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+      }
+
+      .likert-input {
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--gray-300);
+        border-radius: 50%;
+        background: var(--white);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+
+      .likert-input:hover {
+        border-color: var(--primary);
+        transform: scale(1.1);
+      }
+
+      .likert-input:checked {
+        background: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .likert-input:checked::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 16px;
+        height: 16px;
+        background: var(--white);
+        border-radius: 50%;
+      }
+
+      /* Meta Questions */
+      .meta-section {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .meta-section.active {
+        display: block;
+      }
+
+      .meta-question {
+        margin-bottom: var(--space-md);
+      }
+
+      .meta-label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: var(--space-sm);
+        color: var(--charcoal);
+      }
+
+      .meta-select {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid var(--gray-200);
+        border-radius: 4px;
+        font-family: var(--sans);
+        font-size: 16px;
+        background: var(--white);
+        color: var(--charcoal);
+        cursor: pointer;
+        transition: border-color 0.2s ease;
+      }
+
+      .meta-select:hover {
+        border-color: var(--primary);
+      }
+
+      .meta-select:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      /* Navigation Buttons */
+      .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Results Section */
+      .results-section {
+        display: none;
+        text-align: center;
+      }
+
+      .results-section.active {
+        display: block;
+      }
+
+      .profile-type {
+        font-size: 32px;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: var(--space-sm);
+        font-family: var(--mono);
+      }
+
+      .profile-metrics {
+        background: var(--gray-50);
+        border-radius: 8px;
+        padding: var(--space-md);
+        margin-bottom: var(--space-lg);
+      }
+
+      .metric-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .metric-row:last-child {
+        border-bottom: none;
+      }
+
+      .metric-label {
+        font-family: var(--mono);
+        font-size: 14px;
+        color: var(--gray-600);
+      }
+
+      .metric-value {
+        font-family: var(--mono);
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--charcoal);
+      }
+
+      .metric-value.highlight {
+        color: var(--primary);
+      }
+
+      /* Profile Details */
+      .profile-details {
+        background: var(--gray-50);
+        border-radius: 8px;
+        padding: var(--space-lg);
+        margin-bottom: var(--space-lg);
+        text-align: left;
+      }
+
+      .detail-section {
+        margin-bottom: var(--space-md);
+      }
+
+      .detail-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .detail-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: var(--space-sm);
+        color: var(--charcoal);
+      }
+
+      .detail-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .detail-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--gray-200);
+        color: var(--gray-600);
+      }
+
+      .detail-list li:last-child {
+        border-bottom: none;
+      }
+
+      .detail-list li::before {
+        content: "→";
+        color: var(--primary);
+        font-weight: 600;
+        margin-right: 12px;
+      }
+
+      /* Email Capture */
+      .email-capture {
+        background: var(--charcoal);
+        color: var(--white);
+        padding: var(--space-lg);
+        border-radius: 8px;
+        margin-bottom: var(--space-lg);
+      }
+
+      .capture-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: var(--space-sm);
+      }
+
+      .capture-description {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: var(--space-md);
+      }
+
+      .capture-form {
+        display: flex;
+        gap: var(--space-sm);
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .capture-input {
+        flex: 1;
+        padding: 16px;
+        border: none;
+        border-radius: 4px;
+        font-family: var(--sans);
+        font-size: 16px;
+      }
+
+      .capture-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 201, 167, 0.3);
+      }
+
+      .capture-btn {
+        padding: 16px 32px;
+        background: var(--primary);
+        color: var(--charcoal);
+        border: none;
+        border-radius: 4px;
+        font-family: var(--mono);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .capture-btn:hover {
+        background: var(--white);
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      footer {
+        padding: var(--space-lg) 40px;
+        text-align: center;
+        border-top: 1px solid var(--gray-100);
+      }
+
+      .footer-content {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--gray-600);
+      }
+
+      .footer-content a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      /* Mobile */
+      @media (max-width: 768px) {
         .nav-links {
-            display: flex;
-            gap: var(--space-md);
-            align-items: center;
-        }
-        
-        .nav-link {
-            font-family: var(--mono);
-            font-size: 13px;
-            color: var(--gray-600);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--charcoal);
-        }
-        
-        .nav-cta {
-            font-family: var(--mono);
-            font-size: 13px;
-            padding: 10px 20px;
-            background: var(--charcoal);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-        
-        .nav-cta:hover {
-            background: var(--primary);
-            color: var(--charcoal);
+          display: none;
         }
 
-        /* Buttons */
-        .btn {
-            font-family: var(--mono);
-            padding: 16px 40px;
-            background: var(--charcoal);
-            color: var(--white);
-            border: none;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.2s ease;
-        }
-        
-        .btn:hover {
-            background: var(--primary);
-            color: var(--charcoal);
-            transform: translateY(-2px);
-        }
-        
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--gray-600);
-            border: 2px solid var(--gray-400);
-        }
-        
-        .btn-secondary:hover:not(:disabled) {
-            color: var(--charcoal);
-            border-color: var(--charcoal);
-        }
-
-        /* Assessment Container */
         .assessment-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 160px 40px 80px;
+          padding: 120px 24px 60px;
         }
 
-        /* Progress Bar */
-        .progress-container {
-            margin-bottom: var(--space-lg);
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: var(--gray-200);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            transition: width 0.3s ease;
-            width: 0%;
-        }
-        
-        .progress-text {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--gray-600);
-            margin-top: 8px;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Intro Section */
-        .intro {
-            text-align: center;
-            margin-bottom: var(--space-lg);
-        }
-        
-        .intro h1 {
-            margin-bottom: var(--space-md);
-        }
-        
-        .intro-sub {
-            font-size: 18px;
-            color: var(--gray-600);
-            margin-bottom: var(--space-md);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .intro-meta {
-            font-family: var(--mono);
-            font-size: 14px;
-            color: var(--gray-400);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: var(--space-lg);
-        }
-
-        /* Question Section */
-        .question-section {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .question-section.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .question-header {
-            margin-bottom: var(--space-lg);
-        }
-        
-        .question-category {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .question-statement {
-            font-size: 20px;
-            font-weight: 500;
-            color: var(--charcoal);
-            line-height: 1.5;
-            margin-bottom: var(--space-md);
-        }
-
-        /* Likert Scale */
-        .likert-scale {
-            margin-bottom: var(--space-lg);
-        }
-        
-        .likert-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: var(--space-sm);
-            padding: 0 10px;
-        }
-        
-        .likert-label {
-            font-size: 12px;
-            color: var(--gray-600);
-            text-align: center;
-            flex: 1;
-            max-width: 120px;
-        }
-        
-        .likert-options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0;
-        }
-        
-        .likert-option {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-        }
-        
-        .likert-input {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--gray-300);
-            border-radius: 50%;
-            background: var(--white);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-            appearance: none;
-            -webkit-appearance: none;
-        }
-        
-        .likert-input:hover {
-            border-color: var(--primary);
-            transform: scale(1.1);
-        }
-        
-        .likert-input:checked {
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-        
-        .likert-input:checked::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 16px;
-            height: 16px;
-            background: var(--white);
-            border-radius: 50%;
-        }
-
-        /* Meta Questions */
-        .meta-section {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .meta-section.active {
-            display: block;
-        }
-        
-        .meta-question {
-            margin-bottom: var(--space-md);
-        }
-        
-        .meta-label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: var(--space-sm);
-            color: var(--charcoal);
-        }
-        
-        .meta-select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid var(--gray-200);
-            border-radius: 4px;
-            font-family: var(--sans);
-            font-size: 16px;
-            background: var(--white);
-            color: var(--charcoal);
-            cursor: pointer;
-            transition: border-color 0.2s ease;
-        }
-        
-        .meta-select:hover {
-            border-color: var(--primary);
-        }
-        
-        .meta-select:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        /* Navigation Buttons */
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Results Section */
-        .results-section {
-            display: none;
-            text-align: center;
-        }
-        
-        .results-section.active {
-            display: block;
-        }
-        
-        .profile-type {
-            font-size: 32px;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-            font-family: var(--mono);
-        }
-        
-        .profile-metrics {
-            background: var(--gray-50);
-            border-radius: 8px;
-            padding: var(--space-md);
-            margin-bottom: var(--space-lg);
-        }
-        
-        .metric-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--gray-200);
-        }
-        
-        .metric-row:last-child {
-            border-bottom: none;
-        }
-        
-        .metric-label {
-            font-family: var(--mono);
-            font-size: 14px;
-            color: var(--gray-600);
-        }
-        
-        .metric-value {
-            font-family: var(--mono);
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--charcoal);
-        }
-        
-        .metric-value.highlight {
-            color: var(--primary);
-        }
-
-        /* Profile Details */
-        .profile-details {
-            background: var(--gray-50);
-            border-radius: 8px;
-            padding: var(--space-lg);
-            margin-bottom: var(--space-lg);
-            text-align: left;
-        }
-        
-        .detail-section {
-            margin-bottom: var(--space-md);
-        }
-        
-        .detail-section:last-child {
-            margin-bottom: 0;
-        }
-        
-        .detail-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-            color: var(--charcoal);
-        }
-        
-        .detail-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .detail-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--gray-200);
-            color: var(--gray-600);
-        }
-        
-        .detail-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .detail-list li::before {
-            content: "→";
-            color: var(--primary);
-            font-weight: 600;
-            margin-right: 12px;
-        }
-
-        /* Email Capture */
-        .email-capture {
-            background: var(--charcoal);
-            color: var(--white);
-            padding: var(--space-lg);
-            border-radius: 8px;
-            margin-bottom: var(--space-lg);
-        }
-        
-        .capture-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .capture-description {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: var(--space-md);
-        }
-        
         .capture-form {
-            display: flex;
-            gap: var(--space-sm);
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        
-        .capture-input {
-            flex: 1;
-            padding: 16px;
-            border: none;
-            border-radius: 4px;
-            font-family: var(--sans);
-            font-size: 16px;
-        }
-        
-        .capture-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0,201,167,0.3);
-        }
-        
-        .capture-btn {
-            padding: 16px 32px;
-            background: var(--primary);
-            color: var(--charcoal);
-            border: none;
-            border-radius: 4px;
-            font-family: var(--mono);
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .capture-btn:hover {
-            background: var(--white);
-            transform: translateY(-2px);
+          flex-direction: column;
         }
 
-        /* Footer */
-        footer {
-            padding: var(--space-lg) 40px;
-            text-align: center;
-            border-top: 1px solid var(--gray-100);
-        }
-        
-        .footer-content {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--gray-600);
-        }
-        
-        .footer-content a {
-            color: var(--primary);
-            text-decoration: none;
+        .nav-buttons {
+          flex-direction: column;
+          gap: var(--space-sm);
         }
 
-        /* Mobile */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .assessment-container {
-                padding: 120px 24px 60px;
-            }
-            
-            .capture-form {
-                flex-direction: column;
-            }
-            
-            .nav-buttons {
-                flex-direction: column;
-                gap: var(--space-sm);
-            }
-            
-            .nav-buttons .btn {
-                width: 100%;
-            }
-            
-            .likert-labels {
-                font-size: 10px;
-            }
-            
-            .likert-input {
-                width: 32px;
-                height: 32px;
-            }
+        .nav-buttons .btn {
+          width: 100%;
         }
+
+        .likert-labels {
+          font-size: 10px;
+        }
+
+        .likert-input {
+          width: 32px;
+          height: 32px;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav>
-        <div class="nav-container">
-            <a href="/" class="logo">syris<span class="dot">.</span></a>
-            <div class="nav-links">
-                <a href="/" class="nav-link">home</a>
-                <a href="/services.html" class="nav-link">services</a>
-                <a href="/about.html" class="nav-link">about</a>
-                <a href="https://calendly.com/syris/30min" target="_blank" class="nav-cta">book call</a>
-            </div>
+      <div class="nav-container">
+        <a href="/" class="logo">syris<span class="dot">.</span></a>
+        <div class="nav-links">
+          <a href="/" class="nav-link">home</a>
+          <a href="/services.html" class="nav-link">services</a>
+          <a href="/about.html" class="nav-link">about</a>
+          <a
+            href="https://calendly.com/syris/intro"
+            target="_blank"
+            class="nav-cta"
+            >book intro call</a
+          >
         </div>
+      </div>
     </nav>
 
     <div class="assessment-container">
-        <!-- Progress Bar -->
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <div class="progress-text" id="progressText"></div>
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText"></div>
+      </div>
+
+      <!-- Intro Section -->
+      <section class="intro" id="introSection">
+        <h1>discover your calm<span class="dot">.</span>profile</h1>
+        <p class="intro-sub">
+          every creative professional has a unique workstyle. this application
+          identifies your productivity patterns, calculates friction metrics,
+          and generates personalized workflow recommendations.
+        </p>
+        <div class="intro-meta">
+          20 questions + team context • 8 minutes • scientific scoring
+        </div>
+        <button class="btn" onclick="startAssessment()">apply now →</button>
+      </section>
+
+      <!-- Questions Container -->
+      <div id="questionsContainer"></div>
+
+      <!-- Meta Questions Section -->
+      <section class="meta-section" id="metaSection">
+        <div class="question-header">
+          <div class="question-category">team context</div>
+          <h2>your work environment<span class="dot">.</span></h2>
         </div>
 
-        <!-- Intro Section -->
-        <section class="intro" id="introSection">
-            <h1>discover your calm<span class="dot">.</span>profile</h1>
-            <p class="intro-sub">
-                every creative professional has a unique workstyle. this assessment identifies your productivity patterns, calculates friction metrics, and generates personalized workflow recommendations.
-            </p>
-            <div class="intro-meta">20 questions + team context • 8 minutes • scientific scoring</div>
-            <button class="btn" onclick="startAssessment()">start assessment →</button>
-        </section>
+        <div class="meta-question">
+          <label class="meta-label" for="teamSize">team size</label>
+          <select class="meta-select" id="teamSize" required>
+            <option value="">select team size</option>
+            <option value="solo">solo (just me)</option>
+            <option value="2-5">2-5 people</option>
+            <option value="6-15">6-15 people</option>
+            <option value="16-50">16-50 people</option>
+            <option value="50+">50+ people</option>
+          </select>
+        </div>
 
-        <!-- Questions Container -->
-        <div id="questionsContainer"></div>
+        <div class="meta-question">
+          <label class="meta-label" for="meetings">meetings per week</label>
+          <select class="meta-select" id="meetings" required>
+            <option value="">select meeting load</option>
+            <option value="0-2">0-2 meetings</option>
+            <option value="3-6">3-6 meetings</option>
+            <option value="7-10">7-10 meetings</option>
+            <option value="11-15">11-15 meetings</option>
+            <option value="16+">16+ meetings</option>
+          </select>
+        </div>
 
-        <!-- Meta Questions Section -->
-        <section class="meta-section" id="metaSection">
-            <div class="question-header">
-                <div class="question-category">team context</div>
-                <h2>your work environment<span class="dot">.</span></h2>
-            </div>
-            
-            <div class="meta-question">
-                <label class="meta-label" for="teamSize">team size</label>
-                <select class="meta-select" id="teamSize" required>
-                    <option value="">select team size</option>
-                    <option value="solo">solo (just me)</option>
-                    <option value="2-5">2-5 people</option>
-                    <option value="6-15">6-15 people</option>
-                    <option value="16-50">16-50 people</option>
-                    <option value="50+">50+ people</option>
-                </select>
-            </div>
-            
-            <div class="meta-question">
-                <label class="meta-label" for="meetings">meetings per week</label>
-                <select class="meta-select" id="meetings" required>
-                    <option value="">select meeting load</option>
-                    <option value="0-2">0-2 meetings</option>
-                    <option value="3-6">3-6 meetings</option>
-                    <option value="7-10">7-10 meetings</option>
-                    <option value="11-15">11-15 meetings</option>
-                    <option value="16+">16+ meetings</option>
-                </select>
-            </div>
-            
-            <div class="meta-question">
-                <label class="meta-label" for="platform">primary platform</label>
-                <select class="meta-select" id="platform" required>
-                    <option value="">select platform</option>
-                    <option value="microsoft">Microsoft (Teams, Office 365)</option>
-                    <option value="google">Google Workspace</option>
-                    <option value="slack">Slack + Mixed Tools</option>
-                    <option value="other">Other/Custom Stack</option>
-                </select>
-            </div>
-            
-            <div class="nav-buttons">
-                <button class="btn btn-secondary" onclick="previousFromMeta()">previous</button>
-                <button class="btn" onclick="submitAssessment()" id="submitBtn" disabled>calculate results →</button>
-            </div>
-        </section>
+        <div class="meta-question">
+          <label class="meta-label" for="platform">primary platform</label>
+          <select class="meta-select" id="platform" required>
+            <option value="">select platform</option>
+            <option value="microsoft">Microsoft (Teams, Office 365)</option>
+            <option value="google">Google Workspace</option>
+            <option value="slack">Slack + Mixed Tools</option>
+            <option value="other">Other/Custom Stack</option>
+          </select>
+        </div>
 
-        <!-- Results Section -->
-        <section class="results-section" id="resultsSection">
-            <div class="results-header">
-                <h1>your calm<span class="dot">.</span>profile</h1>
-                <div class="profile-type" id="profileType"></div>
-                <p class="profile-description" id="profileDescription"></p>
-            </div>
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" onclick="previousFromMeta()">
+            previous
+          </button>
+          <button
+            class="btn"
+            onclick="submitAssessment()"
+            id="submitBtn"
+            disabled
+          >
+            calculate results →
+          </button>
+        </div>
+      </section>
 
-            <div class="profile-metrics">
-                <div class="metric-row">
-                    <span class="metric-label">overhead index</span>
-                    <span class="metric-value highlight" id="overheadIndex">--</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">hours lost (you/week)</span>
-                    <span class="metric-value" id="hoursPersonal">--</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">hours lost (team/week)</span>
-                    <span class="metric-value" id="hoursTeam">--</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">coordination share</span>
-                    <span class="metric-value" id="coordShare">--</span>
-                </div>
-                <div class="metric-row">
-                    <span class="metric-label">confidence band</span>
-                    <span class="metric-value" id="confidence">--</span>
-                </div>
-            </div>
+      <!-- Results Section -->
+      <section class="results-section" id="resultsSection">
+        <div class="results-header">
+          <h1>your calm<span class="dot">.</span>profile</h1>
+          <div class="profile-type" id="profileType"></div>
+          <p class="profile-description" id="profileDescription"></p>
+        </div>
 
-            <div class="profile-details" id="profileDetails">
-                <div class="detail-section">
-                    <h3 class="detail-title">strengths to lean on<span class="dot">.</span></h3>
-                    <ul class="detail-list" id="strengthsList"></ul>
-                </div>
+        <div class="profile-metrics">
+          <div class="metric-row">
+            <span class="metric-label">overhead index</span>
+            <span class="metric-value highlight" id="overheadIndex">--</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">hours lost (you/week)</span>
+            <span class="metric-value" id="hoursPersonal">--</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">hours lost (team/week)</span>
+            <span class="metric-value" id="hoursTeam">--</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">coordination share</span>
+            <span class="metric-value" id="coordShare">--</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">confidence band</span>
+            <span class="metric-value" id="confidence">--</span>
+          </div>
+        </div>
 
-                <div class="detail-section">
-                    <h3 class="detail-title">potential blind spots<span class="dot">.</span></h3>
-                    <ul class="detail-list" id="blindList"></ul>
-                </div>
+        <div class="profile-details" id="profileDetails">
+          <div class="detail-section">
+            <h3 class="detail-title">
+              strengths to lean on<span class="dot">.</span>
+            </h3>
+            <ul class="detail-list" id="strengthsList"></ul>
+          </div>
 
-                <div class="detail-section">
-                    <h3 class="detail-title">suggested quick wins<span class="dot">.</span></h3>
-                    <ul class="detail-list" id="quickWinsList"></ul>
-                </div>
+          <div class="detail-section">
+            <h3 class="detail-title">
+              potential blind spots<span class="dot">.</span>
+            </h3>
+            <ul class="detail-list" id="blindList"></ul>
+          </div>
 
-                <div class="detail-section">
-                    <h3 class="detail-title">recommended stack<span class="dot">.</span></h3>
-                    <ul class="detail-list" id="toolsList"></ul>
-                </div>
-            </div>
+          <div class="detail-section">
+            <h3 class="detail-title">
+              suggested quick wins<span class="dot">.</span>
+            </h3>
+            <ul class="detail-list" id="quickWinsList"></ul>
+          </div>
 
-            <div class="email-capture">
-                <h3 class="capture-title">get your complete calm<span class="dot">.</span>profile report</h3>
-                <p class="capture-description">
-                    receive a detailed 12-page report with personalized workflow templates, friction heatmaps, team compatibility matrix, and systematic implementation guide.
-                </p>
-                <form class="capture-form" action="https://formspree.io/f/mkgvovee" method="POST">
-                    <input type="hidden" name="_subject" value="calm.profile Assessment Results">
-                    <input type="hidden" name="profile_type" id="profileTypeInput" value="">
-                    <input type="hidden" name="assessment_data" id="assessmentDataInput" value="">
-                    <input type="email" name="email" class="capture-input" placeholder="your@email.com" required>
-                    <button type="submit" class="capture-btn">get report →</button>
-                </form>
-            </div>
+          <div class="detail-section">
+            <h3 class="detail-title">
+              recommended stack<span class="dot">.</span>
+            </h3>
+            <ul class="detail-list" id="toolsList"></ul>
+          </div>
+        </div>
 
-            <div class="nav-buttons">
-                <button class="btn btn-secondary" onclick="restartAssessment()">retake assessment</button>
-                <a href="https://calendly.com/syris/30min" class="btn" target="_blank">book consultation</a>
-            </div>
-        </section>
+        <div class="email-capture">
+          <h3 class="capture-title">
+            get your complete calm<span class="dot">.</span>profile report
+          </h3>
+          <p class="capture-description">
+            receive a detailed 12-page report with personalized workflow
+            templates, friction heatmaps, team compatibility matrix, and
+            systematic implementation guide.
+          </p>
+          <form
+            class="capture-form"
+            action="https://formspree.io/f/mkgvovee"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="calm.profile Assessment Results"
+            />
+            <input
+              type="hidden"
+              name="profile_type"
+              id="profileTypeInput"
+              value=""
+            />
+            <input
+              type="hidden"
+              name="assessment_data"
+              id="assessmentDataInput"
+              value=""
+            />
+            <input
+              type="email"
+              name="email"
+              class="capture-input"
+              placeholder="your@email.com"
+              required
+            />
+            <button type="submit" class="capture-btn">get report →</button>
+          </form>
+        </div>
+
+        <div class="nav-buttons">
+          <button class="btn btn-secondary" onclick="restartAssessment()">
+            retake application
+          </button>
+          <a href="https://calendly.com/syris/intro" class="btn" target="_blank"
+            >book intro call</a
+          >
+        </div>
+      </section>
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            syris<span class="dot">.</span> © 2025 | systematic solutions for modern chaos<br>
-            <a href="mailto:andrew@syris.studio">andrew@syris.studio</a>
-        </div>
+      <div class="footer-content">
+        syris<span class="dot">.</span> © 2025 | systematic solutions for modern
+        chaos<br />
+        <a href="mailto:andrew@syris.studio">andrew@syris.studio</a>
+      </div>
     </footer>
 
     <script>
-        // Question statements matching Python system
-        const questions = [
-            // Structure Orientation (so) - q01-q03
-            {
-                id: "q01",
-                category: "structure orientation",
-                statement: "I need detailed project plans with clear phases and milestones before I can start working effectively.",
-                axis: "so",
-                polarity: 1
-            },
-            {
-                id: "q02",
-                category: "structure orientation",
-                statement: "I prefer to adjust my approach as I learn, rather than following a predetermined plan.",
-                axis: "so",
-                polarity: -1
-            },
-            {
-                id: "q03",
-                category: "structure orientation",
-                statement: "Strict file naming conventions and version control are essential to my workflow.",
-                axis: "so",
-                polarity: 1
-            },
-            // Collaboration Orientation (co) - q04-q06
-            {
-                id: "q04",
-                category: "collaboration orientation",
-                statement: "I do my best work when collaborating closely with others throughout the process.",
-                axis: "co",
-                polarity: 1
-            },
-            {
-                id: "q05",
-                category: "collaboration orientation",
-                statement: "I strongly prefer working independently with minimal check-ins or meetings.",
-                axis: "co",
-                polarity: -1
-            },
-            {
-                id: "q06",
-                category: "collaboration orientation",
-                statement: "Group brainstorming and live feedback sessions energize me and improve my work.",
-                axis: "co",
-                polarity: 1
-            },
-            // Scope Focus (sf) - q07-q09
-            {
-                id: "q07",
-                category: "scope focus",
-                statement: "I focus on the big picture and strategic implications rather than implementation details.",
-                axis: "sf",
-                polarity: 1
-            },
-            {
-                id: "q08",
-                category: "scope focus",
-                statement: "I'm most comfortable diving deep into specific technical details and perfecting execution.",
-                axis: "sf",
-                polarity: -1
-            },
-            {
-                id: "q09",
-                category: "scope focus",
-                statement: "I naturally think in terms of systems, patterns, and long-term scalability.",
-                axis: "sf",
-                polarity: 1
-            },
-            // Tempo Preference (tp) - q10-q12
-            {
-                id: "q10",
-                category: "tempo preference",
-                statement: "Real-time collaboration and synchronous communication help me maintain momentum.",
-                axis: "tp",
-                polarity: 1
-            },
-            {
-                id: "q11",
-                category: "tempo preference",
-                statement: "I prefer async communication so I can process information and respond thoughtfully.",
-                axis: "tp",
-                polarity: -1
-            },
-            {
-                id: "q12",
-                category: "tempo preference",
-                statement: "Long uninterrupted focus blocks are essential for my productivity.",
-                axis: "tp",
-                polarity: -1
-            },
-            // Friction Domains - q13-q20
-            {
-                id: "q13",
-                category: "communication clarity",
-                statement: "Project requirements and expectations are consistently clear and well-documented.",
-                domain: "fc"
-            },
-            {
-                id: "q14",
-                category: "communication clarity",
-                statement: "I rarely need to ask for clarification or chase down missing information.",
-                domain: "fc"
-            },
-            {
-                id: "q15",
-                category: "task capture & handoff",
-                statement: "Tasks and deliverables are properly tracked with clear ownership and deadlines.",
-                domain: "ft"
-            },
-            {
-                id: "q16",
-                category: "task capture & handoff",
-                statement: "Handoffs between team members happen smoothly with minimal rework.",
-                domain: "ft"
-            },
-            {
-                id: "q17",
-                category: "project visibility",
-                statement: "I can easily see project status, blockers, and dependencies at any time.",
-                domain: "fv"
-            },
-            {
-                id: "q18",
-                category: "project visibility",
-                statement: "Our team has effective dashboards and reporting that surface key information.",
-                domain: "fv"
-            },
-            {
-                id: "q19",
-                category: "decision latency",
-                statement: "Decisions are made quickly with clear ownership and minimal revisiting.",
-                domain: "fd"
-            },
-            {
-                id: "q20",
-                category: "context switching",
-                statement: "I can maintain focus without excessive tool-switching or context changes.",
-                domain: "fs"
-            }
-        ];
+      // Question statements matching Python system
+      const questions = [
+        // Structure Orientation (so) - q01-q03
+        {
+          id: "q01",
+          category: "structure orientation",
+          statement:
+            "I need detailed project plans with clear phases and milestones before I can start working effectively.",
+          axis: "so",
+          polarity: 1,
+        },
+        {
+          id: "q02",
+          category: "structure orientation",
+          statement:
+            "I prefer to adjust my approach as I learn, rather than following a predetermined plan.",
+          axis: "so",
+          polarity: -1,
+        },
+        {
+          id: "q03",
+          category: "structure orientation",
+          statement:
+            "Strict file naming conventions and version control are essential to my workflow.",
+          axis: "so",
+          polarity: 1,
+        },
+        // Collaboration Orientation (co) - q04-q06
+        {
+          id: "q04",
+          category: "collaboration orientation",
+          statement:
+            "I do my best work when collaborating closely with others throughout the process.",
+          axis: "co",
+          polarity: 1,
+        },
+        {
+          id: "q05",
+          category: "collaboration orientation",
+          statement:
+            "I strongly prefer working independently with minimal check-ins or meetings.",
+          axis: "co",
+          polarity: -1,
+        },
+        {
+          id: "q06",
+          category: "collaboration orientation",
+          statement:
+            "Group brainstorming and live feedback sessions energize me and improve my work.",
+          axis: "co",
+          polarity: 1,
+        },
+        // Scope Focus (sf) - q07-q09
+        {
+          id: "q07",
+          category: "scope focus",
+          statement:
+            "I focus on the big picture and strategic implications rather than implementation details.",
+          axis: "sf",
+          polarity: 1,
+        },
+        {
+          id: "q08",
+          category: "scope focus",
+          statement:
+            "I'm most comfortable diving deep into specific technical details and perfecting execution.",
+          axis: "sf",
+          polarity: -1,
+        },
+        {
+          id: "q09",
+          category: "scope focus",
+          statement:
+            "I naturally think in terms of systems, patterns, and long-term scalability.",
+          axis: "sf",
+          polarity: 1,
+        },
+        // Tempo Preference (tp) - q10-q12
+        {
+          id: "q10",
+          category: "tempo preference",
+          statement:
+            "Real-time collaboration and synchronous communication help me maintain momentum.",
+          axis: "tp",
+          polarity: 1,
+        },
+        {
+          id: "q11",
+          category: "tempo preference",
+          statement:
+            "I prefer async communication so I can process information and respond thoughtfully.",
+          axis: "tp",
+          polarity: -1,
+        },
+        {
+          id: "q12",
+          category: "tempo preference",
+          statement:
+            "Long uninterrupted focus blocks are essential for my productivity.",
+          axis: "tp",
+          polarity: -1,
+        },
+        // Friction Domains - q13-q20
+        {
+          id: "q13",
+          category: "communication clarity",
+          statement:
+            "Project requirements and expectations are consistently clear and well-documented.",
+          domain: "fc",
+        },
+        {
+          id: "q14",
+          category: "communication clarity",
+          statement:
+            "I rarely need to ask for clarification or chase down missing information.",
+          domain: "fc",
+        },
+        {
+          id: "q15",
+          category: "task capture & handoff",
+          statement:
+            "Tasks and deliverables are properly tracked with clear ownership and deadlines.",
+          domain: "ft",
+        },
+        {
+          id: "q16",
+          category: "task capture & handoff",
+          statement:
+            "Handoffs between team members happen smoothly with minimal rework.",
+          domain: "ft",
+        },
+        {
+          id: "q17",
+          category: "project visibility",
+          statement:
+            "I can easily see project status, blockers, and dependencies at any time.",
+          domain: "fv",
+        },
+        {
+          id: "q18",
+          category: "project visibility",
+          statement:
+            "Our team has effective dashboards and reporting that surface key information.",
+          domain: "fv",
+        },
+        {
+          id: "q19",
+          category: "decision latency",
+          statement:
+            "Decisions are made quickly with clear ownership and minimal revisiting.",
+          domain: "fd",
+        },
+        {
+          id: "q20",
+          category: "context switching",
+          statement:
+            "I can maintain focus without excessive tool-switching or context changes.",
+          domain: "fs",
+        },
+      ];
 
-        // Content library matching Python
-        const contentLibrary = {
-            strengths: {
-                architect: ["scalable systems", "repeatable delivery", "risk foresight"],
-                conductor: ["alignment", "momentum", "cross-team orchestration"],
-                curator: ["divergent thinking", "pattern spotting", "creative direction"],
-                craftsperson: ["quality", "precision", "reliability of outputs"]
-            },
-            blind_spots: {
-                architect: ["rigidity", "setup time", "over-documenting"],
-                conductor: ["meeting bloat", "decision drag", "context switching"],
-                curator: ["scope drift", "tool sprawl", "start many, finish few"],
-                craftsperson: ["perfection delay", "silo risk", "limited throughput"]
-            },
-            quick_wins: {
-                architect: [
-                    "Create a central SOP library covering at least 80% of recurring processes",
-                    "Implement a formal change-request gate to prevent ad-hoc scope creep",
-                    "Schedule a weekly ops review to surface risks early"
-                ],
-                conductor: [
-                    "Introduce decision minutes capturing owner, due, and next steps",
-                    "Shorten daily stand-ups to 25 minutes and enforce timeboxing",
-                    "Replace ad-hoc pings with scheduled office hours twice per week"
-                ],
-                curator: [
-                    "Adopt a concept brief template with a gate to production",
-                    "Lock scope every two weeks to avoid drift",
-                    "Limit the team to two primary tools to reduce sprawl"
-                ],
-                craftsperson: [
-                    "Define acceptance criteria up front for each deliverable",
-                    "Use Kanban with WIP limits to manage throughput",
-                    "Block two 90-minute focus sessions each day for deep work"
-                ]
-            },
-            tool_stacks: {
-                microsoft: {
-                    architect: ["SharePoint", "Planner or Azure Boards", "Notion (optional)", "Power Automate", "Loop", "Teams"],
-                    conductor: ["Planner or Asana", "Teams", "Bookings", "Loop/OneNote", "Forms + Power Automate"],
-                    curator: ["Figma/Miro", "Loop pages for briefs", "SharePoint", "Approvals app"],
-                    craftsperson: ["Planner or Linear", "OneDrive versioning", "Loop task pages", "Viva Insights for focus"]
-                },
-                google: {
-                    architect: ["Notion", "Sheets", "Drive + folder SOPs", "Zapier/Make", "Chat spaces"],
-                    conductor: ["Asana", "Meet", "Spaces", "Calendar Appointment schedules", "Docs for decision minutes"],
-                    curator: ["Figma/Miro", "Drive", "Docs for concept briefs", "Jamboard or similar"],
-                    craftsperson: ["Trello or Linear", "Drive project folders", "Keep/checklists", "Meet as needed"]
-                },
-                slack: {
-                    architect: ["Notion", "Linear", "Slack workflows", "Zapier", "Status Hero"],
-                    conductor: ["Asana", "Slack huddles", "Calendly", "Donut for team bonding"],
-                    curator: ["Figma", "Slack canvas", "Miro", "Abstract for versioning"],
-                    craftsperson: ["Linear", "GitHub/GitLab", "Slack lists", "Focus app integrations"]
-                },
-                other: {
-                    architect: ["Notion or Obsidian", "Jira", "Confluence", "Custom automations"],
-                    conductor: ["Monday.com", "Zoom", "Mural", "Custom feedback tools"],
-                    curator: ["Figma", "Arena", "Milanote", "Custom inspiration tools"],
-                    craftsperson: ["Linear or Height", "Version control", "Custom quality tools"]
-                }
-            }
-        };
+      // Content library matching Python
+      const contentLibrary = {
+        strengths: {
+          architect: [
+            "scalable systems",
+            "repeatable delivery",
+            "risk foresight",
+          ],
+          conductor: ["alignment", "momentum", "cross-team orchestration"],
+          curator: [
+            "divergent thinking",
+            "pattern spotting",
+            "creative direction",
+          ],
+          craftsperson: ["quality", "precision", "reliability of outputs"],
+        },
+        blind_spots: {
+          architect: ["rigidity", "setup time", "over-documenting"],
+          conductor: ["meeting bloat", "decision drag", "context switching"],
+          curator: ["scope drift", "tool sprawl", "start many, finish few"],
+          craftsperson: ["perfection delay", "silo risk", "limited throughput"],
+        },
+        quick_wins: {
+          architect: [
+            "Create a central SOP library covering at least 80% of recurring processes",
+            "Implement a formal change-request gate to prevent ad-hoc scope creep",
+            "Schedule a weekly ops review to surface risks early",
+          ],
+          conductor: [
+            "Introduce decision minutes capturing owner, due, and next steps",
+            "Shorten daily stand-ups to 25 minutes and enforce timeboxing",
+            "Replace ad-hoc pings with scheduled office hours twice per week",
+          ],
+          curator: [
+            "Adopt a concept brief template with a gate to production",
+            "Lock scope every two weeks to avoid drift",
+            "Limit the team to two primary tools to reduce sprawl",
+          ],
+          craftsperson: [
+            "Define acceptance criteria up front for each deliverable",
+            "Use Kanban with WIP limits to manage throughput",
+            "Block two 90-minute focus sessions each day for deep work",
+          ],
+        },
+        tool_stacks: {
+          microsoft: {
+            architect: [
+              "SharePoint",
+              "Planner or Azure Boards",
+              "Notion (optional)",
+              "Power Automate",
+              "Loop",
+              "Teams",
+            ],
+            conductor: [
+              "Planner or Asana",
+              "Teams",
+              "Bookings",
+              "Loop/OneNote",
+              "Forms + Power Automate",
+            ],
+            curator: [
+              "Figma/Miro",
+              "Loop pages for briefs",
+              "SharePoint",
+              "Approvals app",
+            ],
+            craftsperson: [
+              "Planner or Linear",
+              "OneDrive versioning",
+              "Loop task pages",
+              "Viva Insights for focus",
+            ],
+          },
+          google: {
+            architect: [
+              "Notion",
+              "Sheets",
+              "Drive + folder SOPs",
+              "Zapier/Make",
+              "Chat spaces",
+            ],
+            conductor: [
+              "Asana",
+              "Meet",
+              "Spaces",
+              "Calendar Appointment schedules",
+              "Docs for decision minutes",
+            ],
+            curator: [
+              "Figma/Miro",
+              "Drive",
+              "Docs for concept briefs",
+              "Jamboard or similar",
+            ],
+            craftsperson: [
+              "Trello or Linear",
+              "Drive project folders",
+              "Keep/checklists",
+              "Meet as needed",
+            ],
+          },
+          slack: {
+            architect: [
+              "Notion",
+              "Linear",
+              "Slack workflows",
+              "Zapier",
+              "Status Hero",
+            ],
+            conductor: [
+              "Asana",
+              "Slack huddles",
+              "Calendly",
+              "Donut for team bonding",
+            ],
+            curator: [
+              "Figma",
+              "Slack canvas",
+              "Miro",
+              "Abstract for versioning",
+            ],
+            craftsperson: [
+              "Linear",
+              "GitHub/GitLab",
+              "Slack lists",
+              "Focus app integrations",
+            ],
+          },
+          other: {
+            architect: [
+              "Notion or Obsidian",
+              "Jira",
+              "Confluence",
+              "Custom automations",
+            ],
+            conductor: ["Monday.com", "Zoom", "Mural", "Custom feedback tools"],
+            curator: ["Figma", "Arena", "Milanote", "Custom inspiration tools"],
+            craftsperson: [
+              "Linear or Height",
+              "Version control",
+              "Custom quality tools",
+            ],
+          },
+        },
+      };
 
-        // Archetype centroids and weights from Python
-        const centroids = {
-            architect: {so: 85, co: 35, sf: 70, tp: 40},
-            curator: {so: 35, co: 45, sf: 85, tp: 55},
-            conductor: {so: 65, co: 85, sf: 60, tp: 85},
-            craftsperson: {so: 80, co: 20, sf: 25, tp: 35}
-        };
+      // Archetype centroids and weights from Python
+      const centroids = {
+        architect: { so: 85, co: 35, sf: 70, tp: 40 },
+        curator: { so: 35, co: 45, sf: 85, tp: 55 },
+        conductor: { so: 65, co: 85, sf: 60, tp: 85 },
+        craftsperson: { so: 80, co: 20, sf: 25, tp: 35 },
+      };
 
-        const axisWeights = {so: 0.45, co: 0.35, sf: 0.10, tp: 0.10};
+      const axisWeights = { so: 0.45, co: 0.35, sf: 0.1, tp: 0.1 };
 
-        // Global state
-        let currentQuestion = 0;
-        let answers = {};
-        const totalQuestions = questions.length;
+      // Global state
+      let currentQuestion = 0;
+      let answers = {};
+      const totalQuestions = questions.length;
 
-        function startAssessment() {
-            document.getElementById('introSection').style.display = 'none';
-            currentQuestion = 1;
-            answers = {};
-            generateQuestions();
-            showQuestion(currentQuestion);
-            updateProgress();
-        }
+      function startAssessment() {
+        document.getElementById("introSection").style.display = "none";
+        currentQuestion = 1;
+        answers = {};
+        generateQuestions();
+        showQuestion(currentQuestion);
+        updateProgress();
+      }
 
-        function generateQuestions() {
-            const container = document.getElementById('questionsContainer');
-            container.innerHTML = '';
-            
-            questions.forEach((q, index) => {
-                const questionHTML = `
+      function generateQuestions() {
+        const container = document.getElementById("questionsContainer");
+        container.innerHTML = "";
+
+        questions.forEach((q, index) => {
+          const questionHTML = `
                     <section class="question-section" id="question${index + 1}">
                         <div class="question-header">
                             <div class="question-category">${q.category}</div>
@@ -1023,328 +1221,397 @@
                                 <span class="likert-label">strongly<br>agree</span>
                             </div>
                             <div class="likert-options">
-                                ${[1,2,3,4,5].map(val => `
+                                ${[1, 2, 3, 4, 5]
+                                  .map(
+                                    (val) => `
                                     <div class="likert-option">
                                         <input type="radio" 
                                             class="likert-input" 
                                             name="${q.id}" 
                                             value="${val}" 
                                             id="${q.id}_${val}"
-                                            onchange="selectAnswer('${q.id}', ${val}, ${index + 1})">
+                                            onchange="selectAnswer('${
+                                              q.id
+                                            }', ${val}, ${index + 1})">
                                     </div>
-                                `).join('')}
+                                `
+                                  )
+                                  .join("")}
                             </div>
                         </div>
                         
                         <div class="nav-buttons">
-                            <button class="btn btn-secondary" onclick="previousQuestion()" ${index === 0 ? 'disabled' : ''}>previous</button>
-                            <button class="btn" onclick="nextQuestion()" id="nextBtn${index + 1}" disabled>next →</button>
+                            <button class="btn btn-secondary" onclick="previousQuestion()" ${
+                              index === 0 ? "disabled" : ""
+                            }>previous</button>
+                            <button class="btn" onclick="nextQuestion()" id="nextBtn${
+                              index + 1
+                            }" disabled>next →</button>
                         </div>
                     </section>
                 `;
-                container.insertAdjacentHTML('beforeend', questionHTML);
-            });
+          container.insertAdjacentHTML("beforeend", questionHTML);
+        });
+      }
+
+      function showQuestion(questionNum) {
+        document.querySelectorAll(".question-section").forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        const questionElement = document.getElementById(
+          `question${questionNum}`
+        );
+        if (questionElement) {
+          questionElement.classList.add("active");
+        }
+      }
+
+      function selectAnswer(questionId, value, questionNum) {
+        answers[questionId] = value;
+        document.getElementById(`nextBtn${questionNum}`).disabled = false;
+      }
+
+      function nextQuestion() {
+        if (currentQuestion < totalQuestions) {
+          currentQuestion++;
+          showQuestion(currentQuestion);
+          updateProgress();
+        } else {
+          showMetaQuestions();
+        }
+      }
+
+      function previousQuestion() {
+        if (currentQuestion > 1) {
+          currentQuestion--;
+          showQuestion(currentQuestion);
+          updateProgress();
+        }
+      }
+
+      function showMetaQuestions() {
+        document.querySelectorAll(".question-section").forEach((section) => {
+          section.classList.remove("active");
+        });
+        document.getElementById("metaSection").classList.add("active");
+        updateProgress();
+
+        // Enable submit when all meta fields are filled
+        const checkMeta = () => {
+          const teamSize = document.getElementById("teamSize").value;
+          const meetings = document.getElementById("meetings").value;
+          const platform = document.getElementById("platform").value;
+          document.getElementById("submitBtn").disabled = !(
+            teamSize &&
+            meetings &&
+            platform
+          );
+        };
+
+        document
+          .getElementById("teamSize")
+          .addEventListener("change", checkMeta);
+        document
+          .getElementById("meetings")
+          .addEventListener("change", checkMeta);
+        document
+          .getElementById("platform")
+          .addEventListener("change", checkMeta);
+      }
+
+      function previousFromMeta() {
+        document.getElementById("metaSection").classList.remove("active");
+        currentQuestion = totalQuestions;
+        showQuestion(currentQuestion);
+        updateProgress();
+      }
+
+      function updateProgress() {
+        const progress = (currentQuestion / (totalQuestions + 1)) * 100;
+        document.getElementById("progressFill").style.width = `${progress}%`;
+
+        if (currentQuestion <= totalQuestions) {
+          document.getElementById(
+            "progressText"
+          ).textContent = `question ${currentQuestion} of ${totalQuestions}`;
+        } else {
+          document.getElementById("progressText").textContent = "team context";
+        }
+      }
+
+      // Scoring functions matching Python logic
+      function mapLikert(value) {
+        // Map 1-5 to [-2, -1, 0, 1, 2]
+        return [-2, -1, 0, 1, 2][Math.max(1, Math.min(5, value)) - 1];
+      }
+
+      function computeAxisScores() {
+        const scores = { so: 0, co: 0, sf: 0, tp: 0 };
+
+        // Process axis questions (q01-q12)
+        questions.slice(0, 12).forEach((q) => {
+          const value = answers[q.id];
+          if (value) {
+            const mapped = mapLikert(value);
+            scores[q.axis] += q.polarity * mapped;
+          }
+        });
+
+        // Convert to 0-100 scale
+        for (const axis in scores) {
+          scores[axis] = ((scores[axis] + 6) / 12.0) * 100.0;
+          scores[axis] = Math.round(scores[axis] * 10) / 10;
         }
 
-        function showQuestion(questionNum) {
-            document.querySelectorAll('.question-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            const questionElement = document.getElementById(`question${questionNum}`);
-            if (questionElement) {
-                questionElement.classList.add('active');
-            }
+        return scores;
+      }
+
+      function computeFrictionScores() {
+        const domains = { fc: [], ft: [], fv: [], fd: [], fs: [] };
+
+        // Map questions to domains
+        questions.slice(12).forEach((q) => {
+          const value = answers[q.id];
+          if (value && q.domain) {
+            domains[q.domain].push(mapLikert(value));
+          }
+        });
+
+        const scores = {};
+        let total = 0;
+
+        for (const domain in domains) {
+          if (domains[domain].length > 0) {
+            const sum = domains[domain].reduce((a, b) => a + b + 2, 0);
+            scores[domain] = (sum / (4.0 * domains[domain].length)) * 100.0;
+            scores[domain] = Math.round(scores[domain] * 10) / 10;
+            total += scores[domain];
+          }
         }
 
-        function selectAnswer(questionId, value, questionNum) {
-            answers[questionId] = value;
-            document.getElementById(`nextBtn${questionNum}`).disabled = false;
+        const overheadIndex =
+          Math.round((total / Object.keys(scores).length) * 10) / 10;
+
+        return { scores, overheadIndex };
+      }
+
+      function classifyType(axisScores) {
+        const distances = {};
+
+        for (const archetype in centroids) {
+          let dist = 0;
+          for (const axis in axisWeights) {
+            dist +=
+              (axisWeights[axis] *
+                Math.abs(axisScores[axis] - centroids[archetype][axis])) /
+              100.0;
+          }
+          distances[archetype] = dist;
         }
 
-        function nextQuestion() {
-            if (currentQuestion < totalQuestions) {
-                currentQuestion++;
-                showQuestion(currentQuestion);
-                updateProgress();
-            } else {
-                showMetaQuestions();
-            }
-        }
+        const sorted = Object.entries(distances).sort((a, b) => a[1] - b[1]);
+        const primary = sorted[0][0];
+        const secondary = sorted[1][0];
+        const margin = sorted[1][1] - sorted[0][1];
 
-        function previousQuestion() {
-            if (currentQuestion > 1) {
-                currentQuestion--;
-                showQuestion(currentQuestion);
-                updateProgress();
-            }
-        }
+        let confidence = "low";
+        if (margin >= 0.15) confidence = "high";
+        else if (margin >= 0.07) confidence = "medium";
 
-        function showMetaQuestions() {
-            document.querySelectorAll('.question-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById('metaSection').classList.add('active');
-            updateProgress();
-            
-            // Enable submit when all meta fields are filled
-            const checkMeta = () => {
-                const teamSize = document.getElementById('teamSize').value;
-                const meetings = document.getElementById('meetings').value;
-                const platform = document.getElementById('platform').value;
-                document.getElementById('submitBtn').disabled = !(teamSize && meetings && platform);
-            };
-            
-            document.getElementById('teamSize').addEventListener('change', checkMeta);
-            document.getElementById('meetings').addEventListener('change', checkMeta);
-            document.getElementById('platform').addEventListener('change', checkMeta);
-        }
+        return { primary, secondary, margin, confidence };
+      }
 
-        function previousFromMeta() {
-            document.getElementById('metaSection').classList.remove('active');
-            currentQuestion = totalQuestions;
-            showQuestion(currentQuestion);
-            updateProgress();
-        }
+      function computeOverheadMetrics(
+        overheadIndex,
+        teamSize,
+        meetings,
+        coScore,
+        tpScore
+      ) {
+        const hoursPersonal =
+          Math.round(6.0 * (overheadIndex / 100.0) * 10) / 10;
 
-        function updateProgress() {
-            const progress = (currentQuestion / (totalQuestions + 1)) * 100;
-            document.getElementById('progressFill').style.width = `${progress}%`;
-            
-            if (currentQuestion <= totalQuestions) {
-                document.getElementById('progressText').textContent = `question ${currentQuestion} of ${totalQuestions}`;
-            } else {
-                document.getElementById('progressText').textContent = 'team context';
-            }
-        }
+        const teamAnchors = {
+          solo: 1,
+          "2-5": 4,
+          "6-15": 10,
+          "16-50": 30,
+          "50+": 60,
+        };
 
-        // Scoring functions matching Python logic
-        function mapLikert(value) {
-            // Map 1-5 to [-2, -1, 0, 1, 2]
-            return [-2, -1, 0, 1, 2][Math.max(1, Math.min(5, value)) - 1];
-        }
+        const anchor = teamAnchors[teamSize] || 4;
+        let hoursTeam = hoursPersonal * anchor;
+        hoursTeam = Math.min(hoursTeam, 150.0);
+        hoursTeam = Math.round(hoursTeam * 10) / 10;
 
-        function computeAxisScores() {
-            const scores = {so: 0, co: 0, sf: 0, tp: 0};
-            
-            // Process axis questions (q01-q12)
-            questions.slice(0, 12).forEach(q => {
-                const value = answers[q.id];
-                if (value) {
-                    const mapped = mapLikert(value);
-                    scores[q.axis] += q.polarity * mapped;
-                }
-            });
-            
-            // Convert to 0-100 scale
-            for (const axis in scores) {
-                scores[axis] = ((scores[axis] + 6) / 12.0) * 100.0;
-                scores[axis] = Math.round(scores[axis] * 10) / 10;
-            }
-            
-            return scores;
-        }
+        const meetingMap = {
+          "0-2": 0,
+          "3-6": 1,
+          "7-10": 2,
+          "11-15": 3,
+          "16+": 4,
+        };
 
-        function computeFrictionScores() {
-            const domains = {fc: [], ft: [], fv: [], fd: [], fs: []};
-            
-            // Map questions to domains
-            questions.slice(12).forEach(q => {
-                const value = answers[q.id];
-                if (value && q.domain) {
-                    domains[q.domain].push(mapLikert(value));
-                }
-            });
-            
-            const scores = {};
-            let total = 0;
-            
-            for (const domain in domains) {
-                if (domains[domain].length > 0) {
-                    const sum = domains[domain].reduce((a, b) => a + b + 2, 0);
-                    scores[domain] = (sum / (4.0 * domains[domain].length)) * 100.0;
-                    scores[domain] = Math.round(scores[domain] * 10) / 10;
-                    total += scores[domain];
-                }
-            }
-            
-            const overheadIndex = Math.round(total / Object.keys(scores).length * 10) / 10;
-            
-            return {scores, overheadIndex};
-        }
+        const meetBand = meetingMap[meetings] || 2;
 
-        function classifyType(axisScores) {
-            const distances = {};
-            
-            for (const archetype in centroids) {
-                let dist = 0;
-                for (const axis in axisWeights) {
-                    dist += axisWeights[axis] * Math.abs(axisScores[axis] - centroids[archetype][axis]) / 100.0;
-                }
-                distances[archetype] = dist;
-            }
-            
-            const sorted = Object.entries(distances).sort((a, b) => a[1] - b[1]);
-            const primary = sorted[0][0];
-            const secondary = sorted[1][0];
-            const margin = sorted[1][1] - sorted[0][1];
-            
-            let confidence = "low";
-            if (margin >= 0.15) confidence = "high";
-            else if (margin >= 0.07) confidence = "medium";
-            
-            return {primary, secondary, margin, confidence};
-        }
+        let coordShare =
+          0.25 +
+          0.35 * (coScore / 100.0) +
+          0.2 * (tpScore / 100.0) +
+          0.2 * (meetBand / 4.0);
+        coordShare = Math.max(0.2, Math.min(coordShare, 0.85));
+        coordShare = Math.round(coordShare * 100);
 
-        function computeOverheadMetrics(overheadIndex, teamSize, meetings, coScore, tpScore) {
-            const hoursPersonal = Math.round(6.0 * (overheadIndex / 100.0) * 10) / 10;
-            
-            const teamAnchors = {
-                "solo": 1,
-                "2-5": 4,
-                "6-15": 10,
-                "16-50": 30,
-                "50+": 60
-            };
-            
-            const anchor = teamAnchors[teamSize] || 4;
-            let hoursTeam = hoursPersonal * anchor;
-            hoursTeam = Math.min(hoursTeam, 150.0);
-            hoursTeam = Math.round(hoursTeam * 10) / 10;
-            
-            const meetingMap = {
-                "0-2": 0,
-                "3-6": 1,
-                "7-10": 2,
-                "11-15": 3,
-                "16+": 4
-            };
-            
-            const meetBand = meetingMap[meetings] || 2;
-            
-            let coordShare = 0.25 + 0.35 * (coScore / 100.0) + 0.20 * (tpScore / 100.0) + 0.20 * (meetBand / 4.0);
-            coordShare = Math.max(0.20, Math.min(coordShare, 0.85));
-            coordShare = Math.round(coordShare * 100);
-            
-            return {hoursPersonal, hoursTeam, coordShare};
-        }
+        return { hoursPersonal, hoursTeam, coordShare };
+      }
 
-        function submitAssessment() {
-            // Get meta data
-            const teamSize = document.getElementById('teamSize').value;
-            const meetings = document.getElementById('meetings').value;
-            const platform = document.getElementById('platform').value;
-            
-            // Calculate all scores
-            const axisScores = computeAxisScores();
-            const {scores: frictionScores, overheadIndex} = computeFrictionScores();
-            const typeResult = classifyType(axisScores);
-            const {hoursPersonal, hoursTeam, coordShare} = computeOverheadMetrics(
-                overheadIndex, teamSize, meetings, axisScores.co, axisScores.tp
-            );
-            
-            // Display results
-            displayResults({
-                type: typeResult,
-                axisScores,
-                frictionScores,
-                overheadIndex,
-                hoursPersonal,
-                hoursTeam,
-                coordShare,
-                teamSize,
-                meetings,
-                platform
-            });
-        }
+      function submitAssessment() {
+        // Get meta data
+        const teamSize = document.getElementById("teamSize").value;
+        const meetings = document.getElementById("meetings").value;
+        const platform = document.getElementById("platform").value;
 
-        function displayResults(results) {
-            // Hide meta section
-            document.getElementById('metaSection').classList.remove('active');
-            
-            // Update profile type
-            const profileType = results.type.primary;
-            document.getElementById('profileType').textContent = `the ${profileType}`;
-            
-            // Update description
-            const descriptions = {
-                architect: "you thrive on systematic organization and detailed planning. your productivity peaks with clear structure and autonomous control.",
-                conductor: "you orchestrate collaboration and align teams. your impact multiplies when facilitating discussions and building consensus.",
-                curator: "you excel at exploring possibilities and synthesizing diverse inputs. your creativity flows through iteration and adaptation.",
-                craftsperson: "you focus on quality execution and tangible results. your satisfaction comes from perfecting your craft and shipping excellence."
-            };
-            document.getElementById('profileDescription').textContent = descriptions[profileType];
-            
-            // Update metrics
-            document.getElementById('overheadIndex').textContent = `${results.overheadIndex}%`;
-            document.getElementById('hoursPersonal').textContent = `${results.hoursPersonal} hrs`;
-            document.getElementById('hoursTeam').textContent = `${results.hoursTeam} hrs`;
-            document.getElementById('coordShare').textContent = `${results.coordShare}%`;
-            document.getElementById('confidence').textContent = results.type.confidence;
-            
-            // Update content lists
-            const strengthsList = document.getElementById('strengthsList');
-            strengthsList.innerHTML = contentLibrary.strengths[profileType].map(s => `<li>${s}</li>`).join('');
-            
-            const blindList = document.getElementById('blindList');
-            blindList.innerHTML = contentLibrary.blind_spots[profileType].map(b => `<li>${b}</li>`).join('');
-            
-            const quickWinsList = document.getElementById('quickWinsList');
-            quickWinsList.innerHTML = contentLibrary.quick_wins[profileType].map(q => `<li>${q}</li>`).join('');
-            
-            const toolsList = document.getElementById('toolsList');
-            const tools = contentLibrary.tool_stacks[results.platform][profileType];
-            toolsList.innerHTML = tools.map(t => `<li>${t}</li>`).join('');
-            
-            // Store data for form submission
-            document.getElementById('profileTypeInput').value = `the ${profileType}`;
-            document.getElementById('assessmentDataInput').value = JSON.stringify({
-                answers,
-                meta: {
-                    team_size: results.teamSize,
-                    meetings: results.meetings,
-                    platform: results.platform
-                },
-                scores: results
-            });
-            
-            // Show results
-            document.getElementById('resultsSection').classList.add('active');
-            
-            // Update progress
-            document.getElementById('progressFill').style.width = '100%';
-            document.getElementById('progressText').textContent = 'assessment complete';
-        }
+        // Calculate all scores
+        const axisScores = computeAxisScores();
+        const { scores: frictionScores, overheadIndex } =
+          computeFrictionScores();
+        const typeResult = classifyType(axisScores);
+        const { hoursPersonal, hoursTeam, coordShare } = computeOverheadMetrics(
+          overheadIndex,
+          teamSize,
+          meetings,
+          axisScores.co,
+          axisScores.tp
+        );
 
-        function restartAssessment() {
-            currentQuestion = 0;
-            answers = {};
-            
-            // Reset all selections
-            document.querySelectorAll('.likert-input').forEach(input => {
-                input.checked = false;
-            });
-            
-            // Reset all next buttons
-            document.querySelectorAll('[id^="nextBtn"]').forEach(btn => {
-                btn.disabled = true;
-            });
-            
-            // Reset meta fields
-            document.getElementById('teamSize').value = '';
-            document.getElementById('meetings').value = '';
-            document.getElementById('platform').value = '';
-            document.getElementById('submitBtn').disabled = true;
-            
-            // Hide results and show intro
-            document.getElementById('resultsSection').classList.remove('active');
-            document.getElementById('metaSection').classList.remove('active');
-            document.getElementById('introSection').style.display = 'block';
-            
-            // Reset progress
-            document.getElementById('progressFill').style.width = '0%';
-            document.getElementById('progressText').textContent = '';
-        }
+        // Display results
+        displayResults({
+          type: typeResult,
+          axisScores,
+          frictionScores,
+          overheadIndex,
+          hoursPersonal,
+          hoursTeam,
+          coordShare,
+          teamSize,
+          meetings,
+          platform,
+        });
+      }
+
+      function displayResults(results) {
+        // Hide meta section
+        document.getElementById("metaSection").classList.remove("active");
+
+        // Update profile type
+        const profileType = results.type.primary;
+        document.getElementById(
+          "profileType"
+        ).textContent = `the ${profileType}`;
+
+        // Update description
+        const descriptions = {
+          architect:
+            "you thrive on systematic organization and detailed planning. your productivity peaks with clear structure and autonomous control.",
+          conductor:
+            "you orchestrate collaboration and align teams. your impact multiplies when facilitating discussions and building consensus.",
+          curator:
+            "you excel at exploring possibilities and synthesizing diverse inputs. your creativity flows through iteration and adaptation.",
+          craftsperson:
+            "you focus on quality execution and tangible results. your satisfaction comes from perfecting your craft and shipping excellence.",
+        };
+        document.getElementById("profileDescription").textContent =
+          descriptions[profileType];
+
+        // Update metrics
+        document.getElementById(
+          "overheadIndex"
+        ).textContent = `${results.overheadIndex}%`;
+        document.getElementById(
+          "hoursPersonal"
+        ).textContent = `${results.hoursPersonal} hrs`;
+        document.getElementById(
+          "hoursTeam"
+        ).textContent = `${results.hoursTeam} hrs`;
+        document.getElementById(
+          "coordShare"
+        ).textContent = `${results.coordShare}%`;
+        document.getElementById("confidence").textContent =
+          results.type.confidence;
+
+        // Update content lists
+        const strengthsList = document.getElementById("strengthsList");
+        strengthsList.innerHTML = contentLibrary.strengths[profileType]
+          .map((s) => `<li>${s}</li>`)
+          .join("");
+
+        const blindList = document.getElementById("blindList");
+        blindList.innerHTML = contentLibrary.blind_spots[profileType]
+          .map((b) => `<li>${b}</li>`)
+          .join("");
+
+        const quickWinsList = document.getElementById("quickWinsList");
+        quickWinsList.innerHTML = contentLibrary.quick_wins[profileType]
+          .map((q) => `<li>${q}</li>`)
+          .join("");
+
+        const toolsList = document.getElementById("toolsList");
+        const tools = contentLibrary.tool_stacks[results.platform][profileType];
+        toolsList.innerHTML = tools.map((t) => `<li>${t}</li>`).join("");
+
+        // Store data for form submission
+        document.getElementById(
+          "profileTypeInput"
+        ).value = `the ${profileType}`;
+        document.getElementById("assessmentDataInput").value = JSON.stringify({
+          answers,
+          meta: {
+            team_size: results.teamSize,
+            meetings: results.meetings,
+            platform: results.platform,
+          },
+          scores: results,
+        });
+
+        // Show results
+        document.getElementById("resultsSection").classList.add("active");
+
+        // Update progress
+        document.getElementById("progressFill").style.width = "100%";
+        document.getElementById("progressText").textContent =
+          "application complete";
+      }
+
+      function restartAssessment() {
+        currentQuestion = 0;
+        answers = {};
+
+        // Reset all selections
+        document.querySelectorAll(".likert-input").forEach((input) => {
+          input.checked = false;
+        });
+
+        // Reset all next buttons
+        document.querySelectorAll('[id^="nextBtn"]').forEach((btn) => {
+          btn.disabled = true;
+        });
+
+        // Reset meta fields
+        document.getElementById("teamSize").value = "";
+        document.getElementById("meetings").value = "";
+        document.getElementById("platform").value = "";
+        document.getElementById("submitBtn").disabled = true;
+
+        // Hide results and show intro
+        document.getElementById("resultsSection").classList.remove("active");
+        document.getElementById("metaSection").classList.remove("active");
+        document.getElementById("introSection").style.display = "block";
+
+        // Reset progress
+        document.getElementById("progressFill").style.width = "0%";
+        document.getElementById("progressText").textContent = "";
+      }
     </script>
-</body>
+  </body>
 </html>
