@@ -4,7 +4,7 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/index.html"
+      "destination": "/index-full-site.html"
     },
     {
       "source": "/maintenance-control",
